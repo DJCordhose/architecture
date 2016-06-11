@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Was uns C64 Programmierung über JavaScript Architekturen lehren kann</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <!--<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">-->
+    <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
+    <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
+    <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+    <style>
+        /*pre code {*/
+            /*display: block;*/
+            /*padding: 0.5em;*/
+            /*background: #FFFFFF !important;*/
+            /*color: #000000 !important;*/
+        /*}*/
+
+        .right-img {
+            margin-left: 10px !important;
+            float: right;
+            height: 500px;
+        }
+        .todo:before {
+            content: 'TODO: ';
+        }
+        .todo {
+            color: red !important;
+        }
+    </style>
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section>
+            <h2>Was uns C64 Programmierung über JavaScript Architekturen lehren kann</h2>
+            <p>
+                <small><a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+                </small>
+            </p>
+        </section>
+
+<!--Die Programmierung des C64, des bekanntesten Heimcomputers der 80er Jahre, mit seinem eingebauten Basic war vor allem eins: -->
+<!--leicht zu erlernen, aber wenig mächtig. Einfache Dinge konnte man innerhalb weniger Minuten lösen, -->
+<!--aber bei wirklichen Aufgaben musste man auf andere Ansätze wechseln.-->
+
+<!--Ähnliche Erfahrungen haben viele Entwickler erst mit dem JavaScript Framework jQuery und später dann mit AngularJS gemacht. -->
+<!--Eben wie bei der C64-Programmierung kommt es auch bei der Webentwicklung darauf an, dass man einen Architektur-Ansatz findet, -->
+<!--der dem Problem gerecht wird. Nicht zu einfach, aber auch nicht zu komplex. -->
+<!--Dabei kommen insbesondere durch den mächtigen Ansatz von Single-Page Applications ganz neue Anforderungen auf uns zu.-->
+
+<!--In diesem Talk werden wir uns diese Herausforderungen ansehen und passende Architekturmuster am Beispiel der gängigen -->
+<!--JavaScript Web-Frameworks wie Angular 2 und React erarbeiten. Zur Sprache kommen dabei sowohl optimierte Komponenten-Hierarchien, -->
+<!--als auch moderne Flux-Architekturen. Man darf gespannt sein, wie sich dabei ehemalige Anti-Patterns - z.B. globaler Zustand - zu Best-Practices wandeln.-->
+
+<!--Keine Angst: Um dem Talk folgen zu können, musst du nicht JavaScript programmieren können.-->
+
+        <section>
+            <p>
+                <a target="_blank" href="https://entwickler.de/press/javascript-fuer-java-entwickler-4-168852.html">
+                    <img src="intro/s-k_JavaScript_fuer_JavaEntwickler_Auflage3_2400x_rgb-220x353@2x.jpg" width="200">
+                </a>
+                <a target="_blank" href="http://entwickler.de/press/JavaScript-und-TypeScript-fuer-C-Entwickler-174972">
+                    <img src="intro/javascript_und_typescript_1400px.jpg" width="200" >
+                </a>
+                <a target="_blank" href="http://reactbuch.de/">
+                    <img src="intro/react.jpg" width="250">                </a>
+            </p>
+            <a href="http://zeigermann.eu" target="_blank"><img src="intro/SF-Olli.jpg" height="200" align="right"></a>
+            <a href="http://www.embarc.de/" target="_blank"><img src="intro/embarc13.png" height="200" align="left"></a>
+
+        </section>
+
+        <section>
+            <h2 class="todo">C64-Screenshot zeigen und etwas programmieren im Emulator</h2>
+        </section>
+
+        <section>
+            <h1>C64-Trivia</h1>
+            <div class="fragment">
+                <p>Auch Philipp Rösler hätte gern einen C64 gehabt</p>
+                <p>(hatte aber nur einen VC-20)</p>
+                <p><small><a target="_blank" href="http://www.zeit.de/politik/ausland/2016-06/philipp-roesler-world-economic-forum-interview">http://www.zeit.de/politik/ausland/2016-06/philipp-roesler-world-economic-forum-interview</a></small></p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="todo">Diesen ganzen Kram überarbeiten und Code entfernen, mehr auf Schwafel-Niveau</h2>
+        </section>
+
+        <section>
+            <h2>Was ich euch zeigen möchte</h2>
+            <ul>
+                <li class="fragment">Warum sind klassische Web-Anwendungen gut?
+                <li class="fragment">Was sind Single-Page Anwendungen (SPAs) und warum sind die gut?
+                <li class="fragment">Wie setzt ihr SPAs mit React und Redux um?
+                <li class="fragment">Was sind Universal Web Apps und warum sind die noch besser?
+                <li class="fragment">Wie kann man Universal Web Apps mit React und Redux umsetzen?
+                <li class="fragment">Was sind die Herausforderungen?
+            </ul>
+        </section>
+
+
+        <section>
+            <h2>Teil I</h2>
+            <h3>Was ist eine Single-Page-Applikation?</h3>
+            <h4 class="fragment">... und warum möchte ich eine haben</h4>
+        </section>
+
+        <section>
+            <h3>Klassiche Webanwendung</h3>
+            <!--<p><small>jeder Boot tut gut, jeder Roundtrip setzt Zustand zurück</small></p>-->
+
+            <img src="embarc/KlassischeWebAnwendung.png" style="height: 500px;">
+            <p><small>Copyright 2016, embarc</small></p>
+        </section>
+        <section>
+            <h3>Problem mit klassichen Webanwendungen</h3>
+            <ul class="fragment">
+                <li>UI/UX ist grunsätzlich eingeschränkt
+                <li>Request-/Response-Zyklus limitiert die Anwendung
+                <li>Nutzer erwartet Bedienbarkeit wie im Desktop
+                <li>klassische Webanwendung in seiner Reinform längst so gut wie ausgestorben
+                <li>selbst in vermeintlich klassischen Anwendungen verstecken sich SPAs oft als Teile
+                <li>z.B. JSF Komponenten mit einem komplexen UI
+            </ul>
+        </section>
+        <section>
+            <h3>Single-Page Application</h3>
+            <img src="embarc/SP-Anwendung.png" style="height: 500px;">
+            <p><small>Copyright 2016, embarc</small></p>
+        </section>
+        <section>
+            <h3>Single-Page Applications (SPAs) verschieben eure Anwendung in den Browser</h3>
+            <ul class="fragment">
+                <li>eine einzige Seite pro Anwendung/Modul
+                <li>läuft ohne signifikanten Server-Anteil
+                <li>kann auch als statische Web-Seite laufen
+                <li>ermöglicht Offline-Betrieb
+                <li>Bedienbarkeit wie Desktop
+                <li>Browser bietet mächtige Speicherungsmöglichkeiten
+            </ul>
+        </section>
+
+        <section>
+            <h2>Teil II</h2>
+            <h3>SPAs mit React und Redux</h3>
+        </section>
+
+        <section>
+            <h2>React</h2>
+            <ul class="fragment">
+                <li>Framework für Facebook und viele andere
+                <li>Komponenten kapseln Template und Logik
+                    <!--<li class="fragment">Abstraktion vom DOM: <em>f(model) -> UI</em>-->
+                <li>Minimales API
+                <li>Templates sind JavaScript plus HTML artige JSX-Syntax
+                <li>Ein-Weg-Data-Binding: Zustandsänderungen stellen Komponente neu dar
+                <li>Kann im Browser und auf dem Server rendern
+                <li>viel Inspiration aus der funktionalen Ecke (Immutable, pure functions, stateless)
+            </ul>
+        </section>
+
+        <section>
+            <h3>Hello World React</h3>
+<pre><code data-trim contenteditable>class HelloMessage extends React.Component {
+  render() {
+    return &lt;div>
+            &lt;input value={this.state.greeting} ref="in"
+                   onChange={(event) => this.updateModel(event)} />
+            <p>{this.state.greeting}, World</p>
+            &lt;button onClick={() => this.reset()}>Clear&lt;/button>
+        &lt;/div>;
+  }</code></pre>
+<pre class="fragment"><code contenteditable class="javascript">  constructor(props) {
+    this.state = {greeting: this.props.greeting};
+  }
+  updateModel(event) {
+    this.setState({greeting: event.target.value});
+  }
+  reset() {
+    this.setState({greeting: ""});
+    this.refs.in.focus();
+  }
+}</code></pre>
+        </section>
+        <section>
+            <h3>Aufruf</h3>
+<pre><code data-trim contenteditable>
+// index.html
+&lt;body>
+  <div id="mount"></div>
+&lt;/body>
+</code></pre>
+<pre class="fragment"><code data-trim contenteditable class="javascript">
+// main.js
+import HelloMessage from './HelloMessage';
+
+var mountNode = document.getElementById('mount');
+ReactDOM.render(&lt;HelloMessage greeting="Hello"/>, mountNode);
+</code></pre>
+            <a target="_blank" href="examples/hello-world/public/index.html">Run</a>
+        </section>
+
+        <section>
+            <h3>React in der Praxis</h3>
+            <ul>
+                <li class="fragment">React wird meist mit anderen Tools und Techniken zusammen eingesetzt
+                <li class="fragment">React-Router: Was wird bei welcher URL dargestellt?
+                <li class="fragment">Build
+                    <ul>
+                        <li>Babel: Übersetzer
+                        <li>Webpack: Bundler
+                        <li>Flow: Statischer Type Checker
+                    </ul>
+                <li class="fragment">Architektur-Muster
+                    <ul>
+                        <li class="fragment grow">Flux: UI-Architektur-Muster
+                            <!--<li class="fragment grow">Controller-/Child-Komponenten-Hierarchien-->
+                        <li class="fragment grow">Universal Rendering: Server- und Client-Rendering kombiniert
+                    </ul>
+                </li>
+                </li>
+            </ul>
+        </section>
+
+        <!--<section>-->
+        <!--<h3>Flux</h3>-->
+        <!--<div class="fragment">-->
+        <!--<img src="embarc/Ebene_Flux_Markiert.png" style="height: 500px;">-->
+        <!--<p><small>Copyright 2016, embarc</small></p>-->
+        <!--</div>-->
+        <!--</section>-->
+        <section>
+            <h2>Motivation für eine Flux-Architektur</h2>
+        </section>
+
+        <section>
+            <h3>Problem von MVC mit Observer-Pattern</h3>
+            <div class="fragment">
+                <img src="embarc/MVC_1.png" style="height: 500px;">
+                <p><small>Copyright 2016, embarc</small></p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Problem von MVC mit Observer-Pattern</h3>
+            <div>
+                <img src="embarc/MVC_1_blassZustand.png" style="height: 500px;">
+                <p><small>Copyright 2016, embarc</small></p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Verteilter, veränderlicher Zustand mit Listenern (Observer)</h3>
+            <img class="fragment" src="2-way-data-binding.gif">
+        </section>
+
+        <section>
+            <h3>Redux, eine Flux Implementierung</h3>
+            <div class="fragment">
+                <img src="embarc/FluxFWs_Redux.png" style="height: 300px;">
+                <p><small>Copyright 2016, embarc</small></p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Redux-Grundidee #1: Fluss in eine Richtung</h3>
+            <div class="fragment">
+                <img src="embarc/Redux.png" style="height: 500px;">
+                <p><small>Copyright 2016, embarc</small></p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Redux-Grundidee #2: Zentraler Zustand</h3>
+            <div class="fragment">
+                <img src="embarc/Anwendung.png" style="height: 500px;">
+                <p><small>Copyright 2016, embarc</small></p>
+            </div>
+        </section>
+        <section>
+            <h2>Code</h2>
+        </section>
+
+        <section>
+            <h3>Aufruf</h3>
+<pre class="fragment"><code data-trim contenteditable class="javascript">
+import { Provider } from 'react-redux';
+import store from './store';
+
+import HelloMessage from './HelloMessage';
+
+const mountNode = document.getElementById('mount');
+ReactDOM.render(
+  &lt;Provider store={store}>
+    &lt;HelloMessage />
+  &lt;/Provider>,
+  mountNode
+);
+</code></pre>
+        </section>
+        <section>
+            <h3>Actions und Action-Creators</h3>
+<pre class="fragment"><code data-trim contenteditable class="javascript">
+// Action
+export const UPDATE_GREETING = 'UPDATE_GREETING';
+export const RESET_GREETING = 'RESET_GREETING';
+</code></pre>
+
+<pre class="fragment"><code data-trim contenteditable class="javascript">
+// Action creator
+export function updateGreeting(greeting) {
+  return {
+    type: UPDATE_GREETING,
+          greeting
+  };
+}
+
+export function resetGreeting() {
+  return {
+    type: RESET_GREETING
+  };
+}
+</code></pre>
+        </section>
+        <section>
+            <h3>State</h3>
+<pre class="fragment"><code data-trim contenteditable class="javascript">
+// store
+export default createStore(combineReducers({
+  greeting: greetingReducer
+}));
+</code></pre>
+
+<pre class="fragment"><code data-trim contenteditable class="javascript">
+// reducer
+import {UPDATE_GREETING, RESET_GREETING} from './actions';
+
+function greetingReducer(state = 'Hello', action) {
+  switch (action.type) {
+    case UPDATE_GREETING:
+      return action.greeting;
+    case  RESET_GREETING:
+      return '';
+    default:
+      return state;
+  }
+}
+</code></pre>
+        </section>
+
+        <section>
+            <h3>Zusammenfassung Flux/Redux</h3>
+            <ul class="fragment">
+                <li>Ein Architektur-Ansatz für UIs
+                <li>Löst Probleme des klassischen MVC mit Observer-Pattern
+                <li>Kontroll-/Datenfluss in eine Richtung
+                <li>Gesamter Zustand in einem zentralen Store
+            </ul>
+        </section>
+
+        <section>
+            <h2>Teil III</h2>
+            <h3>Universal Rendering</h3>
+        </section>
+
+        <section>
+            <h3>Probleme von Single-Page Applications</h3>
+            <ul class="fragment">
+                <li>SEO
+                <li>First-Page-Impressions
+                <li>Preview, z.B.
+                    <ul>
+                        <li>bei der Vorschau von Suchergebnissen
+                        <li> oder dem Teilen von Links durch Social Media
+                    </ul>
+
+                </li>
+                <li>Progressive Enhancement
+            </ul>
+        </section>
+
+        <section>
+            <h3>SPA: First-Page-Impression</h3>
+            <div>
+                <a href="examples/hello-world/public/index.html" target="_blank">
+                    <img src="spa-first-page-impression.png" style="height: 500px;">
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h3>Universal Rendering mit React und Redux</h3>
+            <ul class="fragment">
+                <li>First-Page-Impression wird auf dem Server gerendert
+                <li>Links werden als normale HTML-Links in die Seite gerendert
+                <li>Beliebig viele andere Seiten werden ebenfalls statisch gerendert
+                <li>Passt bestens zum React-Router (behandelt alle Anfragen zentral)
+                <li>Läuft dann (zumindest zum Teil) auch ohne JavaScript
+                <li>Links typischerweise über Router
+                <li>Code fast 100% geteilt zwischen Client und Server
+            </ul>
+        </section>
+
+        <section>
+            <h3>Universal Rendering</h3>
+            <div class="fragment">
+                <img src="universal.png" style="height: 500px;">
+                <p><small><a target="_blank" href="http://reactbuch.de/">Copyright 2016, D-Punkt, http://reactbuch.de/</a></small></p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Code Sharing</h3>
+            <div class="fragment">
+                <img src="universal-code-sharing.png" style="height: 500px;">
+                <!--<p><small>Copyright 2016, embarc</small></p>-->
+            </div>
+        </section>
+
+        <section>
+            <h3>Universal Rendering: First-Page-Impression</h3>
+            <div>
+                <a href="http://localhost:3000/" target="_blank">
+                    <img src="universal-first-page-impression.png" style="height: 500px;">
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h2>Alles total einfach, also???</h2>
+            <h3 class="fragment">Leider nicht ganz</h3>
+        </section>
+        <section>
+            <h3>JavaScript auf dem Server?</h3>
+            <a href="https://nodejs.org" target="_blank"><img class="fragment" src="node_black.png" height="200"></a>
+            <p class="fragment"><em>Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. <span class="fragment">Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient.</span></em></p>
+            <p class="fragment"><small><a href="https://nodejs.org" target="_blank">https://nodejs.org</a></small></p>
+        </section>
+
+        <section>
+            <h3>Serverseitige JavaScript Web-Frameworks?</h3>
+            <a href="http://hapijs.com/" target="_blank"><img class="fragment" src="hapi-white.png" height="200"></a>
+            <p class="fragment"><em>A rich framework for building applications and services</em></p>
+            <p class="fragment"><small><a href="http://hapijs.com/" target="_blank">http://hapijs.com/</a></small></p>
+        </section>
+        <section>
+            <h3>Hapi Code</h3>
+<pre class="fragment"><code data-trim contenteditable class="javascript">
+const server = new Hapi.Server();
+server.route({
+    method:  'GET',
+    path:    '/',
+    handler: renderRoute
+});
+</code></pre>
+            <!--<h4 class="fragment">Jede Seite wird über denselben Handler gerendert</h4>-->
+<pre class="fragment"><code data-trim contenteditable class="javascript">
+function renderRoute(request, reply) {
+  const html =
+    ReatDom.renderToString(
+        &lt;Provider store={store}>
+            &lt;HelloMessage />
+        &lt;/Provider>
+    );
+  // simplified, not quite complete
+  reply(html);
+};
+
+</code></pre>
+        </section>
+
+        <section>
+            <h3>Wie transferieren wir den Zustand vom Server zum Client?</h3>
+<pre class="fragment"><code data-trim contenteditable class="javascript">
+&lt!-- server -->
+function renderFullPage(html, initialData) {
+  return `
+&lt;html>
+  &lt;body>
+    &lt;div id="mount">${html}&lt;/div>
+    &lt;/body>
+
+  &lt;script>
+    window.__INITIAL_STATE__ = ${JSON.stringify(initialData)};
+  &lt;/script>
+&lt;/html>
+`;
+}</code></pre>
+<pre class="fragment"><code data-trim contenteditable class="javascript">
+// server: completed code from previous example
+const html = ...;
+// redux offers complete state from single store
+reply(renderFullPage(html, store.getState()));
+</code></pre>
+<pre class="fragment"><code data-trim contenteditable class="javascript">
+// client: init store from complete state
+const initialState = window.__INITIAL_STATE__;
+const store = createStore(..., initialState);
+</code></pre>
+        </section>
+        <section>
+            <h3>Wie unterdrücken wir ein Re-Rendering auf dem Client?</h3>
+            <div class="fragment">
+                <img src="universal-checksum.png">
+            </div>
+            <p class="fragment">Wenn Checksummen auf Server- und Client-Seite übereinstimmen wird nicht neu gerendert</p>
+        </section>
+
+        <section>
+            <h3>Weitere Herausforderungen</h3>
+            <ul>
+                <li class="fragment">Aller Zustand muss beim serverseitigen Rendering komplett vorliegen
+                <li class="fragment">Integration mit Router
+                <li class="fragment">Unterschiedliche Locales auf Server und Client
+                <li class="fragment">Zeitliche veränderliche Daten (Timestamp, Börsenkurs)
+            </ul>
+        </section>
+
+        <section>
+            <h2>Zusammenfassung</h2>
+            <ul>
+                <li class="fragment">Single-Page Applications erlauben bestes UX
+                <li class="fragment">Klassische Web-Apps erlauben serverseitiges Rendering
+                <li class="fragment">Universal Web Apps verbinden die Fähigkeiten der beiden
+                <li class="fragment">React mit Redux sind ideal für Universal Rendering
+                <li class="fragment">React-Komponeten können auf dem Client und dem Server gerendert werden
+                <li class="fragment">Checksummen erlauben ideal Weiterverarbeitung von Vorgerendertem
+                <li class="fragment">Redux hält zentralen Zustand der leicht tranferiert werden kann
+            </ul>
+        </section>
+
+        <section>
+            <h2>Vielen Dank!</h2>
+
+            <h3>Fragen / Diskussion</h3>
+
+            <p>
+                <small><a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+                </small>
+            </p>
+            <a href="http://www.embarc.de/"><img src="intro/embarc13.png"
+                                                 height="150"></a>
+            <br>
+        </section>
+    </div>
+
+</div>
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
+
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'reveal.js/plugin/zoom-js/zoom.js', async: true},
+            {src: 'reveal.js/plugin/notes/notes.js', async: true}
+        ]
+    });
+
+</script>
+
+</body>
+</html>
