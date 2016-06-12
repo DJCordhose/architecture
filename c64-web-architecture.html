@@ -173,6 +173,148 @@
         </section>
 
         <section>
+            <h2 class="todo">Aus Jan's talk: Motivation für Redux einbauen</h2>
+
+            <!--<section>	-->
+				<!--<h2>Flux/Redux<br />Architecture</h2>-->
+			<!--</section>-->
+
+			<!--<section>-->
+				<!--<ul class="ul1">-->
+					<!--<li class="fragment">Key problem #1: <b>complexity</b><br >The bigger a JS application grows, the harder it becomes to manage it's <b>state</b>-->
+						<!--<ul class="ul2">-->
+							<!--<li class="fragment">-->
+								<!--user interaction, event listeners, which elements are shown, how they are shown, ...-->
+							<!--</li>-->
+							<!--<li class="fragment">-->
+								<!--AJAX response handling, callbacks, timeouts/intervals, form data, non-persistent data, (session|local) storage, ...-->
+							<!--</li>-->
+						<!--</ul>-->
+					<!--</li>-->
+					<!--<li class="fragment">-->
+						<!--<cite style="font-style: italic;">-->
+							<!--If a model can update another model, then a view can update a model,-->
+							<!--which updates another model, and this, in turn, might cause another-->
+							<!--view to update...-->
+						<!--</cite>-->
+					<!--</li>-->
+				<!--</ul>-->
+				<!--<aside class="notes" data-markdown>-->
+					<!--<div style="font-size:13px;">-->
+						<!--<ul>-->
+							<!--<li>The bigger an applications grows the more complex it'll get...</li>-->
+							<!--<li>...the likelier it may become messed up...</li>-->
+							<!--<li>...if there's no real structure and data flow behind it.</li>-->
+						<!--</ul>-->
+					<!--</div>-->
+				<!--</aside>-->
+			<!--</section>-->
+
+			<!--<section>-->
+				<!--<li class="fragment">At some point you're likely to lose control of when, why and how something happened</li>-->
+				<!--<ul class="ul2 fragment">-->
+					<!--<li>app becomes opaque and "non-deterministic"</li>-->
+					<!--<li>it’s hard to reproduce bugs, do debugging or add new features without introducing new bugs</li>-->
+				<!--</ul>-->
+				<!--<li class="fragment">Root cause: mutations <u style="text-decoration: underline;">and</u> asynchronicity</li>-->
+				<!--<aside class="notes" data-markdown>-->
+					<!--<div style="font-size:13px;">-->
+						<!--<ul>-->
+							<!--<li>no consecutive flow</li>-->
+							<!--<li>very hard for humans to reason about</li>-->
+							<!--<li>JS mostly is asynchronous (callbacks)-->
+								<!--<ul>-->
+									<!--<li>event handlers, Ajax</li>-->
+									<!--<li>nested callbacks, ...</li>-->
+								<!--</ul>-->
+							<!--</li>-->
+						<!--</ul>-->
+					<!--</div>-->
+				<!--</aside>-->
+			<!--</section>-->
+
+			<!--<section>-->
+				<!--<li>Key problem #2: <b>local component states</b></li>-->
+				<!--<ul class="ul2">-->
+					<!--<li class="fragment">data stored locally inside a component-->
+					<!--<ul class="ul2">-->
+						<!--<li class="fragment">ok if data is only used for that component</li>-->
+						<!--<li class="fragment">BUT: it's often the case that data needs to be shared with other components</li>-->
+					<!--</ul>-->
+					<!--<li class="fragment">Each component owns a piece of global application state</li>-->
+					<!--<li class="fragment">Result: the global state is scattered all over the place</li>-->
+				<!--</ul>-->
+				<!--<aside class="notes" data-markdown>-->
+					<!--<div style="font-size:13px;">-->
+						<!--<ul>-->
+							<!--<li>Example: Product-&gt;isSelected-->
+								<!--<ul>-->
+									<!--<li>other products</li>-->
+									<!--<li>waiting screen</li>-->
+									<!--<li>payment forms</li>-->
+									<!--<li>provider select</li>-->
+								<!--</ul>-->
+							<!--</li>-->
+							<!--<li>Bad patterns: trying to keep data in sync manually</li>-->
+							<!--<li>Broadcasting:-->
+								<!--<ul>-->
+									<!--<li>expensive if tree is big</li>-->
+									<!--<li>hard to understand where events come from</li>-->
+									<!--<li>events may dispatch other events or intercept them</li>-->
+									<!--<li>subtree issue</li>-->
+								<!--</ul>-->
+							<!--</li>-->
+							<!--<li>Shared state:-->
+								<!--<ul>-->
+									<!--<li>business logic spread in each component</li>-->
+									<!--<li>writes cannot be restricted</li>-->
+								<!--</ul>-->
+							<!--</li>-->
+						<!--</ul>-->
+					<!--</div>-->
+				<!--</aside>-->
+			<!--</section>-->
+
+			<!--<section>-->
+				<!--<h2>Flux/Redux</h2>-->
+				<!--<li class="fragment">-->
+					<!--Predictable state container for JavaScript apps-->
+					<!--<ul class="ul2 fragment">-->
+						<!--<li>Application wide state in one centralized, global structure</li>-->
+					<!--</ul>-->
+				<!--</li>-->
+				<!--<li class="fragment">-->
+					<!--Unidirectional data flow-->
+					<!--&lt;!&ndash;-->
+						<!--TODO: -->
+							<!-- - "clear" geordneter Data Flow-->
+							<!-- - wirklich linear?-->
+							<!-- - besser beschreiben-->
+					<!--&ndash;&gt;-->
+					<!--<ul class="ul2 fragment">-->
+						<!--<li>state mutations become transparent and trackable</li>-->
+					<!--</ul>-->
+				<!--</li>-->
+				<!--<li class="fragment">Vuex as adaption for Vue.js</li>-->
+				<!--<aside class="notes" data-markdown>-->
+					<!--<div style="font-size:13px;">-->
+						<!--<ul>-->
+							<!--<li>Flux is the architecture idea</li>-->
+							<!--<li>Redux is a popular implementation (Facebook)-->
+								<!--<ul>-->
+									<!--<li>less complex</li>-->
+									<!--<li>mostly used with ReactJs, can be used with any other framework.</li>-->
+								<!--</ul>-->
+							<!--</li>-->
+							<!--<li>Has become one of the most important architectures for mid or big scale frontend applications</li>-->
+						<!--</ul>-->
+					<!--</div>-->
+				<!--</aside>-->
+			<!--</section>-->
+
+        </section>
+
+        <section>
             <h2>Teil II</h2>
             <h3>SPAs mit React und Redux</h3>
         </section>
@@ -560,6 +702,61 @@ const store = createStore(..., initialState);
                 <li class="fragment">Redux hält zentralen Zustand der leicht tranferiert werden kann
             </ul>
         </section>
+
+        <section>
+            <small><p class="todo">An den Talk anpassen</p></small>
+            <h3>The Doctor is In</h3>
+            <small>
+            <table>
+                <tr>
+                    <th></th><th>Daten</th><th>Anforderungen</th><th>Funktionale Programmierung
+                </th><th>A-Z
+                </th>
+                </tr>
+                <tr>
+                    <th>40</th>
+                    <td>Kann ich Daten im Browser bei Absturz retten?</td>
+                    <td>Kann ich Flux in meiner Java-Desktop-Anwendung nutzen?
+                    </td>
+                    <td>Muss man mit Performance-Einbußen rechnen?
+                    </td>
+                    <td>Sind die Ideen von Flux brandneu oder geklaut?
+                    </td>
+                </tr>
+                <tr>
+                    <th>60</th>
+
+                    <td>Was verliere ich durch den Einsatz von Relay/Falcor?
+                    </td>
+                    <td>Wie migriere ich meine MVC/MVP-Anwendung?
+                    </td>
+                    <td>Sind Stores nicht MVC Models?
+                    </td>
+                    <td>Welche Anzeige-frameworks passen am Besten zu Flux?
+                    </td>
+                </tr>
+                <tr>
+                    <th>80</th>
+                    <td>Was ist besser? Falcor oder Relay?
+                    </td>
+                    <td>Ist eine UI-Ablösung durch Flux einfacher oder billiger?
+                    </td>
+                    <td>Zentraler Zustand? Ist das noch OO?
+                    </td>
+                    <td>Gibt es Alternativen zu JavaScript?</td>
+                </tr>
+                <tr>
+                    <th>100</th>
+                    <td>Wie kann man trotz Asynchronität Konsistenz garantieren?</td>
+                    <td>Wann passt eine klassische WebApp besser als Flux?</td>
+                    <td>Was ist fix, was ist eine Design-Entscheidung in Flux?</td>
+                    <td>Gibt es DAS Flux? Wieso so viele Implementierungen?
+                    </td>
+                </tr>
+            </table></small>
+        </section>
+
+
 
         <section>
             <h2>Vielen Dank!</h2>
