@@ -85,6 +85,20 @@
         </section>
 
         <section>
+            <h4>Beispiel: Was kann eine Architektur-Entscheidung sein?</h4>
+            <div><small>
+            <p class="fragment">Aufgabe: Nummeriere die Zeilen eines Listings mit Zeilennummern im Browser</p>
+            <p class="fragment">Entscheidung: CSS-Counter können das (https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Using_CSS_counters), also wird das mit CSS gemacht</p>
+            <p class="fragment">DAS ist Architektur?</p>
+            <p class="fragment">Neue Anforderung: Man soll am code-Element angeben können, mit welcher Zeilennummer die Nummerierung beginnt (für Fortsetzungen)</p>
+            <p class="fragment">CSS kann so etwas aus einem Daten-Attribut holen: https://developer.mozilla.org/de/docs/Web/Guide/HTML/Using_data_attributes</p>
+            <p class="fragment">Leider kann man das nicht für Counter nehmen, weil die Numbers brauchen, die Konvertierung von String-Attribut mach Number ist zwar spezifiziert, aber wird von keinem Browser unterstützt: https://developer.mozilla.org/en/docs/Web/CSS/attr</p>
+            <p class="fragment">Hier geht es also nicht weiter, das war also eine wichtige Entscheidung ()</p>
+            </small></div>
+        </section>
+
+
+        <section>
             <h2>Nach Prinzip entscheiden</h2>
             <p>Nicht alle Fragen immer wieder neu klären</p>
             <p>Einheitliche Entscheidungen fördern</p>
@@ -116,6 +130,16 @@
             <p class="fragment">Koherenz ist gewünscht</p>
             <p class="fragment">Enge Kopplung der Systeme ist nicht gewünscht</p>
         </section>
+
+        <section>
+            <div class="todo">
+                <p>https://en.wikiquote.org/wiki/Alan_Kay</p>
+                <p>Simple things should be simple, complex things should be possible. (Alan Kay)</p>
+                <p>Beispiel Code line numbers mit attributen (von oben), welche API ist gut?</p>
+                <p>Dabei meine API angucken, die in im ruhr.js Machine-Learning-Talk ist</p>
+            </div>
+        </section>
+
 
     </div>
 
