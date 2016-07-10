@@ -70,6 +70,11 @@
             </p>
         </section>
 
+<!--
+       60 Minuten
+       45 Minuten Vortrag, 15 Minuten Fragen
+-->
+
 <!--Die Programmierung des C64, des bekanntesten Heimcomputers der 80er Jahre, mit seinem eingebauten Basic war vor allem eins: -->
 <!--leicht zu erlernen, aber wenig mächtig. Einfache Dinge konnte man innerhalb weniger Minuten lösen, -->
 <!--aber bei wirklichen Aufgaben musste man auf andere Ansätze wechseln.-->
@@ -115,11 +120,57 @@
         </section>
 
         <section>
-            <h2 class="todo">C64-Screenshot zeigen und etwas programmieren im Emulator</h2>
+            <h2>Worum geht es hier?</h2>
+            <p class="fragment">Bei der (Web-)Entwicklung kommt es darauf an, einen Architektur-Ansatz zu finden,
+                der dem Problem gerecht wird.
+            </p>
+            <p class="fragment">Nicht zu einfach, aber auch nicht zu komplex.
+            </p>
+            <p class="fragment">Problem: Manche naheliegende Ansätze tragen ein Stück weit und lassen uns dann an harte Grenzen stoßen.</p>
         </section>
 
         <section>
-            <h1>C64-Trivia</h1>
+            <h2>Meine erste harte Grenze (#0): C64-Programmierung</h2>
+        </section>
+
+        <section>
+            <h3>Hello, World</h3>
+            <p>Naheliegender Ansatz, schneller Erfolg: Konnte ich noch in der Computerabteilung meines Kaufhauses tippen (1983)</p>
+            <div class="fragment" style="height: 400px">
+                <img src="c64-hello-world.png">
+                <br><small><a target="_blank" href="https://www.kingsquare.nl/jsc64">
+                    https://www.kingsquare.nl/jsc64
+                </a></small>
+            </div>
+        </section>
+
+        <section>
+            <h3>Was ist eine Computerabteilung?</h3>
+            <div class="fragment" style="float: right; width: 450px">
+                <img src="computer-abteilung2.jpg">
+            </div>
+            <div class="fragment" style="float: left; width: 450px">
+                <img src="computer-abteilung1.jpg">
+            </div>
+                <p style="clear: both"><small><a target="_blank" href="http://zockworkorange.com/kaufhauscomputertage/">
+                http://zockworkorange.com/kaufhauscomputertage/
+            </a></small></p>
+        </section>
+
+        <section>
+            <h3>Aber wie soll ich das mit C64-Basic machen?</h3>
+            <div class="fragment" style="float: left; width: 450px">
+                <img src="c64-hellgate.png">
+            </div>
+            <div class="fragment" style="float: right; width: 450px">
+                <img src="c64-rallyspeedway2.png">
+            </div>
+            <p style="clear: both" class="fragment">
+                Man kommt ein Stück weit mit C64 Basic, aber danach muss man alles noch einmal mit Assembler bauen</p>
+        </section>
+
+        <section>
+            <h2>C64-Trivia</h2>
             <div class="fragment">
                 <p>Auch Philipp Rösler hätte gern einen C64 gehabt</p>
                 <p>(hatte aber nur einen VC-20)</p>
@@ -127,67 +178,53 @@
             </div>
         </section>
 
-        <section class="todo">
-            <pre>
-- den ganzen nachfolgenden Kram überarbeiten und Code entfernen, mehr auf Schwafel-Niveau
-- Beautiful constraints (less can be more - for react.js): https://twitter.com/RuhrJS/status/749535474843283457?s=03
-- Container vs Component
-  - Container Connected to State
-  - Only thing that is not Architecture agnostic
-  - Component: how things look, views
-  - Container: how things work, Controller
-- Design: Group by Feature, not by technical function
-- Wasserkasten-Bild einbauen
-            </pre>
-
+        <section>
+            <h2>Was hat das denn nun mit Web-Architektur zu tun?</h2>
         </section>
 
         <section>
-            <h2>Was ich euch zeigen möchte</h2>
-            <ul>
-                <li class="fragment">Warum sind klassische Web-Anwendungen gut?
-                <li class="fragment">Was sind Single-Page Anwendungen (SPAs) und warum sind die gut?
-                <li class="fragment">Wie setzt ihr SPAs mit React und Redux um?
-                <li class="fragment">Was sind Universal Web Apps und warum sind die noch besser?
-                <li class="fragment">Wie kann man Universal Web Apps mit React und Redux umsetzen?
-                <li class="fragment">Was sind die Herausforderungen?
-            </ul>
-        </section>
-
-        <section>
-            <div class="todo">
-                <p>https://en.wikiquote.org/wiki/Alan_Kay</p>
-                <p>Simple things should be simple, complex things should be possible. (Alan Kay)</p>
-
-            </div>
-        </section>
-
-        <section>
-            <h2>Teil I</h2>
-            <h3>Was ist eine Single-Page-Applikation?</h3>
-            <h4 class="fragment">... und warum möchte ich eine haben</h4>
+            <h2>Harte Grenze #1: Klassische Webanwendung</h2>
         </section>
 
         <section>
             <h3>Klassiche Webanwendung</h3>
-            <!--<p><small>jeder Boot tut gut, jeder Roundtrip setzt Zustand zurück</small></p>-->
+            <p><small>jeder Boot tut gut, jeder Roundtrip setzt Zustand zurück</small></p>
 
-            <img src="embarc/KlassischeWebAnwendung.png" style="height: 500px;">
+            <img src="embarc/KlassischeWebAnwendung.png" style="height: 450px;">
             <p><small>Copyright 2016, embarc</small></p>
         </section>
+
         <section>
-            <h3>Problem mit klassichen Webanwendungen</h3>
+            <h2>Klassichen Webanwendungen</h2>
+            <ul class="fragment">
+                <li>Browser sendet HTTP-Request und empfängt HTML
+                <li>Content wird auf der Server-Seite gerendert
+                <li>Jede Interaktion wiederholt diesen Zyklus
+            </ul>
+        </section>
+
+        <section>
+            <h2>Klassische Webanwendung: Oft ein nahe liegender Ansatz</h2>
+            <ul class="fragment">
+                <li>Klassische Webanwendung sind für viele Enterprise-Entwicklungen der natürliche Ausgangspunkt
+                <li>Server-Seitige Entwicklung mit Java/C# und HTTP und HTML sind gut verstanden
+                <li>kleinere UI-Änderungen können auf Client-Seite mit JavaScript-Schnippseln (jQuery) realisiert werden
+                <li>häufig ist dies völlig ausreichend
+            </ul>
+        </section>
+
+        <section>
+            <h2>Harte Grenze</h2>
             <ul class="fragment">
                 <li>UI/UX ist grunsätzlich eingeschränkt
-                <li>Request-/Response-Zyklus limitiert die Anwendung
-                <li>Nutzer erwartet Bedienbarkeit wie im Desktop
-                <li>klassische Webanwendung in seiner Reinform längst so gut wie ausgestorben
                 <li>selbst in vermeintlich klassischen Anwendungen verstecken sich SPAs oft als Teile
                 <li>z.B. JSF Komponenten mit einem komplexen UI
             </ul>
+            <p class="fragment"><em>Perfide, da zuerst die Aufwände zur Umsetzung ansteigen und der Code immer unübersichtlicher wird.</em></p>
         </section>
+
         <section>
-            <h3>Single-Page Application</h3>
+            <h3>Nächster Schritt: Single-Page Application</h3>
             <img src="embarc/SP-Anwendung.png" style="height: 500px;">
             <p><small>Copyright 2016, embarc</small></p>
         </section>
@@ -201,6 +238,226 @@
                 <li>Bedienbarkeit wie Desktop
                 <li>Browser bietet mächtige Speicherungsmöglichkeiten
             </ul>
+        </section>
+
+        <section>
+            <h2>Harte Grenze #2: jQuery</h2>
+        </section>
+
+
+        <section>
+            <h3>jQuery: Eine Technik mit Tradition</h3>
+            <p class="fragment">jQuery ist super, um <em>punktuell</em> mit <em>JavaScript-Schnippseln</em>,
+                eine Menge von <em>bestehenden</em> Elementen zu ändern</p>
+            <ul class="fragment">
+                <li>nicht so gut, wenn es keine <em>bestehenden</em> Elemente gibt: SPA rendert komplett auf Client-Seite
+                <li>nicht so gut, wenn die Änderungen nicht <em>punktuell</em> sind: Seiten-Wechesel?
+                <li>nicht so gut, wenn <em>JavaScript-Schnippsel</em> nicht reichen: Wer will schon eine echte Anwendung aus Schnippseln zusammen bauen?
+            </ul>
+            <p class="fragment">Perfide, da für viele Entwickler jQuery das bessere JavaScript ist.</p>
+            <p class="fragment">Soll man etwa wieder pures JavaScript machen???</p>
+
+        </section>
+
+        <section>
+            <h3>Nächster Schritt: Komponenten basierte Ansätze mit Templates</h3>
+            <ul class="fragment">
+                <li>nicht so gut, wenn es keine <em>bestehenden</em> Elemente gibt: SPA rendert komplett auf Client-Seite
+                <li>nicht so gut, wenn die Änderungen nicht <em>punktuell</em> sind: Seiten-Wechesel?
+                <li>nicht so gut, wenn <em>JavaScript-Schnippsel</em> nicht reichen: Wer will schon eine echte Anwendung aus Schnippseln zusammen bauen?
+            </ul>
+            <p>Erste Vertreter waren Backbone, Angular 1, und Ember.js</p>
+        </section>
+
+        <section>
+            <h2>Schleichende Grenze Nummer 3: 2-Wege-Data-Binding und Observer-Pattern (Angular 1)</h2>
+        </section>
+
+        <section>
+            <h2>Nächster Schritt: 1-Wege-Data-Binding und klare Anwendungsstrukturen</h2>
+            <p>React und Angular 2</p>
+        </section>
+
+        <section>
+            <h2>Schleichende Grenze Nummer 4: Verteilter Zustand</h2>
+        </section>
+
+        <section>
+            <h2>Nächster Schritt: Zustand wird zentral gehalten</h2>
+            <p>Flux, Redux, https://github.com/ngrx/store</p>
+        </section>
+
+        <section>
+            <h2>Schleichende Grenze Nummer 5: SPA selbst</h2>
+            <!--Richtung universal-->
+        </section>
+
+        <section>
+            <h2>Nächster Schritt: Universal Web Apps</h2>
+        </section>
+
+        <section>
+            <h2>Zusammenfassung</h2>
+            <ul>
+                <li class="fragment">Man trifft mit vielen Techniken auf harte Grenzen
+                <li class="fragment">Es ist wichtig, diese Grenzen zu kennen
+                <li class="fragment">Klassische Web-Apps erlauben serverseitiges Rendering
+                <li class="fragment">Single-Page Applications erlauben bestes UX
+                <li class="fragment">Universal Web Apps verbinden die Fähigkeiten der beiden
+            </ul>
+        </section>
+
+        <section>
+            <small><p class="todo">An den Talk anpassen</p></small>
+            <h3>The Doctor is In</h3>
+            <small>
+            <table>
+                <tr>
+                    <th></th><th>Daten</th><th>Anforderungen</th><th>Funktionale Programmierung
+                </th><th>A-Z
+                </th>
+                </tr>
+                <tr>
+                    <th>40</th>
+                    <td>Kann ich Daten im Browser bei Absturz retten?</td>
+                    <td>Kann ich Flux in meiner Java-Desktop-Anwendung nutzen?
+                    </td>
+                    <td>Muss man mit Performance-Einbußen rechnen?
+                    </td>
+                    <td>Sind die Ideen von Flux brandneu oder geklaut?
+                    </td>
+                </tr>
+                <tr>
+                    <th>60</th>
+
+                    <td>Was verliere ich durch den Einsatz von Relay/Falcor?
+                    </td>
+                    <td>Wie migriere ich meine MVC/MVP-Anwendung?
+                    </td>
+                    <td>Sind Stores nicht MVC Models?
+                    </td>
+                    <td>Welche Anzeige-frameworks passen am Besten zu Flux?
+                    </td>
+                </tr>
+                <tr>
+                    <th>80</th>
+                    <td>Was ist besser? Falcor oder Relay?
+                    </td>
+                    <td>Ist eine UI-Ablösung durch Flux einfacher oder billiger?
+                    </td>
+                    <td>Zentraler Zustand? Ist das noch OO?
+                    </td>
+                    <td>Gibt es Alternativen zu JavaScript?</td>
+                </tr>
+                <tr>
+                    <th>100</th>
+                    <td>Wie kann man trotz Asynchronität Konsistenz garantieren?</td>
+                    <td>Wann passt eine klassische WebApp besser als Flux?</td>
+                    <td>Was ist fix, was ist eine Design-Entscheidung in Flux?</td>
+                    <td>Gibt es DAS Flux? Wieso so viele Implementierungen?
+                    </td>
+                </tr>
+            </table></small>
+        </section>
+
+
+
+        <section>
+            <h2>Vielen Dank!</h2>
+
+            <!--<h3>Fragen / Diskussion</h3>-->
+
+            <p>
+                <small><a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+                </small>
+            </p>
+            <a href="http://www.embarc.de/"><img src="intro/embarc13.png"
+                                                 height="150"></a>
+            <br>
+        </section>
+
+
+        <section class="todo">
+            <h1>Ab hier nur noch Material</h1>
+        </section>
+
+
+        <section class="todo">
+            <pre>
+- den ganzen nachfolgenden Kram überarbeiten und Code entfernen, mehr auf Schwafel-Niveau
+- Beautiful constraints (less can be more - for react.js): https://twitter.com/RuhrJS/status/749535474843283457?s=03
+- Container vs Component
+  - Container Connected to State
+  - Only thing that is not Architecture agnostic
+  - Component: how things look, views
+  - Container: how things work, Controller
+  - übernhemen aus: https://speakerdeck.com/mxstbr/scaling-react-dot-js-applications / https://vimeo.com/168648012
+- Design: Group by Feature, not by technical function
+- Wasserkasten-Bild einbauen
+            </pre>
+
+        </section>
+
+
+        <section>
+            <div class="todo">
+                <p>https://en.wikiquote.org/wiki/Alan_Kay</p>
+                <p>Simple things should be simple, complex things should be possible. (Alan Kay)</p>
+
+            </div>
+        </section>
+
+
+        <section class="todo">
+                    <h3>Why not just jQuery?</h3>
+                    <ul>
+                        <li>jQuery is very good at changing sets of existing elements
+                        <li>good if there already are existing elements
+                        <li>unobtrusive
+                        <li>not so good, if there is nothing to begin with
+                        <li>not so good for controlling page flow
+                    </ul>
+                </section>
+
+                <section class="todo">
+                    <h3>Why use a standard Framework?</h3>
+                    <ul>
+                        <li>avoid the risk of accidentally creating your own
+                        <li>use something proven and tested
+                        <li>community, documentation
+                        <li>easily find skill and talent
+                    </ul>
+                </section>
+
+                <section class="todo">
+                    <h2>Your Options</h2>
+                    <ol>
+                        <li class="fragment grow">The Classic: Angular 1.x
+                        <li class="fragment grow">From Anti-Patterns to Best-Practices: React
+                        <li class="fragment grow">One for all: Angular 2
+                        <li class="fragment grow">The Standard: Web Components
+                        <li class="fragment grow">(I know there is more)
+                    </ol>
+                </section>
+
+
+
+        <section>
+            <h3>Container und View-Komponenten</h3>
+            <ul class="fragment">
+                <li>moderne SPA-Frameworks
+                <li>läuft ohne signifikanten Server-Anteil
+                <li>kann auch als statische Web-Seite laufen
+                <li>ermöglicht Offline-Betrieb
+                <li>Bedienbarkeit wie Desktop
+                <li>Browser bietet mächtige Speicherungsmöglichkeiten
+            </ul>
+            <div>
+                <img src="component-hierarchy.png">
+                <p><small><a href="https://speakerdeck.com/mxstbr/scaling-react-dot-js-applications">
+                    Copyright 2016, @mxstbr
+                </a></small></p>
+            </div>
         </section>
 
         <section>
@@ -721,87 +978,6 @@ const store = createStore(..., initialState);
             </ul>
         </section>
 
-        <section>
-            <h2>Zusammenfassung</h2>
-            <ul>
-                <li class="fragment">Single-Page Applications erlauben bestes UX
-                <li class="fragment">Klassische Web-Apps erlauben serverseitiges Rendering
-                <li class="fragment">Universal Web Apps verbinden die Fähigkeiten der beiden
-                <li class="fragment">React mit Redux sind ideal für Universal Rendering
-                <li class="fragment">React-Komponeten können auf dem Client und dem Server gerendert werden
-                <li class="fragment">Checksummen erlauben ideal Weiterverarbeitung von Vorgerendertem
-                <li class="fragment">Redux hält zentralen Zustand der leicht tranferiert werden kann
-            </ul>
-        </section>
-
-        <section>
-            <small><p class="todo">An den Talk anpassen</p></small>
-            <h3>The Doctor is In</h3>
-            <small>
-            <table>
-                <tr>
-                    <th></th><th>Daten</th><th>Anforderungen</th><th>Funktionale Programmierung
-                </th><th>A-Z
-                </th>
-                </tr>
-                <tr>
-                    <th>40</th>
-                    <td>Kann ich Daten im Browser bei Absturz retten?</td>
-                    <td>Kann ich Flux in meiner Java-Desktop-Anwendung nutzen?
-                    </td>
-                    <td>Muss man mit Performance-Einbußen rechnen?
-                    </td>
-                    <td>Sind die Ideen von Flux brandneu oder geklaut?
-                    </td>
-                </tr>
-                <tr>
-                    <th>60</th>
-
-                    <td>Was verliere ich durch den Einsatz von Relay/Falcor?
-                    </td>
-                    <td>Wie migriere ich meine MVC/MVP-Anwendung?
-                    </td>
-                    <td>Sind Stores nicht MVC Models?
-                    </td>
-                    <td>Welche Anzeige-frameworks passen am Besten zu Flux?
-                    </td>
-                </tr>
-                <tr>
-                    <th>80</th>
-                    <td>Was ist besser? Falcor oder Relay?
-                    </td>
-                    <td>Ist eine UI-Ablösung durch Flux einfacher oder billiger?
-                    </td>
-                    <td>Zentraler Zustand? Ist das noch OO?
-                    </td>
-                    <td>Gibt es Alternativen zu JavaScript?</td>
-                </tr>
-                <tr>
-                    <th>100</th>
-                    <td>Wie kann man trotz Asynchronität Konsistenz garantieren?</td>
-                    <td>Wann passt eine klassische WebApp besser als Flux?</td>
-                    <td>Was ist fix, was ist eine Design-Entscheidung in Flux?</td>
-                    <td>Gibt es DAS Flux? Wieso so viele Implementierungen?
-                    </td>
-                </tr>
-            </table></small>
-        </section>
-
-
-
-        <section>
-            <h2>Vielen Dank!</h2>
-
-            <h3>Fragen / Diskussion</h3>
-
-            <p>
-                <small><a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
-                </small>
-            </p>
-            <a href="http://www.embarc.de/"><img src="intro/embarc13.png"
-                                                 height="150"></a>
-            <br>
-        </section>
     </div>
 
 </div>
