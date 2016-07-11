@@ -128,6 +128,14 @@
 
         </section>
 
+        <section class="todo">
+            <pre>
+- Proben
+- Auf 45 Minuten kürzen
+            </pre>
+
+        </section>
+
         <section>
             <h2>Worum geht es hier?</h2>
             <p class="fragment">Bei der (Web-)Entwicklung kommt es darauf an, einen Architektur-Ansatz zu finden,
@@ -136,6 +144,39 @@
             <p class="fragment">Nicht zu einfach, aber auch nicht zu komplex.
             </p>
             <p class="fragment">Problem: Manche naheliegende Ansätze tragen ein Stück weit und lassen uns dann an harte Grenzen stoßen.</p>
+        </section>
+
+        <section>
+            <h2>Konsequezen</h2>
+            <p>Im besten Fall so:</p>
+            <div style="height: 400px">
+                <img src="cost-of-change.jpg">
+                <p><small><a target="_blank" href="https://aim42.github.io/#_why_does_software_need_improvement">
+                    https://aim42.github.io/#_why_does_software_need_improvement</a></small></p>
+            </div>
+            <p>Im schlechtesten Fall: Manche Features sind gar nicht umzusetzen</p>
+        </section>
+
+        <section>
+            <h2>Im schlechtesten Fall</h2>
+            <p class="fragment">Manche Features sind gar nicht umzusetzen</p>
+            <p class="fragment">Also: Feature nicht umsetzen oder</p>
+            <p class="fragment">Neuimplementierung mit anderer Architektur</p>
+            <p class="fragment">Beides nicht so toll</p>
+        </section>
+
+
+        <section>
+            <h2>Sunk Cost Fallacy</h2>
+            <p class="fragment">Begriff aus der Verhaltensökonomie</p>
+            <p class="fragment">"Dem schlechten Geld gutes Geld hinterher schmeißen"</p>
+            <p class="fragment">"man muss das doch irgendwie hinkriegen"</p>
+            <p class="fragment">"das hat doch bisher alles so gut hingehauen"</p>
+            <p><small>
+                <a href="https://en.wikipedia.org/wiki/Sunk_costs#Loss_aversion_and_the_sunk_cost_fallacy" target="_blank">
+                    https://en.wikipedia.org/wiki/Sunk_costs#Loss_aversion_and_the_sunk_cost_fallacy
+                </a>
+            </small></p>
         </section>
 
         <section>
@@ -262,7 +303,6 @@
             <h2>Harte Grenze #2: jQuery</h2>
         </section>
 
-
         <section>
             <h3>jQuery: Eine Technik mit Tradition</h3>
             <p class="fragment">jQuery ist super, um <em>punktuell</em> mit <em>JavaScript-Schnippseln</em>,
@@ -278,17 +318,60 @@
         </section>
 
         <section>
-            <h3>Nächster Schritt: Komponenten basierte Ansätze mit Templates</h3>
+            <h3>Bonus-Gefahr</h3>
+            <p class="fragment">jQuery taug nicht</p>
+            <p class="fragment">Daher baut man sich - oft ohne es zu merken - ein eigenes Framework</p>
+            <p class="fragment">Nicht so gut:</p>
             <ul class="fragment">
-                <li>nicht so gut, wenn es keine <em>bestehenden</em> Elemente gibt: SPA rendert komplett auf Client-Seite
-                <li>nicht so gut, wenn die Änderungen nicht <em>punktuell</em> sind: Seiten-Wechesel?
-                <li>nicht so gut, wenn <em>JavaScript-Schnippsel</em> nicht reichen: Wer will schon eine echte Anwendung aus Schnippseln zusammen bauen?
+                <li>Kriegt man das wirklich so gut hin wie Google/Facebook mit einem großen Team und Jahren an Entwicklungsaufwand und Erfahrung
+                <li>Besser etwas bestehendes nutzen
+                <li>Es gibt bereits eine Kommunity und Dokumentation
+                <li>Man bekommt leichter Leute mit der passenden Erfahrung
             </ul>
-            <p>Erste Vertreter waren Backbone, Angular 1, und Ember.js</p>
+            <p class="fragment">Es gibt nichts passendes? WIRLICH NICHT?</p>
         </section>
 
         <section>
-            <h2>Harte Grenze #3: 2-Wege-Data-Binding und Observer-Pattern (Angular 1)</h2>
+            <h3>Nächster Schritt: Komponenten basierte Ansätze mit Templates</h3>
+            <ul class="fragment">
+                <li>Templates nun auf der Clientseite
+                <li>Anwendung bekommt Struktur
+                <li>Logik ist keine lose Schnippsel-Sammlung mehr
+            </ul>
+            <div style="height: 300px">
+                <img src="component-hierarchy.png">
+                <p><small><a href="https://speakerdeck.com/mxstbr/scaling-react-dot-js-applications">
+                    Copyright 2016, @mxstbr
+                </a></small></p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Prominente Vertreter</h3>
+            <ul class="fragment">
+                <li>Backbone
+                <li>Angular 1
+                <li>Ember.js
+            </ul>
+        </section>
+
+        <section>
+            <h2>Harte Grenze #3: 2-Wege-Data-Binding und Observer-Pattern</h2>
+        </section>
+
+        <section>
+            <h3>Problem von MVC mit Observer-Pattern</h3>
+            <div style="height: 400px">
+                <img src="observer-problem.png">
+                <p><small><a href="https://speakerdeck.com/mxstbr/scaling-react-dot-js-applications">
+                    Copyright 2016, @mxstbr
+                </a></small></p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Verteilter, veränderlicher Zustand mit Listenern (Observer)</h3>
+            <img class="fragment" src="2-way-data-binding.gif">
         </section>
 
         <section>
@@ -297,12 +380,69 @@
         </section>
 
         <section>
-            <h2>Harte Grenze #4: Verteilter Zustand</h2>
+            <h3>Container und View-Komponenten</h3>
+            <ul class="fragment">
+                <li>Top-Level-Komponenten sind Container
+                <li>halten und/oder managen Zustand
+                <li>halten UI-Logik
+                <li>Daten fließen nur innerhalb der Hierarchien
+            </ul>
+            <div style="height: 300px">
+                <img src="unidirectional-data-flow.png">
+                <p><small><a href="https://speakerdeck.com/mxstbr/scaling-react-dot-js-applications">
+                    Copyright 2016, @mxstbr
+                </a></small></p>
+            </div>
         </section>
 
         <section>
-            <h2>Nächster Schritt: Zustand wird zentral gehalten</h2>
+            <h2>Harte Grenze #4: Verteilter Zustand, Vermischung von Framework und UI-Logik</h2>
+            <h3>Besonders bei wachsenden Anwendungen</h3>
+        </section>
+
+        <section>
+            <h3>Grundprobleme</h3>
+            <ul>
+                <li>UI-Logik ist an JavaScript-Framework gekoppelt (in Container-Komponenten)
+                <li>Zustand ist an vielen Stellen verteilt
+                <li>Verteilter, veränderlicher Zustand ist schwer zu managen?
+                <li>Verteilter, veränderlicher Zustand ist schwer zu managen?
+                <li>Je größer die Anwendung, desto schwerer ist der Zustand zu managen
+                <li>An welchen Stellen können Nebenläufigkeiten auftreten?
+                <Li>Kann man zu jedem Zeitpunkt klar sagen, in welchem Zustand die Anwendung ist?
+            </ul>
+        </section>
+
+        <section>
+            <h2>Nächster Schritt: Zustand wird zentral gehalten, UI-Logik geht aus den Komponenten</h2>
             <p>Flux, Redux, https://github.com/ngrx/store</p>
+        </section>
+
+        <section>
+            <h3>Flux-Grundidee #1: Fluss in eine Richtung</h3>
+            <div class="fragment">
+                <img src="embarc/Redux.png" style="height: 500px;">
+                <p><small>Copyright 2016, embarc</small></p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Flux-Grundidee #2: Zentraler Zustand</h3>
+            <div class="fragment">
+                <img src="embarc/Anwendung.png" style="height: 500px;">
+                <p><small>Copyright 2016, embarc</small></p>
+            </div>
+        </section>
+        <section>
+            <h3>Zusammenfassung Flux</h3>
+            <ul class="fragment">
+                <li>Ein Architektur-Ansatz für UIs
+                <li>Kontroll-/Datenfluss in eine Richtung
+                <li>Zustand wandert aus Containern in Stores
+                <li>UI-Logik wandert aus Containern in Action-Creators und Stores
+                <li>Nebenläufigkeit nur in Action-Creators
+                <li>Immutability der Stores möglich und empfohlen
+            </ul>
         </section>
 
         <section>
@@ -454,289 +594,6 @@
             <br>
         </section>
 
-
-        <section class="todo">
-            <h1>Ab hier nur noch Material</h1>
-        </section>
-
-
-        <section class="todo">
-            <pre>
-- den ganzen nachfolgenden Kram überarbeiten und Code entfernen, mehr auf Schwafel-Niveau
-- Beautiful constraints (less can be more - for react.js): https://twitter.com/RuhrJS/status/749535474843283457?s=03
-- Container vs Component
-  - Container Connected to State
-  - Only thing that is not Architecture agnostic
-  - Component: how things look, views
-  - Container: how things work, Controller
-  - übernhemen aus: https://speakerdeck.com/mxstbr/scaling-react-dot-js-applications / https://vimeo.com/168648012
-- Design: Group by Feature, not by technical function
-- Wasserkasten-Bild einbauen
-            </pre>
-
-        </section>
-
-
-        <section>
-            <div class="todo">
-                <p>https://en.wikiquote.org/wiki/Alan_Kay</p>
-                <p>Simple things should be simple, complex things should be possible. (Alan Kay)</p>
-
-            </div>
-        </section>
-
-
-        <section class="todo">
-                    <h3>Why not just jQuery?</h3>
-                    <ul>
-                        <li>jQuery is very good at changing sets of existing elements
-                        <li>good if there already are existing elements
-                        <li>unobtrusive
-                        <li>not so good, if there is nothing to begin with
-                        <li>not so good for controlling page flow
-                    </ul>
-                </section>
-
-                <section class="todo">
-                    <h3>Why use a standard Framework?</h3>
-                    <ul>
-                        <li>avoid the risk of accidentally creating your own
-                        <li>use something proven and tested
-                        <li>community, documentation
-                        <li>easily find skill and talent
-                    </ul>
-                </section>
-
-                <section class="todo">
-                    <h2>Your Options</h2>
-                    <ol>
-                        <li class="fragment grow">The Classic: Angular 1.x
-                        <li class="fragment grow">From Anti-Patterns to Best-Practices: React
-                        <li class="fragment grow">One for all: Angular 2
-                        <li class="fragment grow">The Standard: Web Components
-                        <li class="fragment grow">(I know there is more)
-                    </ol>
-                </section>
-
-
-
-        <section>
-            <h3>Container und View-Komponenten</h3>
-            <ul class="fragment">
-                <li>moderne SPA-Frameworks
-                <li>läuft ohne signifikanten Server-Anteil
-                <li>kann auch als statische Web-Seite laufen
-                <li>ermöglicht Offline-Betrieb
-                <li>Bedienbarkeit wie Desktop
-                <li>Browser bietet mächtige Speicherungsmöglichkeiten
-            </ul>
-            <div>
-                <img src="component-hierarchy.png">
-                <p><small><a href="https://speakerdeck.com/mxstbr/scaling-react-dot-js-applications">
-                    Copyright 2016, @mxstbr
-                </a></small></p>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="todo">Aus Jan's talk: Motivation für Redux einbauen</h2>
-
-            <!--<section>	-->
-				<!--<h2>Flux/Redux<br />Architecture</h2>-->
-			<!--</section>-->
-
-			<!--<section>-->
-				<!--<ul class="ul1">-->
-					<!--<li class="fragment">Key problem #1: <b>complexity</b><br >The bigger a JS application grows, the harder it becomes to manage it's <b>state</b>-->
-						<!--<ul class="ul2">-->
-							<!--<li class="fragment">-->
-								<!--user interaction, event listeners, which elements are shown, how they are shown, ...-->
-							<!--</li>-->
-							<!--<li class="fragment">-->
-								<!--AJAX response handling, callbacks, timeouts/intervals, form data, non-persistent data, (session|local) storage, ...-->
-							<!--</li>-->
-						<!--</ul>-->
-					<!--</li>-->
-					<!--<li class="fragment">-->
-						<!--<cite style="font-style: italic;">-->
-							<!--If a model can update another model, then a view can update a model,-->
-							<!--which updates another model, and this, in turn, might cause another-->
-							<!--view to update...-->
-						<!--</cite>-->
-					<!--</li>-->
-				<!--</ul>-->
-				<!--<aside class="notes" data-markdown>-->
-					<!--<div style="font-size:13px;">-->
-						<!--<ul>-->
-							<!--<li>The bigger an applications grows the more complex it'll get...</li>-->
-							<!--<li>...the likelier it may become messed up...</li>-->
-							<!--<li>...if there's no real structure and data flow behind it.</li>-->
-						<!--</ul>-->
-					<!--</div>-->
-				<!--</aside>-->
-			<!--</section>-->
-
-			<!--<section>-->
-				<!--<li class="fragment">At some point you're likely to lose control of when, why and how something happened</li>-->
-				<!--<ul class="ul2 fragment">-->
-					<!--<li>app becomes opaque and "non-deterministic"</li>-->
-					<!--<li>it’s hard to reproduce bugs, do debugging or add new features without introducing new bugs</li>-->
-				<!--</ul>-->
-				<!--<li class="fragment">Root cause: mutations <u style="text-decoration: underline;">and</u> asynchronicity</li>-->
-				<!--<aside class="notes" data-markdown>-->
-					<!--<div style="font-size:13px;">-->
-						<!--<ul>-->
-							<!--<li>no consecutive flow</li>-->
-							<!--<li>very hard for humans to reason about</li>-->
-							<!--<li>JS mostly is asynchronous (callbacks)-->
-								<!--<ul>-->
-									<!--<li>event handlers, Ajax</li>-->
-									<!--<li>nested callbacks, ...</li>-->
-								<!--</ul>-->
-							<!--</li>-->
-						<!--</ul>-->
-					<!--</div>-->
-				<!--</aside>-->
-			<!--</section>-->
-
-			<!--<section>-->
-				<!--<li>Key problem #2: <b>local component states</b></li>-->
-				<!--<ul class="ul2">-->
-					<!--<li class="fragment">data stored locally inside a component-->
-					<!--<ul class="ul2">-->
-						<!--<li class="fragment">ok if data is only used for that component</li>-->
-						<!--<li class="fragment">BUT: it's often the case that data needs to be shared with other components</li>-->
-					<!--</ul>-->
-					<!--<li class="fragment">Each component owns a piece of global application state</li>-->
-					<!--<li class="fragment">Result: the global state is scattered all over the place</li>-->
-				<!--</ul>-->
-				<!--<aside class="notes" data-markdown>-->
-					<!--<div style="font-size:13px;">-->
-						<!--<ul>-->
-							<!--<li>Example: Product-&gt;isSelected-->
-								<!--<ul>-->
-									<!--<li>other products</li>-->
-									<!--<li>waiting screen</li>-->
-									<!--<li>payment forms</li>-->
-									<!--<li>provider select</li>-->
-								<!--</ul>-->
-							<!--</li>-->
-							<!--<li>Bad patterns: trying to keep data in sync manually</li>-->
-							<!--<li>Broadcasting:-->
-								<!--<ul>-->
-									<!--<li>expensive if tree is big</li>-->
-									<!--<li>hard to understand where events come from</li>-->
-									<!--<li>events may dispatch other events or intercept them</li>-->
-									<!--<li>subtree issue</li>-->
-								<!--</ul>-->
-							<!--</li>-->
-							<!--<li>Shared state:-->
-								<!--<ul>-->
-									<!--<li>business logic spread in each component</li>-->
-									<!--<li>writes cannot be restricted</li>-->
-								<!--</ul>-->
-							<!--</li>-->
-						<!--</ul>-->
-					<!--</div>-->
-				<!--</aside>-->
-			<!--</section>-->
-
-			<!--<section>-->
-				<!--<h2>Flux/Redux</h2>-->
-				<!--<li class="fragment">-->
-					<!--Predictable state container for JavaScript apps-->
-					<!--<ul class="ul2 fragment">-->
-						<!--<li>Application wide state in one centralized, global structure</li>-->
-					<!--</ul>-->
-				<!--</li>-->
-				<!--<li class="fragment">-->
-					<!--Unidirectional data flow-->
-					<!--&lt;!&ndash;-->
-						<!--TODO: -->
-							<!-- - "clear" geordneter Data Flow-->
-							<!-- - wirklich linear?-->
-							<!-- - besser beschreiben-->
-					<!--&ndash;&gt;-->
-					<!--<ul class="ul2 fragment">-->
-						<!--<li>state mutations become transparent and trackable</li>-->
-					<!--</ul>-->
-				<!--</li>-->
-				<!--<li class="fragment">Vuex as adaption for Vue.js</li>-->
-				<!--<aside class="notes" data-markdown>-->
-					<!--<div style="font-size:13px;">-->
-						<!--<ul>-->
-							<!--<li>Flux is the architecture idea</li>-->
-							<!--<li>Redux is a popular implementation (Facebook)-->
-								<!--<ul>-->
-									<!--<li>less complex</li>-->
-									<!--<li>mostly used with ReactJs, can be used with any other framework.</li>-->
-								<!--</ul>-->
-							<!--</li>-->
-							<!--<li>Has become one of the most important architectures for mid or big scale frontend applications</li>-->
-						<!--</ul>-->
-					<!--</div>-->
-				<!--</aside>-->
-			<!--</section>-->
-
-        </section>
-
-        <section>
-            <h2>Motivation für eine Flux-Architektur</h2>
-        </section>
-
-        <section>
-            <h3>Problem von MVC mit Observer-Pattern</h3>
-            <div class="fragment">
-                <img src="embarc/MVC_1.png" style="height: 500px;">
-                <p><small>Copyright 2016, embarc</small></p>
-            </div>
-        </section>
-
-        <section>
-            <h3>Problem von MVC mit Observer-Pattern</h3>
-            <div>
-                <img src="embarc/MVC_1_blassZustand.png" style="height: 500px;">
-                <p><small>Copyright 2016, embarc</small></p>
-            </div>
-        </section>
-
-        <section>
-            <h3>Verteilter, veränderlicher Zustand mit Listenern (Observer)</h3>
-            <img class="fragment" src="2-way-data-binding.gif">
-        </section>
-
-        <section>
-            <h3>Redux, eine Flux Implementierung</h3>
-            <div class="fragment">
-                <img src="embarc/FluxFWs_Redux.png" style="height: 300px;">
-                <p><small>Copyright 2016, embarc</small></p>
-            </div>
-        </section>
-
-        <section>
-            <h3>Redux-Grundidee #1: Fluss in eine Richtung</h3>
-            <div class="fragment">
-                <img src="embarc/Redux.png" style="height: 500px;">
-                <p><small>Copyright 2016, embarc</small></p>
-            </div>
-        </section>
-
-        <section>
-            <h3>Redux-Grundidee #2: Zentraler Zustand</h3>
-            <div class="fragment">
-                <img src="embarc/Anwendung.png" style="height: 500px;">
-                <p><small>Copyright 2016, embarc</small></p>
-            </div>
-        </section>
-        <section>
-            <h3>Zusammenfassung Flux/Redux</h3>
-            <ul class="fragment">
-                <li>Ein Architektur-Ansatz für UIs
-                <li>Löst Probleme des klassischen MVC mit Observer-Pattern
-                <li>Kontroll-/Datenfluss in eine Richtung
-                <li>Gesamter Zustand in einem zentralen Store
-            </ul>
-        </section>
     </div>
 
 </div>
