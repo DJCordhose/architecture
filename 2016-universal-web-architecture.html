@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Was uns C64 Programmierung über JavaScript Architekturen lehren kann</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <!--<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">-->
+    <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
+    <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
+    <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+    <style>
+        /*pre code {*/
+            /*display: block;*/
+            /*padding: 0.5em;*/
+            /*background: #FFFFFF !important;*/
+            /*color: #000000 !important;*/
+        /*}*/
+
+        .right-img {
+            margin-left: 10px !important;
+            float: right;
+            height: 500px;
+        }
+        .todo:before {
+            content: 'TODO: ';
+        }
+        .todo {
+            color: red !important;
+        }
+        code span.line-number {
+            color: lightcoral;
+        }
+
+    </style>
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+<!--Titel: Universal Rendering with React, Redux, and Flow-->
+
+<!--Abstract:-->
+    <!--Single-Page Applications (SPAs) are clearly superior to Classic Web Applications-->
+    <!--in terms of user experience and offline support.-->
+    <!--However, they might be a little behind when it comes to SEO and speed of first page impressions.-->
+    <!--Universal Web Applications can render both on the server and on the client using mostly identical code.-->
+    <!--They can thus combine the benefits of Single-Page Applications and Classic Web Applications.-->
+
+    <!--In this talk I will show how to build a Universal Web Application using React and Redux.-->
+    <!--As a special extra I will share my experience of what impact the introduction of flow-->
+    <!--(http://flowtype.org/) had to the sample React/Redux App.-->
+
+    <!--Webtechcon: 60 Minutes-->
+    <!--https://webtechcon.de/session/universal-rendering-with-react-redux-and-flow/-->
+
+    <!-- - Schritte-->
+    <!-- - C64 Basic zeigen-->
+    <!-- - Grenzen-->
+    <!-- - Assembler-->
+    <!-- - Klassische Web-App zeigen-->
+    <!-- - Grenzen-->
+    <!-- - SPA-->
+    <!-- - SPA erklären-->
+    <!-- - Aniti-Patterns-->
+        <!-- - React-->
+        <!-- - Flux-->
+    <!-- - Universal Rendering-->
+
+        <!--Vorbereitung:-->
+        <!-- - cd code/universal-->
+        <!-- - npm start-->
+        <!-- - Checken, dass localhost:3000 im Browser läuft -->
+
+
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section class="TODO">
+            <pre>
+- Translate into Englisch
+- Add line numbers to code
+- add Flow
+- Remove C64 stuff
+- Add code from /Users/olli/Development/react-intro-live-coding/2016_md_devdays.html
+- Structure more like /Users/olli/Development/react-intro-live-coding/2016_md_devdays.html
+- Adapt Questions and Answers to Topic
+- Plan for 45 minutes Talk, add 15 minutes of discussion and questions
+            </pre>
+
+        </section>
+
+        <section>
+            <h2>Universal Rendering with React, Redux, and Flow</h2>
+            <p>
+                <small><a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+                </small>
+            </p>
+            <p><a href="http://djcordhose.github.io/architecture/c64-web-architecture.html">
+                http://djcordhose.github.io/architecture/c64-web-architecture.html
+            </a></p>
+
+        </section>
+        <section>
+            <p>
+                <a target="_blank" href="https://entwickler.de/press/javascript-fuer-java-entwickler-4-168852.html">
+                    <img src="intro/s-k_JavaScript_fuer_JavaEntwickler_Auflage3_2400x_rgb-220x353@2x.jpg" width="200">
+                </a>
+                <a target="_blank" href="http://entwickler.de/press/JavaScript-und-TypeScript-fuer-C-Entwickler-174972">
+                    <img src="intro/javascript_und_typescript_1400px.jpg" width="200" >
+                </a>
+                <a target="_blank" href="http://reactbuch.de/">
+                    <img src="intro/react.jpg" width="250">                </a>
+            </p>
+            <a href="http://zeigermann.eu" target="_blank"><img src="intro/SF-Olli.jpg" height="200" align="right"></a>
+            <a href="http://www.embarc.de/" target="_blank"><img src="intro/embarc13.png" height="200" align="left"></a>
+
+        </section>
+
+        <section class="todo">
+            <pre>
+- Proben
+- Auf 45 Minuten kürzen
+            </pre>
+
+        </section>
+
+        <section>
+            <h2>Worum geht es hier?</h2>
+            <p class="fragment">Bei der (Web-)Entwicklung kommt es darauf an, einen Architektur-Ansatz zu finden,
+                der dem Problem gerecht wird.
+            </p>
+            <p class="fragment">Nicht zu einfach, aber auch nicht zu komplex.
+            </p>
+            <p class="fragment">Problem: Manche naheliegende Ansätze tragen ein Stück weit und lassen uns dann an harte Grenzen stoßen.</p>
+        </section>
+
+        <section>
+            <h2>Konsequezen</h2>
+            <p>Im besten Fall so:</p>
+            <div style="height: 400px">
+                <img src="cost-of-change.jpg">
+                <p><small><a target="_blank" href="https://aim42.github.io/#_why_does_software_need_improvement">
+                    https://aim42.github.io/#_why_does_software_need_improvement</a></small></p>
+            </div>
+            <p>Im schlechtesten Fall: Manche Features sind gar nicht umzusetzen</p>
+        </section>
+
+        <section>
+            <h2>Im schlechtesten Fall</h2>
+            <p class="fragment">Manche Features sind gar nicht umzusetzen</p>
+            <p class="fragment">Also: Feature nicht umsetzen oder</p>
+            <p class="fragment">Neuimplementierung mit anderer Architektur</p>
+            <p class="fragment">Beides nicht so toll</p>
+        </section>
+
+
+        <section>
+            <h2>Sunk Cost Fallacy</h2>
+            <p class="fragment">Begriff aus der Verhaltensökonomie</p>
+            <p class="fragment">"Dem schlechten Geld gutes Geld hinterher schmeißen"</p>
+            <p class="fragment">"man muss das doch irgendwie hinkriegen"</p>
+            <p class="fragment">"das hat doch bisher alles so gut hingehauen"</p>
+            <p><small>
+                <a href="https://en.wikipedia.org/wiki/Sunk_costs#Loss_aversion_and_the_sunk_cost_fallacy" target="_blank">
+                    https://en.wikipedia.org/wiki/Sunk_costs#Loss_aversion_and_the_sunk_cost_fallacy
+                </a>
+            </small></p>
+        </section>
+
+        <section>
+            <h2>Man weiß nicht, was man alles nicht weiß</h2>
+            <p class="fragment">Häufig stellen sich erst im Nachhinein gewisse (nicht getroffene) Enscheidungen als Architektur-Entscheidungen heraus
+            </p>
+            <p class="fragment">Diese können dann den Erfolg des Projekts grundsätzlich gefährden
+            </p>
+            <p class="fragment">Dieser Talk soll die Grenzen von Web-Architekturen ausloten</p>
+        </section>
+
+        <section>
+            <h2>Meine erste harte Grenze (#0): C64-Programmierung</h2>
+        </section>
+
+        <section>
+            <h3>Hello, World</h3>
+            <p>Naheliegender Ansatz, schneller Erfolg: Konnte ich noch in der Computerabteilung meines Kaufhauses tippen (1983)</p>
+            <div class="fragment" style="height: 400px">
+                <img src="c64-hello-world.png">
+                <br><small><a target="_blank" href="https://www.kingsquare.nl/jsc64">
+                    https://www.kingsquare.nl/jsc64
+                </a></small>
+            </div>
+        </section>
+
+        <section>
+            <h3>Was ist eine Computerabteilung?</h3>
+            <div class="fragment" style="float: right; width: 450px">
+                <img src="computer-abteilung2.jpg">
+            </div>
+            <div class="fragment" style="float: left; width: 450px">
+                <img src="computer-abteilung1.jpg">
+            </div>
+                <p style="clear: both"><small><a target="_blank" href="http://zockworkorange.com/kaufhauscomputertage/">
+                http://zockworkorange.com/kaufhauscomputertage/
+            </a></small></p>
+        </section>
+
+        <section>
+            <h3>Aber wie soll ich das mit C64-Basic machen?</h3>
+            <div class="fragment" style="float: left; width: 450px">
+                <img src="c64-hellgate.png">
+            </div>
+            <div class="fragment" style="float: right; width: 450px">
+                <img src="c64-rallyspeedway2.png">
+            </div>
+            <p style="clear: both" class="fragment">
+                Man kommt ein Stück weit mit C64 Basic, aber danach muss man alles noch einmal mit Assembler bauen</p>
+        </section>
+
+        <section>
+            <h2>C64-Trivia</h2>
+            <div class="fragment">
+                <p>Auch Philipp Rösler hätte gern einen C64 gehabt</p>
+                <p>(hatte aber nur einen VC-20)</p>
+                <p><small><a target="_blank" href="http://www.zeit.de/politik/ausland/2016-06/philipp-roesler-world-economic-forum-interview">http://www.zeit.de/politik/ausland/2016-06/philipp-roesler-world-economic-forum-interview</a></small></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Was hat das denn nun mit Web-Architektur zu tun?</h2>
+        </section>
+
+        <section>
+            <h2>Harte Grenze #1: Klassische Webanwendung</h2>
+        </section>
+
+        <section>
+            <h3>Klassiche Webanwendung</h3>
+            <p><small>jeder Boot tut gut, jeder Roundtrip setzt Zustand zurück</small></p>
+
+            <img src="embarc/KlassischeWebAnwendung.png" style="height: 450px;">
+            <p><small>Copyright 2016, embarc</small></p>
+        </section>
+
+        <section>
+            <h2>Klassichen Webanwendungen</h2>
+            <ul class="fragment">
+                <li>Browser sendet HTTP-Request und empfängt HTML
+                <li>Content wird auf der Server-Seite gerendert
+                <li>Jede Interaktion wiederholt diesen Zyklus
+            </ul>
+        </section>
+
+        <section>
+            <h2>Klassische Webanwendung: Oft ein nahe liegender Ansatz</h2>
+            <ul class="fragment">
+                <li>Klassische Webanwendung sind für viele Enterprise-Entwicklungen der natürliche Ausgangspunkt
+                <li>Server-Seitige Entwicklung mit Java/C# und HTTP und HTML sind gut verstanden
+                <li>kleinere UI-Änderungen können auf Client-Seite mit JavaScript-Schnippseln (jQuery) realisiert werden
+                <li>häufig ist dies völlig ausreichend
+            </ul>
+        </section>
+
+        <section>
+            <h2>Harte Grenze</h2>
+            <ul class="fragment">
+                <li>UI/UX ist grunsätzlich eingeschränkt
+                <li>selbst in vermeintlich klassischen Anwendungen verstecken sich SPAs oft als Teile
+                <li>z.B. JSF Komponenten mit einem komplexen UI
+            </ul>
+            <p class="fragment"><em>Perfide, da zuerst die Aufwände zur Umsetzung ansteigen und der Code immer unübersichtlicher wird.</em></p>
+        </section>
+
+        <section>
+            <h3>Nächster Schritt: Single-Page Application</h3>
+            <img src="embarc/SP-Anwendung.png" style="height: 500px;">
+            <p><small>Copyright 2016, embarc</small></p>
+        </section>
+        <section>
+            <h3>Single-Page Applications (SPAs) verschieben eure Anwendung in den Browser</h3>
+            <ul class="fragment">
+                <li>eine einzige Seite pro Anwendung/Modul
+                <li>läuft ohne signifikanten Server-Anteil
+                <li>kann auch als statische Web-Seite laufen
+                <li>ermöglicht Offline-Betrieb
+                <li>Bedienbarkeit wie Desktop
+                <li>Browser bietet mächtige Speicherungsmöglichkeiten
+            </ul>
+        </section>
+
+        <section>
+            <h2>Harte Grenze #2: jQuery</h2>
+        </section>
+
+        <section>
+            <h3>jQuery: Eine Technik mit Tradition</h3>
+            <p class="fragment">jQuery ist super, um <em>punktuell</em> mit <em>JavaScript-Schnippseln</em>,
+                eine Menge von <em>bestehenden</em> Elementen zu ändern</p>
+            <ul class="fragment">
+                <li>nicht so gut, wenn es keine <em>bestehenden</em> Elemente gibt: SPA rendert komplett auf Client-Seite
+                <li>nicht so gut, wenn die Änderungen nicht <em>punktuell</em> sind: Seiten-Wechesel?
+                <li>nicht so gut, wenn <em>JavaScript-Schnippsel</em> nicht reichen: Wer will schon eine echte Anwendung aus Schnippseln zusammen bauen?
+            </ul>
+            <p class="fragment">Perfide, da für viele Entwickler jQuery das bessere JavaScript ist.</p>
+            <p class="fragment">Soll man etwa wieder pures JavaScript machen???</p>
+
+        </section>
+
+        <section>
+            <h3>Bonus-Gefahr</h3>
+            <p class="fragment">jQuery taug nicht</p>
+            <p class="fragment">Daher baut man sich - oft ohne es zu merken - ein eigenes Framework</p>
+            <p class="fragment">Nicht so gut:</p>
+            <ul class="fragment">
+                <li>Kriegt man das wirklich so gut hin wie Google/Facebook mit einem großen Team und Jahren an Entwicklungsaufwand und Erfahrung
+                <li>Besser etwas bestehendes nutzen
+                <li>Es gibt bereits eine Kommunity und Dokumentation
+                <li>Man bekommt leichter Leute mit der passenden Erfahrung
+            </ul>
+            <p class="fragment">Es gibt nichts passendes? WIRLICH NICHT?</p>
+        </section>
+
+        <section>
+            <h3>Nächster Schritt: Komponenten basierte Ansätze mit Templates</h3>
+            <ul class="fragment">
+                <li>Templates nun auf der Clientseite
+                <li>Anwendung bekommt Struktur
+                <li>Logik ist keine lose Schnippsel-Sammlung mehr
+            </ul>
+            <div style="height: 300px">
+                <img src="component-hierarchy.png">
+                <p><small><a href="https://speakerdeck.com/mxstbr/scaling-react-dot-js-applications">
+                    Copyright 2016, @mxstbr
+                </a></small></p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Prominente Vertreter</h3>
+            <ul class="fragment">
+                <li>Backbone
+                <li>Angular 1
+                <li>Ember.js
+            </ul>
+        </section>
+
+        <section>
+            <h2>Harte Grenze #3: 2-Wege-Data-Binding und Observer-Pattern</h2>
+        </section>
+
+        <section>
+            <h3>Problem von MVC mit Observer-Pattern</h3>
+            <div style="height: 400px">
+                <img src="observer-problem.png">
+                <p><small><a href="https://speakerdeck.com/mxstbr/scaling-react-dot-js-applications">
+                    Copyright 2016, @mxstbr
+                </a></small></p>
+            </div>
+        </section>
+
+        <section>
+            <h3>2-Wege-Data-Binding und Observer-Pattern</h3>
+            <img class="fragment" src="2-way-data-binding.gif">
+        </section>
+
+        <section>
+            <h2>Nächster Schritt: 1-Wege-Data-Binding und klare Anwendungsstrukturen</h2>
+            <p>React und Angular 2</p>
+        </section>
+
+        <section>
+            <h3>Container und View-Komponenten</h3>
+            <ul class="fragment">
+                <li>Top-Level-Komponenten sind Container
+                <li>halten und/oder managen Zustand
+                <li>halten UI-Logik
+                <li>Daten fließen nur innerhalb der Hierarchien
+            </ul>
+            <div style="height: 300px">
+                <img src="unidirectional-data-flow.png">
+                <p><small><a href="https://speakerdeck.com/mxstbr/scaling-react-dot-js-applications">
+                    Copyright 2016, @mxstbr
+                </a></small></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Harte Grenze #4: Verteilter, veränderlicher Zustand, Vermischung von Framework und UI-Logik</h2>
+            <h3>Besonders bei wachsenden Anwendungen</h3>
+        </section>
+
+        <section>
+            <a href="https://youtu.be/I7IdS-PbEgI" target="_blank"><img style="height: 600px" src="alan_kay.jpg"></a>
+            <p><small><a href="https://facebook.github.io/immutable-js/" target="_blank">
+                https://facebook.github.io/immutable-js/
+            </a></small></p>
+        </section>
+
+        <section>
+            <h3>Grundprobleme</h3>
+            <ul>
+                <li>UI-Logik ist an JavaScript-Framework gekoppelt (in Container-Komponenten)
+                <li>Zustand ist an vielen Stellen verteilt
+                <li>Verteilter, veränderlicher Zustand ist schwer zu managen?
+                <li>Verteilter, veränderlicher Zustand ist schwer zu managen?
+                <li>Je größer die Anwendung, desto schwerer ist der Zustand zu managen
+                <li>An welchen Stellen können Nebenläufigkeiten auftreten?
+                <Li>Kann man zu jedem Zeitpunkt klar sagen, in welchem Zustand die Anwendung ist?
+            </ul>
+        </section>
+
+        <section>
+            <h2>Nächster Schritt: Zustand wird zentral gehalten, UI-Logik geht aus den Komponenten</h2>
+            <p>Flux, Redux, https://github.com/ngrx/store</p>
+        </section>
+
+        <section>
+            <h3>Flux-Grundidee #1: Fluss in eine Richtung</h3>
+            <div class="fragment">
+                <img src="embarc/Redux.png" style="height: 500px;">
+                <p><small>Copyright 2016, embarc</small></p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Flux-Grundidee #2: Zentraler Zustand</h3>
+            <div class="fragment">
+                <img src="embarc/Anwendung.png" style="height: 500px;">
+                <p><small>Copyright 2016, embarc</small></p>
+            </div>
+        </section>
+        <section>
+            <h3>Zusammenfassung Flux</h3>
+            <ul class="fragment">
+                <li>Ein Architektur-Ansatz für UIs
+                <li>Kontroll-/Datenfluss in eine Richtung
+                <li>Zustand wandert aus Containern in Stores
+                <li>UI-Logik wandert aus Containern in Action-Creators und Stores
+                <li>Nebenläufigkeit nur in Action-Creators
+                <li>Immutability der Stores möglich und empfohlen
+            </ul>
+        </section>
+
+        <section>
+            <h2>Harte Grenze #5: SPA selbst</h2>
+        </section>
+
+        <section>
+            <h3>Probleme von Single-Page Applications</h3>
+            <ul class="fragment">
+                <li>SEO
+                <li>First-Page-Impressions
+                <li>Preview, z.B.
+                    <ul>
+                        <li>bei der Vorschau von Suchergebnissen
+                        <li> oder dem Teilen von Links durch Social Media
+                    </ul>
+
+                </li>
+                <li>Progressive Enhancement
+            </ul>
+        </section>
+
+        <section>
+            <h3>SPA: First-Page-Impression</h3>
+            <div>
+                <a href="code/spa/public/index.html" target="_blank">
+                    <img src="spa-first-page-impression.png" style="height: 500px;">
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h2>Nächster Schritt: Universal Web Apps</h2>
+        </section>
+
+
+        <section>
+            <h3>Universal Rendering</h3>
+            <ul class="fragment">
+                <li>First-Page-Impression wird auf dem Server gerendert
+                <li>Links werden als normale HTML-Links in die Seite gerendert
+                <li>Beliebig viele andere Seiten werden ebenfalls statisch gerendert
+                <li>Läuft dann (zumindest zum Teil) auch ohne JavaScript
+                <li>Code fast 100% geteilt zwischen Client und Server
+                <li>serverseitiges Rendering mit <a href="https://nodejs.org" target="_blank">https://nodejs.org</a>
+                <li>Neben Markup liefert der Browser ebenso Zustand
+                <li>Js-Frameworks React und Angular 2 unterstützen serverseitiges Rendering
+            </ul>
+        </section>
+
+        <section>
+            <h3>Universal Rendering am Beispiel von React</h3>
+            <div class="fragment">
+                <img src="universal.png" style="height: 500px;">
+                <p><small><a target="_blank" href="http://reactbuch.de/">Copyright 2016, D-Punkt, http://reactbuch.de/</a></small></p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Universal Rendering: First-Page-Impression</h3>
+            <div>
+                <a href="http://localhost:3000/" target="_blank">
+                    <img src="universal-first-page-impression.png" style="height: 500px;">
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h3>Herausforderungen</h3>
+            <ul class="fragment">
+                <li>Aller Zustand muss beim serverseitigen Rendering komplett vorliegen
+                <li>Unterschiedliche Locales auf Server und Client
+                <li>Zeitliche veränderliche Daten (Timestamp, Börsenkurs)
+            </ul>
+        </section>
+
+        <section>
+            <h2>Zusammenfassung</h2>
+            <ul>
+                <li class="fragment">Man trifft mit vielen Techniken auf harte Grenzen
+                <li class="fragment">Es ist wichtig, diese Grenzen zu kennen
+                <li class="fragment">Klassische Web-Apps erlauben serverseitiges Rendering
+                <li class="fragment">Single-Page Applications erlauben bestes UX
+                <li class="fragment">Universal Web Apps verbinden die Fähigkeiten der beiden
+            </ul>
+        </section>
+
+        <section>
+            <h3>The Doctor is In</h3>
+            <small>
+            <table>
+                <tr>
+                    <th></th><th>Wissen</th><th>Anforderungen</th><th>A-Z</th>
+                </tr>
+                <tr>
+                    <th>20</th>
+                    <td>Muss man für SPAs und Universal Apps JavaScript programmieren?</td>
+                    <td>Was ist mit Links und Bookmarks bei SPAs?
+                    </td>
+                    <td>In welcher Technik sollte ich mein REST-Backend schreiben?
+                    </td>
+                </tr>
+                <tr>
+                    <th>40</th>
+                    <td></td>
+                    <td>Sollte ich nicht jede SPA als Universal App schreiben?
+                    </td>
+                    <td>Widersprechen SPAs nicht der Grundidee es Webs?
+                    </td>
+                </tr>
+                <tr>
+                    <th>60</th>
+
+                    <td><b>Risiko: Frage eurer Wahl</b></td>
+                    <td><b>Risiko: Frage eurer Wahl</b></td>
+                    <td><b>Risiko: Frage eurer Wahl</b></td>
+                </tr>
+                <tr>
+                    <th>80</th>
+                    <td>Wie realisiert man komplexe UI-Komponenten (ala TreeGrid)?
+                    </td>
+                    <td>Wann passt eine klassische WebApp besser als eine SPA?
+                    </td>
+                    <td>Wieso funktioniert für SPAs kein Schichtenmodell?
+                    </td>
+                </tr>
+                <tr>
+                    <th>100</th>
+                    <td>Muss man programmieren können, um die richtigen Entscheidungen zu treffen?</td>
+                    <td>Wie kann ich sicher sein, dass ich den richtigen Architektur-Ansatz habe?</td>
+                    <td>Wie spielt das alles mit MicroServices zusammen?</td>
+                </tr>
+            </table></small>
+        </section>
+
+
+
+        <section>
+            <h2>Vielen Dank!</h2>
+
+            <!--<h3>Fragen / Diskussion</h3>-->
+
+            <p>
+                <small><a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+                </small>
+            </p>
+            <a href="http://www.embarc.de/"><img src="intro/embarc13.png"
+                                                 height="150"></a>
+            <br>
+        </section>
+
+    </div>
+
+</div>
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
+<script src="lib/jquery-2.2.4.js"></script>
+
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'reveal.js/plugin/zoom-js/zoom.js', async: true},
+            {src: 'reveal.js/plugin/notes/notes.js', async: true},
+            {src: 'lib/js/line-numbers.js'}
+
+        ]
+    });
+
+</script>
+
+</body>
+</html>

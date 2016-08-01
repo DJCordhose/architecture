@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Architektur für Entwickler</title>
+    <title>Architecture For Developers</title>
 
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
@@ -34,6 +34,12 @@
             float: right;
             height: 500px;
         }
+        .todo:before {
+            content: 'TODO: ';
+        }
+        .todo {
+            color: red !important;
+        }
     </style>
 
     <!-- Printing and PDF exports -->
@@ -54,8 +60,152 @@
 
 <div class="reveal">
 
+
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
+
+        <section class="todo">
+            <h2>What is Programming?</h2>
+            <pre>
+- https://github.com/joaomilho/what-is-programming-curry-on
+            </pre>
+        </section>
+
+        <section class="todo">
+<pre>
+Titel: Architektur für Softwareentwickler
+
+Untertitel: Eine kritische Auseinandersetzung mit Architektur, geschrieben für Entwickler von einem Entwickler.
+
+Alternativer Untertitel: Was solltest du als Entwickler eigentlich über Architektur wissen?
+
+Abstract: Jeder Entwickler macht Architektur-Arbeit und ist im Einflussbereich von Architektur-Entscheidungen. Oft passiert das gar nicht bewusst, sondern nur “irgendwie”. Dabei muss es die Rolle eines Architekten gar nicht geben. In diesem Buch wird aus der Perspektive eines Entwicklers beschreiben, was Architektur ausmacht und wie man sich als Entwickler bewusster damit auseinander setzen kann.
+
+Zielpublikum: Entwickler, die sich (schon länger) fragen, was Architekten so machen.
+
+Umfang: schnell & kompakt, 10-20 Abbildungen schwarz/weiß, evtl. auch Pocket-Format
+
+Stil: So knapp wie möglich, 0% Gelaber. Wenn man etwas nicht klar ausdrücken kann, weglassen.
+
+Gliederung in Kapiteln
+
+Einleitung
+
+Was ist Architektur denn überhaupt?
+Ist Architektur ein Anti-Pattern?
+Design oder Architektur?
+Ist UML Architektur?
+Wie trifft man Architektur-Entscheidungen?
+Beispiele aus der Praxis
+
+Einfluss der Unternehmensgröße auf Architekturarbeit (Alternative/Untertitel: Was ist in Deinem Projekt Architektur?)
+
+Je nach Unternehmensgröße stellt sich Architekturarbeit unterschiedlich dar. In großen Unternehmen gibt es oft eine explizite Architekten-Rolle oder sogar eine Architektur-Abteilung. In kleinen Unternehmen gibt es häufig gar keine bewusste Vorstellung davon, dass überhaupt Architektur-Arbeit passiert. Für den Entwickler leiten sich daraus unterschiedliche Herausforderungen ab. Dieses Kapitel zeigt die Möglichkeiten, wie Architektur in diesen unterschiedlichen Projekten festgehalten wird.
+
+Architektur im kleinen Unternehmen/Architektur im Code
+Woran merkt man, dass man gerade Architekturarbeit macht?
+Wie macht man Architekturarbeit im kleinen?
+Architektur im mittelgroßen Unternehmen/Architektur am Flipchart/in der Gruppe
+Eine gemeinsame Architektur-Vision
+Passt die Architektur zu den Anforderungen?
+Entscheidung nach Prinzip
+Architektur im großen Unternehmen/Architektur vordefiniert in Word
+Wie sieht eure Architektur aus?
+In welchem Rahmen kannst du dich bewegen?
+Was tust du, wenn du diesen Rahmen verlassen willst/musst?
+
+Architektur- und Design-Prinzipien: Worauf muss man bei der Architektur-Arbeit achten?
+
+Wir werden konkreter. Was sollte man eigentlich genauer betrachten? Hier verschwimmen die Grenzen zwischen Architektur und Design.
+
+Bist du Producer/Maintainer oder Kunde einer Architektur?
+Projekt-Arbeit vs Produkt-Entwicklung
+Unterschiedliche Qualitätsansprüche
+Ist Copy&Paste böse? Kohäsion vs Loose Kopplung: Was gehört zusammen?
+KISS, YAGNI, SOLID, Liskov
+Open/Closed-Prinzip
+‘Easy things should be easy, hard things possible’ (Kay)
+‘Abstractions leak. Deal with it’ (Zeigermann)
+Domain-Driven-Design
+
+Architektur-Stile
+
+Welche Architekturen-Ansätze sind weit verbreitet, wie sehen diese aus und wo wendet man sie an? Was kann die Entscheidung für einen Stil beeinflussen? Wo sollte man aufpassen? Hier wird es greifbarer und auch ein wenig amüsant.
+
+Monolith
+Schichten
+Microservices
+SOA
+Model-Observer
+Flux
+Treiber für Architekturen
+Consultant-Diven-Architecture
+Resumee-Driven-Architecture
+Hype-Driven-Architecture
+Book-Driven-Architecture (Gierke)
+Company-Driven-Architekture (Conway)
+
+Agil vs Architektur
+
+In diesem Kapitel wird das Spannungsfeld zwischen agiler Entwicklung und Architektur beleuchtet. Scrum schließt sogar explizite Rollen, wie die eines Architekten, aus. Wer macht dann die Architektur-Arbeit?
+
+‘In einem Unternehmen in dem es Architekten gibt fange ich gar nicht erst an!’ oder ‘Braucht man einen Architekten?’
+Rollenverständnis bei Scrum
+Wie viel Architektur braucht man am Anfang?
+Big Design Upfront vs Iterative Architektur
+Sacrificial Architecture
+Micro vs Macro-Architektur (Zweistufige Architektur-Ansätze)
+
+Anforderungen und Architektur
+
+In diesem eher trockenen aber gerade deswegen sehr notwendigen Kapitel sprechen wir über Qualitätsmerkmale und nicht-funktionale Anforderungen an eine Architektur. Wie kommt man an diese Anforderungen? Wer kann sie einem sagen? Wie weist man auf Konflikte und Risiken hin?
+
+Warum sind Anforderungen wichtig?
+Qualitätsmerkmale nach ISO/IEC 9126
+Stakeholder identifizieren
+Wie nimmt man Anforderungen auf?
+Stories
+Vision
+Konflikte zwischen Anforderungen
+Risiken identifizieren
+Wie wird dokumentiert
+
+Software-Entwicklung für Architekten
+
+In diesem abschließenden Kapitel drehen wir den Spieß noch einmal um und fragen uns, was man eigentlich über Software-Entwicklung wissen muss, um Architektur-Arbeit machen zu können. Diese Fragestellung wird noch spannender in Unternehmen, in denen es die Architekten-Rolle explizit gibt und die Architekten keinen Code mehr schreiben.
+
+Warum Bewertungsmatrixen bei komplexen Problemen nicht taugen
+Sollte ein Architekt programmieren können?
+Sollte ein Architekt tatsächlich programmieren?
+Wie man gut mit Entwicklern zusammenarbeiten kann
+
+</pre>
+        </section>
+
+        <section class="todo">
+            <h2>Postmodern Programming</h2>
+            <pre>
+- http://martinfowler.com/bliki/PostModernProgramming.html
+- http://www.mcs.vuw.ac.nz/comp/Publications/CS-TR-02-9.abs.html
+- https://twitter.com/DJCordhose/status/754969095024631812
+- https://twitter.com/DJCordhose/status/754967032177823744
+            </pre>
+        </section>
+
+        <section>
+            <h2>Agile vs Architecture</h2>
+            <pre>
+- "Large companies trying to be Agile remind me of middle aged men buying sports cars": http://allankelly.blogspot.it/2015/10/large-companies-and-fast-cars.html
+            </pre>
+        </section>
+
+
+        <section class="todo">
+            <h1>After this Point just German material to exploit</h1>
+        </section>
+
+
+
         <section>
             <h1>Architektur für Entwickler</h1>
             <h3>Was man als Entwickler über Architektur wissen sollte</h3>
