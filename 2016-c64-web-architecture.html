@@ -154,7 +154,6 @@
                 <p><small><a target="_blank" href="https://aim42.github.io/#_why_does_software_need_improvement">
                     https://aim42.github.io/#_why_does_software_need_improvement</a></small></p>
             </div>
-            <p>Im schlechtesten Fall: Manche Features sind gar nicht umzusetzen</p>
         </section>
 
         <section>
@@ -228,14 +227,14 @@
                 Man kommt ein Stück weit mit C64 Basic, aber danach muss man alles noch einmal mit Assembler bauen</p>
         </section>
 
-        <section>
-            <h2>C64-Trivia</h2>
-            <div class="fragment">
-                <p>Auch Philipp Rösler hätte gern einen C64 gehabt</p>
-                <p>(hatte aber nur einen VC-20)</p>
-                <p><small><a target="_blank" href="http://www.zeit.de/politik/ausland/2016-06/philipp-roesler-world-economic-forum-interview">http://www.zeit.de/politik/ausland/2016-06/philipp-roesler-world-economic-forum-interview</a></small></p>
-            </div>
-        </section>
+        <!--<section>-->
+            <!--<h2>C64-Trivia</h2>-->
+            <!--<div class="fragment">-->
+                <!--<p>Auch Philipp Rösler hätte gern einen C64 gehabt</p>-->
+                <!--<p>(hatte aber nur einen VC-20)</p>-->
+                <!--<p><small><a target="_blank" href="http://www.zeit.de/politik/ausland/2016-06/philipp-roesler-world-economic-forum-interview">http://www.zeit.de/politik/ausland/2016-06/philipp-roesler-world-economic-forum-interview</a></small></p>-->
+            <!--</div>-->
+        <!--</section>-->
 
         <section>
             <h2>Was hat das denn nun mit Web-Architektur zu tun?</h2>
@@ -278,6 +277,7 @@
                 <li>UI/UX ist grunsätzlich eingeschränkt
                 <li>selbst in vermeintlich klassischen Anwendungen verstecken sich SPAs oft als Teile
                 <li>z.B. JSF Komponenten mit einem komplexen UI
+                <li>Vermischung von client- und serverseitigem Rendering macht Anwendungsarchitektur und Programmiermodell abenteuerlich
             </ul>
             <p class="fragment"><em>Perfide, da zuerst die Aufwände zur Umsetzung ansteigen und der Code immer unübersichtlicher wird.</em></p>
         </section>
@@ -319,8 +319,8 @@
 
         <section>
             <h3>Bonus-Gefahr</h3>
-            <p class="fragment">jQuery taug nicht</p>
-            <p class="fragment">Daher baut man sich - oft ohne es zu merken - ein eigenes Framework</p>
+            <p class="fragment">Annahme: jQuery taugt nicht</p>
+            <p class="fragment">Daher baut man sich - oft ohne es zu merken - Schritt für Schritt ein eigenes Framework</p>
             <p class="fragment">Nicht so gut:</p>
             <ul class="fragment">
                 <li>Kriegt man das wirklich so gut hin wie Google/Facebook mit einem großen Team und Jahren an Entwicklungsaufwand und Erfahrung
@@ -412,8 +412,7 @@
             <ul>
                 <li>UI-Logik ist an JavaScript-Framework gekoppelt (in Container-Komponenten)
                 <li>Zustand ist an vielen Stellen verteilt
-                <li>Verteilter, veränderlicher Zustand ist schwer zu managen?
-                <li>Verteilter, veränderlicher Zustand ist schwer zu managen?
+                <li>Verteilter, veränderlicher Zustand ist schwer zu managen
                 <li>Je größer die Anwendung, desto schwerer ist der Zustand zu managen
                 <li>An welchen Stellen können Nebenläufigkeiten auftreten?
                 <Li>Kann man zu jedem Zeitpunkt klar sagen, in welchem Zustand die Anwendung ist?
