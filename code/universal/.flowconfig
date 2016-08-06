@@ -2,8 +2,7 @@
 .*/node_modules/.*
 
 [include]
-./src/step-1-typed
-./src/step-2-typed
+./src
 
 [libs]
 

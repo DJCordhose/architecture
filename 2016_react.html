@@ -77,10 +77,6 @@
         <section class="todo">
             <pre>
 - Zeilennummern für Code Samples
-- Kürzen
-- Fluss optimieren
-- Details aus Universal raus
-- Quiz am Ende wie bei C64-Talk?
             </pre>
         </section>
 
@@ -324,7 +320,7 @@ import HelloMessage from './HelloMessage';
 var mountNode = document.getElementById('mount');
 ReactDOM.render(&lt;HelloMessage greeting="Hello"/>, mountNode);
 </code></pre>
-                    <a target="_blank" href="examples/hello-world/public/index.html">Run</a>
+                    <a target="_blank" href="code/hello-world/public/index.html">Run</a>
                 </section>
 
                 <section>
@@ -576,8 +572,8 @@ function renderRoute(request, reply) {
             &lt;HelloMessage />
         &lt;/Provider>
     );
-  // simplified, not quite complete
-  reply(html);
+  // redux offers complete state from single store
+  reply(renderFullPage(html, store.getState()));
 };
 
 </code></pre>
@@ -600,12 +596,6 @@ function renderFullPage(html, initialData) {
 &lt;/html>
 `;
 }</code></pre>
-<pre class="fragment"><code data-trim contenteditable class="javascript">
-// server: completed code from previous example
-const html = ...;
-// redux offers complete state from single store
-reply(renderFullPage(html, store.getState()));
-</code></pre>
 <pre class="fragment"><code data-trim contenteditable class="javascript">
 // client: init store from complete state
 const initialState = window.__INITIAL_STATE__;
@@ -703,7 +693,7 @@ const store = createStore(..., initialState);
             }
             },
             {src: 'reveal.js/plugin/zoom-js/zoom.js', async: true},
-            {src: 'reveal.js/plugin/notes/notes.js', async: true}
+            {src: 'reveal.js/plugin/notes/notes.js', async: true},
             { src: 'lib/js/line-numbers.js'}
         ]
     });
