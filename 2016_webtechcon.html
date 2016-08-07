@@ -110,9 +110,10 @@
 
         <section class="todo">
             <pre>
-- Zuende auf Englisch übersetzen (wo TODO steht)
-- Zeilennummern für Code Samples
+- Proben
+- Auf 60 Minuten kürzen
             </pre>
+
         </section>
         <section>
             <p>
@@ -180,27 +181,29 @@
             <img class="fragment" src="2-way-data-binding.gif">
         </section>
 
-                <section class="todo">
-                    <h2>React</h2>
-                    <ul class="fragment">
-                        <li>Framework für Facebook und viele andere
-                        <li>Komponenten kapseln Template und Logik
-                        <li>Abstraction from DOM: <em>f(model) -> UI</em>
-                        <li>Minimales API
-                        <li>Templates sind JavaScript plus HTML artige JSX-Syntax
-                        <li>Ein-Weg-Data-Binding: Zustandsänderungen stellen Komponente neu dar
-                        <li>Kann im Browser und auf dem Server rendern
-                        <li>viel Inspiration aus der funktionalen Ecke (Immutable, pure functions, stateless)
-                    </ul>
-                </section>
-
-        <section class="todo">
-            <h3>Container und View-Komponenten</h3>
+        <section>
+            <h2>React</h2>
             <ul class="fragment">
-                <li>Top-Level-Komponenten sind Container
-                <li>halten und/oder managen Zustand
-                <li>halten UI-Logik
-                <li>Daten fließen nur innerhalb der Hierarchien
+                <li>Framework used to build Facebook, Netflix, and many more
+                <li>Minimal API
+                <li>Component based
+                <li>Components encapsulate template and logic
+                <li>Templates are written in JavaScript, plus JSX extension for HTML style
+                <li>One way, data binding
+                <li>Abstraction from DOM using virtual DOM
+                <li>Model can be anything
+            </ul>
+            <p><em>f(model) -> UI</em></p>
+        </section>
+
+        <section>
+            <h3>Contrainers and Views</h3>
+            <ul class="fragment">
+                <li>Top Level Components are called Containers or Pages
+                <li>hold and manage State
+                <li>contain UI logic
+                <li>Other Components called Views
+                <li>Data and Control only flows in these hierarchies
             </ul>
             <div style="height: 300px">
                 <img src="unidirectional-data-flow.png">
@@ -214,7 +217,7 @@
 
         <section>
             <h3>Hello World React</h3>
-<pre><code data-trim contenteditable>class HelloMessage extends React.Component {
+<pre><code data-trim contenteditable class="line-numbers" data-leftpad>class HelloMessage extends React.Component {
   render() {
     return &lt;div>
             &lt;input value={this.state.greeting} ref="in"
@@ -223,7 +226,7 @@
             &lt;button onClick={() => this.reset()}>Clear&lt;/button>
         &lt;/div>;
   }</code></pre>
-<pre class="fragment"><code contenteditable class="javascript">  constructor(props) {
+<pre class="fragment"><code contenteditable class="javascript line-numbers" data-num-start="10">  constructor(props) {
     this.state = {greeting: this.props.greeting};
   }
   updateModel(event) {
@@ -237,13 +240,13 @@
                 </section>
                 <section>
                     <h3>Main</h3>
-<pre><code data-trim contenteditable>
+<pre><code data-trim contenteditable class="line-numbers">
 // index.html
 &lt;body>
   <div id="mount"></div>
 &lt;/body>
 </code></pre>
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers">
 // main.js
 import HelloMessage from './HelloMessage';
 
@@ -253,36 +256,36 @@ ReactDOM.render(&lt;HelloMessage greeting="Hello"/>, mountNode);
                     <a target="_blank" href="code/hello-world/public/index.html">Run</a>
                 </section>
 
-                <section class="todo">
-                    <h3>React in der Praxis</h3>
+                <section>
+                    <h3>Real-World React</h3>
                     <ul>
-                        <li class="fragment">React wird meist mit anderen Tools und Techniken zusammen eingesetzt
-                        <li class="fragment">React-Router: Was wird bei welcher URL dargestellt?
+                        <li class="fragment">React is typically used in combination with other techniques
+                        <li class="fragment">React-Router: Mapping URL to what is displayed
                         <li class="fragment">Build
                             <ul>
-                                <li>Babel: Übersetzer
-                                <li>Webpack: Bundler
-                                <li>Flow: Statischer Type Checker
+                                <li>Babel: Translate from ES6/7 to ES5
+                                <li>Webpack: Bundler for Modules
+                                <li>Flow: Static Type Checker
                             </ul>
                         <li class="fragment">Architectural Patterns
                             <ul>
-                                <li class="fragment grow">Flux: UI-Architektur-Muster
-                                <li class="fragment grow">Universal Rendering: Server- und Client-Rendering kombiniert
+                                <li class="fragment grow">Flux: Architectural Pattern for UI
+                                <li class="fragment grow">Universal Rendering: Server und Client Side Rendering combined
                             </ul>
                         </li>
                         </li>
                     </ul>
                 </section>
 
-        <section class="todo">
-            <h3>Grundprobleme</h3>
+        <section>
+            <h3>Why do we need Architectural Patterns?</h3>
+            <h4>Mutable State and Concurrency</h4>
             <ul>
-                <li>UI-Logik ist an JavaScript-Framework gekoppelt (in Container-Komponenten)
-                <li>Zustand ist an vielen Stellen verteilt
-                <li>Verteilter, veränderlicher Zustand ist schwer zu managen
-                <li>Je größer die Anwendung, desto schwerer ist der Zustand zu managen
-                <li>An welchen Stellen können Nebenläufigkeiten auftreten?
-                <Li>Kann man zu jedem Zeitpunkt klar sagen, in welchem Zustand die Anwendung ist?
+                <li>UI Logic is not decoupled from SPA framework
+                <li>State is distributed over many containers
+                <li>Distributed, mutable state is hard to manage
+                <li>Especially when application grows
+                <li>Async operations can happen anywhere
             </ul>
         </section>
 
@@ -312,7 +315,7 @@ ReactDOM.render(&lt;HelloMessage greeting="Hello"/>, mountNode);
 
                 <section>
                     <h3>Main</h3>
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers">
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -329,13 +332,13 @@ ReactDOM.render(
                 </section>
                 <section>
                     <h3>Actions and Action-Creators</h3>
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers" data-leftpad>
 // Action
 export const UPDATE_GREETING = 'UPDATE_GREETING';
 export const RESET_GREETING = 'RESET_GREETING';
 </code></pre>
 
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers" data-num-start="4">
 // Action creator
 export function updateGreeting(greeting) {
   return {
@@ -361,14 +364,14 @@ export function resetGreeting() {
 
                 <section>
                     <h3>State created/updated by Reducers</h3>
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers" data-leftpad>
 // store
 export default createStore(combineReducers({
   greeting: greetingReducer
 }));
 </code></pre>
 
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers">
 // reducer
 import {UPDATE_GREETING, RESET_GREETING} from './actions';
 
@@ -451,7 +454,7 @@ function greetingReducer(state = 'Hello', action) {
 
         <section>
             <h3>Server Side Code (Hapi)</h3>
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers" data-leftpad>
 const server = new Hapi.Server();
 server.route({
     method:  'GET',
@@ -460,7 +463,7 @@ server.route({
 });
 </code></pre>
             <!--<h4 class="fragment">Jede Seite wird über denselben Handler gerendert</h4>-->
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers">
 function renderRoute(request, reply) {
   const html =
     ReatDom.renderToString(
@@ -476,7 +479,7 @@ function renderRoute(request, reply) {
 
             <section>
                     <h3>How to transfer state from Server to Client?</h3>
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers">
 &lt!-- server -->
 function renderFullPage(html, initialData) {
   return `
@@ -491,7 +494,7 @@ function renderFullPage(html, initialData) {
 &lt;/html>
 `;
 }</code></pre>
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers" data-leftpad>
 // client: init store from complete state
 const initialState = window.__INITIAL_STATE__;
 const store = createStore(..., initialState);
@@ -570,19 +573,20 @@ See lib: /private/tmp/flow/flowlib_1ddc81a6/react.js:237</code></pre>
 
         <section>
             <h3>Example #2: Type Declarations</h3>
-            <pre class="fragment"data-fragment-index="1"><code data-trim class="line-numbers typescript">
+            <pre class="fragment"data-fragment-index="1"><code data-trim class="line-numbers typescript" data-leftpad>
 type State =  {
     greeting: string;
 };
         </code></pre>
-            <pre class="fragment" data-fragment-index="3"><code data-trim class="line-numbers typescript">
+            <pre class="fragment" data-fragment-index="3"><code data-trim class="line-numbers typescript" data-leftpad
+                                                                data-num-start="4">
 type Props = {
     // ERROR: trying to assign this boolean to state
     // greeting: boolean
     greeting: string
 };
         </code></pre>
-            <pre><code data-trim class="line-numbers typescript" data-noescape>
+            <pre><code data-trim class="line-numbers typescript" data-noescape data-num-start="9" data-leftpad>
 class HelloMessage extends React.Component&lt;any, Props, State> {
 <span class="fragment" data-fragment-index="2">    constructor(props: Props) {
         super(props);

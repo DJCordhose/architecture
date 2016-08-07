@@ -76,8 +76,10 @@
     <div class="slides">
         <section class="todo">
             <pre>
-- Zeilennummern für Code Samples
+- Proben
+- Auf 60 Minuten kürzen
             </pre>
+
         </section>
 
         <section>
@@ -284,7 +286,7 @@
 
         <section>
             <h3>Hello World React</h3>
-<pre><code data-trim contenteditable class="line-numbers">class HelloMessage extends React.Component {
+<pre><code data-trim contenteditable class="line-numbers" data-leftpad>class HelloMessage extends React.Component {
   render() {
     return &lt;div>
             &lt;input value={this.state.greeting} ref="in"
@@ -293,7 +295,7 @@
             &lt;button onClick={() => this.reset()}>Clear&lt;/button>
         &lt;/div>;
   }</code></pre>
-<pre class="fragment"><code contenteditable class="javascript">  constructor(props) {
+<pre class="fragment"><code contenteditable class="javascript line-numbers" data-num-start="10">  constructor(props) {
     this.state = {greeting: this.props.greeting};
   }
   updateModel(event) {
@@ -307,13 +309,13 @@
                 </section>
                 <section>
                     <h3>Aufruf</h3>
-<pre><code data-trim contenteditable>
+<pre><code data-trim contenteditable class="line-numbers">
 // index.html
 &lt;body>
   <div id="mount"></div>
 &lt;/body>
 </code></pre>
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers">
 // main.js
 import HelloMessage from './HelloMessage';
 
@@ -396,7 +398,7 @@ ReactDOM.render(&lt;HelloMessage greeting="Hello"/>, mountNode);
 
                 <section>
                     <h3>Aufruf</h3>
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers">
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -413,13 +415,13 @@ ReactDOM.render(
                 </section>
                 <section>
                     <h3>Actions und Action-Creators</h3>
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers" data-leftpad>
 // Action
 export const UPDATE_GREETING = 'UPDATE_GREETING';
 export const RESET_GREETING = 'RESET_GREETING';
 </code></pre>
 
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers" data-num-start="4">
 // Action creator
 export function updateGreeting(greeting) {
   return {
@@ -437,14 +439,14 @@ export function resetGreeting() {
                 </section>
                 <section>
                     <h3>State</h3>
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers" data-leftpad>
 // store
 export default createStore(combineReducers({
   greeting: greetingReducer
 }));
 </code></pre>
 
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers" data-num-start="5">
 // reducer
 import {UPDATE_GREETING, RESET_GREETING} from './actions';
 
@@ -555,7 +557,7 @@ function greetingReducer(state = 'Hello', action) {
         </section>
         <section>
             <h3>Hapi Code</h3>
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers" data-leftpad>
 const server = new Hapi.Server();
 server.route({
     method:  'GET',
@@ -564,7 +566,7 @@ server.route({
 });
 </code></pre>
             <!--<h4 class="fragment">Jede Seite wird über denselben Handler gerendert</h4>-->
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers">
 function renderRoute(request, reply) {
   const html =
     ReatDom.renderToString(
@@ -581,7 +583,7 @@ function renderRoute(request, reply) {
 
             <section>
                     <h3>Wie transferieren wir den Zustand vom Server zum Client?</h3>
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript  line-numbers">
 &lt!-- server -->
 function renderFullPage(html, initialData) {
   return `
@@ -596,7 +598,7 @@ function renderFullPage(html, initialData) {
 &lt;/html>
 `;
 }</code></pre>
-<pre class="fragment"><code data-trim contenteditable class="javascript">
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers"  data-leftpad>
 // client: init store from complete state
 const initialState = window.__INITIAL_STATE__;
 const store = createStore(..., initialState);
