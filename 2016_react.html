@@ -74,21 +74,13 @@
 
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
-        <section class="todo">
-            <pre>
-- Proben
-- Auf 60 Minuten kürzen
-            </pre>
-
-        </section>
-
         <section>
             <h2>Webanwendungen mit React entwickeln</h2>
             <p>
                 <small><a href="http://zeigermann.eu" target="_blank">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose" target="_blank">@DJCordhose</a>
                 </small>
             </p>
-            <p><a href="http://djcordhose.github.io/architecture/2016_react.html">http://djcordhose.github.io/architecture/2016_react.html</a></p>
+            <p><a href="http://bit.ly/react-web">http://bit.ly/react-web</a></p>
         </section>
         <section>
             <p>
@@ -107,15 +99,30 @@
         </section>
 
         <section>
-            <h2>Was ich euch zeigen möchte</h2>
-            <ul>
-                <li class="fragment">Warum sind klassische Web-Anwendungen gut?
-                <li class="fragment">Was sind Single-Page Anwendungen (SPAs) und warum sind die gut?
-                <li class="fragment">Wo liegen die Grenzen von jQuery und Angular 1?
-                <li class="fragment">Wie setzt ihr SPAs mit React und Redux um?
-                <li class="fragment">Was sind Universal Web Apps und warum sind die noch besser?
-                <li class="fragment">Wie kann man Universal Web Apps mit React und Redux umsetzen?
-                <li class="fragment">Was sind die Herausforderungen?
+            <h2>These</h2>
+            <p class="fragment">Damit man die Architektur-Entscheidungen von React verstehen kann, muss man
+            die Schwierigkeiten anderer Ansätze verstehen</p>
+        </section>
+
+        <!--<section>-->
+            <!--<h2>Was ich euch zeigen möchte</h2>-->
+            <!--<ul>-->
+                <!--<li class="fragment">Warum sind klassische Web-Anwendungen gut?-->
+                <!--<li class="fragment">Was sind Single-Page Anwendungen (SPAs) und warum sind die gut?-->
+                <!--<li class="fragment">Wo liegen die Grenzen von jQuery und Angular 1?-->
+                <!--<li class="fragment">Wie setzt ihr SPAs mit React und Redux um?-->
+                <!--<li class="fragment">Was sind Universal Web Apps und warum sind die noch besser?-->
+                <!--<li class="fragment">Wie kann man Universal Web Apps mit React und Redux umsetzen?-->
+                <!--<li class="fragment">Was sind die Herausforderungen?-->
+            <!--</ul>-->
+        <!--</section>-->
+
+        <section>
+            <h2>Erster Ansatz: Klassichen Webanwendungen</h2>
+            <ul class="fragment">
+                <li>Browser sendet HTTP-Request und empfängt HTML
+                <li>Content wird auf der Server-Seite gerendert
+                <li>Jede Interaktion wiederholt diesen Zyklus
             </ul>
         </section>
 
@@ -125,15 +132,6 @@
 
             <img src="embarc/KlassischeWebAnwendung.png" style="height: 450px;">
             <p><small>Copyright 2016, embarc</small></p>
-        </section>
-
-        <section>
-            <h2>Klassichen Webanwendungen</h2>
-            <ul class="fragment">
-                <li>Browser sendet HTTP-Request und empfängt HTML
-                <li>Content wird auf der Server-Seite gerendert
-                <li>Jede Interaktion wiederholt diesen Zyklus
-            </ul>
         </section>
 
         <section>
@@ -184,7 +182,7 @@
                 eine Menge von <em>bestehenden</em> Elementen zu ändern</p>
             <ul class="fragment">
                 <li>nicht so gut, wenn es keine <em>bestehenden</em> Elemente gibt: SPA rendert komplett auf Client-Seite
-                <li>nicht so gut, wenn die Änderungen nicht <em>punktuell</em> sind: Seiten-Wechesel?
+                <li>nicht so gut, wenn die Änderungen nicht <em>punktuell</em> sind: Seiten-Wechsel?
                 <li>nicht so gut, wenn <em>JavaScript-Schnippsel</em> nicht reichen: Wer will schon eine echte Anwendung aus Schnippseln zusammen bauen?
             </ul>
             <p class="fragment">Perfide, da für viele Entwickler jQuery das bessere JavaScript ist.</p>
@@ -198,7 +196,8 @@
             <p class="fragment">Daher baut man sich - oft ohne es zu merken - Schritt für Schritt ein eigenes Framework</p>
             <p class="fragment">Nicht so gut:</p>
             <ul class="fragment">
-                <li>Kriegt man das wirklich so gut hin wie Google/Facebook mit einem großen Team und Jahren an Entwicklungsaufwand und Erfahrung
+                <li>Kriegt man das wirklich so gut hin wie Google/Facebook mit einem großen Team
+                    und Jahren an Entwicklungsaufwand und Erfahrung
                 <li>Besser etwas bestehendes nutzen
                 <li>Es gibt bereits eine Kommunity und Dokumentation
                 <li>Man bekommt leichter Leute mit der passenden Erfahrung
@@ -334,7 +333,7 @@ ReactDOM.render(&lt;HelloMessage greeting="Hello"/>, mountNode);
                             <ul>
                                 <li>Babel: Übersetzer
                                 <li>Webpack: Bundler
-                                <li>Flow: Statischer Type Checker
+                                <li>Flow oder TypeScript: Statischer Type Checker
                             </ul>
                         <li class="fragment">Architektur-Muster
                             <ul>
@@ -538,10 +537,10 @@ function greetingReducer(state = 'Hello', action) {
             </div>
         </section>
 
-        <section>
-            <h2>Alles total einfach, also???</h2>
-            <h3 class="fragment">Leider nicht ganz</h3>
-        </section>
+        <!--<section>-->
+            <!--<h2>Alles total einfach, also???</h2>-->
+            <!--<h3 class="fragment">Leider nicht ganz</h3>-->
+        <!--</section>-->
         <section>
             <h3>JavaScript auf dem Server?</h3>
             <a href="https://nodejs.org" target="_blank"><img class="fragment" src="node_black.png" height="200"></a>
@@ -549,37 +548,37 @@ function greetingReducer(state = 'Hello', action) {
             <p class="fragment"><small><a href="https://nodejs.org" target="_blank">https://nodejs.org</a></small></p>
         </section>
 
-        <section>
-            <h3>Serverseitige JavaScript Web-Frameworks?</h3>
-            <a href="http://hapijs.com/" target="_blank"><img class="fragment" src="hapi-white.png" height="200"></a>
-            <p class="fragment"><em>A rich framework for building applications and services</em></p>
-            <p class="fragment"><small><a href="http://hapijs.com/" target="_blank">http://hapijs.com/</a></small></p>
-        </section>
-        <section>
-            <h3>Hapi Code</h3>
-<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers" data-leftpad>
-const server = new Hapi.Server();
-server.route({
-    method:  'GET',
-    path:    '/',
-    handler: renderRoute
-});
-</code></pre>
-            <!--<h4 class="fragment">Jede Seite wird über denselben Handler gerendert</h4>-->
-<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers">
-function renderRoute(request, reply) {
-  const html =
-    ReatDom.renderToString(
-        &lt;Provider store={store}>
-            &lt;HelloMessage />
-        &lt;/Provider>
-    );
-  // redux offers complete state from single store
-  reply(renderFullPage(html, store.getState()));
-};
+        <!--<section>-->
+            <!--<h3>Serverseitige JavaScript Web-Frameworks?</h3>-->
+            <!--<a href="http://hapijs.com/" target="_blank"><img class="fragment" src="hapi-white.png" height="200"></a>-->
+            <!--<p class="fragment"><em>A rich framework for building applications and services</em></p>-->
+            <!--<p class="fragment"><small><a href="http://hapijs.com/" target="_blank">http://hapijs.com/</a></small></p>-->
+        <!--</section>-->
+        <!--<section>-->
+            <!--<h3>Hapi Code</h3>-->
+<!--<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers" data-leftpad>-->
+<!--const server = new Hapi.Server();-->
+<!--server.route({-->
+    <!--method:  'GET',-->
+    <!--path:    '/',-->
+    <!--handler: renderRoute-->
+<!--});-->
+<!--</code></pre>-->
+            <!--&lt;!&ndash;<h4 class="fragment">Jede Seite wird über denselben Handler gerendert</h4>&ndash;&gt;-->
+<!--<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers">-->
+<!--function renderRoute(request, reply) {-->
+  <!--const html =-->
+    <!--ReatDom.renderToString(-->
+        <!--&lt;Provider store={store}>-->
+            <!--&lt;HelloMessage />-->
+        <!--&lt;/Provider>-->
+    <!--);-->
+  <!--// redux offers complete state from single store-->
+  <!--reply(renderFullPage(html, store.getState()));-->
+<!--};-->
 
-</code></pre>
-        </section>
+<!--</code></pre>-->
+        <!--</section>-->
 
             <section>
                     <h3>Wie transferieren wir den Zustand vom Server zum Client?</h3>
@@ -641,7 +640,7 @@ const store = createStore(..., initialState);
 
             <h3>Fragen / Diskussion</h3>
 
-            <p><a href="http://djcordhose.github.io/architecture/2016_react.html">http://djcordhose.github.io/architecture/2016_react.html</a></p>
+            <p><a href="http://bit.ly/react-web">http://bit.ly/react-web</a></p>
 
             <p>
                 <small><a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
@@ -657,6 +656,16 @@ const store = createStore(..., initialState);
 <script src="reveal.js/lib/js/head.min.js"></script>
 <script src="reveal.js/js/reveal.js"></script>
 <script src="lib/jquery-2.2.4.js"></script>
+<script>
+    $('section').attr('data-background-image', "backgrounds/light-transparent.jpg");
+</script>
+<script>
+    // only presentation version has fragments
+    if (window.location.hostname.indexOf('localhost') === -1) {
+        $('.fragment').removeClass('fragment');
+    }
+</script>
+
 
 <script>
 

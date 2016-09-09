@@ -128,14 +128,6 @@
 
         </section>
 
-        <section class="todo">
-            <pre>
-- Proben
-- Auf 45 Minuten kürzen
-            </pre>
-
-        </section>
-
         <section>
             <h2>Worum geht es hier?</h2>
             <p class="fragment">Bei der (Web-)Entwicklung kommt es darauf an, einen Architektur-Ansatz zu finden,
@@ -522,7 +514,13 @@
                 <li>Aller Zustand muss beim serverseitigen Rendering komplett vorliegen
                 <li>Unterschiedliche Locales auf Server und Client
                 <li>Zeitliche veränderliche Daten (Timestamp, Börsenkurs)
+                <li>Auch auf dem Server muss JavaScript laufen
             </ul>
+        </section>
+
+        <section>
+            <h2>Harte Grenze #6: <span class="fragment">???</span></h2>
+            <p class="fragment">Fragt mich in einem Jahr noch mal</p>
         </section>
 
         <section>
@@ -553,7 +551,7 @@
                 </tr>
                 <tr>
                     <th>40</th>
-                    <td></td>
+                    <td>Ist es gegen Gottes Willen im Browser zu rendern?</td>
                     <td>Sollte ich nicht jede SPA als Universal App schreiben?
                     </td>
                     <td>Widersprechen SPAs nicht der Grundidee es Webs?
@@ -606,6 +604,18 @@
 
 <script src="reveal.js/lib/js/head.min.js"></script>
 <script src="reveal.js/js/reveal.js"></script>
+<script src="lib/jquery-2.2.4.js"></script>
+<script>
+//    $('section').attr('data-background-image', "backgrounds/light-world.jpg");
+    $('section').attr('data-background-image', "backgrounds/light-transparent.jpg");
+
+</script>
+<script>
+    // only presentation version has fragments
+    if (window.location.hostname.indexOf('localhost') === -1) {
+        $('.fragment').removeClass('fragment');
+    }
+</script>
 
 <script>
 

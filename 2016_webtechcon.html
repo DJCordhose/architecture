@@ -677,6 +677,16 @@ function updateGreeting(greeting: string): GreetingAction {
 <script src="reveal.js/lib/js/head.min.js"></script>
 <script src="reveal.js/js/reveal.js"></script>
 <script src="lib/jquery-2.2.4.js"></script>
+<script src="lib/jquery-2.2.4.js"></script>
+<script>
+    $('section').attr('data-background-image', "backgrounds/light-sky3.jpg");
+</script>
+<script>
+    // only presentation version has fragments
+    if (window.location.hostname.indexOf('localhost') === -1) {
+        $('.fragment').removeClass('fragment');
+    }
+</script>
 
 <script>
 
