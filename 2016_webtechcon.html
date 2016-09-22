@@ -331,6 +331,38 @@ ReactDOM.render(
 );
 </code></pre>
                 </section>
+        <section>
+        <h3>HelloWorld-Component</h3>
+        <pre class="fragment"><code data-trim contenteditable class="javascript line-numbers">
+class HelloMessage extends React.Component {
+  render() {
+    const { greeting, updateGreeting, resetGreeting } = this.props;
+    return <div>
+      <input onChange={event => updateGreeting(event.target.value)}
+             value={greeting}/>
+      <p>{greeting}, World</p>
+      <button
+        onClick={() => resetGreeting()}>
+        Clear
+      </button>
+    </div>;
+  }
+}
+</code></pre>
+
+<pre class="fragment"><code data-trim contenteditable class="javascript line-numbers"  data-num-start="14">
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as Actions from './actions';
+export default connect(
+    state => ({
+      greeting: state.greeting
+    }),
+    dispatch => bindActionCreators(Actions, dispatch)
+)(HelloMessage);
+</code></pre>
+        </section>
+
                 <section>
                     <h3>Actions and Action-Creators</h3>
 <pre class="fragment"><code data-trim contenteditable class="javascript line-numbers" data-leftpad>

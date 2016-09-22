@@ -20,14 +20,9 @@ class HelloMessage extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    greeting: state.greeting
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(HelloMessage);
+export default connect(
+    state => ({
+      greeting: state.greeting
+    }),
+    dispatch => bindActionCreators(Actions, dispatch)
+)(HelloMessage);
