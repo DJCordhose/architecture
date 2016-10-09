@@ -16,7 +16,9 @@
     <!--<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">-->
     <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
     <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
-    <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+    <!--<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">-->
+    <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+
 
 
     <!-- Code syntax highlighting -->
@@ -62,7 +64,7 @@
 
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
-        <section>
+        <section data-transition="zoom">
             <h2>Was uns C64 Programmierung über JavaScript Architekturen lehren kann</h2>
             <p>
                 <small><a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
@@ -113,7 +115,7 @@
         <!-- - npm start-->
         <!-- - Checken, dass localhost:3000 im Browser läuft -->
 
-        <section>
+        <section data-transition="zoom">
             <p>
                 <a target="_blank" href="https://entwickler.de/press/javascript-fuer-java-entwickler-4-168852.html">
                     <img src="intro/s-k_JavaScript_fuer_JavaEntwickler_Auflage3_2400x_rgb-220x353@2x.jpg" width="200">
@@ -129,7 +131,7 @@
 
         </section>
 
-        <section>
+        <section data-transition="zoom">
             <h2>Worum geht es hier?</h2>
             <p class="fragment">Bei der (Web-)Entwicklung kommt es darauf an, einen Architektur-Ansatz zu finden,
                 der dem Problem gerecht wird.
@@ -409,6 +411,7 @@
                 <li>Je größer die Anwendung, desto schwerer ist der Zustand zu managen
                 <li>An welchen Stellen können Nebenläufigkeiten auftreten?
                 <Li>Kann man zu jedem Zeitpunkt klar sagen, in welchem Zustand die Anwendung ist?
+                <Li>Wie läuft die Initialisierungsphase
             </ul>
         </section>
 
@@ -441,6 +444,7 @@
                 <li>UI-Logik wandert aus Containern in Action-Creators und Stores
                 <li>Nebenläufigkeit nur in Action-Creators
                 <li>Immutability der Stores möglich und empfohlen
+                <li>Initialisierung durch initiale Aktion
             </ul>
         </section>
 
@@ -589,7 +593,7 @@
                 </tr>
                 <tr>
                     <th>40</th>
-                    <td>Ist es gegen Gottes Willen im Browser zu rendern?</td>
+                    <td>Wie realisiert man komplexe UI-Komponenten (ala TreeGrid)?</td>
                     <td>Sollte ich nicht jede SPA als Universal App schreiben?
                     </td>
                     <td>Widersprechen SPAs nicht der Grundidee es Webs?
@@ -604,7 +608,7 @@
                 </tr>
                 <tr>
                     <th>80</th>
-                    <td>Wie realisiert man komplexe UI-Komponenten (ala TreeGrid)?
+                    <td>Ist GraphQL nur eine weitere kurzlebige Mode?
                     </td>
                     <td>Wann passt eine klassische WebApp besser als eine SPA?
                     </td>
@@ -649,14 +653,17 @@
 <script src="lib/jquery-2.2.4.js"></script>
 <script>
 //    $('section').attr('data-background-image', "backgrounds/light-world.jpg");
-    $('section').attr('data-background-image', "backgrounds/light-transparent.jpg");
+//    $('section').attr('data-background-image', "backgrounds/light-transparent.jpg");
+//$('section').attr('data-background-image', "backgrounds/light-chalk.jpg");
+$('section').attr('data-background-image', "backgrounds/light-metal.jpg");
+
 
 </script>
 <script>
     // only presentation version has fragments
-    if (window.location.hostname.indexOf('localhost') === -1) {
+//    if (window.location.hostname.indexOf('localhost') === -1) {
         $('.fragment').removeClass('fragment');
-    }
+//    }
 </script>
 
 <script>
@@ -669,7 +676,7 @@
         history: true,
         center: true,
 
-        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        transition: 'convex', // none/fade/slide/convex/concave/zoom
 
         // Optional reveal.js plugins
         dependencies: [
