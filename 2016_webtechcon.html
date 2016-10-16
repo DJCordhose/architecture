@@ -101,6 +101,8 @@
     <div class="slides">
         <section>
             <h2>Universal Rendering with React, Redux, and Flow</h2>
+            <h3><a target="_blank" href="https://webtechcon.de/session/universal-rendering-with-react-redux-and-flow/">
+            Webtechcon 2016</a></h3>
             <p>
                 <small><a href="http://zeigermann.eu" target="_blank">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose" target="_blank">@DJCordhose</a>
                 </small>
@@ -388,12 +390,12 @@ export function resetGreeting() {
 </code></pre>
                 </section>
 
-        <section>
-            <a href="https://youtu.be/I7IdS-PbEgI" target="_blank"><img style="height: 600px" src="alan_kay.jpg"></a>
-            <p><small><a href="https://facebook.github.io/immutable-js/" target="_blank">
-                https://facebook.github.io/immutable-js/
-            </a></small></p>
-        </section>
+        <!--<section>-->
+            <!--<a href="https://youtu.be/I7IdS-PbEgI" target="_blank"><img style="height: 600px" src="alan_kay.jpg"></a>-->
+            <!--<p><small><a href="https://facebook.github.io/immutable-js/" target="_blank">-->
+                <!--https://facebook.github.io/immutable-js/-->
+            <!--</a></small></p>-->
+        <!--</section>-->
 
                 <section>
                     <h3>State created/updated by Reducers</h3>
@@ -570,21 +572,21 @@ const store = createStore(..., initialState);
             </ul>
         </section>
 
-        <section>
-            <h2>Bonus Challenge: REST</h2>
-            <p class="fragment">REST not very considerate with network resources</p>
-            <p class="fragment">Either too many requests (underfetching) ...</p>
-            <p class="fragment">... and/or unneeded data in requests (overfetching)</p>
-            <p class="fragment">Especially problematic in mobile</p>
-            <p class="fragment">data layers allow for exact fetches</p>
-            <p class="fragment"><a href="http://graphql.org/" target="_blank">GraphQL</a>
-                de-facto-Standard for data layer</p>
+        <!--<section>-->
+            <!--<h2>Bonus Challenge: REST</h2>-->
+            <!--<p class="fragment">REST not very considerate with network resources</p>-->
+            <!--<p class="fragment">Either too many requests (underfetching) ...</p>-->
+            <!--<p class="fragment">... and/or unneeded data in requests (overfetching)</p>-->
+            <!--<p class="fragment">Especially problematic in mobile</p>-->
+            <!--<p class="fragment">data layers allow for exact fetches</p>-->
+            <!--<p class="fragment"><a href="http://graphql.org/" target="_blank">GraphQL</a>-->
+                <!--de-facto-Standard for data layer</p>-->
 
-            <p class="fragment"><a href="http://githubengineering.com/the-github-graphql-api/" target="_blank">
-                GitHub API available through GraphQL
-            </a></p>
+            <!--<p class="fragment"><a href="http://githubengineering.com/the-github-graphql-api/" target="_blank">-->
+                <!--GitHub API available through GraphQL-->
+            <!--</a></p>-->
 
-        </section>
+        <!--</section>-->
 
 
         <section>
@@ -741,9 +743,9 @@ function updateGreeting(greeting: string): GreetingAction {
 </script>
 <script>
     // only presentation version has fragments
-    if (window.location.hostname.indexOf('localhost') === -1) {
+//    if (window.location.hostname.indexOf('localhost') === -1) {
         $('.fragment').removeClass('fragment');
-    }
+//    }
 </script>
 
 <script>
