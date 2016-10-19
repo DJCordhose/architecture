@@ -8,7 +8,7 @@ const publicPath = path.join(__dirname, '/../../public');
 import renderRoute from './renderRoute';
 
 server.connection({
-  port: 3000
+  port: 3001
 });
 
 require('./devServerHapi').setup(server, publicPath);

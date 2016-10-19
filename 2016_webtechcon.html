@@ -92,6 +92,12 @@
     <!--60 Minuten   -->
 
     <!--Vorbereitung:-->
+    <!-- - cd code/universal:-->
+    <!-- - npm start-->
+    <!-- - Checken, dass localhost:3001 im Browser läuft -->
+
+    <!--Im angular2-react:-->
+    <!-- - cd code/react/2-universal-rendering-->
     <!-- - npm start-->
     <!-- - Checken, dass localhost:3000 im Browser läuft -->
 
@@ -460,6 +466,15 @@ function greetingReducer(state = 'Hello', action) {
         </section>
 
         <section>
+            <h3>Universal Rendering: First-Page-Impression</h3>
+            <div>
+                <a href="http://localhost:3001/" target="_blank">
+                    <img src="universal-first-page-impression.png" style="height: 500px;">
+                </a>
+            </div>
+        </section>
+
+        <section>
             <h3>Universal Rendering with React und Redux</h3>
             <ul class="fragment">
                 <li>First-Page-Impressions rendered statically on server side for a selection of pages
@@ -468,15 +483,6 @@ function greetingReducer(state = 'Hello', action) {
                 <li>Pages being linked to can also be rendered statically on server
                 <li>Also works well with React-Router (allows for cental point of entry)
             </ul>
-        </section>
-
-        <section>
-            <h3>Universal Rendering: First-Page-Impression</h3>
-            <div>
-                <a href="http://localhost:3000/" target="_blank">
-                    <img src="universal-first-page-impression.png" style="height: 500px;">
-                </a>
-            </div>
         </section>
 
         <section>
@@ -572,6 +578,26 @@ const store = createStore(..., initialState);
             </ul>
         </section>
 
+        <section>
+            <h2>Additional Example using SVG</h2>
+            <img src="screenshot_svg.png" height="500px">
+        </section>
+
+        <section>
+            <h2>SPA</h2>
+            <a href="https://djcordhose.github.io/angular2-react/code/react/1b-advanced-change-detection-segments/public"
+                target="_blank">
+                <img src="screenshot_svg_spa.png" height="500px">
+            </a>
+        </section>
+
+        <section>
+            <h2>Universal</h2>
+            <a href="http://localhost:3000" target="_blank">
+                <img src="screenshot_svg_universal.png" height="500px">
+            </a>
+        </section>
+
         <!--<section>-->
             <!--<h2>Bonus Challenge: REST</h2>-->
             <!--<p class="fragment">REST not very considerate with network resources</p>-->
@@ -626,8 +652,6 @@ ReactDOM.render(element, mountNode);
 237:     element: React$Element&lt;Config>,
                   ^^^^^^^^^^^^^^^^^^^^^ React$Element.
 See lib: /private/tmp/flow/flowlib_1ddc81a6/react.js:237</code></pre>
-
-
         </section>
 
         <section>
@@ -694,12 +718,16 @@ function updateGreeting(greeting: string): GreetingAction {
         <section>
             <h2>Tooling</h2>
             <ul>
-                <li>type annotations can be removed by babel
+                <li>type annotations can be removed by babel-plugin
                 <li>WebStorm supports flow
+                <li>Inline Flow errors possible as <a target="_blank" href="https://www.npmjs.com/package/eslint-plugin-flowtype-errors">
+                    eslint plugin</a>
+                    <img src="idea_eslint.png">
+                <li><a target="_blank" href="https://atom.io/">https://atom.io/</a> with
+                <a target="_blank" href="https://nuclide.io/">https://nuclide.io/</a> Package
                 <li>npm flow-bin
             </ul>
         </section>
-
 
         <section>
             <h2>Wrapup</h2>
