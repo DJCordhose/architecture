@@ -346,10 +346,10 @@ class HelloMessage extends React.Component {
   render() {
     const { greeting, updateGreeting, resetGreeting } = this.props;
     return <div>
-      <input onChange={event => updateGreeting(event.target.value)}
+      &lt;input onChange={event => updateGreeting(event.target.value)}
              value={greeting}/>
       <p>{greeting}, World</p>
-      <button
+      &lt;button
         onClick={() => resetGreeting()}>
         Clear
       </button>
@@ -616,7 +616,7 @@ const store = createStore(..., initialState);
 
 
         <section>
-            <h2>Flow</h2>
+            <h2>Bonus Level: Flow</h2>
             <h3><a href="http://flowtype.org/" target="_blank">http://flowtype.org/</a></h3>
         </section>
 
@@ -629,14 +629,14 @@ const store = createStore(..., initialState);
             <div class="fragment">
 
             <h3 class="good">Good</h3>
-            <pre><code data-trim class="line-numbers typescript">
+            <pre><code data-trim class="line-numbers typescript" contenteditable>
 const element = &lt;HelloMessage greeting="Hello"/>;
 ReactDOM.render(element, mountNode);
             </code></pre>
             </div>
             <div class="fragment">
             <h3 class="bad">Bad</h3>
-            <pre><code data-trim class="line-numbers typescript">
+            <pre><code data-trim class="line-numbers typescript" contenteditable>
 const element = 'just a string'; // type is interred as string
 ReactDOM.render(element, mountNode);
             </code></pre>
@@ -656,12 +656,12 @@ See lib: /private/tmp/flow/flowlib_1ddc81a6/react.js:237</code></pre>
 
         <section>
             <h3>Example #2: Type Declarations</h3>
-            <pre class="fragment"data-fragment-index="1"><code data-trim class="line-numbers typescript" data-leftpad>
+            <pre class="fragment"data-fragment-index="1"><code data-trim class="line-numbers typescript" data-leftpad contenteditable>
 type State =  {
     greeting: string;
 };
         </code></pre>
-            <pre class="fragment" data-fragment-index="3"><code data-trim class="line-numbers typescript" data-leftpad
+            <pre class="fragment" data-fragment-index="3"><code data-trim class="line-numbers typescript" data-leftpad contenteditable
                                                                 data-num-start="4">
 type Props = {
     // ERROR: trying to assign this boolean to state
@@ -669,9 +669,9 @@ type Props = {
     greeting: string
 };
         </code></pre>
-            <pre><code data-trim class="line-numbers typescript" data-noescape data-num-start="9" data-leftpad>
+            <pre><code data-trim class="line-numbers typescript" data-noescape data-num-start="9" data-leftpad contenteditable>
 class HelloMessage extends React.Component&lt;any, Props, State> {
-<span class="fragment" data-fragment-index="2">    constructor(props: Props) {
+<span class="fragment" data-fragment-index="2" contenteditable>    constructor(props: Props) {
         super(props);
         this.state = {greeting: this.props.greeting};
     }</span>
@@ -682,15 +682,21 @@ class HelloMessage extends React.Component&lt;any, Props, State> {
 
         <section>
             <h3>Example #3: Redux Action types</h3>
-            <pre class="fragment" data-fragment-index="1"><code data-trim class="line-numbers typescript">
+            <pre class="fragment" data-fragment-index="1"><code data-trim class="line-numbers typescript" contenteditable>
 type GreetingAction = {
     actionType: 'UPDATE_GREETING' | 'RESET_GREETING';
     payload: ?string;
 }
             </code></pre>
+            <pre class="fragment" data-fragment-index="1"><code data-trim class="line-numbers typescript" contenteditable>
+// alternative, more specific declaration
+type GreetingAction = {actionType: 'UPDATE_GREETING', payload: string}
+                    | {actionType: 'UPDATE_GREETING' };
+}
+            </code></pre>
 
 
-            <pre><code data-trim class="line-numbers typescript" data-noescape>
+            <pre><code data-trim class="line-numbers typescript" data-noescape contenteditable>
 // action creator
 function updateGreeting(greeting: string): GreetingAction {
 <span class="fragment" data-fragment-index="2">    return {
@@ -719,13 +725,13 @@ function updateGreeting(greeting: string): GreetingAction {
             <h2>Tooling</h2>
             <ul>
                 <li>type annotations can be removed by babel-plugin
-                <li>WebStorm supports flow
+                <li>WebStorm 2016.3 supports flow
                 <li>Inline Flow errors possible as <a target="_blank" href="https://www.npmjs.com/package/eslint-plugin-flowtype-errors">
                     eslint plugin</a>
                     <img src="idea_eslint.png">
                 <li><a target="_blank" href="https://atom.io/">https://atom.io/</a> with
                 <a target="_blank" href="https://nuclide.io/">https://nuclide.io/</a> Package
-                <li>npm flow-bin
+                <li><em>npm flow-bin</em> for installation
             </ul>
         </section>
 
@@ -770,10 +776,14 @@ function updateGreeting(greeting: string): GreetingAction {
     $('section').attr('data-background-image', "backgrounds/light-sky3.jpg");
 </script>
 <script>
-    // only presentation version has fragments
-//    if (window.location.hostname.indexOf('localhost') === -1) {
+    Reveal.addEventListener( 'ready', function( event ) {
+        // no fragments, never
         $('.fragment').removeClass('fragment');
-//    }
+        // only applies presentation version
+        if (window.location.hostname.indexOf('localhost') !== -1) {
+            Reveal.configure({ controls: false });
+        }
+    } );
 </script>
 
 <script>
