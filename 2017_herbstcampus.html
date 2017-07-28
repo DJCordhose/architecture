@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Frontend-Architektur</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <!--<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">-->
+    <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
+    <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
+    <!--<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">-->
+    <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+    <style>
+        /*pre code {*/
+            /*display: block;*/
+            /*padding: 0.5em;*/
+            /*background: #FFFFFF !important;*/
+            /*color: #000000 !important;*/
+        /*}*/
+
+        .right-img {
+            margin-left: 10px !important;
+            float: right;
+            height: 500px;
+        }
+        .todo:before {
+            content: 'TODO: ';
+        }
+        .todo {
+            color: red !important;
+        }
+        code span.line-number {
+            color: lightcoral;
+        }
+        .reveal pre code {
+            max-height: 1000px !important;
+        }
+        img {
+            border: 0 !important;
+            box-shadow:0 0 0 0 !important;
+        }
+
+        .reveal {
+            -ms-touch-action: auto !important;
+            touch-action: auto !important;
+        }
+
+    </style>
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<!--
+Überblick über moderne (JavaScript-)Frontend-Architektur
+
+https://www.herbstcampus.de/veranstaltung-5928-%C3%9Cberblick-%C3%BCber-moderne-%28javascript-%29frontend-architektur.html?id=5928
+
+70 Minuten
+
+Die Anforderungen an eine moderne, clientseitige Architektur für Webanwendungen sind typischerweise deutlich höher als die an die zugehörige Backendarchitektur. Backendarchitekturen sind zudem seit Jahren Thema und gut durchschaut. Im Gegensatz dazu ist der Wissensstand zu Architekturansätzen und deren Verständnis oft erschreckend niedrig.
+
+In diesem Vortrag wird erklärt, warum moderne Webanwendungen komplexe Architekturanforderungen haben und mit welchen Konzepten und auch mit welchen konkreten Technologien man darauf reagieren kann. Es wird auch Code gezeigt.
+
+Skills
+Grundsätzliches Verständnis von Web-Anwendung und deren Architektur
+
+Lernziele
+Verständnis für die Herausforderungen moderner, clientseitiger Webanwendungen. Warum sind diese so anders als klassische Architekturen?
+-->
+
+<div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+        <section class="todo">
+<pre>
+
+ALWAYS finish your talk on a slide that's easily photographed and tells people where to get more info. Leave it up while you take Qs
+https://twitter.com/hadleywickham/status/888367562190409728?s=03
+
+
+### Motivation / Setting / Herausforderung:
+* Häufiges Missverständnis: Webapp vs Web Application
+* Komplexe, Interaktive App mit Abhägigkeiten
+* Beispiele zeigen wo Counter überall nicht gehen
+    * XING
+    * LinkedIn
+    * Facebook
+* Liste mit Grüßen
+* Counter aller Grüße in Form eines Pie-Charts
+* Verbindung in Beide Richtungen
+    * Hinzufügen der Liste updated Pie-Chart
+    * Click auf Pie-Chart Filtert liste
+
+### Schritte
+* Gewünschte Endanwendung zeigen inkl. Filter-Reset: höchst Interaktiv
+* Nur Express
+    * Loose focus and Scrollposition, no animation
+* Optional so etwas wie Dash: https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503
+* Plus JQuery per Script
+    * Listener hin und her
+    * Wo hält man State?
+        * Wie speichert man die Liste?
+* Spa mit Web Components
+    * State immer auf dem Client
+    * Immer noch Listener hin und her
+* React
+* Redux
+* Universal
+
+### MicroService-Ansatz
+* Wie baut man eine komplexe App aus mehreren Modulen zusammen?
+  * Integriert: Tab innerhalb einer App
+  * Lazy / On Demand: Tab lädt Modul nach
+  * Integraion über Link: Tab mit externem Link lädt neue Anwendung mit gleicher Navigation
+
+### Von anderen Talks klauen
+- C64
+- Framework Vergleich
+
+### Links auswerten
+* https://twitter.com/sebmarkbage/status/855282385901936643?s=03
+* http://microservices.io
+* Frontend Architecture for big teams: https://youtu.be/q8jYs79ZW70
+    * https://www.slideshare.net/ChadchapolVittavutka/frontend-architecture-design-for-larger-team-final
+* https://staltz.com/unidirectional-user-interface-architectures.html
+* https://twitter.com/mxstbr/status/865490858967158784
+* https://twitter.com/acdlite/status/868409407356325889?s=03
+* http://vuejsdevelopers.com/2017/05/28/switch-from-react-to-vue-js/
+</pre>
+        </section>
+
+        <section data-markdown class="preparation">
+            <script type="text/template">
+                # Preparation
+
+            </script>
+        </section>
+
+        <section>
+            <h2>Überblick über moderne (JavaScript-)Frontend-Architektur</h2>
+            <h3><a href="https://www.herbstcampus.de/veranstaltung-5928-%C3%9Cberblick-%C3%BCber-moderne-%28javascript-%29frontend-architektur.html?id=5928" target="_blank">
+                Herbstcampus 2017</a></h3>
+            <p>
+                <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+            </p>
+            <p><small>Folien: <a href="http://djcordhose.github.io/architecture/2017_herbstcampus.html">
+                http://djcordhose.github.io/architecture/2017_herbstcampus.html</a></small></p>
+        </section>
+
+        <section>
+            <h2>Grundproblem bei einer komplexen Web-Anwendung</h2>
+            <h3>Beste UI/UX beißt sich mit Anforderungen an Wartbarkeit</h3>
+        </section>
+
+        <section>
+            <h2>Was macht Frontend-Architektur schwierig?</h2>
+            <h3 class="fragment">Das "Problem" ist der <em>Benutzer!</em></h3>
+
+            <ul>
+                <li class="fragment">alles soll wirken wie aus einem Guss
+                    <ul>
+                        <li>einheitliches Layout (UI)
+                        <li>einheitliches Bedienkonzept (UX)
+                    </ul>
+                </li>
+                <li class="fragment">reaktionsschnelles UI, auch unter Last
+                <li class="fragment">Anzeige soll jederzeit über alle Komponenten konsistent sein
+                <li class="fragment">alles von Anfang an da, ohne Verzögerung
+            </ul>
+            <!--<p class="fragment"><small>Oder man nimmt auf den Benutzer keine Rücksicht wenn es das Geschäftsmodell zulässt</small></p>-->
+        </section>
+
+        <section>
+            <h2>Wo ist das Problem? Das ist doch einfach oder?</h2>
+            <h3 class="fragment">Prominente Gegenbeispiele</h3>
+            <!-- TODO: Add screenshot from LinkedIn-->
+            <ul>
+                <li class="fragment">Facebook, LinkedIn, XING: Alle kämpfen mit uneinheitlichem Anzeigestand
+                <!--Add screenshot from LinkedIn-->
+                <li class="fragment">Gmail: Ladebalken am Anfang
+                <li class="fragment">Amazon: uneinheitliches Layout und Bedienkonzept
+                <li class="fragment">Viele seiten von Behörden/Ämtern/Großkonzernen etc.: zähes UI, validieren der Eingaben erst nach Submit
+            </ul>
+        </section>
+
+        <section>
+            <h2>Sind die alle unfähig?</h2>
+            <p class="fragment">Oder liegt das eher an Konflikten mit anderen typischen Anforderungen?</p>
+            <p class="fragment">Natürlich soll das alles auch</p>
+            <ul>
+                <li class="fragment">schnell und kostengünstig entwickelt werden
+                <li class="fragment">über Jahrzehnte wartbar sein
+                <li class="fragment">als Komponenten oder Teilprojekte entwickelbar sein
+                <li class="fragment">eine einheitliche Architektur haben
+                <li class="fragment">zum Skillset der vorhandenen Entwickler passen
+            </ul>
+        </section>
+
+        <!--<section>-->
+            <!--<h2>Typische Szenarien</h2>-->
+            <!--<p>Das gucken wir uns heute an</p>-->
+            <!--<ul>-->
+                <!--<li class="fragment"><strong>Was alle wissen wollen</strong>: Microservices im Backend (Monolithischer Client vs Vertikalen)-->
+                <!--<li class="fragment"><strong>Das Geheimnis der Single-Page Apps</strong>: Komplexes Zusammenspiel von Komponenten (State Management, Wartbarkeit)-->
+                <!--<li class="fragment"><strong>Quadratur des Kreises</strong>: Schnelle erste Anzeige bei gleichzeitig hoher Interaktivität (Universal Rendering)-->
+                <!--<li class="fragment"><strong>Uncool, aber häufig Hauptbestandteil der Anwendung</strong>: Effiziente, aber funktionale Formulare (Redux-Form)-->
+            <!--</ul>-->
+        <!--</section>-->
+
+        <section class="todo">
+            <h1>Hier die Greeting-App mit ihren komplexen Abhängigkeiten zeigen</h1>
+            <p>Hier die Komplexe App in code tun</p>
+        </section>
+
+        <section>
+            <h3>Klassiche Webanwendung</h3>
+            <p><small>jeder Boot tut gut, jeder Roundtrip setzt Zustand zurück</small></p>
+
+            <img src="embarc/KlassischeWebAnwendung.png" style="height: 450px;">
+            <p><small>Copyright 2016, embarc</small></p>
+        </section>
+
+        <section>
+            <h2>Klassichen Webanwendungen</h2>
+            <ul class="fragment">
+                <li>Browser sendet HTTP-Request und empfängt HTML
+                <li>Content wird auf der Server-Seite gerendert
+                <li>Jede Interaktion wiederholt diesen Zyklus
+            </ul>
+        </section>
+
+        <section>
+            <h2>Klassische Webanwendung: Oft ein nahe liegender Ansatz</h2>
+            <ul class="fragment">
+                <li>Klassische Webanwendung sind für viele Enterprise-Entwicklungen der natürliche Ausgangspunkt
+                <li>Server-Seitige Entwicklung mit Java/C# und HTTP und HTML sind gut verstanden
+                <li>kleinere UI-Änderungen können auf Client-Seite mit JavaScript-Schnippseln (jQuery) realisiert werden
+                <li>häufig ist dies völlig ausreichend
+            </ul>
+        </section>
+
+        <section>
+            <h2>Grenzen</h2>
+            <ul class="fragment">
+                <li>UI/UX ist grunsätzlich eingeschränkt
+                <li>selbst in vermeintlich klassischen Anwendungen verstecken sich SPAs oft als Teile
+                <li>z.B. JSF Komponenten mit einem komplexen UI
+                <li>Vermischung von client- und serverseitigem Rendering macht Anwendungsarchitektur und Programmiermodell abenteuerlich
+            </ul>
+            <p class="fragment"><em>Perfide, da zuerst die Aufwände zur Umsetzung ansteigen und der Code immer unübersichtlicher wird.</em></p>
+        </section>
+
+        <section>
+            <h3>Nächster Schritt: Single-Page Application</h3>
+            <img src="embarc/SP-Anwendung.png" style="height: 500px;">
+            <p><small>Copyright 2016, embarc</small></p>
+        </section>
+        <section>
+            <h3>Single-Page Applications (SPAs) verschieben eure Anwendung in den Browser</h3>
+            <ul class="fragment">
+                <li>eine einzige Seite pro Anwendung/Modul
+                <li>läuft ohne signifikanten Server-Anteil
+                <li>kann auch als statische Web-Seite laufen
+                <li>ermöglicht Offline-Betrieb
+                <li>Bedienbarkeit wie Desktop
+                <li>Browser bietet mächtige Speicherungsmöglichkeiten
+            </ul>
+        </section>
+
+        <section>
+            <h3>Komponenten basierte Ansätze mit Templates</h3>
+            <ul class="fragment">
+                <li>Templates nun auf der Clientseite
+                <li>Anwendung bekommt Struktur
+                <li>Logik hängt an Komponenten, ist keine lose Schnippsel-Sammlung wie bei jQuery
+            </ul>
+            <div style="height: 300px">
+                <img src="component-hierarchy.png">
+                <p><small><a href="https://speakerdeck.com/mxstbr/scaling-react-dot-js-applications">
+                    Copyright 2016, @mxstbr
+                </a></small></p>
+            </div>
+        </section>
+
+        <section>
+            <h1>Klares Architektur Pattern</h1>
+            <h2>Smart and Dumb Components</h2>
+            <p>Findet sich wieder in React, Angular und Vue</p>
+        </section>
+
+        <section>
+            <h3>Smart Components</h3>
+            <ul>
+                <li>Verwalten Teilzustand der Anwendung
+                <li>Reichen Teile des Zustands als unveränderliche Daten an Unterkomponente weiter
+                <li>Enthalten UI Logik, die sie als Callbacks an ihre Unterkomponenten weiter geben können
+                <li>Meist spezifisch für eine Domäne
+                <li>Nicht außerhalb der Domäne wiederverwendbar
+            </ul>
+        </section>
+
+        <section>
+            <h3>Dumb Components</h3>
+            <ul>
+                <li>Managen höchstens transienten State
+                <li>enthalten keine Logik
+                <li>Unterkomponente sind meist selbst nur Dumb Components (es gibt
+                    <a target="_blank" href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.z8xy5zvhs">
+                        Ausnahmen</a>)
+                <li>haben kein Wissen oder Abhängigkeit zu Oberkomponenten
+                <li>wievervwendbar
+            </ul>
+        </section>
+
+        <section>
+            <img src="smart-dumb-w-label.png">
+            <p><small>
+                Copyright 2017, Nils Hartmann
+            </small></p>
+        </section>
+
+        <section>
+            <h2>Harte Grenze #4: Verteilter, veränderlicher Zustand, Vermischung von Framework und UI-Logik</h2>
+            <h3>Besonders bei wachsenden Anwendungen</h3>
+        </section>
+
+        <section>
+            <a href="https://youtu.be/I7IdS-PbEgI" target="_blank"><img style="height: 600px" src="alan_kay.jpg"></a>
+            <p><small><a href="https://facebook.github.io/immutable-js/" target="_blank">
+                https://facebook.github.io/immutable-js/
+            </a></small></p>
+        </section>
+
+        <section>
+            <h3>Grundprobleme</h3>
+            <ul>
+                <li>UI-Logik ist an JavaScript-Framework gekoppelt (in Container-Komponenten)
+                <li>Zustand ist an vielen Stellen verteilt
+                <li>Verteilter, veränderlicher Zustand ist schwer zu managen
+                <li>Je größer die Anwendung, desto schwerer ist der Zustand zu managen
+                <li>An welchen Stellen können Nebenläufigkeiten auftreten?
+                <Li>Kann man zu jedem Zeitpunkt klar sagen, in welchem Zustand die Anwendung ist?
+                <Li>Wie läuft die Initialisierungsphase
+            </ul>
+        </section>
+
+        <section>
+            <h2>Nächster Schritt: Zustand wird zentral gehalten, UI-Logik geht aus den Komponenten</h2>
+            <p>Flux, Redux, https://github.com/ngrx/store</p>
+        </section>
+
+        <section>
+            <h3>Flux-Grundidee #1: Fluss in eine Richtung</h3>
+            <div class="fragment">
+                <img src="embarc/Redux.png" style="height: 500px;">
+                <p><small>Copyright 2016, embarc</small></p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Flux-Grundidee #2: Zentraler Zustand</h3>
+            <div class="fragment">
+                <img src="embarc/Anwendung.png" style="height: 500px;">
+                <p><small>Copyright 2016, embarc</small></p>
+            </div>
+        </section>
+        <section>
+            <h3>Zusammenfassung Flux</h3>
+            <ul class="fragment">
+                <li>Ein Architektur-Ansatz für UIs
+                <li>Kontroll-/Datenfluss in eine Richtung
+                <li>Zustand wandert aus Containern in Stores
+                <li>UI-Logik wandert aus Containern in Action-Creators und Stores
+                <li>Nebenläufigkeit nur in Action-Creators
+                <li>Immutability der Stores möglich und empfohlen
+                <li>Initialisierung durch initiale Aktion
+            </ul>
+        </section>
+
+        <section>
+            <h2>Harte Grenze #5: SPA selbst</h2>
+        </section>
+
+        <section>
+            <h3>Probleme von Single-Page Applications</h3>
+            <ul class="fragment">
+                <li>SEO
+                <li>First-Page-Impressions
+                <li>Preview, z.B.
+                    <ul>
+                        <li>bei der Vorschau von Suchergebnissen
+                        <li> oder dem Teilen von Links durch Social Media
+                    </ul>
+
+                </li>
+                <li>Progressive Enhancement
+            </ul>
+        </section>
+
+        <section>
+            <h3>SPA: First-Page-Impression</h3>
+            <div>
+                <a href="code/spa/public/index.html" target="_blank">
+                    <img src="spa-first-page-impression.png" style="height: 500px;">
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h2>Nächster Schritt: Universal Web Apps</h2>
+        </section>
+
+        <section>
+            <h3>Universal Rendering: First-Page-Impression</h3>
+            <div>
+                <a href="http://localhost:3000/" target="_blank">
+                    <img src="universal-first-page-impression.png" style="height: 500px;">
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h3>Universal Rendering</h3>
+            <ul class="fragment">
+                <li>First-Page-Impression wird auf dem Server gerendert
+                <li>Links werden als normale HTML-Links in die Seite gerendert
+                <li>Beliebig viele andere Seiten werden ebenfalls statisch gerendert
+                <li>Läuft dann (zumindest zum Teil) auch ohne JavaScript
+                <li>Code fast 100% geteilt zwischen Client und Server
+                <li>serverseitiges Rendering mit <a href="https://nodejs.org" target="_blank">https://nodejs.org</a>
+                <li>Neben Markup liefert der Browser ebenso Zustand
+                <li>Js-Frameworks React und Angular 2 unterstützen serverseitiges Rendering
+            </ul>
+        </section>
+
+        <!--<section>-->
+            <!--<h3>Universal Rendering am Beispiel von React</h3>-->
+            <!--<div class="fragment">-->
+                <!--<img src="universal.png" style="height: 500px;">-->
+                <!--<p><small><a target="_blank" href="http://reactbuch.de/">Copyright 2016, D-Punkt, http://reactbuch.de/</a></small></p>-->
+            <!--</div>-->
+        <!--</section>-->
+
+        <section>
+            <a target="_blank"
+               href="https://twitter.com/mxstbr/status/776812185276284928">
+                <img src="twitter_universal.png">
+            </a>
+        </section>
+
+        <section>
+            <h3>Herausforderungen</h3>
+            <ul class="fragment">
+                <li>Aller Zustand muss beim serverseitigen Rendering komplett vorliegen
+                <li>Unterschiedliche Locales auf Server und Client
+                <li>Zeitliche veränderliche Daten (Timestamp, Börsenkurs)
+                <li>Auch auf dem Server muss JavaScript laufen
+            </ul>
+        </section>
+
+        <section>
+            <h3>Was ist mit meiner guten alten Web-Anwendung passiert?</h3>
+            <p class="fragment">Ist das nicht alles zu kompliziert?</p>
+            <ul>
+                <li class="fragment">Klassische, serverseitig gerenderte Anwendungen, sind häufig wirlich einfacher und besser Modularisierbar
+                <li class="fragment">Hohe Anforderungen an UX und UI sind allerdings nicht mit sinnvollem Aufwand mit klassischen Web-Anwendungen umsetzbar
+                <li class="fragment">die Komplexitäten einer Single Page App entspringen aus diesen Anforderungen an UX und UI
+                <li class="fragment">Das Grundproblem ist der Widerspruch zwischen ganzheitlicher UX und Aufteilung in Komponenten / Module / Teams
+            </ul>
+        </section>
+
+        <!--<section>-->
+            <!--<h3>Welcher Anforderungen kommen durch das Web hinzu?</h3>-->
+            <!--<ul>-->
+                <!--<li class="fragment">Wie kann man wartbar JavaScript entwickeln?-->
+                <!--<li class="fragment">Wie geht man mit der schnellen Entwicklung der Web-Frameworks um?-->
+                <!--<li class="fragment">JavaScript im Browser, aber meist nicht auch auf dem Server - -->
+                    <!--wie bekommt man damit eine einheitliche Architektur hin?-->
+            <!--</ul>-->
+        <!--</section>-->
+
+        <section>
+            <h3>Legenden und Mythen #1: Single Page Applications (SPA)</h3>
+            <ul>
+                <li class="fragment"><strong>In SPAs kann ich keine Links teilen und auch nicht sinnvoll verlinken: </strong>
+                    <span class="fragment">Links werden im Browser aufgelöst und geroutet</span>
+                <li class="fragment"><strong>Back-Button geht nicht: </strong><span class="fragment">siehe oben</span>
+                <li class="fragment"><strong>SPA hat immer eine schlechte First Page Impression: </strong><span class="fragment">Universal App oder Code-Splitting hilft</span>
+                <li class="fragment"><strong>SPA ist unstrukturierter Monolith: </strong>
+                <span class="fragment">Trennung, Isolation in Module und Teams ist mit gezeigten Ansätzen möglich</span>
+                <li class="fragment"><strong>HTML/HTTP sind langlebig, Investition in SPA-Frameworks nicht lohnend, veraltet innerhalb einer Woche: </strong>
+                <span class="fragment">Framework-Krieg ist wahrscheinlich beendet, Business relevante Teile ohnehin außerhalb des SPA-Webframeworks</span>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Legenden und Mythen #2: JavaScript</h3>
+            <p class="fragment">Ist JavaScript-Code nicht unwartbar?</p>
+            <ul>
+                <li class="fragment"><strong>keine Lesbarkeit: </strong><span class="fragment">Moderner JavaScript-Code ist auf Python-Niveau, JSDoc ist Standard</span>
+                <li class="fragment"><strong>keine Analysierbarkeit: </strong><span class="fragment">zusätzliche mächtige Typensysteme TypeScript oder Flow</span>
+                <li class="fragment"><strong>kein Refactoring: </strong><span class="fragment">folgt aus Analysierbarkeit</span>
+                <li class="fragment"><strong>keine Testbarkeit: </strong><span class="fragment">gezeigte Ansätze erlauben allerbeste Testbarkeit aller Teile</span>
+                <li class="fragment"><strong>keine Wiederverwendung: </strong><span class="fragment">Dumb Componentes jederzeit wiederverwendbar</span>
+            </ul>
+        </section>
+
+        <section>
+            <h3>The Doctor is In</h3>
+            <small>
+            <table>
+                <tr>
+                    <th></th><th>Wissen</th><th>Anforderungen</th><th>A-Z</th>
+                </tr>
+                <tr>
+                    <th>20</th>
+                    <td>Muss man für SPAs und Universal Apps JavaScript programmieren?</td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <th>40</th>
+                    <td>Wie realisiert man komplexe UI-Komponenten (ala TreeGrid)?</td>
+                    <td>Sollte ich nicht jede SPA als Universal App schreiben?
+                    </td>
+                    <td>Widersprechen SPAs nicht der Grundidee es Webs?
+                    </td>
+                </tr>
+                <tr>
+                    <th>60</th>
+
+                    <td><b>Risiko: Frage eurer Wahl</b></td>
+                    <td><b>Risiko: Frage eurer Wahl</b></td>
+                    <td><b>Risiko: Frage eurer Wahl</b></td>
+                </tr>
+                <tr>
+                    <th>80</th>
+                    <td>
+                    </td>
+                    <td>Wann passt eine klassische WebApp besser als eine SPA?
+                    </td>
+                    <td>Wieso funktioniert für SPAs kein Schichtenmodell?
+                    </td>
+                </tr>
+                <tr>
+                    <th>100</th>
+                    <td>Muss man programmieren können, um die richtigen Entscheidungen zu treffen?</td>
+                    <td>Wie kann ich sicher sein, dass ich den richtigen Architektur-Ansatz habe?</td>
+                    <td>Wie spielt das alles mit MicroServices zusammen?</td>
+                </tr>
+            </table></small>
+            <p><small>
+                <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+            , <a href="http://bit.ly/frontend-architektur">
+                http://bit.ly/frontend-architektur</a></small></p>
+        </section>
+
+    </div>
+
+</div>
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
+<script src="lib/jquery-2.2.4.js"></script>
+<script>
+    if (window.location.hostname.indexOf('localhost') !== -1) {
+    } else {
+        // only applies to public version
+        $('.preparation').remove();
+    }
+    Reveal.addEventListener( 'ready', function( event ) {
+        if (window.location.hostname.indexOf('localhost') !== -1) {
+            // only applies to presentation version
+            Reveal.configure({ controls: false });
+        } else {
+            // only applies to public version
+            $('.fragment').removeClass('fragment');
+        }
+        // applies to all versions
+        $('code').addClass('line-numbers');
+    } );
+    $('section').attr('data-background-image', "backgrounds/light-metal.jpg");
+</script>
+
+
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'reveal.js/plugin/zoom-js/zoom.js', async: true},
+            {src: 'reveal.js/plugin/notes/notes.js', async: true},
+            {src: 'lib/js/line-numbers.js'}
+        ]
+    });
+
+</script>
+
+</body>
+</html>
