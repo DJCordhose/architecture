@@ -168,8 +168,8 @@ https://twitter.com/hadleywickham/status/888367562190409728?s=03
             <p>
                 <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
             </p>
-            <p><small>Folien: <a href="http://djcordhose.github.io/architecture/2017_herbstcampus.html">
-                http://djcordhose.github.io/architecture/2017_herbstcampus.html</a></small></p>
+            <p><small>Folien: <a href="http://bit.ly/architektur-herbstcampus">
+                http://bit.ly/architektur-herbstcampus</a></small></p>
         </section>
 
         <section>
@@ -202,7 +202,7 @@ https://twitter.com/hadleywickham/status/888367562190409728?s=03
             <ul>
                 <li class="fragment">Facebook, LinkedIn, XING: Alle kämpfen mit uneinheitlichem Anzeigestand
                 <!--Add screenshot from LinkedIn-->
-                <li class="fragment">Gmail: Ladebalken am Anfang
+                <li class="fragment">Gmail: Ladebalken am Anfang, langsamere erste Page Impression
                 <li class="fragment">Amazon: uneinheitliches Layout und Bedienkonzept
                 <li class="fragment">Viele seiten von Behörden/Ämtern/Großkonzernen etc.: zähes UI, validieren der Eingaben erst nach Submit
             </ul>
@@ -276,7 +276,12 @@ https://twitter.com/hadleywickham/status/888367562190409728?s=03
         </section>
 
         <section>
-            <h3>Nächster Schritt: Single-Page Application</h3>
+            <h3>Nächster Schritt</h3>
+            <h2>Single-Page Application</h2>
+        </section>
+
+        <section>
+            <h3>Überblick: Single-Page Application</h3>
             <img src="embarc/SP-Anwendung.png" style="height: 500px;">
             <p><small>Copyright 2016, embarc</small></p>
         </section>
@@ -299,18 +304,12 @@ https://twitter.com/hadleywickham/status/888367562190409728?s=03
                 <li>Anwendung bekommt Struktur
                 <li>Logik hängt an Komponenten, ist keine lose Schnippsel-Sammlung wie bei jQuery
             </ul>
-            <div style="height: 300px">
-                <img src="component-hierarchy.png">
-                <p><small><a href="https://speakerdeck.com/mxstbr/scaling-react-dot-js-applications">
-                    Copyright 2016, @mxstbr
-                </a></small></p>
-            </div>
+            <p class="fragment">Findet sich wieder in React, Angular und Vue</p>
         </section>
 
         <section>
-            <h1>Klares Architektur Pattern</h1>
-            <h2>Smart and Dumb Components</h2>
-            <p>Findet sich wieder in React, Angular und Vue</p>
+            <h1>Smart and Dumb Components</h1>
+            <h2>Klares Architektur Pattern</h2>
         </section>
 
         <section>
@@ -345,59 +344,79 @@ https://twitter.com/hadleywickham/status/888367562190409728?s=03
         </section>
 
         <section>
-            <h2>Harte Grenze #4: Verteilter, veränderlicher Zustand, Vermischung von Framework und UI-Logik</h2>
-            <h3>Besonders bei wachsenden Anwendungen</h3>
-        </section>
-
-        <section>
-            <a href="https://youtu.be/I7IdS-PbEgI" target="_blank"><img style="height: 600px" src="alan_kay.jpg"></a>
-            <p><small><a href="https://facebook.github.io/immutable-js/" target="_blank">
-                https://facebook.github.io/immutable-js/
-            </a></small></p>
-        </section>
-
-        <section>
-            <h3>Grundprobleme</h3>
-            <ul>
-                <li>UI-Logik ist an JavaScript-Framework gekoppelt (in Container-Komponenten)
-                <li>Zustand ist an vielen Stellen verteilt
-                <li>Verteilter, veränderlicher Zustand ist schwer zu managen
-                <li>Je größer die Anwendung, desto schwerer ist der Zustand zu managen
-                <li>An welchen Stellen können Nebenläufigkeiten auftreten?
-                <Li>Kann man zu jedem Zeitpunkt klar sagen, in welchem Zustand die Anwendung ist?
-                <Li>Wie läuft die Initialisierungsphase
+            <h3>Grenzen</h3>
+            <p class="fragment"><em>Besonders bei wachsenden und langlebigen Anwendungen</em></p>
+            <ul class="fragment">
+                <li>Verteilter, veränderlicher Zustand
+                    <ul>
+                        <li>Anwendungen werden schwer wartbar</li>
+                        <li>Oft ist Zustand nicht einer einzigen Komponenten zuzuordnen</li>
+                        <li>Kann man zu jedem Zeitpunkt klar sagen, in welchem Zustand die Anwendung ist?
+                    </ul>
+                </li>
+                <li>Architektur immer noch unklar
+                    <ul>
+                        <li>Wo ist Nebenläufigkeit erlaubt?
+                        <li>Wie läuft die Initialisierungsphase
+                        <li>Wie testet man die Business Logik?
+                    </ul>
+                </li>
+                <li>Vermischung von Framework und UI-Logik (erschwert Austausch das Frameworks)
             </ul>
         </section>
 
+        <!--<section>-->
+            <!--<a href="https://youtu.be/I7IdS-PbEgI" target="_blank"><img style="height: 600px" src="alan_kay.jpg"></a>-->
+            <!--<p><small><a href="https://facebook.github.io/immutable-js/" target="_blank">-->
+                <!--https://facebook.github.io/immutable-js/-->
+            <!--</a></small></p>-->
+        <!--</section>-->
+
         <section>
-            <h2>Nächster Schritt: Zustand wird zentral gehalten, UI-Logik geht aus den Komponenten</h2>
-            <p>Flux, Redux, https://github.com/ngrx/store</p>
+            <h3>Nächster Schritt</h3>
+            <h2>Redux als Architektur-Muster</h2>
         </section>
 
         <section>
-            <h3>Flux-Grundidee #1: Fluss in eine Richtung</h3>
-            <div class="fragment">
-                <img src="embarc/Redux.png" style="height: 500px;">
-                <p><small>Copyright 2016, embarc</small></p>
-            </div>
+            <h1>Redux</h1>
+            <h2>Zustand wird zentral gehalten, UI-Logik geht aus den Komponenten</h2>
+            <h3>Selbst kein Framework, sondern nur ein Muster (wie z.B. MVC)</h3>
         </section>
 
         <section>
-            <h3>Flux-Grundidee #2: Zentraler Zustand</h3>
-            <div class="fragment">
-                <img src="embarc/Anwendung.png" style="height: 500px;">
-                <p><small>Copyright 2016, embarc</small></p>
-            </div>
+            <h2>Redux ist unabhängig vom Framework</h2>
+            <p>Implementierungen existieren für alle wichtigen UI-Frameworks</p>
+            <ul>
+                <li>React: <a href="http://redux.js.org/docs/basics/UsageWithReact.html" target="_blank">
+                    http://redux.js.org/docs/basics/UsageWithReact.html
+                </a>
+                <li>Angular: <a href="https://github.com/ngrx/store" target="_blank">https://github.com/ngrx/store</a></li>
+                <li>Vue: <a href="https://github.com/revue/revue" target="_blank">https://github.com/revue/revue</a>
+            </ul>
+
         </section>
+
         <section>
-            <h3>Zusammenfassung Flux</h3>
+            <h2>Redux extrahiert Verwantwortlichkeiten aus UI-Framework</h2>
+            <img src="redux-02-extracting-responsibility.png" style="border:0;box-shadow:0 0 0 0"/>
+        </section>
+
+        <section>
+            <h2>Resultierende Architektur anhand des Redux Musters</h2>
+            <img src="redux-03-resulting-redux-architecture.png" style="border:0;box-shadow:0 0 0 0"/>
+        </section>
+
+        <section>
+            <h3>Zusammenfassung Redux</h3>
             <ul class="fragment">
-                <li>Ein Architektur-Ansatz für UIs
+                <li>Ein Architektur-Muster für UIs
                 <li>Kontroll-/Datenfluss in eine Richtung
-                <li>Zustand wandert aus Containern in Stores
-                <li>UI-Logik wandert aus Containern in Action-Creators und Stores
+                <li>Zustand wandert aus Smart Components in zentralen State
+                <li>UI-Logik wandert aus Smart Components in Action-Creators und Reducer
                 <li>Nebenläufigkeit nur in Action-Creators
-                <li>Immutability der Stores möglich und empfohlen
+                <li>State ist zentral und immutable
+                <li>Business Logik ausschließlich in puren Funktionen - Reducer (beste Testbarkeit)
+                <li>Nur Reducer dürfen State verändern
                 <li>Initialisierung durch initiale Aktion
             </ul>
         </section>
@@ -578,8 +597,8 @@ https://twitter.com/hadleywickham/status/888367562190409728?s=03
             </table></small>
             <p><small>
                 <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
-            , <a href="http://bit.ly/frontend-architektur">
-                http://bit.ly/frontend-architektur</a></small></p>
+            , <a href="http://bit.ly/architektur-herbstcampus">
+                http://bit.ly/architektur-herbstcampus</a></small></p>
         </section>
 
     </div>
