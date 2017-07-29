@@ -96,68 +96,83 @@ Verständnis für die Herausforderungen moderner, clientseitiger Webanwendungen.
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
 
-        <section class="todo">
-<pre>
+        <!--<section class="todo">-->
+<!--<pre>-->
 
-ALWAYS finish your talk on a slide that's easily photographed and tells people where to get more info. Leave it up while you take Qs
-https://twitter.com/hadleywickham/status/888367562190409728?s=03
+<!--ALWAYS finish your talk on a slide that's easily photographed and tells people where to get more info. Leave it up while you take Qs-->
+<!--https://twitter.com/hadleywickham/status/888367562190409728?s=03-->
 
 
-### Motivation / Setting / Herausforderung:
-* Häufiges Missverständnis: Webapp vs Web Application
-* Komplexe, Interaktive App mit Abhägigkeiten
-* Beispiele zeigen wo Counter überall nicht gehen
-    * XING
-    * LinkedIn
-    * Facebook
-* Liste mit Grüßen
-* Counter aller Grüße in Form eines Pie-Charts
-* Verbindung in Beide Richtungen
-    * Hinzufügen der Liste updated Pie-Chart
-    * Click auf Pie-Chart Filtert liste
+<!--### Motivation / Setting / Herausforderung:-->
+<!--* Häufiges Missverständnis: Webapp vs Web Application-->
+<!--* Komplexe, Interaktive App mit Abhägigkeiten-->
+<!--* Beispiele zeigen wo Counter überall nicht gehen-->
+    <!--* XING-->
+    <!--* LinkedIn-->
+    <!--* Facebook-->
+<!--* Liste mit Grüßen-->
+<!--* Counter aller Grüße in Form eines Pie-Charts-->
+<!--* Verbindung in Beide Richtungen-->
+    <!--* Hinzufügen der Liste updated Pie-Chart-->
+    <!--* Click auf Pie-Chart Filtert liste-->
 
-### Schritte
-* Gewünschte Endanwendung zeigen inkl. Filter-Reset: höchst Interaktiv
-* Nur Express
-    * Loose focus and Scrollposition, no animation
-* Optional so etwas wie Dash: https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503
-* Plus JQuery per Script
-    * Listener hin und her
-    * Wo hält man State?
-        * Wie speichert man die Liste?
-* Spa mit Web Components
-    * State immer auf dem Client
-    * Immer noch Listener hin und her
-* React
-* Redux
-* Universal
+<!--### Schritte-->
+<!--* Gewünschte Endanwendung zeigen inkl. Filter-Reset: höchst Interaktiv-->
+<!--* Nur Express-->
+    <!--* Loose focus and Scrollposition, no animation-->
+<!--* Optional so etwas wie Dash: https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503-->
+<!--* Plus JQuery per Script-->
+    <!--* Listener hin und her-->
+    <!--* Wo hält man State?-->
+        <!--* Wie speichert man die Liste?-->
+<!--* Spa mit Web Components-->
+    <!--* State immer auf dem Client-->
+    <!--* Immer noch Listener hin und her-->
+<!--* React-->
+<!--* Redux-->
+<!--* Universal-->
 
-### MicroService-Ansatz
-* Wie baut man eine komplexe App aus mehreren Modulen zusammen?
-  * Integriert: Tab innerhalb einer App
-  * Lazy / On Demand: Tab lädt Modul nach
-  * Integraion über Link: Tab mit externem Link lädt neue Anwendung mit gleicher Navigation
+<!--### MicroService-Ansatz-->
+<!--* Wie baut man eine komplexe App aus mehreren Modulen zusammen?-->
+  <!--* Integriert: Tab innerhalb einer App-->
+  <!--* Lazy / On Demand: Tab lädt Modul nach-->
+  <!--* Integraion über Link: Tab mit externem Link lädt neue Anwendung mit gleicher Navigation-->
 
-### Von anderen Talks klauen
-- C64
-- Framework Vergleich
+<!--### Von anderen Talks klauen-->
+<!-- - C64-->
+<!-- - Framework Vergleich-->
 
-### Links auswerten
-* https://twitter.com/sebmarkbage/status/855282385901936643?s=03
-* http://microservices.io
-* Frontend Architecture for big teams: https://youtu.be/q8jYs79ZW70
-    * https://www.slideshare.net/ChadchapolVittavutka/frontend-architecture-design-for-larger-team-final
-* https://staltz.com/unidirectional-user-interface-architectures.html
-* https://twitter.com/mxstbr/status/865490858967158784
-* https://twitter.com/acdlite/status/868409407356325889?s=03
-* http://vuejsdevelopers.com/2017/05/28/switch-from-react-to-vue-js/
-</pre>
-        </section>
+<!--### Links auswerten-->
+<!--* https://twitter.com/sebmarkbage/status/855282385901936643?s=03-->
+<!--* http://microservices.io-->
+<!--* Frontend Architecture for big teams: https://youtu.be/q8jYs79ZW70-->
+    <!--* https://www.slideshare.net/ChadchapolVittavutka/frontend-architecture-design-for-larger-team-final-->
+<!--* https://staltz.com/unidirectional-user-interface-architectures.html-->
+<!--* https://twitter.com/mxstbr/status/865490858967158784-->
+<!--* https://twitter.com/acdlite/status/868409407356325889?s=03-->
+<!--* http://vuejsdevelopers.com/2017/05/28/switch-from-react-to-vue-js/-->
+<!--</pre>-->
+        <!--</section>-->
 
         <section data-markdown class="preparation">
             <script type="text/template">
-                # Preparation
+### Vorbereitung
 
+Komplex SPA
+
+- cd ~/Development/js/react-workshop
+- npm install
+- npm start
+- cd code/schritte/redux/redux-complete-app-typescript
+- npm start
+- Checken, dass localhost:8080 im Browser läuft
+
+Universal
+
+- cd code/universal
+- npm install
+- npm start
+- Checken, dass localhost:3000 im Browser läuft
             </script>
         </section>
 
@@ -198,7 +213,6 @@ https://twitter.com/hadleywickham/status/888367562190409728?s=03
         <section>
             <h2>Wo ist das Problem? Das ist doch einfach oder?</h2>
             <h3 class="fragment">Prominente Gegenbeispiele</h3>
-            <!-- TODO: Add screenshot from LinkedIn-->
             <ul>
                 <li class="fragment">Facebook, LinkedIn, XING: Alle kämpfen mit uneinheitlichem Anzeigestand
                 <!--Add screenshot from LinkedIn-->
@@ -231,11 +245,6 @@ https://twitter.com/hadleywickham/status/888367562190409728?s=03
                 <!--<li class="fragment"><strong>Uncool, aber häufig Hauptbestandteil der Anwendung</strong>: Effiziente, aber funktionale Formulare (Redux-Form)-->
             <!--</ul>-->
         <!--</section>-->
-
-        <section class="todo">
-            <h1>Hier die Greeting-App mit ihren komplexen Abhängigkeiten zeigen</h1>
-            <p>Hier die Komplexe App in code tun</p>
-        </section>
 
         <section>
             <h3>Klassiche Webanwendung</h3>
@@ -273,6 +282,16 @@ https://twitter.com/hadleywickham/status/888367562190409728?s=03
                 <li>Vermischung von client- und serverseitigem Rendering macht Anwendungsarchitektur und Programmiermodell abenteuerlich
             </ul>
             <p class="fragment"><em>Perfide, da zuerst die Aufwände zur Umsetzung ansteigen und der Code immer unübersichtlicher wird.</em></p>
+        </section>
+
+        <section>
+            <h2>Was geht nicht mehr? Ein Beispiel</h2>
+                <div>
+                    <a href="http://localhost:8080/" target="_blank">
+                        <img src="greeting-app-complex.png" style="height: 500px;">
+                    </a>
+                </div>
+            <p><small>Gar nicht mal so komplex...</small></p>
         </section>
 
         <section>
@@ -407,6 +426,15 @@ https://twitter.com/hadleywickham/status/888367562190409728?s=03
         </section>
 
         <section>
+            <h3>Ist das nur eine spinnige Idee, oder nutzt das echt jemand?</h3>
+            <div class="fragment">
+                <a href="https://www.xing.com/messenger" target="_blank">
+                <img src="xing-messenger-redux.png">
+                </a>
+            </div>
+        </section>
+
+        <section>
             <h3>Zusammenfassung Redux</h3>
             <ul class="fragment">
                 <li>Ein Architektur-Muster für UIs
@@ -422,11 +450,11 @@ https://twitter.com/hadleywickham/status/888367562190409728?s=03
         </section>
 
         <section>
-            <h2>Harte Grenze #5: SPA selbst</h2>
-        </section>
+            <h2>Grenzen: SPA Ansatz selbst</h2>
+        <!--</section>-->
 
-        <section>
-            <h3>Probleme von Single-Page Applications</h3>
+        <!--<section>-->
+            <!--<h3>Probleme von Single-Page Applications</h3>-->
             <ul class="fragment">
                 <li>SEO
                 <li>First-Page-Impressions
@@ -437,7 +465,7 @@ https://twitter.com/hadleywickham/status/888367562190409728?s=03
                     </ul>
 
                 </li>
-                <li>Progressive Enhancement
+                <!--<li>Progressive Enhancement-->
             </ul>
         </section>
 
@@ -448,6 +476,7 @@ https://twitter.com/hadleywickham/status/888367562190409728?s=03
                     <img src="spa-first-page-impression.png" style="height: 500px;">
                 </a>
             </div>
+            <p><small>Selbst für eine einfachte Web Application kann das Laden das Aufbauen der Anwendung einige Zeit kosten</small></p>
         </section>
 
         <section>
@@ -473,7 +502,7 @@ https://twitter.com/hadleywickham/status/888367562190409728?s=03
                 <li>Code fast 100% geteilt zwischen Client und Server
                 <li>serverseitiges Rendering mit <a href="https://nodejs.org" target="_blank">https://nodejs.org</a>
                 <li>Neben Markup liefert der Browser ebenso Zustand
-                <li>Js-Frameworks React und Angular 2 unterstützen serverseitiges Rendering
+                <li>Wird von JS-Frameworks React, Angular und Vue unterstützt
             </ul>
         </section>
 
@@ -493,12 +522,16 @@ https://twitter.com/hadleywickham/status/888367562190409728?s=03
         </section>
 
         <section>
+            <h2>Integration mit Web Services</h2>
+        </section>
+
+        <section>
             <h3>Herausforderungen</h3>
             <ul class="fragment">
                 <li>Aller Zustand muss beim serverseitigen Rendering komplett vorliegen
                 <li>Unterschiedliche Locales auf Server und Client
                 <li>Zeitliche veränderliche Daten (Timestamp, Börsenkurs)
-                <li>Auch auf dem Server muss JavaScript laufen
+                <li>Auch auf dem Server muss JavaScript laufen (zumindest für das Rendering Layer)
             </ul>
         </section>
 
@@ -546,6 +579,8 @@ https://twitter.com/hadleywickham/status/888367562190409728?s=03
                 <li class="fragment"><strong>kein Refactoring: </strong><span class="fragment">folgt aus Analysierbarkeit</span>
                 <li class="fragment"><strong>keine Testbarkeit: </strong><span class="fragment">gezeigte Ansätze erlauben allerbeste Testbarkeit aller Teile</span>
                 <li class="fragment"><strong>keine Wiederverwendung: </strong><span class="fragment">Dumb Componentes jederzeit wiederverwendbar</span>
+                <li class="fragment"><strong>keine Möglichkeit zur Strukturieren: </strong>
+                <span class="fragment">Das moderne JavaScript Modul-System ist mächtig und erlaubt Strukturierung wie in Java</span>
             </ul>
         </section>
 
