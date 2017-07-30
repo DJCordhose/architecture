@@ -366,11 +366,12 @@ Universal
             <h3>Grenzen</h3>
             <p class="fragment"><em>Besonders bei wachsenden und langlebigen Anwendungen</em></p>
             <ul class="fragment">
-                <li>Verteilter, veränderlicher Zustand
+                <li>Tendenz zu "Gottkomponenten": Zustand und Logik wandern langsam nach oben in einer einzige Komponente
+                <li>Vermischung von Framework und UI-Logik (erschwert Austausch das Frameworks)
+                <li>Verteilter, veränderlicher Zustand erschwert Wartbarkeit
                     <ul>
-                        <li>Anwendungen werden schwer wartbar</li>
-                        <li>Oft ist Zustand nicht einer einzigen Komponenten zuzuordnen</li>
-                        <li>Kann man zu jedem Zeitpunkt klar sagen, in welchem Zustand die Anwendung ist?
+                        <li>Zustand oft nicht klar zuzuordnen</li>
+                        <li>In welchem Zustand ist die Anwendung?
                     </ul>
                 </li>
                 <li>Architektur immer noch unklar
@@ -380,7 +381,6 @@ Universal
                         <li>Wie testet man die Business Logik?
                     </ul>
                 </li>
-                <li>Vermischung von Framework und UI-Logik (erschwert Austausch das Frameworks)
             </ul>
         </section>
 
