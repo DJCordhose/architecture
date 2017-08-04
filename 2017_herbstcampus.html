@@ -551,10 +551,12 @@ Universal
         <section>
             <h3>Integration mit Microservices</h3>
             <ul>
-                <li class="fragment">Integration in Browser
+                <li class="fragment">Integration im Browser
                     <ul>
-                        <li>Anwendung ist in Module aufgeteilt, die als ganze Anwendung zusammen laufen
-                        <li>Nachladen von Modulen on-demand problemlos möglich
+                        <li>Anwendung ist in logische Module aufgeteilt, die als ganze Anwendung zusammen laufen
+                        <li>Pro Seite eine Anwendung, kann Komponenten aus andern Modulen integrieten
+                        <!--<li>Nachladen von Modulen on-demand aus einem Build problemlos möglich-->
+                        <li>"Echt" getrennte Anwendung über iFrame und EventBus
                     </ul>
                 </li>
                 <li class="fragment">Integration über Links, die eine neue Anwendung öffnen und die alte ersetzen
@@ -571,10 +573,11 @@ Universal
             <h3>Was ist mit meiner guten alten Web-Anwendung passiert?</h3>
             <p class="fragment">Ist das nicht alles zu kompliziert?</p>
             <ul>
-                <li class="fragment">Klassische, serverseitig gerenderte Anwendungen, sind häufig wirlich einfacher und besser Modularisierbar
+                <li class="fragment">Klassische, serverseitig gerenderte Anwendungen,
+                    sind häufig wirklich einfacher und besser modularisierbar
                 <li class="fragment">Hohe Anforderungen an UX und UI sind allerdings nicht mit sinnvollem Aufwand mit klassischen Web-Anwendungen umsetzbar
                 <li class="fragment">die Komplexitäten einer Single Page App entspringen aus diesen Anforderungen an UX und UI
-                <li class="fragment">Das Grundproblem ist der Widerspruch zwischen ganzheitlicher UX und Aufteilung in Komponenten / Module / Teams
+                <li class="fragment"><strong>Das Grundproblem ist der Widerspruch zwischen ganzheitlicher UX und Aufteilung in Komponenten / Module / Teams</strong>
             </ul>
         </section>
 
@@ -606,13 +609,16 @@ Universal
             <h3>Legenden und Mythen #2: JavaScript</h3>
             <p class="fragment">Ist JavaScript-Code nicht unwartbar?</p>
             <ul>
-                <li class="fragment"><strong>keine Lesbarkeit: </strong><span class="fragment">Moderner JavaScript-Code ist auf Python-Niveau, JSDoc ist Standard</span>
-                <li class="fragment"><strong>keine Analysierbarkeit: </strong><span class="fragment">zusätzliche mächtige Typensysteme TypeScript oder Flow</span>
+                <li class="fragment"><strong>keine Lesbarkeit: </strong><span class="fragment">moderner JavaScript-Code ist auf Python-Niveau, JSDoc ist Standard</span>
+                <li class="fragment"><strong>keine Analysierbarkeit: </strong><span class="fragment">
+                wird durch zusätzliche mächtige Typensysteme TypeScript oder Flow erlaubt</span>
                 <li class="fragment"><strong>kein Refactoring: </strong><span class="fragment">folgt aus Analysierbarkeit</span>
                 <li class="fragment"><strong>keine Testbarkeit: </strong><span class="fragment">gezeigte Ansätze erlauben allerbeste Testbarkeit aller Teile</span>
-                <li class="fragment"><strong>keine Wiederverwendung: </strong><span class="fragment">Dumb Componentes jederzeit wiederverwendbar</span>
+                <li class="fragment"><strong>keine Wiederverwendung: </strong><span class="fragment">
+                Dumb Componentes jederzeit wiederverwendbar, bei Smart Components nicht sinnvoll</span>
                 <li class="fragment"><strong>keine Möglichkeit zur Strukturieren: </strong>
-                <span class="fragment">Das moderne JavaScript Modul-System ist mächtig und erlaubt Strukturierung wie in Java</span>
+                <span class="fragment">Das moderne JavaScript Modul-System ist mächtig
+                    und erlaubt Strukturierung wie in Java</span>
             </ul>
         </section>
 
@@ -663,8 +669,8 @@ Universal
                 </tr>
             </table></small>
             <p><small>
-                <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
-            , <a href="http://bit.ly/architektur-herbstcampus">
+                <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>,
+                <a href="http://bit.ly/architektur-herbstcampus">
                 http://bit.ly/architektur-herbstcampus</a></small></p>
         </section>
 
