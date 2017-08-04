@@ -535,13 +535,27 @@ Universal
         </section>
 
         <section>
+            <h3>Herausforderungen</h3>
+            <ul class="fragment">
+                <li>Aller Zustand muss beim serverseitigen Rendering komplett vorliegen
+                <li>First Page Impression ungültig: Flackern bei Neurendering im Client
+                    <ul>
+                        <li>Unterschiedliche Locales auf Server und Client
+                        <li>Zeitliche veränderliche Daten (Timestamp, Börsenkurs)
+                    </ul>
+                </li>
+                <li>Auch auf dem Server muss JavaScript laufen (zumindest für das Rendering Layer)
+            </ul>
+        </section>
+
+        <section>
             <h3>Integration mit Web Services</h3>
             <ul>
                 <li class="fragment">Integration in Browser
-                <ul>
-                    <li>Anwendung ist in Module aufgeteilt, die als ganze Anwendung zusammen laufen
-                    <li>Nachladen von Modulen on-demand problemlos möglich
-                </ul>
+                    <ul>
+                        <li>Anwendung ist in Module aufgeteilt, die als ganze Anwendung zusammen laufen
+                        <li>Nachladen von Modulen on-demand problemlos möglich
+                    </ul>
                 </li>
                 <li class="fragment">Integration über Links, die eine neue Anwendung öffnen und die alte ersetzen
                     <ul>
@@ -550,16 +564,6 @@ Universal
                         <li>Modul-Wechsel setzt Zustand zurück wenn nicht explizit übertragen
                     </ul>
                 </li>
-            </ul>
-        </section>
-
-        <section>
-            <h3>Herausforderungen</h3>
-            <ul class="fragment">
-                <li>Aller Zustand muss beim serverseitigen Rendering komplett vorliegen
-                <li>Unterschiedliche Locales auf Server und Client
-                <li>Zeitliche veränderliche Daten (Timestamp, Börsenkurs)
-                <li>Auch auf dem Server muss JavaScript laufen (zumindest für das Rendering Layer)
             </ul>
         </section>
 
@@ -655,7 +659,7 @@ Universal
                     <th>100</th>
                     <td>Was kann man retten, wenn man das UI-Framework wechselt?</td>
                     <td>Wie kann ich sicher sein, dass ich den richtigen Architektur-Ansatz habe?</td>
-                    <td>Muss man programmieren können, um die richtigen Entscheidungen zu treffen?</td>
+                    <td>Muss ich das immer so machen, oder kann ich auch Web Components nutzen?</td>
                 </tr>
             </table></small>
             <p><small>
@@ -689,6 +693,7 @@ Universal
         $('code').addClass('line-numbers');
     } );
     $('section').attr('data-background-image', "backgrounds/light-metal.jpg");
+//    $('section').attr('data-background-image', "backgrounds/code.jpg");
 </script>
 
 
