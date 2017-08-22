@@ -335,7 +335,7 @@ Universal
                 <li>Anwendung bekommt Struktur
                 <li>Logik hängt an Komponenten, ist keine lose Schnippsel-Sammlung wie bei jQuery
             </ul>
-            <p class="fragment">Findet sich wieder in React, Angular und Vue</p>
+            <p class="fragment">Findet sich wieder in React, Angular, Vue und Web Components</p>
         </section>
 
         <section>
@@ -368,7 +368,7 @@ Universal
         </section>
 
         <section>
-            <img src="smart-dumb-w-label.png">
+            <img src="smart-dumb-properties.png">
             <p><small>
                 Copyright 2017, Nils Hartmann
             </small></p>
@@ -474,21 +474,22 @@ export class SubComponent {
                 </a>
                 <li>Angular: <a href="https://github.com/ngrx/store" target="_blank">https://github.com/ngrx/store</a></li>
                 <li>Vue: <a href="https://github.com/revue/revue" target="_blank">https://github.com/revue/revue</a>
+                <li>Web Components (Polymer): <a href="https://www.npmjs.com/package/polymer-redux" target="_blank">https://www.npmjs.com/package/polymer-redux</a>
             </ul>
 
         </section>
 
         <section>
-            <h2>Redux extrahiert Verwantwortlichkeiten aus UI-Framework</h2>
+            <h3>Redux extrahiert Verwantwortlichkeiten aus UI-Framework</h3>
             <img src="redux-02-extracting-responsibility.png" style="border:0;box-shadow:0 0 0 0"/>
         </section>
 
         <section>
-            <h2>Resultierende Architektur anhand des Redux Musters</h2>
+            <h3>Resultierende Architektur anhand des Redux Musters</h3>
             <img src="redux-03-resulting-redux-architecture.png" style="border:0;box-shadow:0 0 0 0"/>
         </section>
 
-                <section>
+        <section>
             <h2>Code Sample: Reducer</h2>
             <h3>Unabhängig vom UI Framework</h3>
             <pre><code data-trim>
@@ -629,6 +630,7 @@ export const loadGreetings = dispatch => {
                     </ul>
                 </li>
                 <li>Auch auf dem Server muss JavaScript laufen (zumindest für das Rendering Layer)
+                <li>Unklar, ob/wie das mit Web Components funktionieren könnte
             </ul>
         </section>
 
@@ -681,11 +683,13 @@ export const loadGreetings = dispatch => {
                 <li class="fragment"><strong>In SPAs kann ich keine Links teilen und auch nicht sinnvoll verlinken: </strong>
                     <span class="fragment">Links werden im Browser aufgelöst und geroutet</span>
                 <li class="fragment"><strong>Back-Button geht nicht: </strong><span class="fragment">siehe oben</span>
-                <li class="fragment"><strong>SPA hat immer eine schlechte First Page Impression: </strong><span class="fragment">Universal App oder Code-Splitting hilft</span>
+                <li class="fragment"><strong>SPA hat immer eine schlechte First Page Impression: </strong>
+                <span class="fragment">Universal App oder Code-Splitting hilft</span>
+                <span class="fragment">, Web Components brauchen nicht einmal Framework => wenig Code</span>
                 <li class="fragment"><strong>SPA ist unstrukturierter Monolith: </strong>
                 <span class="fragment">Trennung, Isolation in Module und Teams ist mit gezeigten Ansätzen möglich</span>
                 <li class="fragment"><strong>HTML/HTTP sind langlebig, Investition in SPA-Frameworks nicht lohnend, veraltet innerhalb einer Woche: </strong>
-                <span class="fragment">Framework-Krieg ist wahrscheinlich beendet, Business relevante Teile ohnehin außerhalb des SPA-Webframeworks</span>
+                <span class="fragment">Business relevante Teile eninfach außerhalb des SPA-Webframeworks</span>
             </ul>
         </section>
 
@@ -748,7 +752,7 @@ export const loadGreetings = dispatch => {
                 <tr>
                     <th>100</th>
                     <td>Was kann man retten, wenn man das UI-Framework wechselt?</td>
-                    <td>Muss ich das immer so machen, oder kann ich auch Web Components nutzen?</td>
+                    <td>Sollte man nicht sowieso Web Components nutzen?</td>
                     <td>Muss ich immer wählen zwischen Frontend-Monolithen oder UX Katastrophe?</td>
                 </tr>
             </table></small>
