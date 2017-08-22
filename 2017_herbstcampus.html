@@ -341,6 +341,7 @@ Universal
         <section>
             <h1>Smart and Dumb Components</h1>
             <h2>Klares Architektur Pattern</h2>
+            <h3>Heißt auch <em>Mediator Pattern</em> bei Web Components / Polymer</h3>
         </section>
 
         <section>
@@ -423,8 +424,6 @@ export class SubComponent {
             </code></pre>
         </section>
 
-
-
         <section>
             <h3>Grenzen</h3>
             <p class="fragment"><em>Besonders bei wachsenden und langlebigen Anwendungen</em></p>
@@ -474,10 +473,11 @@ export class SubComponent {
                 </a>
                 <li>Angular: <a href="https://github.com/ngrx/store" target="_blank">https://github.com/ngrx/store</a></li>
                 <li>Vue: <a href="https://github.com/revue/revue" target="_blank">https://github.com/revue/revue</a>
-                <li>Web Components (Polymer): <a href="https://www.npmjs.com/package/polymer-redux" target="_blank">https://www.npmjs.com/package/polymer-redux</a>
+                <li>Web Components (Polymer): Empfohlene Implementierung des <em>Global Mediator Pattern</em>,
+                <a href="https://twitter.com/DJCordhose/status/899943415353311232" target="_blank">https://twitter.com/DJCordhose/status/899943415353311232</a>
+                <a href="https://tur-nr.github.io/polymer-redux/" target="_blank">https://tur-nr.github.io/polymer-redux/</a>
             </ul>
-
-        </section>
+x        </section>
 
         <section>
             <h3>Redux extrahiert Verwantwortlichkeiten aus UI-Framework</h3>
@@ -620,7 +620,7 @@ export const loadGreetings = dispatch => {
         </section>
 
         <section>
-            <h3>Herausforderungen</h3>
+            <h3>Herausforderungen / Schwächen</h3>
             <ul class="fragment">
                 <li>Aller Zustand muss beim serverseitigen Rendering komplett vorliegen
                 <li>First Page Impression ungültig: Flackern bei Neurendering im Client
@@ -630,7 +630,8 @@ export const loadGreetings = dispatch => {
                     </ul>
                 </li>
                 <li>Auch auf dem Server muss JavaScript laufen (zumindest für das Rendering Layer)
-                <li>Unklar, ob/wie das mit Web Components funktionieren könnte
+                <li>Unklar, ob/wie das mit Web Components funktionieren könnte (headless chrome?)
+                <li>Hlft nur bei "Time to first Meaningful Paint", nicht bei "Time to Interactive"
             </ul>
         </section>
 
