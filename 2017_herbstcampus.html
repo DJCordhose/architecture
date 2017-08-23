@@ -630,7 +630,9 @@ export const loadGreetings = dispatch => {
                     </ul>
                 </li>
                 <li>Auch auf dem Server muss JavaScript laufen (zumindest für das Rendering Layer)
-                <li>Unklar, ob/wie das mit Web Components funktionieren könnte (headless chrome?)
+                <li>Unklar, ob/wie das mit Web Components - besonders Shadow Dom - funktionieren könnte (headless chrome?,
+                <a href="https://twitter.com/DJCordhose/status/900328374601740288" target="_blank">
+                    https://twitter.com/DJCordhose/status/900328374601740288</a>)
                 <li>Hlft nur bei "Time to first Meaningful Paint", nicht bei "Time to Interactive"
             </ul>
         </section>
@@ -682,11 +684,12 @@ export const loadGreetings = dispatch => {
             <h3>Legenden und Mythen #1: Single Page Applications (SPA)</h3>
             <ul>
                 <li class="fragment"><strong>In SPAs kann ich keine Links teilen und auch nicht sinnvoll verlinken: </strong>
-                    <span class="fragment">Links werden im Browser aufgelöst und geroutet</span>
+                    <span class="fragment">Link wird im Browser aufgelöst und geroutet</span>
                 <li class="fragment"><strong>Back-Button geht nicht: </strong><span class="fragment">siehe oben</span>
                 <li class="fragment"><strong>SPA hat immer eine schlechte First Page Impression: </strong>
                 <span class="fragment">Universal App oder Code-Splitting hilft</span>
-                <span class="fragment">, Web Components brauchen nicht einmal Framework => wenig Code</span>
+                <span class="fragment">, Web Components brauchen nicht einmal Framework => weniger Code</span>
+                <span class="fragment">, Service Workers und HTTP/2 Server Push</span>
                 <li class="fragment"><strong>SPA ist unstrukturierter Monolith: </strong>
                 <span class="fragment">Trennung, Isolation in Module und Teams ist mit gezeigten Ansätzen möglich</span>
                 <li class="fragment"><strong>HTML/HTTP sind langlebig, Investition in SPA-Frameworks nicht lohnend, veraltet innerhalb einer Woche: </strong>
@@ -753,7 +756,7 @@ export const loadGreetings = dispatch => {
                 <tr>
                     <th>100</th>
                     <td>Was kann man retten, wenn man das UI-Framework wechselt?</td>
-                    <td>Sollte man nicht sowieso Web Components nutzen?</td>
+                    <td>Was ist denn eigentlich mit Progressive Web Apps (PWA)?</td>
                     <td>Muss ich immer wählen zwischen Frontend-Monolithen oder UX Katastrophe?</td>
                 </tr>
             </table></small>
