@@ -377,15 +377,20 @@ Universal
 
                 <section>
             <h2>Code Sample Angular</h2>
-        </section>
+                    <a href="code/spa/public/index.html" target="_blank">
+                        <img src="spa.png">
+                    </a>
+
+                </section>
 
         <section>
             <h2>Smart Component</h2>
             <pre><code data-trim>
 @Component({
-  template: `<sub greeting={{greeting}} (onSend)="sent($event)"></sub>`
+  template: `&lt;sub greeting={{greeting}} (onSend)="sent($event)"></sub>`
 })
 export class AppComponent {
+  // component state
   private greeting: string = 'Hiho';
 
   constructor(private greetingService: GreetingService) {
@@ -477,16 +482,16 @@ export class SubComponent {
                 <a href="https://twitter.com/DJCordhose/status/899943415353311232" target="_blank">https://twitter.com/DJCordhose/status/899943415353311232</a>
                 <a href="https://tur-nr.github.io/polymer-redux/" target="_blank">https://tur-nr.github.io/polymer-redux/</a>
             </ul>
-x        </section>
-
-        <section>
-            <h3>Redux extrahiert Verwantwortlichkeiten aus UI-Framework</h3>
-            <img src="redux-02-extracting-responsibility.png" style="border:0;box-shadow:0 0 0 0"/>
         </section>
 
         <section>
             <h3>Resultierende Architektur anhand des Redux Musters</h3>
             <img src="redux-03-resulting-redux-architecture.png" style="border:0;box-shadow:0 0 0 0"/>
+        </section>
+
+        <section>
+            <h3>Redux extrahiert Verwantwortlichkeiten aus UI-Framework</h3>
+            <img src="redux-02-extracting-responsibility.png" style="border:0;box-shadow:0 0 0 0"/>
         </section>
 
         <section>
@@ -574,7 +579,8 @@ export const loadGreetings = dispatch => {
                     <img src="spa-first-page-impression.png" style="height: 500px;">
                 </a>
             </div>
-            <p><small>Selbst für eine einfache Web Application kann das Laden und das Aufbauen der Anwendung einige Zeit kosten</small></p>
+            <p><small>Selbst für eine einfache Web Application kann das Laden und das Aufbauen der Anwendung einige Zeit kosten
+                und was vom Sever kommt ist eine leere Seite</small></p>
         </section>
 
         <section>
@@ -622,8 +628,8 @@ export const loadGreetings = dispatch => {
         <section>
             <h3>Herausforderungen / Schwächen</h3>
             <ul class="fragment">
-                <li>Aller Zustand muss beim serverseitigen Rendering komplett vorliegen
-                <li>First Page Impression ungültig: Flackern bei Neurendering im Client
+                <li>Aller Zustand muss beim serverseitigen Rendering komplett vorliegen (oder man rendert statische Platzhalter)
+                <li>Falls First Page Impression ungültig: Flackern bei Neurendering im Client
                     <ul>
                         <li>Unterschiedliche Locales auf Server und Client
                         <li>Zeitliche veränderliche Daten (Timestamp, Börsenkurs)
@@ -638,24 +644,7 @@ export const loadGreetings = dispatch => {
         </section>
 
         <section>
-            <h3>Integration mit Microservices</h3>
-            <ul>
-                <li class="fragment">Integration im Browser
-                    <ul>
-                        <li>Anwendung ist in logische Module aufgeteilt, die als ganze Anwendung zusammen laufen
-                        <li>Pro Seite eine Anwendung, kann Komponenten aus andern Modulen integrieten
-                        <!--<li>Nachladen von Modulen on-demand aus einem Build problemlos möglich-->
-                        <li>"Echt" getrennte Anwendung über iFrame und EventBus
-                    </ul>
-                </li>
-                <li class="fragment">Integration über Links, die eine neue Anwendung öffnen und die alte ersetzen
-                    <ul>
-                        <li>jedes Modul ist eine eigene SPA Anwendung
-                        <li>erlaubt Vertikalen wie eine klassische Web-App
-                        <li>Modul-Wechsel setzt Zustand zurück wenn nicht explizit übertragen
-                    </ul>
-                </li>
-            </ul>
+            <h1>Zusammenfassung</h1>
         </section>
 
         <section>
@@ -668,6 +657,11 @@ export const loadGreetings = dispatch => {
                 <li class="fragment">die Komplexitäten einer Single Page App entspringen aus diesen Anforderungen an UX und UI
                 <li class="fragment"><strong>Das Grundproblem ist der Widerspruch zwischen ganzheitlicher UX und Aufteilung in Komponenten / Module / Teams</strong>
             </ul>
+        </section>
+
+        <section>
+            <h2>Bonus Level</h2>
+            <h3>Legenden und Mythen</h3>
         </section>
 
         <!--<section>-->
@@ -693,7 +687,7 @@ export const loadGreetings = dispatch => {
                 <li class="fragment"><strong>SPA ist unstrukturierter Monolith: </strong>
                 <span class="fragment">Trennung, Isolation in Module und Teams ist mit gezeigten Ansätzen möglich</span>
                 <li class="fragment"><strong>HTML/HTTP sind langlebig, Investition in SPA-Frameworks nicht lohnend, veraltet innerhalb einer Woche: </strong>
-                <span class="fragment">Business relevante Teile eninfach außerhalb des SPA-Webframeworks</span>
+                <span class="fragment">Business relevante Teile außerhalb des SPA-Webframeworks</span>
             </ul>
         </section>
 
@@ -711,6 +705,27 @@ export const loadGreetings = dispatch => {
                 <li class="fragment"><strong>keine Möglichkeit zur Strukturieren: </strong>
                 <span class="fragment">Das moderne JavaScript Modul-System ist mächtig
                     und erlaubt Strukturierung wie in Java</span>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Legenden und Mythen #3: Integration mit Microservices geht nicht mit Client Side Redering</h3>
+            <ul>
+                <li class="fragment">Integration im Browser
+                    <ul>
+                        <li>Anwendung ist in logische Module aufgeteilt, die als ganze Anwendung zusammen laufen
+                        <li>Pro Seite eine SPA, kann Komponenten aus andern Modulen integrieten
+                            <!--<li>Nachladen von Modulen on-demand aus einem Build problemlos möglich-->
+                        <li>"Echt" getrennte Anwendung über iFrame und EventBus
+                    </ul>
+                </li>
+                <li class="fragment">Integration über Links, die eine neue Anwendung öffnen und die alte ersetzen
+                    <ul>
+                        <li>jedes Modul ist eine eigene SPA Anwendung
+                        <li>erlaubt Vertikalen wie eine klassische Web-App
+                        <li>Allerdings: Modul-Wechsel setzt Zustand zurück wenn nicht explizit übertragen
+                    </ul>
+                </li>
             </ul>
         </section>
 
