@@ -11,4 +11,12 @@
   </body>
 
   <script src="dist/main.js"></script>
+  <script>
+      if("performance" in window){
+          window.addEventListener("load", () => {
+            performance.getEntriesByType('paint').forEach(({name, startTime}) => console.log(name, startTime));
+
+          });
+      }
+  </script>
 </html>
