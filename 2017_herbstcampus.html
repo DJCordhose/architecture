@@ -496,36 +496,49 @@ export class SubComponent {
 
         <section>
             <h2>Code Sample: Reducer</h2>
-            <h3>Unabhängig vom UI Framework</h3>
+            <h3>Nur eine Funktion, daher unabhängig vom UI Framework</h3>
             <pre><code data-trim>
-const greetings = (state = [], action) => {
+type Greeting = {
+	greeting: string;
+	name: string;
+}
+
+type SaveGreetingAction = {
+	type: 'ADD_GREETING',
+	greeting: Greeting
+}
+
+function greetingsReducer(state: Greeting[] = [],
+                          action: SaveGreetingAction) {
     switch (action.type) {
-        case ADD_GREETING:
+        case 'ADD_GREETING':
             // immutable operation, creating new state
             return [...state, action.greeting];
         default:
             return state;
     }
-};
+}
             </code></pre>
-            <p>Nur eine Funktion</p>
         </section>
 
         <section>
             <h2>Code Sample: Action Creator</h2>
             <h3>Ebenso unabhängig vom UI Framework</h3>
             <pre><code data-trim>
-export const loadGreetings = dispatch => {
-    return fetch(BACKEND_URL)
-        .then(response => response.json())
-        .then(json => dispatch({
+async function loadGreetings(dispatch) {
+    try {
+        const response = await fetch(BACKEND_URL);
+        const json = await response.json();
+        dispatch({
             type: SET_GREETINGS,
             greetings: json
-        }))
-        .catch(err => console.error('LOADING GREETINGS FAILED:', err));
-};
+        });
+    } catch (err) {
+        console.error('LOADING GREETINGS FAILED:', err)
+    }
+}
             </code></pre>
-            <p>Wieder nur eine Funktion</p>
+            <p>Wieder nur eine Funktion, der einzige Ort an dem asynchrone Operationen erlaubt sind</p>
         </section>
 
         <section>
@@ -662,6 +675,12 @@ export const loadGreetings = dispatch => {
         <section>
             <h2>Bonus Level</h2>
             <h3>Legenden und Mythen</h3>
+        </section>
+
+        <section>
+            <h2>Wir sammeln</h2>
+            <h3>Was für Mythen im Bereich Frontend-Architektur kennt ihr?</h3>
+            <pre data-trim contenteditable="true">- React ist besser als Angular</pre>
         </section>
 
         <!--<section>-->
