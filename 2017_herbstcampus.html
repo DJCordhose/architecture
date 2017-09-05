@@ -498,17 +498,19 @@ export class SubComponent {
         <section>
             <h2>Code Sample: Reducer</h2>
             <h3>Nur eine Funktion, daher unabhängig vom UI Framework</h3>
-            <pre><code data-trim>
+            <pre class="fragment"><code data-trim data-num-start="1">
 type Greeting = {
 	greeting: string;
 	name: string;
 }
-
+            </code></pre>
+            <pre class="fragment"><code data-trim data-num-start="5">
 type SaveGreetingAction = {
 	type: 'ADD_GREETING',
 	greeting: Greeting
 }
-
+            </code></pre>
+            <pre><code data-trim data-num-start="9">
 function greetingsReducer(state: Greeting[] = [],
                           action: SaveGreetingAction) {
     switch (action.type) {
@@ -653,7 +655,7 @@ async function loadGreetings(dispatch) {
                 <li>Unklar, ob/wie das mit Web Components - besonders Shadow Dom - funktionieren könnte (headless chrome?,
                 <a href="https://twitter.com/DJCordhose/status/900328374601740288" target="_blank">
                     https://twitter.com/DJCordhose/status/900328374601740288</a>)
-                <li>Hlft nur bei "Time to first Meaningful Paint", nicht bei "Time to Interactive"
+                <li>Hilft nur bei "Time to first Meaningful Paint", nicht bei "Time to Interactive"
             </ul>
         </section>
 
@@ -680,7 +682,7 @@ async function loadGreetings(dispatch) {
 
         <section>
             <h2>Wir sammeln</h2>
-            <h3>Was für Mythen im Bereich Frontend-Architektur kennt ihr?</h3>
+            <h3>Was für potentielle(!) Mythen im Bereich Frontend-Architektur kennt ihr?</h3>
             <pre data-trim contenteditable="true">- React ist besser als Angular</pre>
         </section>
 
@@ -731,7 +733,7 @@ async function loadGreetings(dispatch) {
         <section>
             <h3>Legenden und Mythen #3: Integration mit Microservices geht nicht mit Client Side Redering</h3>
             <ul>
-                <li class="fragment">Integration im Browser
+                <li class="fragment">Integration im Browser in eine Anwendung
                     <ul>
                         <li>Anwendung ist in logische Module aufgeteilt, die als ganze Anwendung zusammen laufen
                         <li>Pro Seite eine SPA, kann Komponenten aus andern Modulen integrieten
@@ -739,7 +741,7 @@ async function loadGreetings(dispatch) {
                         <li>"Echt" getrennte Anwendung über iFrame und EventBus
                     </ul>
                 </li>
-                <li class="fragment">Integration über Links, die eine neue Anwendung öffnen und die alte ersetzen
+                <li class="fragment">Integration mehrerer Anwendungen über Links, die eine neue Anwendung öffnen und die alte ersetzen
                     <ul>
                         <li>jedes Modul ist eine eigene SPA Anwendung
                         <li>erlaubt Vertikalen wie eine klassische Web-App
