@@ -46,6 +46,7 @@
         .reveal pre code {
             max-height: 1000px !important;
         }
+
         img {
             border: 0 !important;
             box-shadow:0 0 0 0 !important;
@@ -54,8 +55,72 @@
         .reveal {
             -ms-touch-action: auto !important;
             touch-action: auto !important;
-        }
+				}
 
+				.reveal h2,
+				.reveal h3 {
+					letter-spacing: 2px;
+				}
+
+				.reveal h2 {
+				font-family: 'Amiri', serif;
+				/* font-family: 'Times New Roman', Times, serif; */
+				font-weight: bold;
+				font-style: italic;
+				letter-spacing: -2px;
+				text-transform: none !important;
+			}
+
+			.reveal em {
+				font-weight: bold;
+			}
+
+				.reveal .step-subtitle h1 {
+					letter-spacing: 1px;
+				}
+				.reveal .step-subtitle h2,
+				.reveal .step-subtitle h3 {
+					text-transform: none;
+					font-style: italic;
+					font-weight: normal;
+					/* font-weight: 400; */
+					/* font-family: 'Amiri', serif; */
+					font-family: 'Lobster', serif;
+					letter-spacing: 1px;
+					color: #2aa198;
+					text-decoration: underline;
+				}
+
+				.reveal .front-page h1,
+				.reveal .front-page h2 {
+					font-family: "League Gothic";
+					font-style: normal;
+					text-transform: uppercase !important;
+					letter-spacing: 1px;
+				}
+
+				.reveal .front-page h1 {
+					font-size: 2.5em !important;
+				}
+
+				.reveal .highlight {
+					background-color: #D3337B;
+					color: white;
+				}
+
+				.reveal img.with-border {
+					border: 1px solid #586e75 !important;
+					box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+				}
+
+				.reveal li {
+					margin-bottom: 8px;
+				}
+
+				/* For li's that use FontAwesome icons as bullet-point */
+			.reveal ul.fa-ul li {
+				list-style-type: none;
+			}
     </style>
 
     <!-- Printing and PDF exports -->
@@ -88,16 +153,11 @@
 
         <section class="todo">
 <pre>
-Auf 90 Minuten strecken
-  - Code Samples aus JavaZone Talk einbauen
-  - Interaktion am Ende bei Fragen 15 Minuten
-  - Am Anfang bei Klassischen Web Apps eine kleine Diskussion einbauen: Reicht das nicht? Brauchen wir überhaupt JavaScript?
 
-
-A software architect who is not in touch with the evolving source code of the product is out of touch with reality.
- - http://blog.martinig.ch/quotes/observations-on-software-architecture/
- - https://www.linkedin.com/feed/update/urn:li:activity:6294870213859037184
- - Other problem: developers who do not make decisions based on actual requirements. Rather ego based.
+Strecken auf 90 Minuten
+- Demo am Anfang wie bei Java Form Nord
+- Grafiken von Nils aus Javazone übernehmen
+- Neuer Schwerpunkt: Integration Patterns für mehrere SPAs
 </pre>
         </section>
 
@@ -699,6 +759,73 @@ async function loadGreetings(dispatch) {
                 </li>
             </ul>
         </section>
+
+        <section class="todo">
+
+        </section>
+                <section class="step-subtitle">
+					<h2>Next Step</h2>
+					<h1>Modularizing</h1>
+
+				</section>
+				<section>
+						<h3>Modular development</h3>
+						<h2>Integration at build time</h2>
+						<ul>
+								<li>Split parts of the application into own npm modules</li>
+								<li>Different teams can provide npm modules</li>
+								<li>Other teams can consume the modules</li>
+								<li>Modules can be lazy-loaded at runtime to increase performance</li>
+					</ul>
+			</section>
+
+			<section>
+					<h3>Modular development</h3>
+					<h2>Integration in the browser</h2>
+            <ul>
+                <li>Teams can build their own components matching their business needs
+									<li>Can be embedded via an iframe into another application</li>
+									<li>therefore they need to "real" apps (but probably small ones)</li>
+									<li>State/communication between apps by using a global EventBus</li>
+						</ul>
+					</section>
+
+					<section>
+							<h3>Modular development</h3>
+							<h2>Independent applications</h2>
+              <ul>
+									<li>Can be used for (strictly) separated parts of the app (e.g. user settings)</li>
+									<li>one team can build a whole app containing backend and frontend</li>
+									<li>an app can match a Microservice at the backend (but don't have to; can talk to multiple Microservices)</li></p>
+									<li>Link opens a new, own SPA (Microapps 😜)</li>
+									<li>State is not shared between apps</li>
+								</ul>
+				</section>
+
+				<section>
+						<h3 style="font-size: 1em; line-height:0">Wrap up</h3>
+					<h3>Modular development</h3>
+					<ul>
+						<li>Integration at <span class="highlight">build</span> time
+							<ul>
+								<li>New build of the consumer is required for each new version of a module</li>
+								<li><span class="highlight">"Real" SPAs</span> including all their advantages (components, state manangement, universal rendering)</li>
+							</ul>
+							<li>Integration in the <span class="highlight">browser</span>
+								<ul><li>
+										Higher decoupling (team can independently release their apps)</ul>
+									</li>
+									<li>Integration harder, as you deal with a lot of <span class="highlight">"small" SPAs</span> </li>
+									</li>
+							</li>
+					</ul>
+					<p style="color: #2aa198">Remember: it's all about the User (Experience!):
+					<br/>It should feel as <span class="highlight">one</span> app!</p>
+
+				</section>
+
+
+
 
         <section>
             <h3>The Doctor is In</h3>
