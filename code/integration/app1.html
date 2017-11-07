@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App1</title>
+</head>
+<body>
+<h1>This is App1</h1>
+<p>
+    <button id="post">Trigger click to parent using postMessage</button>
+</p>
+<p>
+    <button id="direct">Trigger click to parent trying direct access</button>
+</p>
+<div>
+</div>
+<script>
+    const btn = document.querySelector('button#post');
+    const directBtn = document.querySelector('button#direct');
+    const dv =  document.querySelector('div');
+
+    directBtn.addEventListener('click', () => {
+        console.log('App1 Clicked');
+        try {
+            parent.window.display('Direct hello from App1');
+        } catch (error) {
+            display(error.toString());
+        }
+    });
+
+    btn.addEventListener('click', () => {
+        console.log('App1 Clicked');
+        parent.postMessage('Hello from App1', '*');
+    });
+
+    function display(msg) {
+        const p = document.createElement('p');
+        p.textContent = msg;
+        dv.appendChild(p);
+    }
+
+    window.onmessage = event => {
+        const msg = event.data;
+        console.log('App1 received event: ', msg);
+        display(msg);
+
+    };
+</script>
+
+</body>
+</html>

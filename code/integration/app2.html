@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App2</title>
+</head>
+<body>
+<h1>This is App2</h1>
+<p>
+    iframe: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe" target="_blank">
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
+</a>
+</p>
+
+<p>Communication when CORS (security when iframe does not come from same origin) applies: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage" target="_blank">
+    https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
+</a></p>
+<p>
+    <button id="post">Trigger click to iframe using postMessage</button>
+</p>
+<p>
+    <button id="direct">Trigger click to iframe trying direct access</button>
+</p>
+<p>Using 127.0.0.1 as host for iframe makes CORS apply when this page is loaded using localhost</p>
+<iframe height="300" width="500"
+        src="http://127.0.0.1:8080/code/integration/app1.html">
+</iframe>
+<div>
+</div>
+<script>
+    const btn = document.querySelector('button#post');
+    const directBtn = document.querySelector('button#direct');
+    const ifrm = document.querySelector('iframe');
+    const dv =  document.querySelector('div');
+
+    directBtn.addEventListener('click', () => {
+        console.log('App2 Clicked');
+        try {
+            ifrm.contentWindow.display('Direct hello from App2');
+        } catch (error) {
+            display(error.toString());
+        }
+    });
+
+    btn.addEventListener('click', () => {
+        console.log('App2 Clicked');
+        ifrm.contentWindow.postMessage('Hello from App2', '*')
+    });
+
+    function display(msg) {
+        const p = document.createElement('p');
+        p.textContent = msg;
+        dv.appendChild(p);
+    }
+
+    window.onmessage = event => {
+        const msg = event.data;
+        console.log('App2 received event: ', msg);
+        display(msg);
+    };
+</script>
+
+
+</body>
+</html>
