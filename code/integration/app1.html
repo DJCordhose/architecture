@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>App1</title>
+    <style>
+        h1 {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <h1>This is App1</h1>
@@ -12,12 +17,21 @@
 <p>
     <button id="direct">Trigger click to parent trying direct access</button>
 </p>
+<p>
+    <button id="nav">Trigger top navigation</button>
+</p>
 <div>
 </div>
 <script>
     const btn = document.querySelector('button#post');
     const directBtn = document.querySelector('button#direct');
+    const navBtn = document.querySelector('button#nav');
     const dv =  document.querySelector('div');
+
+    navBtn.addEventListener('click', () => {
+        console.log('App1 Clicked');
+        parent.window.location.href = 'http://spiegel.de';
+    });
 
     directBtn.addEventListener('click', () => {
         console.log('App1 Clicked');
@@ -45,6 +59,8 @@
         display(msg);
 
     };
+
+    console.log(typeof app2Func);
 </script>
 
 </body>
