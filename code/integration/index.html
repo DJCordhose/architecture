@@ -48,8 +48,12 @@
 
     disallowButton.addEventListener('click', () => {
         console.log('Disallowing direct access');
-        ifrm.sandbox = "allow-scripts";
-        ifrm.contentWindow.location.reload(true);
+        try {
+            ifrm.sandbox = "allow-scripts";
+            ifrm.contentWindow.location.reload(true);
+        } catch (error) {
+            display(error.toString());
+        }
     });
     
     directBtn.addEventListener('click', () => {
