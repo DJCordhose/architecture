@@ -27,6 +27,9 @@
 <p>
     <button id="direct">Trigger click to iframe trying direct access</button>
 </p>
+<p>
+    <button id="disallow">Disallow direct access and top level navigation</button>
+</p>
 <p>Using 127.0.0.1 as host for iframe makes CORS apply when this page is loaded using localhost</p>
 <iframe height="300" width="500"
         src="https://djcordhose.github.io/architecture/code/integration/iframe.html"
@@ -38,9 +41,16 @@
 <script>
     const btn = document.querySelector('button#post');
     const directBtn = document.querySelector('button#direct');
+    const disallowButton = document.querySelector('button#disallow');
+    
     const ifrm = document.querySelector('iframe');
     const dv =  document.querySelector('div');
 
+    disallowButton.addEventListener('click', () => {
+        console.log('Disallowing direct access');
+        ifrm.sandbox ="allow-scripts";
+    });
+    
     directBtn.addEventListener('click', () => {
         console.log('App2 Clicked');
         try {
