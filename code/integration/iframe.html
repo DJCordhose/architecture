@@ -30,7 +30,11 @@
 
     navBtn.addEventListener('click', () => {
         console.log('App1 Clicked');
-        parent.window.location.href = 'http://spiegel.de';
+        try {
+            parent.window.location.href = 'http://spiegel.de';
+        } catch (error) {
+            display(error.toString());
+        }
     });
 
     directBtn.addEventListener('click', () => {
