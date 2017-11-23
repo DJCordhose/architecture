@@ -139,28 +139,26 @@
 
 <body>
 
-<!--
-Überblick über moderne (JavaScript-)Frontend-Architektur
-
-
-90 Minuten
-
--->
-
 <div class="reveal">
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
 
         <section class="todo">
 <pre>
+Überblick über moderne (JavaScript-)Frontend-Architektur
+
 http://www.oop-konferenz.de/oop2018/programm/konferenzprogramm/sessiondetails/action/detail/session/do-11-2/title/was-macht-moderne-javascript-frontend-architektur-so-schwierig.html
 
-- Cohesion Decoupling Microservices
-  - Ui belongs together, if you decouple you have to couple again
+90 Minuten
+
+Die Anforderungen an eine moderne, clientseitige Architektur für Webanwendungen sind von der Komplexität inzwischen
+mit den Anforderungen an die zugehörige Backend-Architektur vergleichbar.
+Backend-Architekturen sind seit Jahren Thema und gut durchschaut, aber das Verständnis zu Architekturansätzen für das
+Frontend ist oft erschreckend niedrig.
+n diesem Talk werde ich erklären, warum moderne Webanwendungen komplexe Architekturanforderungen haben und mit welchen
+Konzepten und auch mit welchen konkreten Technologien man darauf reagieren kann.
 
 Strecken auf 90 Minuten
-- Demo am Anfang wie bei Java Form Nord
-- Grafiken von Nils aus Javazone übernehmen
 - Neuer Schwerpunkt: Integration Patterns für mehrere SPAs
   - Für den Schwerpunkt:
     embarc/Ansätze.jpg
@@ -204,11 +202,169 @@ Universal
                 OOP 2018</a></h3>
             <p>
                 <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
-                <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
-                <a href="https://www.embarc.de/">Embarc Gmbh</a>
+                <a href="http://twitter.com/djcordhose">@DJCordhose</a>
             </p>
             <p><small>Folien: <a href="http://bit.ly/oop-frontend">
                 http://bit.ly/oop-frontend</a></small></p>
+            <h2><a href="https://www.embarc.de/">Embarc GmbH</a></h2>
+        </section>
+
+        <section>
+            <h2>Moderne Frontend-Architektur</h2>
+            <p>Moderne Frontends ...</p>
+            <ul>
+                <li class="fragment">haben einen hohen Anspruch an <span class="highlight">UI/UX</span></li>
+                <li class="fragment">sollen über lange Jahre <span class="highlight">wartbar</span> bleiben</li>
+                <li class="fragment">sollen aus einzelnen <span class="highlight">Modulen</span> zusammensetzbar sein</li>
+                <li class="fragment">sollen in kurzer Zeit und <span class="highlight">kostengünstig</span> zu entwickeln sein</li>
+            </ul>
+            <p class="fragment">Das passende Buzzword dazu ist <span class="highlight">Micro Frontends</span> (<a href="https://www.thoughtworks.com/radar/techniques/micro-frontends" target="_blank">
+                https://www.thoughtworks.com/radar/techniques/micro-frontends
+            </a>)</p>
+
+        </section>
+
+        <section>
+            <!--<h3>Was macht UX so schwierig?</h3>-->
+            <video controls
+                   poster="img/good-cheap-fast.jpg"
+                   src="img/good-cheap-fast.mp4" type="video/mp4"
+            ></video>
+            <p><small><a href="https://twitter.com/missingcloudltd/status/826203153934729218" target="_blank">
+                https://twitter.com/missingcloudltd/status/826203153934729218
+            </a></small></p>
+
+        </section>
+
+        <section class="step-subtitle">
+            <h3>Teil 1</h3>
+            <h2>Architektonische Herausforderung</h2>
+        </section>
+
+        <section>
+            <h2>Grundproblem bei einer komplexen Web-Anwendung</h2>
+            <h3>Beste UI/UX beißt sich mit Anforderungen an Wartbarkeit</h3>
+            <p>UI soll als konsistentes Ganzes funktionieren</p>
+            <p>Wenn man die Module entkoppelt wie bei Microservices muss man wie für das konsistente UI wieder koppeln</p>
+<!--
+ - Cohesion Decoupling Microservices
+     - Ui belongs together, if you decouple you have to couple again
+-->
+        </section>
+
+        <section>
+            <h3>Zweite Schwierigkeit</h3>
+            <h2>Wir nehmen Frontend-Architektur nicht für voll</h2>
+            <p>Zitate</p>
+            <ul>
+                <li class="fragment"><em>Frontend-Architektur: Ich dachte sowas gibt es gar nicht</em></li>
+                <li class="fragment"><em>Das Frontend kloppen wir am Ende einfach irgendwie drauf</em></li>
+                <li class="fragment"><em>Architektur für ein bisschen CSS-Pixel-Geschupsse?</em></li>
+            </ul>
+        </section>
+
+        <section>
+            <img src="img/frontend-architecture.png" height="600px">
+
+            <p><small><a href="https://twitter.com/markdalgleish/status/908146609942257664" target="_blank">
+                https://twitter.com/markdalgleish/status/908146609942257664
+            </a></small></p>
+        </section>
+
+        <section>
+            <h2>Micro Frontend Architektur-Ansätze</h2>
+            <p>Integration...</p>
+            <ol>
+                <li class="fragment">zur Build-Zeit - Codename <span class="highlight">SPA</span></li>
+                <li class="fragment">im Browser - Codename <span class="highlight">Micro Components</span></li>
+                <li class="fragment">über Links - Codename <span class="highlight">Links</span></li>
+            </ol>
+        </section>
+
+        <section class="step-subtitle">
+            <h3>Ansatz 1</h3>
+            <h2>Klassische Single Page Application mit statischem Build</h2>
+            <p><span class="highlight">SPA</span></p>
+        </section>
+
+        <section class="step-subtitle">
+            <h3>Ansatz 2</h3>
+            <h2>Zusammensetzen der Anwendung im Browser</h2>
+            <p><span class="highlight">Micro Components</span></p>
+        </section>
+
+        <section class="step-subtitle">
+            <h3>Ansatz 3</h3>
+            <h2>Eigenständige Anwendungen über Links verbunden</h2>
+            <p><span class="highlight">Links</span></p>
+        </section>
+
+        <section class="todo">
+            <pre>
+                Die nächsten Folien auf Deutsch und schärfen
+            </pre>
+        </section>
+
+        <section>
+            <h3>Modular development</h3>
+            <h2>Integration at build time</h2>
+            <ul>
+                <li>Split parts of the application into own npm modules</li>
+                <li>Different teams can provide npm modules</li>
+                <li>Other teams can consume the modules</li>
+                <li>Modules can be lazy-loaded at runtime to increase performance</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Modular development</h3>
+            <h2>Integration in the browser</h2>
+            <ul>
+                <li>Teams can build their own components matching their business needs
+                <li>Can be embedded via an iframe into another application</li>
+                <li>therefore they need to "real" apps (but probably small ones)</li>
+                <li>State/communication between apps by using a global EventBus</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Modular development</h3>
+            <h2>Independent applications</h2>
+            <ul>
+                <li>Can be used for (strictly) separated parts of the app (e.g. user settings)</li>
+                <li>one team can build a whole app containing backend and frontend</li>
+                <li>an app can match a Microservice at the backend (but don't have to; can talk to multiple Microservices)</li></p>
+                <li>Link opens a new, own SPA (Microapps 😜)</li>
+                <li>State is not shared between apps</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3 style="font-size: 1em; line-height:0">Wrap up</h3>
+            <h3>Modular development</h3>
+            <ul>
+                <li>Integration at <span class="highlight">build</span> time
+                    <ul>
+                        <li>New build of the consumer is required for each new version of a module</li>
+                        <li><span class="highlight">"Real" SPAs</span> including all their advantages (components, state manangement, universal rendering)</li>
+                    </ul>
+                <li>Integration in the <span class="highlight">browser</span>
+                    <ul><li>
+                        Higher decoupling (team can independently release their apps)</ul>
+                </li>
+                <li>Integration harder, as you deal with a lot of <span class="highlight">"small" SPAs</span> </li>
+                </li>
+                </li>
+            </ul>
+            <p style="color: #2aa198">Remember: it's all about the User (Experience!):
+                <br/>It should feel as <span class="highlight">one</span> app!</p>
+
+        </section>
+
+
+        <section class="step-subtitle">
+            <h3>Teil 2</h3>
+            <h2>Welche Architektur könnte zu deinen Anforderungen passen?</h2>
         </section>
 
         <section>
@@ -219,12 +375,70 @@ und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man B
             <p class="fragment"><small> - Oliver Zeigermann, embarc</small></p>
         </section>
 
+        <section>
+            <img src="img/feynman-twitter.png">
 
-        https://twitter.com/ProfFeynman/status/932645521096716290
+            <p><small><a href="https://twitter.com/ProfFeynman/status/932645521096716290" target="_blank">
+                https://twitter.com/ProfFeynman/status/932645521096716290
+            </a></small></p>
+        </section>
 
         <section>
-            <h2>Teil 1</h2>
+            <img src="img/kickme.png">
+
+            <p><small><a href="https://twitter.com/rhundhausen/status/932815147273474049" target="_blank">
+                https://twitter.com/rhundhausen/status/932815147273474049
+            </a></small></p>
         </section>
+
+        <section>
+            <h2>Übung #1</h2>
+            <h3>Unterhalte dich mit deinen Sitznachbarn über dein eigenes (oder eine dir bekanntes) Frontend</h3>
+            <p>Welche Anforderungen gubt es in dem Projekt?</p>
+            <p>Wo würde das Frontend architektonisch passen?</p>
+            <p>Welche Fragen ergeben sich für dich?</p>
+            <p><small>Diese Fragen klären wir dann im Nachgang</small></p>
+        </section>
+
+        <section>
+            <h2>Klären offener Fragen</h2>
+        </section>
+
+        <section class="step-subtitle">
+            <h3>Teil 3</h3>
+            <h2>Patterns gegen die Technische Herausforderung</h2>
+        </section>
+
+        <section>
+            <img src="img/frontend-katz-twitter.png" height="600px">
+
+            <p><small><a href="https://twitter.com/wycats" target="_blank">
+                @wycats
+            </a>: <a href="https://twitter.com/wycats/status/930463710941872128" target="_blank">
+                https://twitter.com/wycats/status/930463710941872128
+            </a></small></p>
+        </section>
+
+        <section class="todo">
+            <h2>Patterns</h2>
+            <ul>
+                <li class="fragment">iFrames und WebComponents</li>
+                <li class="fragment">Mediator Pattern</li>
+                <li class="fragment">Global Mediator Pattern: Redux</li>
+                <li class="fragment">PRPL</li>
+                <li class="fragment">Universal Rendering</li>
+            </ul>
+        </section>
+
+        <section>
+            <!--<img src="img/light-elevator.jpg" height="600px">-->
+            <img src="img/light-elevator-twitter.png" height="600px">
+
+            <p><small><a href="https://twitter.com/ThePracticalDev/status/933373477255630853" target="_blank">
+                https://twitter.com/ThePracticalDev/status/933373477255630853
+            </a></small></p>
+        </section>
+
 
         <section>
             <img src="internet-is-for-end-users.png">
@@ -234,125 +448,6 @@ und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man B
             </a>: <a href="https://twitter.com/igrigorik/status/891901115045785600" target="_blank">
                 https://twitter.com/igrigorik/status/891901115045785600
             </a></small></p>
-        </section>
-
-        <section>
-            <h2>Grundproblem bei einer komplexen Web-Anwendung</h2>
-            <h3>Beste UI/UX beißt sich mit Anforderungen an Wartbarkeit</h3>
-        </section>
-
-        <section>
-            <h2>Zweite Schwierigkeit: Wir nehmen Frontend-Architektur nicht für voll</h2>
-            <pre>
-- 'Ich dachte sowas gibt es gar nicht'
-- 'Das Frontend kloppen wir am Ende einfach irgendwie drauf'
-- 'Architektur für ein bisschen CSS-Pixel-Geschupsse?'
--             https://twitter.com/markdalgleish/status/908146609942257664?s=03
-
-            </pre>
-        </section>
-
-        <section>
-            <h2>Was macht Frontend-Architektur schwierig?</h2>
-            <h3 class="fragment">Das "Problem" ist der <em>Benutzer!</em></h3>
-
-            <ul>
-                <li class="fragment">alles soll wirken wie aus einem Guss
-                    <ul>
-                        <li>einheitliches Layout (UI)
-                        <li>einheitliches Bedienkonzept (UX)
-                    </ul>
-                </li>
-                <li class="fragment">reaktionsschnelles UI, auch unter Last
-                <li class="fragment">Anzeige soll jederzeit über alle Komponenten konsistent sein
-                <li class="fragment">alles von Anfang an da, ohne Verzögerung
-            </ul>
-            <!--<p class="fragment"><small>Oder man nimmt auf den Benutzer keine Rücksicht wenn es das Geschäftsmodell zulässt</small></p>-->
-        </section>
-
-        <section>
-            <h2>Wo ist das Problem? Das ist doch einfach oder?</h2>
-            <h3 class="fragment">Prominente Gegenbeispiele</h3>
-            <ul>
-                <li class="fragment">Facebook, LinkedIn, XING: Alle kämpfen mit uneinheitlichem Anzeigestand
-                <!--Add screenshot from LinkedIn-->
-                <li class="fragment">Gmail: Ladebalken am Anfang, langsamere erste Page Impression
-                <li class="fragment">Amazon: uneinheitliches Layout und Bedienkonzept
-                <li class="fragment">Viele seiten von Behörden/Ämtern/Großkonzernen etc.: zähes UI, validieren der Eingaben erst nach Submit
-            </ul>
-        </section>
-
-        <section>
-            <h2>Sind die alle unfähig?</h2>
-            <p class="fragment">Oder liegt das eher an Konflikten mit anderen typischen Anforderungen?</p>
-            <p class="fragment">Natürlich soll das alles auch</p>
-            <ul>
-                <li class="fragment">schnell und kostengünstig entwickelt werden
-                <li class="fragment">über Jahrzehnte wartbar sein
-                <li class="fragment">als Komponenten oder Teilprojekte entwickelbar sein
-                <li class="fragment">eine einheitliche Architektur haben
-                <li class="fragment">zum Skillset der vorhandenen Entwickler passen
-            </ul>
-        </section>
-
-        <!--<section>-->
-            <!--<h2>Typische Szenarien</h2>-->
-            <!--<p>Das gucken wir uns heute an</p>-->
-            <!--<ul>-->
-                <!--<li class="fragment"><strong>Was alle wissen wollen</strong>: Microservices im Backend (Monolithischer Client vs Vertikalen)-->
-                <!--<li class="fragment"><strong>Das Geheimnis der Single-Page Apps</strong>: Komplexes Zusammenspiel von Komponenten (State Management, Wartbarkeit)-->
-                <!--<li class="fragment"><strong>Quadratur des Kreises</strong>: Schnelle erste Anzeige bei gleichzeitig hoher Interaktivität (Universal Rendering)-->
-                <!--<li class="fragment"><strong>Uncool, aber häufig Hauptbestandteil der Anwendung</strong>: Effiziente, aber funktionale Formulare (Redux-Form)-->
-            <!--</ul>-->
-        <!--</section>-->
-
-        <section>
-            <h3>Klassiche Webanwendung</h3>
-            <p><small>jeder Boot tut gut, jeder Roundtrip setzt Zustand zurück</small></p>
-
-            <img src="embarc/KlassischeWebAnwendung.png" style="height: 450px;">
-            <p><small>Copyright 2016, embarc</small></p>
-        </section>
-
-        <section>
-            <h2>Klassichen Webanwendungen</h2>
-            <ul class="fragment">
-                <li>Browser sendet HTTP-Request und empfängt HTML
-                <li>Content wird auf der Server-Seite gerendert
-                <li>Jede Interaktion wiederholt diesen Zyklus
-            </ul>
-        </section>
-
-        <section>
-            <h2>Klassische Webanwendung: Oft ein nahe liegender Ansatz</h2>
-            <ul class="fragment">
-                <li>Klassische Webanwendung sind für viele Enterprise-Entwicklungen der natürliche Ausgangspunkt
-                <li>Server-Seitige Entwicklung mit Java/C# und HTTP und HTML sind gut verstanden
-                <li>kleinere UI-Änderungen können auf Client-Seite mit JavaScript-Schnippseln (jQuery) realisiert werden
-                <li>häufig ist dies völlig ausreichend
-            </ul>
-        </section>
-
-        <section>
-            <h2>Grenzen</h2>
-            <ul class="fragment">
-                <li>UI/UX ist grunsätzlich eingeschränkt
-                <li>selbst in vermeintlich klassischen Anwendungen verstecken sich SPAs oft als Teile
-                <li>z.B. JSF Komponenten mit einem komplexen UI
-                <li>Vermischung von client- und serverseitigem Rendering macht Anwendungsarchitektur und Programmiermodell abenteuerlich
-            </ul>
-            <p class="fragment"><em>Perfide, da zuerst die Aufwände zur Umsetzung ansteigen und der Code immer unübersichtlicher wird.</em></p>
-        </section>
-
-        <section>
-            <h3>Was geht nicht mehr als Klassische Web Anwendung</h3>
-            <h4>Ein Beispiel</h4>
-                <div>
-                    <a href="http://localhost:8080/" target="_blank">
-                        <img src="greeting-app-complex.png" style="height: 500px;">
-                    </a>
-                </div>
-            <p><small>Gar nicht mal so komplex...</small></p>
         </section>
 
         <section>
@@ -715,23 +810,6 @@ async function loadGreetings(dispatch) {
         </section>
 
         <section>
-            <h3>Was ist mit meiner guten alten Web-Anwendung passiert?</h3>
-            <p class="fragment">Ist das nicht alles zu kompliziert?</p>
-            <ul>
-                <li class="fragment">Klassische, serverseitig gerenderte Anwendungen,
-                    sind häufig wirklich einfacher und besser modularisierbar
-                <li class="fragment">Hohe Anforderungen an UX und UI sind allerdings nicht mit sinnvollem Aufwand mit klassischen Web-Anwendungen umsetzbar
-                <li class="fragment">die Komplexitäten einer Single Page App entspringen aus diesen Anforderungen an UX und UI
-                <li class="fragment"><strong>Das Grundproblem ist der Widerspruch zwischen ganzheitlicher UX und Aufteilung in Komponenten / Module / Teams</strong>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Bonus Level</h2>
-            <h3>Legenden und Mythen</h3>
-        </section>
-
-        <section>
             <h2>Wir sammeln</h2>
             <h3>Was für potentielle(!) Mythen im Bereich Frontend-Architektur kennt ihr?</h3>
             <pre data-trim contenteditable="true">- React ist besser als Angular</pre>
@@ -800,73 +878,6 @@ async function loadGreetings(dispatch) {
                 </li>
             </ul>
         </section>
-
-        <section class="todo">
-- übersetzen auf deutsch mit den Legenden und Mythen #3 zusammenfassen und dann als Teil nach Universal
-        </section>
-                <section class="step-subtitle">
-					<h2>Next Step</h2>
-					<h1>Modularizing</h1>
-
-				</section>
-				<section>
-						<h3>Modular development</h3>
-						<h2>Integration at build time</h2>
-						<ul>
-								<li>Split parts of the application into own npm modules</li>
-								<li>Different teams can provide npm modules</li>
-								<li>Other teams can consume the modules</li>
-								<li>Modules can be lazy-loaded at runtime to increase performance</li>
-					</ul>
-			</section>
-
-			<section>
-					<h3>Modular development</h3>
-					<h2>Integration in the browser</h2>
-            <ul>
-                <li>Teams can build their own components matching their business needs
-									<li>Can be embedded via an iframe into another application</li>
-									<li>therefore they need to "real" apps (but probably small ones)</li>
-									<li>State/communication between apps by using a global EventBus</li>
-						</ul>
-					</section>
-
-					<section>
-							<h3>Modular development</h3>
-							<h2>Independent applications</h2>
-              <ul>
-									<li>Can be used for (strictly) separated parts of the app (e.g. user settings)</li>
-									<li>one team can build a whole app containing backend and frontend</li>
-									<li>an app can match a Microservice at the backend (but don't have to; can talk to multiple Microservices)</li></p>
-									<li>Link opens a new, own SPA (Microapps 😜)</li>
-									<li>State is not shared between apps</li>
-								</ul>
-				</section>
-
-				<section>
-						<h3 style="font-size: 1em; line-height:0">Wrap up</h3>
-					<h3>Modular development</h3>
-					<ul>
-						<li>Integration at <span class="highlight">build</span> time
-							<ul>
-								<li>New build of the consumer is required for each new version of a module</li>
-								<li><span class="highlight">"Real" SPAs</span> including all their advantages (components, state manangement, universal rendering)</li>
-							</ul>
-							<li>Integration in the <span class="highlight">browser</span>
-								<ul><li>
-										Higher decoupling (team can independently release their apps)</ul>
-									</li>
-									<li>Integration harder, as you deal with a lot of <span class="highlight">"small" SPAs</span> </li>
-									</li>
-							</li>
-					</ul>
-					<p style="color: #2aa198">Remember: it's all about the User (Experience!):
-					<br/>It should feel as <span class="highlight">one</span> app!</p>
-
-				</section>
-
-
-
 
         <section>
             <h3>The Doctor is In</h3>
