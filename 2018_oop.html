@@ -169,8 +169,9 @@ Beispiele für alles zeigen
   - Beispiel für Integration über Links
     - XING
   - iframe?
-
 - Integration: also a culture challenge
+- PWA einbauen als Spielart von SPA
+  - https://medium.com/dev-channel/treebo-a-react-and-preact-progressive-web-app-performance-case-study-5e4f450d5299
 </pre>
         </section>
 
@@ -245,7 +246,7 @@ Universal
             <h2>Grundproblem bei einer komplexen Web-Anwendung</h2>
             <h3>Beste UI/UX beißt sich mit Anforderungen an Wartbarkeit</h3>
             <p>UI soll als konsistentes Ganzes funktionieren</p>
-            <p>Wenn man die Module entkoppelt wie bei Microservices muss man wie für das konsistente UI wieder koppeln</p>
+            <p>Wenn man die Module entkoppelt sie bei Microservices muss man wie für das konsistente UI wieder koppeln</p>
 <!--
  - Cohesion Decoupling Microservices
      - Ui belongs together, if you decouple you have to couple again
@@ -272,13 +273,29 @@ Universal
         </section>
 
         <section>
+            <img src="img/frontend-katz-twitter.png" height="600px">
+
+            <p><small><a href="https://twitter.com/wycats" target="_blank">
+                @wycats
+            </a>: <a href="https://twitter.com/wycats/status/930463710941872128" target="_blank">
+                https://twitter.com/wycats/status/930463710941872128
+            </a></small></p>
+        </section>
+
+        <section>
             <h2>Micro Frontend Architektur-Ansätze</h2>
             <p>Integration...</p>
             <ol>
                 <li class="fragment">über Links - Codename <span class="highlight">Links</span></li>
                 <li class="fragment">im Browser - Codename <span class="highlight">Micro Components</span></li>
-                <li class="fragment">zur Build-Zeit - Codename <span class="highlight">SPA</span></li>
+                <li class="fragment">zur Build-Zeit - Codename <span class="highlight">
+                    Majestic Modular Monoliths</span>
+                    (Kudos an <a href="https://twitter.com/DJCordhose/status/908251990005821440" target="_blank">@axelfontaine</a>)</li>
             </ol>
+        </section>
+
+        <section class="todo">
+            <img src="embarc/Ansätze.jpg" >
         </section>
 
         <section class="step-subtitle">
@@ -406,53 +423,8 @@ und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man B
 
         <section class="step-subtitle">
             <h3>Teil 3</h3>
-            <h2>Patterns gegen die Technische Herausforderung</h2>
-        </section>
-
-        <section>
-            <img src="img/frontend-katz-twitter.png" height="600px">
-
-            <p><small><a href="https://twitter.com/wycats" target="_blank">
-                @wycats
-            </a>: <a href="https://twitter.com/wycats/status/930463710941872128" target="_blank">
-                https://twitter.com/wycats/status/930463710941872128
-            </a></small></p>
-        </section>
-
-        <section class="todo">
-            <h2>Patterns</h2>
-            <ul>
-                <li class="fragment">iFrames und WebComponents</li>
-                <li class="fragment">Mediator Pattern</li>
-                <li class="fragment">Global Mediator Pattern: Redux</li>
-                <li class="fragment">PRPL</li>
-                <li class="fragment">Universal Rendering</li>
-            </ul>
-        </section>
-
-        <section>
-            <!--<img src="img/light-elevator.jpg" height="600px">-->
-            <img src="img/light-elevator-twitter.png" height="600px">
-
-            <p><small><a href="https://twitter.com/ThePracticalDev/status/933373477255630853" target="_blank">
-                https://twitter.com/ThePracticalDev/status/933373477255630853
-            </a></small></p>
-        </section>
-
-
-        <section>
-            <img src="internet-is-for-end-users.png">
-
-            <p><small><a href="https://twitter.com/igrigorik" target="_blank">
-                @igrigorik
-            </a>: <a href="https://twitter.com/igrigorik/status/891901115045785600" target="_blank">
-                https://twitter.com/igrigorik/status/891901115045785600
-            </a></small></p>
-        </section>
-
-        <section>
-            <h3>Nächster Schritt</h3>
-            <h2>Single-Page Application</h2>
+            <h2>Implementierung als Komponenten basierte Single Page Apps</h2>
+            <p>Bisher waren alle Überlegungen technikfrei - wir hätten auch über Desktop Apps sprechen können</p>
         </section>
 
         <section>
@@ -483,9 +455,103 @@ und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man B
         </section>
 
         <section>
-            <h1>Smart and Dumb Components</h1>
-            <h2>Klares Architektur Pattern</h2>
-            <h3>Heißt auch <em>Mediator Pattern</em> bei Web Components / Polymer</h3>
+            <h1>Herausforderungen</h1>
+        </section>
+
+        <section class="todo">
+            <img src="embarc/Vergleich.jpg" >
+        </section>
+
+        <section class="todo">
+<pre>
+- Unabhängigkeit der Module
+  - In der Entwicklung
+  - Beim Deployment
+  - Verhalten bei Fehlerfall, Ausfall
+- Verhalten Fremdsystemen gegenüber
+  - SEO
+  - Preview
+- Skalierbarkeit in der Entwicklung
+  - Freie Wahl des Frameworks
+  - Update der Bibliotheken
+  - Eignung für Vertikale Architektur
+  - Gemeinsame Bibliothek, Wieververwendung
+  - Freiheitsgrad der Modulgröße
+  - Migrationspfad von klassischer Web-App
+- UX, Konsistenz
+  - Gleichzeitige, synchronisierte Darstellung mehrerer Module
+  - Schnelle First-Page Impression
+  - Kommunikation zwischen Modulen
+  - Offline-Fähigkeit
+</pre>
+        </section>
+
+        <section>
+            <span class="highlight">Micro Components</span>
+        </section>
+
+        <section>
+            <!--<img src="img/light-elevator.jpg" height="600px">-->
+            <img src="img/light-elevator-twitter.png" height="600px">
+
+            <p><small><a href="https://twitter.com/ThePracticalDev/status/933373477255630853" target="_blank">
+                https://twitter.com/ThePracticalDev/status/933373477255630853
+            </a></small></p>
+        </section>
+
+        <section>
+            <h1>Techniken</h1>
+        </section>
+
+        <section>
+            <h3>Client-Seitige Integration</h3>
+            <p>Zentrale Herausforderung von <span class="highlight">Micro Components</span></p>
+            <ul>
+                <li><span class="highlight">Web Component</span> (Laden als JavaScript Modul):
+                <code></code>
+                </li>
+                <li><span class="highlight">script-Tag und rendering in Mount-Punkt</span>:
+                    bettet nur HTML ein</li>
+                <li><span class="highlight"><a href="https://github.com/gustafnk/h-include" target="_blank">h-include</a></span>:
+                    bettet nur HTML ein</li>
+                <li><span class="highlight"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe" target="_blank">
+            iframe</a></span>: bettet komplette Anwendung ein, hat viele technische Herausforderungen</li>
+            </ul>
+            <p>Herausforderung immer: Ladezeiten, einheitliches UI und UX, Serverside-Rendering</p>
+        </section>
+
+
+        <section>
+            <h3>Kommunikation zwischen getrennten Anwendungen</h3>
+            <ul>
+                <li><span class="highlight">Web Sockets</span>
+                </li>
+                <li><span class="highlight">PWA Push</span>
+                </li>
+                <li><span class="highlight">Cookies</span>
+                </li>
+                <li><span class="highlight">URL Parameter</span>
+                </li>
+                <li><span class="highlight">Session Storage</span>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Architektur-Muster</h1>
+        </section>
+
+        <section>
+            <h3>Spezialfall von Monolith: PWA mit PRPL</h3>
+        </section>
+
+        <section class="step-subtitle">
+            <h3>Pattern</h3>
+            <h2>Smart and Dumb Components</h2>
+            <h3>Heißt auch <em>Mediator Pattern</em></h3>
+            <p>Ansätze: <span class="highlight">Micro Components</span>, <span class="highlight">Majestic Modular Monoliths</span></p>
+            <p>Herausfordeungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span>,
+                <span class="highlight">Gemeinsame Bibliothek, Wieververwendung</span></p>
         </section>
 
         <section>
@@ -573,8 +639,18 @@ export class SubComponent {
             </code></pre>
         </section>
 
+        <section class="step-subtitle">
+            <h3>Pattern</h3>
+            <h2>Zentrales Statemanagement: Redux</h2>
+            <h3>Heißt auch <em>Global Mediator Pattern</em></h3>
+            <h2>Zustand wird zentral gehalten, UI-Logik geht aus den Komponenten</h2>
+            <p>Ansätze: <span class="highlight">Micro Components</span>, <span class="highlight">Majestic Modular Monoliths</span></p>
+            <p>Herausfordeungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span>,
+                <span class="highlight">Gemeinsame Bibliothek, Wieververwendung</span></p>
+        </section>
+
         <section>
-            <h3>Grenzen</h3>
+            <h3>Grenzen von Smart/Dumb</h3>
             <p class="fragment"><em>Besonders bei wachsenden und langlebigen Anwendungen</em></p>
             <ul class="fragment">
                 <li>Tendenz zu "Gottkomponenten": Zustand und Logik wandern langsam nach oben in eine einzige Komponente
@@ -593,24 +669,6 @@ export class SubComponent {
                     </ul>
                 </li>
             </ul>
-        </section>
-
-        <!--<section>-->
-            <!--<a href="https://youtu.be/I7IdS-PbEgI" target="_blank"><img style="height: 600px" src="alan_kay.jpg"></a>-->
-            <!--<p><small><a href="https://facebook.github.io/immutable-js/" target="_blank">-->
-                <!--https://facebook.github.io/immutable-js/-->
-            <!--</a></small></p>-->
-        <!--</section>-->
-
-        <section>
-            <h3>Nächster Schritt</h3>
-            <h2>Redux als Architektur-Muster</h2>
-        </section>
-
-        <section>
-            <h1>Redux</h1>
-            <h2>Zustand wird zentral gehalten, UI-Logik geht aus den Komponenten</h2>
-            <h3>Selbst kein Framework, sondern nur ein Muster (wie z.B. MVC)</h3>
         </section>
 
         <section>
@@ -810,22 +868,6 @@ async function loadGreetings(dispatch) {
         </section>
 
         <section>
-            <h2>Wir sammeln</h2>
-            <h3>Was für potentielle(!) Mythen im Bereich Frontend-Architektur kennt ihr?</h3>
-            <pre data-trim contenteditable="true">- React ist besser als Angular</pre>
-        </section>
-
-        <!--<section>-->
-            <!--<h3>Welcher Anforderungen kommen durch das Web hinzu?</h3>-->
-            <!--<ul>-->
-                <!--<li class="fragment">Wie kann man wartbar JavaScript entwickeln?-->
-                <!--<li class="fragment">Wie geht man mit der schnellen Entwicklung der Web-Frameworks um?-->
-                <!--<li class="fragment">JavaScript im Browser, aber meist nicht auch auf dem Server - -->
-                    <!--wie bekommt man damit eine einheitliche Architektur hin?-->
-            <!--</ul>-->
-        <!--</section>-->
-
-        <section>
             <h3>Legenden und Mythen #1: Single Page Applications (SPA)</h3>
             <ul>
                 <li class="fragment"><strong>In SPAs kann ich keine Links teilen und auch nicht sinnvoll verlinken: </strong>
@@ -838,23 +880,6 @@ async function loadGreetings(dispatch) {
                 <span class="fragment">Trennung, Isolation in Module und Teams ist mit gezeigten Ansätzen möglich</span>
                 <li class="fragment"><strong>HTML/HTTP sind langlebig, Investition in SPA-Frameworks nicht lohnend, veraltet innerhalb einer Woche: </strong>
                 <span class="fragment">Business relevante Teile außerhalb des SPA-Webframeworks</span>
-            </ul>
-        </section>
-
-        <section>
-            <h3>Legenden und Mythen #2: JavaScript</h3>
-            <p class="fragment">Ist JavaScript-Code nicht unwartbar?</p>
-            <ul>
-                <li class="fragment"><strong>keine Lesbarkeit: </strong><span class="fragment">moderner JavaScript-Code ist auf Python-Niveau, JSDoc ist Standard</span>
-                <li class="fragment"><strong>keine Analysierbarkeit: </strong><span class="fragment">
-                wird durch zusätzliche mächtige Typensysteme TypeScript oder Flow erlaubt</span>
-                <li class="fragment"><strong>kein Refactoring: </strong><span class="fragment">folgt aus Analysierbarkeit</span>
-                <li class="fragment"><strong>keine Testbarkeit: </strong><span class="fragment">gezeigte Ansätze erlauben allerbeste Testbarkeit aller Teile</span>
-                <li class="fragment"><strong>keine Wiederverwendung: </strong><span class="fragment">
-                Dumb Componentes jederzeit wiederverwendbar, bei Smart Components nicht sinnvoll</span>
-                <li class="fragment"><strong>keine Möglichkeit zur Strukturieren: </strong>
-                <span class="fragment">Das moderne JavaScript Modul-System ist mächtig
-                    und erlaubt Strukturierung wie in Java</span>
             </ul>
         </section>
 
@@ -926,9 +951,11 @@ async function loadGreetings(dispatch) {
                 </tr>
             </table></small>
             <p><small>
-                <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>,
-                <a href="http://bit.ly/architektur-herbstcampus">
-                http://bit.ly/architektur-herbstcampus</a></small></p>
+                <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
+                <a href="https://www.embarc.de/">Embarc GmbH</a> /
+
+                <a href="http://bit.ly/oop-frontend">
+                http://bit.ly/oop-frontend</a></small></p>
         </section>
 
     </div>
