@@ -143,8 +143,7 @@
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
 
-        <section class="todo">
-<pre>
+<!--
 Überblick über moderne (JavaScript-)Frontend-Architektur
 
 http://www.oop-konferenz.de/oop2018/programm/konferenzprogramm/sessiondetails/action/detail/session/do-11-2/title/was-macht-moderne-javascript-frontend-architektur-so-schwierig.html
@@ -157,24 +156,8 @@ Backend-Architekturen sind seit Jahren Thema und gut durchschaut, aber das Verst
 Frontend ist oft erschreckend niedrig.
 n diesem Talk werde ich erklären, warum moderne Webanwendungen komplexe Architekturanforderungen haben und mit welchen
 Konzepten und auch mit welchen konkreten Technologien man darauf reagieren kann.
-
-Strecken auf 90 Minuten
-- Neuer Schwerpunkt: Integration Patterns für mehrere SPAs
-  - Für den Schwerpunkt:
-    embarc/Ansätze.jpg
-    embarc/Vergleich.jpg
-Beispiele für alles zeigen
-  - Beispiel für direkte Integration
-    - Google Docs: nur ein Use Case, aber ein wirklich großer
-  - Beispiel für Integration über Links
-    - XING
-  - iframe?
-- Integration: also a culture challenge
-- PWA einbauen als Spielart von SPA
-  - https://medium.com/dev-channel/treebo-a-react-and-preact-progressive-web-app-performance-case-study-5e4f450d5299
-</pre>
-        </section>
-
+-->
+<!--
         <section data-markdown class="preparation">
             <script type="text/template">
 ### Vorbereitung
@@ -196,6 +179,7 @@ Universal
 - Checken, dass localhost:3000 im Browser läuft
             </script>
         </section>
+-->
 
         <section>
             <h2>Was macht moderne (JavaScript) Frontend-Architektur so schwierig?</h2>
@@ -210,20 +194,94 @@ Universal
             <h2><a href="https://www.embarc.de/">Embarc GmbH</a></h2>
         </section>
 
+        <section class="todo">
+<pre>
+- Technischen Teil reduzieren auf was inhaltlich bereits da ist, rest löschen
+</pre>
+        </section>
+
         <section>
             <h2>Moderne Frontend-Architektur</h2>
             <p>Moderne Frontends ...</p>
             <ul>
                 <li class="fragment">haben einen hohen Anspruch an <span class="highlight">UI/UX</span></li>
                 <li class="fragment">sollen über lange Jahre <span class="highlight">wartbar</span> bleiben</li>
-                <li class="fragment">sollen aus einzelnen <span class="highlight">Modulen</span> zusammensetzbar sein</li>
+                <li class="fragment">sind typischerweise zu <span class="highlight">groß</span>, um von einem einzelnen Team gewartet werden zu können</li>
                 <li class="fragment">sollen in kurzer Zeit und <span class="highlight">kostengünstig</span> zu entwickeln sein</li>
             </ul>
-            <p class="fragment">Das passende Buzzword dazu ist <span class="highlight">Micro Frontends</span> (<a href="https://www.thoughtworks.com/radar/techniques/micro-frontends" target="_blank">
-                https://www.thoughtworks.com/radar/techniques/micro-frontends
-            </a>)</p>
-
         </section>
+
+        <section>
+            <h2>Axiom I</h2>
+            <h2>Beste UI / UX kann nur durch Single Page Applications (SPA) erreicht werden</h2>
+        </section>
+
+        <section>
+            <h2>SPAs</h2>
+            <p>verschieben eure Anwendung in den Browser</p>
+            <img src="img/webapp-architecture-spa.png" style="max-width: 40%; float: left">
+            <ul style="width: 50%; float: right; font-size: 80%">
+                <li class="fragment">eine einzie (single) HTML Seite (Page) pro Modul
+                <li class="fragment">Seite ist eher Anwendung als Inhalt
+                <li class="fragment">Server nur noch Daten-Schnittstelle (JSON/REST API)</li>
+                <li class="fragment">erlaubt Offline-Betrieb (u.a. über Service Workers)
+                <li class="fragment">dieselbe UI/UX wie eine Desktop App möglich
+            </ul>
+        </section>
+
+<!--
+        <section>
+            <h3>Alle mordernen SPAS bieten Komponenten-basierte Ansätze mit Templates</h3>
+            <ul class="fragment">
+                <li>Templates nun auf der Clientseite
+                <li>Anwendung bekommt Struktur
+                <li>Logik hängt an Komponenten, ist keine lose Schnippsel-Sammlung wie bei jQuery
+            </ul>
+            <p class="fragment">Findet sich wieder in React, Angular, Vue und Web Components</p>
+        </section>
+
+        <section>
+            <h3>Legenden und Mythen über SPAs</h3>
+            <ul>
+                <li class="fragment"><strong>In SPAs kann ich keine Links teilen und auch nicht sinnvoll verlinken: </strong>
+                    <span class="fragment">Link wird im Browser aufgelöst und geroutet</span>
+                <li class="fragment"><strong>Back-Button geht nicht: </strong><span class="fragment">siehe oben</span>
+                <li class="fragment"><strong>SPA hat immer eine schlechte First Page Impression: </strong><span class="fragment">Universal App oder Code-Splitting hilft</span>
+                    <span class="fragment">, Web Components brauchen nicht einmal Framework => weniger Code</span>
+                    <span class="fragment">, Service Workers und HTTP/2 Server Push</span>
+                <li class="fragment"><strong>SPA ist unstrukturierter Monolith: </strong>
+                    <span class="fragment">Trennung, Isolation in Module und Teams ist mit gezeigten Ansätzen möglich</span>
+                <li class="fragment"><strong>HTML/HTTP sind langlebig, Investition in SPA-Frameworks nicht lohnend, veraltet innerhalb einer Woche: </strong>
+                    <span class="fragment">Business relevante Teile außerhalb des SPA-Webframeworks</span>
+            </ul>
+        </section>
+-->
+
+            <section>
+                <h2>Axiom II</h2>
+                <h2>Wartbarkeit und Skalierung in der Größe ist nur durch Modularisierung erreichbar</h2>
+            <p>Moderne Frontends...</p>
+            <ul>
+                <li class="fragment">sollen aus einzelnen <span class="highlight">Modulen</span> zusammensetzbar sein</li>
+                <li class="fragment">müssen zu modernen <span class="highlight">Backend-Architekturen</span> passen</li>
+                <li class="fragment">sollen einzeln zu <span class="highlight">deployen</span> sein</li>
+                <li class="fragment">pro Modul am besten Wahl von <span class="highlight">freie Technologie</span> sein</li>
+            </ul>
+        <p class="fragment">Das passende Buzzword dazu ist <span class="highlight">Micro Frontends</span> (<a href="https://www.thoughtworks.com/radar/techniques/micro-frontends" target="_blank">
+            https://www.thoughtworks.com/radar/techniques/micro-frontends
+        </a>)</p>
+        </section>
+
+        <section>
+            <h2>Widerspruch aus Aixom I und II</h2>
+            <p><span class="highlight">Wenn man die Module für Wartbarkeit entkoppelt wie bei Micro Frontends muss man wie für das konsistente UI wieder koppeln</span></p>
+            <p>Oder: man muss sich entscheiden, will man die beste Erfahrung für den Nutzer oder für den Entwicklungsprozess</p>
+            <!--
+             - Cohesion Decoupling Microservices
+                 - Ui belongs together, if you decouple you have to couple again
+            -->
+        </section>
+
 
         <section>
             <!--<h3>Was macht UX so schwierig?</h3>-->
@@ -234,7 +292,6 @@ Universal
             <p><small><a href="https://twitter.com/missingcloudltd/status/826203153934729218" target="_blank">
                 https://twitter.com/missingcloudltd/status/826203153934729218
             </a></small></p>
-
         </section>
 
         <section class="step-subtitle">
@@ -243,18 +300,7 @@ Universal
         </section>
 
         <section>
-            <h2>Grundproblem bei einer komplexen Web-Anwendung</h2>
-            <h3>Beste UI/UX beißt sich mit Anforderungen an Wartbarkeit</h3>
-            <p>UI soll als konsistentes Ganzes funktionieren</p>
-            <p>Wenn man die Module entkoppelt sie bei Microservices muss man wie für das konsistente UI wieder koppeln</p>
-<!--
- - Cohesion Decoupling Microservices
-     - Ui belongs together, if you decouple you have to couple again
--->
-        </section>
-
-        <section>
-            <h3>Zweite Schwierigkeit</h3>
+            <h3>Weitere Schwierigkeit</h3>
             <h2>Wir nehmen Frontend-Architektur nicht für voll</h2>
             <p>Zitate</p>
             <ul>
@@ -290,102 +336,74 @@ Universal
                 <li class="fragment">im Browser - Codename <span class="highlight">Micro Components</span></li>
                 <li class="fragment">zur Build-Zeit - Codename <span class="highlight">
                     Majestic Modular Monoliths</span>
-                    (Kudos an <a href="https://twitter.com/DJCordhose/status/908251990005821440" target="_blank">@axelfontaine</a>)</li>
+                    (Kudos an <a href="https://twitter.com/DJCordhose/status/908251990005821440" target="_blank">@axelfontaine</a> für den Namen)</li>
             </ol>
         </section>
 
+<!--
         <section class="todo">
             <img src="embarc/Ansätze.jpg" >
         </section>
 
+-->
         <section class="step-subtitle">
             <h3>Ansatz 1</h3>
             <h2>Eigenständige Anwendungen über Links verbunden</h2>
+            <p>Integration mehrerer Anwendungen über Links, die eine neue Anwendung öffnen und/oder die alte ersetzen</p>
+            <ul>
+                <li>jedes Modul ist eine eigene (SPA) Anwendung
+                <li>erlaubt Vertikalen wie eine klassische Web-App
+                <li>Module teilen keinen Zustand, aktualisieren einander nicht
+            </ul>
             <p><span class="highlight">Links</span></p>
+        </section>
+
+        <section>
+            <h3>Prominentes Beispiel: XING</h3>
+            <img src="img/screenshot-xing.png">
         </section>
 
         <section class="step-subtitle">
             <h3>Ansatz 2</h3>
-            <h2>Zusammensetzen der Anwendung im Browser</h2>
-            <p><span class="highlight">Micro Components</span></p>
+            <h2>Eine einzelne Klassische Single Page Application mit statischem Build</h2>
+            <ul>
+                <li>Jedes Team entwickelt sein eigenes npm Modul (wie Maven Modul)</li>
+                <li>Daraus wird in einem statischen Build eine komplette Anwendung erzeugt und deployed
+                <li>Zur Laufzeit kann Anwendung auch Lazy nachgeladen werden
+                <li>Anwendung nutzt ein Framework mit einer Version
+                <li>Gemeinsame Bibliothek sinnvoll
+                <li>Einzelne Komponenten können aus Modul exportiert werden
+            </ul>
+            <p><span class="highlight">Majestic Modular Monoliths</span></p>
+        </section>
+
+        <section>
+            <h3>Prominentes Beispiel: Google Docs</h3>
+            <img src="img/screenshot-google-docs.png">
         </section>
 
         <section class="step-subtitle">
             <h3>Ansatz 3</h3>
-            <h2>Klassische Single Page Application mit statischem Build</h2>
-            <p><span class="highlight">SPA</span></p>
-        </section>
-
-        <section class="todo">
-            <pre>
-                Die nächsten Folien auf Deutsch und schärfen
-            </pre>
-        </section>
-
-        <section>
-            <h3>Modular development</h3>
-            <h2>Integration at build time</h2>
+            <h2>Zusammensetzen der Anwendung im Browser</h2>
             <ul>
-                <li>Split parts of the application into own npm modules</li>
-                <li>Different teams can provide npm modules</li>
-                <li>Other teams can consume the modules</li>
-                <li>Modules can be lazy-loaded at runtime to increase performance</li>
+                <li>Anwendung ist in logische Module aufgeteilt, die als ganze Anwendung zusammen laufen
+                <li>Frameworks frei wählbar pro Modul
+                <li>Gesamtanwendung wahrscheinlich groß
+                <li>Kommunikation über EventBus oder State Management
             </ul>
+            <p><span class="highlight">Micro Components</span></p>
         </section>
 
         <section>
-            <h3>Modular development</h3>
-            <h2>Integration in the browser</h2>
-            <ul>
-                <li>Teams can build their own components matching their business needs
-                <li>Can be embedded via an iframe into another application</li>
-                <li>therefore they need to "real" apps (but probably small ones)</li>
-                <li>State/communication between apps by using a global EventBus</li>
-            </ul>
+            <h3>Prominentes Beispiel: Spotify</h3>
+            <img src="img/screenshot-spotify.png">
+            <p><small><a href="https://www.quora.com/How-are-Spotify-Web-Player-components-developed" target="_blank">https://www.quora.com/How-are-Spotify-Web-Player-components-developed</a></small></p>
         </section>
 
         <section>
-            <h3>Modular development</h3>
-            <h2>Independent applications</h2>
-            <ul>
-                <li>Can be used for (strictly) separated parts of the app (e.g. user settings)</li>
-                <li>one team can build a whole app containing backend and frontend</li>
-                <li>an app can match a Microservice at the backend (but don't have to; can talk to multiple Microservices)</li></p>
-                <li>Link opens a new, own SPA (Microapps 😜)</li>
-                <li>State is not shared between apps</li>
-            </ul>
-        </section>
-
-        <section>
-            <h3 style="font-size: 1em; line-height:0">Wrap up</h3>
-            <h3>Modular development</h3>
-            <ul>
-                <li>Integration at <span class="highlight">build</span> time
-                    <ul>
-                        <li>New build of the consumer is required for each new version of a module</li>
-                        <li><span class="highlight">"Real" SPAs</span> including all their advantages (components, state manangement, universal rendering)</li>
-                    </ul>
-                <li>Integration in the <span class="highlight">browser</span>
-                    <ul><li>
-                        Higher decoupling (team can independently release their apps)</ul>
-                </li>
-                <li>Integration harder, as you deal with a lot of <span class="highlight">"small" SPAs</span> </li>
-                </li>
-                </li>
-            </ul>
-            <p style="color: #2aa198">Remember: it's all about the User (Experience!):
-                <br/>It should feel as <span class="highlight">one</span> app!</p>
-
-        </section>
-
-
-        <section class="step-subtitle">
-            <h3>Teil 2</h3>
-            <h2>Welche Architektur könnte zu deinen Anforderungen passen?</h2>
-        </section>
-
-        <section>
-            <p>
+            <h3>Es gibt keinen <em>besten</em> Architektur-Ansatz</h3>
+            <h4 class="fragment">Daher...</h4>
+            <p class="fragment">
 Man muss die Anforderungen kennen und die müssen stimmen
 und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man Bock hat.
             </p>
@@ -411,7 +429,7 @@ und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man B
         <section>
             <h2>Übung #1</h2>
             <h3>Unterhalte dich mit deinen Sitznachbarn über dein eigenes (oder eine dir bekanntes) Frontend</h3>
-            <p>Welche Anforderungen gubt es in dem Projekt?</p>
+            <p>Welche Anforderungen gibt es in dem Projekt?</p>
             <p>Wo würde das Frontend architektonisch passen?</p>
             <p>Welche Fragen ergeben sich für dich?</p>
             <p><small>Diese Fragen klären wir dann im Nachgang</small></p>
@@ -423,45 +441,14 @@ und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man B
 
         <section class="step-subtitle">
             <h3>Teil 3</h3>
-            <h2>Implementierung als Komponenten basierte Single Page Apps</h2>
-            <p>Bisher waren alle Überlegungen technikfrei - wir hätten auch über Desktop Apps sprechen können</p>
+            <h2>Technische und Architektonische Herausforderungen</h2>
         </section>
 
-        <section>
-            <h3>Überblick: Single-Page Application</h3>
-            <img src="embarc/SP-Anwendung.png" style="height: 500px;">
-            <p><small>Copyright 2016, embarc</small></p>
-        </section>
-        <section>
-            <h3>Single-Page Applications (SPAs) verschieben eure Anwendung in den Browser</h3>
-            <ul class="fragment">
-                <li>eine einzige Seite pro Anwendung/Modul
-                <li>läuft ohne signifikanten Server-Anteil
-                <li>kann auch als statische Web-Seite laufen
-                <li>ermöglicht Offline-Betrieb
-                <li>Bedienbarkeit wie Desktop
-                <li>Browser bietet mächtige Speicherungsmöglichkeiten
-            </ul>
-        </section>
+        <!--<section class="todo">-->
+            <!--<img src="embarc/Vergleich.jpg" >-->
+        <!--</section>-->
 
-        <section>
-            <h3>Komponenten basierte Ansätze mit Templates</h3>
-            <ul class="fragment">
-                <li>Templates nun auf der Clientseite
-                <li>Anwendung bekommt Struktur
-                <li>Logik hängt an Komponenten, ist keine lose Schnippsel-Sammlung wie bei jQuery
-            </ul>
-            <p class="fragment">Findet sich wieder in React, Angular, Vue und Web Components</p>
-        </section>
-
-        <section>
-            <h1>Herausforderungen</h1>
-        </section>
-
-        <section class="todo">
-            <img src="embarc/Vergleich.jpg" >
-        </section>
-
+<!--
         <section class="todo">
 <pre>
 - Unabhängigkeit der Module
@@ -485,19 +472,18 @@ und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man B
   - Offline-Fähigkeit
 </pre>
         </section>
+-->
 
+<!--
         <section>
-            <span class="highlight">Micro Components</span>
-        </section>
-
-        <section>
-            <!--<img src="img/light-elevator.jpg" height="600px">-->
+            &lt;!&ndash;<img src="img/light-elevator.jpg" height="600px">&ndash;&gt;
             <img src="img/light-elevator-twitter.png" height="600px">
 
             <p><small><a href="https://twitter.com/ThePracticalDev/status/933373477255630853" target="_blank">
                 https://twitter.com/ThePracticalDev/status/933373477255630853
             </a></small></p>
         </section>
+-->
 
         <section>
             <h1>Techniken</h1>
@@ -520,7 +506,6 @@ und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man B
             <p>Herausforderung immer: Ladezeiten, einheitliches UI und UX, Serverside-Rendering</p>
         </section>
 
-
         <section>
             <h3>Kommunikation zwischen getrennten Anwendungen</h3>
             <ul>
@@ -539,10 +524,6 @@ und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man B
 
         <section>
             <h1>Architektur-Muster</h1>
-        </section>
-
-        <section>
-            <h3>Spezialfall von Monolith: PWA mit PRPL</h3>
         </section>
 
         <section class="step-subtitle">
@@ -772,6 +753,15 @@ async function loadGreetings(dispatch) {
             </ul>
         </section>
 
+        <section class="step-subtitle">
+            <h3>Pattern</h3>
+            <h2>Universal Web Application</h2>
+            <h3>Mit demselben Code auf Client und Server Seite rendern</h3>
+            <p>Ansätze: <span class="highlight">Links</span>, <span class="highlight">Majestic Modular Monoliths</span></p>
+            <p>Herausfordeungen: <span class="highlight">SEO</span>,
+                <span class="highlight">Preview</span>, <span class="highlight">First-Page-Impression</span></p>
+        </section>
+
         <section>
             <h2>Grenzen: SPA Ansatz selbst</h2>
         <!--</section>-->
@@ -804,10 +794,6 @@ async function loadGreetings(dispatch) {
         </section>
 
         <section>
-            <h2>Nächster Schritt: Universal Web Apps</h2>
-        </section>
-
-        <section>
             <h3>Universal Rendering: First-Page-Impression</h3>
             <div>
                 <a href="http://localhost:3001/" target="_blank">
@@ -830,21 +816,6 @@ async function loadGreetings(dispatch) {
             </ul>
         </section>
 
-        <!--<section>-->
-            <!--<h3>Universal Rendering am Beispiel von React</h3>-->
-            <!--<div class="fragment">-->
-                <!--<img src="universal.png" style="height: 500px;">-->
-                <!--<p><small><a target="_blank" href="http://reactbuch.de/">Copyright 2016, D-Punkt, http://reactbuch.de/</a></small></p>-->
-            <!--</div>-->
-        <!--</section>-->
-
-        <section>
-            <a target="_blank"
-               href="https://twitter.com/mxstbr/status/776812185276284928">
-                <img src="twitter_universal.png">
-            </a>
-        </section>
-
         <section>
             <h3>Herausforderungen / Schwächen</h3>
             <ul class="fragment">
@@ -864,41 +835,24 @@ async function loadGreetings(dispatch) {
         </section>
 
         <section>
-            <h1>Zusammenfassung</h1>
-        </section>
-
-        <section>
-            <h3>Legenden und Mythen #1: Single Page Applications (SPA)</h3>
+            <h3>Urteil</h3>
             <ul>
-                <li class="fragment"><strong>In SPAs kann ich keine Links teilen und auch nicht sinnvoll verlinken: </strong>
-                    <span class="fragment">Link wird im Browser aufgelöst und geroutet</span>
-                <li class="fragment"><strong>Back-Button geht nicht: </strong><span class="fragment">siehe oben</span>
-                <li class="fragment"><strong>SPA hat immer eine schlechte First Page Impression: </strong><span class="fragment">Universal App oder Code-Splitting hilft</span>
-                <span class="fragment">, Web Components brauchen nicht einmal Framework => weniger Code</span>
-                <span class="fragment">, Service Workers und HTTP/2 Server Push</span>
-                <li class="fragment"><strong>SPA ist unstrukturierter Monolith: </strong>
-                <span class="fragment">Trennung, Isolation in Module und Teams ist mit gezeigten Ansätzen möglich</span>
-                <li class="fragment"><strong>HTML/HTTP sind langlebig, Investition in SPA-Frameworks nicht lohnend, veraltet innerhalb einer Woche: </strong>
-                <span class="fragment">Business relevante Teile außerhalb des SPA-Webframeworks</span>
-            </ul>
-        </section>
-
-        <section>
-            <h3>Legenden und Mythen #3: Integration mit Microservices geht nicht mit Client Side Redering</h3>
-            <ul>
-                <li class="fragment">Integration im Browser in eine Anwendung
+                <li class="fragment"><span class="highlight">Links</span>: bester Entwicklungsprozess
                     <ul>
-                        <li>Anwendung ist in logische Module aufgeteilt, die als ganze Anwendung zusammen laufen
-                        <li>Pro Seite eine SPA, kann Komponenten aus andern Modulen integrieten
-                            <!--<li>Nachladen von Modulen on-demand aus einem Build problemlos möglich-->
-                        <li>"Echt" getrennte Anwendung über iFrame und EventBus
+                        <li class="fragment">Modularisierung: beste Story für Modularisierung, Migration, Deployment</li>
+                        <li class="fragment">UI/UX: schwächste Integration von UI/UX</li>
                     </ul>
                 </li>
-                <li class="fragment">Integration mehrerer Anwendungen über Links, die eine neue Anwendung öffnen und die alte ersetzen
+                <li class="fragment"><span class="highlight">Majestic Modular Monoliths</span>: beste Erfahrung für den Nutzer
                     <ul>
-                        <li>jedes Modul ist eine eigene SPA Anwendung
-                        <li>erlaubt Vertikalen wie eine klassische Web-App
-                        <li>Allerdings: Modul-Wechsel setzt Zustand zurück wenn nicht explizit übertragen
+                        <li class="fragment">Modularisierung: schwächste Story für unabhängige Teams</li>
+                        <li class="fragment">UI/UX: bestes und konsistentestes UX/UI, starke Stories für State Management und Universal Web Apps</li>
+                    </ul>
+                </li>
+                <li class="fragment"><span class="highlight">Micro Components</span>: Kompromiss
+                    <ul>
+                        <li class="fragment">Modularisierung: Migration von Klassicher Wep-App schwer denkbar</li>
+                        <li class="fragment">UI/UX: UX/UI gut für Intranet oder Desktop, große technische Herausforderung</li>
                     </ul>
                 </li>
             </ul>
@@ -921,7 +875,7 @@ async function loadGreetings(dispatch) {
                 </tr>
                 <tr>
                     <th>40</th>
-                    <td>Sollte ich nicht jede SPA als Universal App schreiben?
+                    <td>
                     </td>
                     <td>Widersprechen SPAs nicht der Grundidee es Webs?</td>
                     <td>Wie realisiert man komplexe UI-Komponenten (ala TreeGrid)?
@@ -938,14 +892,14 @@ async function loadGreetings(dispatch) {
                     <th>80</th>
                     <td>Wieso funktioniert für SPAs kein Schichtenmodell?
                     </td>
-                    <td>Wie schneide ich Module in einer SPA? Geht das mit DDD Aggregate Root?
+                    <td>Wie schneide ich Module? Geht das mit DDD Aggregate Root?
                     </td>
-                    <td>Wann passt eine klassische WebApp besser als eine SPA?
+                    <td>Wann passt eine klassische Web-App besser als eine SPA?
                     </td>
                 </tr>
                 <tr>
                     <th>100</th>
-                    <td>Was kann man retten, wenn man das UI-Framework wechselt?</td>
+                    <td></td>
                     <td>Was ist denn eigentlich mit Progressive Web Apps (PWA)?</td>
                     <td>Muss ich immer wählen zwischen Frontend-Monolithen oder UX Katastrophe?</td>
                 </tr>
