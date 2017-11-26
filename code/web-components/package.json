@@ -1,0 +1,17 @@
+{
+  "name": "v3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@polymer/paper-button": "next",
+    "@polymer/paper-input": "next",
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "lit-html": "^0.5.0"
+  }
+}

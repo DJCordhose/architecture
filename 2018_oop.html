@@ -58,22 +58,20 @@
 				}
 
 				.reveal h2,
-				.reveal h3 {
+                .reveal h3,
+				.reveal h4 {
 					letter-spacing: 2px;
-				}
+                    font-family: 'Amiri', serif;
+                    /* font-family: 'Times New Roman', Times, serif; */
+                    font-weight: bold;
+                    font-style: italic;
+                    letter-spacing: -2px;
+                    text-transform: none !important;
+                }
 
-				.reveal h2 {
-				font-family: 'Amiri', serif;
-				/* font-family: 'Times New Roman', Times, serif; */
-				font-weight: bold;
-				font-style: italic;
-				letter-spacing: -2px;
-				text-transform: none !important;
-			}
-
-			.reveal em {
-				font-weight: bold;
-			}
+                .reveal em {
+                    font-weight: bold;
+                }
 
 				.reveal .step-subtitle h1 {
 					letter-spacing: 1px;
@@ -359,6 +357,21 @@ Universal
         </section>
 
         <section>
+            <h3>Eigenständige Anwendungen in Eigenständiger Darstellung</h3>
+            <div class="fragment" style="float: left">
+                <img src="sketch/link1.jpg" height="300">
+            </div>
+            <div class="fragment" style="float: left; padding-left: 20px; padding-top: 120px; font-weight: bold">
+            - click -<br>
+            == >
+            </div>
+            <div class="fragment" style="float: left">
+              <img src="sketch/link2.jpg" height="300" style="float: right">
+            </div>
+            <p style="clear: both" class="fragment">Jede Anwendung wird komplett neu aufgebaut</p>
+        </section>
+
+        <section>
             <h3>Prominentes Beispiel: XING</h3>
             <img src="img/screenshot-xing.png">
         </section>
@@ -375,6 +388,14 @@ Universal
                 <li>Einzelne Komponenten können aus Modul exportiert werden
             </ul>
             <p><span class="highlight">Majestic Modular Monoliths</span></p>
+        </section>
+
+        <section>
+            <h3>Gemeinsame Anwendungen in gemeinsamer Darstellung</h3>
+            <div class="fragment">
+                <img src="sketch/monolith.jpg" height="300">
+            </div>
+            <p style="clear: both" class="fragment">Server-Zugriff nur für Daten oder einmaig für Code</p>
         </section>
 
         <section>
@@ -395,9 +416,26 @@ Universal
         </section>
 
         <section>
+            <h3>Eigenständige Anwendungen in gemeinsamer Dargestellt</h3>
+            <div class="fragment">
+                <img src="sketch/modules.jpg" height="300">
+            </div>
+            <p style="clear: both" class="fragment">Jede Anwendung kann komplett eigenen Stack haben</p>
+        </section>
+
+        <section>
             <h3>Prominentes Beispiel: Spotify</h3>
             <img src="img/screenshot-spotify.png">
             <p><small><a href="https://www.quora.com/How-are-Spotify-Web-Player-components-developed" target="_blank">https://www.quora.com/How-are-Spotify-Web-Player-components-developed</a></small></p>
+        </section>
+
+        <section>
+            <h3>Ansätze sind nicht exklusiv</h3>
+            <ul>
+                <li class="fragment">Seite einer <span class="highlight">Link</span>-App kann ein <span class="highlight">Micro Components</span> App sein
+                <li class="fragment">Teil einer <span class="highlight">Micro Components</span> kann ein <span class="highlight">Majestic Modular Monolith</span> sein
+                <li class="fragment">Seite einer <span class="highlight">Link</span>-App kann ein <span class="highlight">Majestic Modular Monolith</span> sein
+            </ul>
         </section>
 
         <section>
@@ -409,6 +447,31 @@ und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man B
             </p>
             <p class="fragment"><small> - Oliver Zeigermann, embarc</small></p>
         </section>
+
+        <section>
+            <h3>Liste typischer Anforderungen</h3>
+        <pre>
+- Unabhängigkeit der Module
+  - In der Entwicklung
+  - Beim Deployment
+  - Verhalten bei Fehlerfall, Ausfall
+- Verhalten Fremdsystemen gegenüber
+  - SEO
+  - Preview
+- Skalierbarkeit in der Entwicklung
+  - Freie Wahl des Frameworks
+  - Update der Bibliotheken
+  - Eignung für Vertikale Architektur
+  - Gemeinsame Bibliothek, Wieververwendung
+  - Freiheitsgrad der Modulgröße
+  - Migrationspfad von klassischer Web-App
+- UX, Konsistenz
+  - Gleichzeitige, synchronisierte Darstellung mehrerer Module
+  - Schnelle First-Page Impression
+  - Kommunikation zwischen Modulen
+  - Offline-Fähigkeit
+        </pre>
+                </section>
 
         <section>
             <img src="img/feynman-twitter.png">
@@ -436,43 +499,20 @@ und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man B
         </section>
 
         <section>
-            <h2>Klären offener Fragen</h2>
+            <h2>Sammeln / Klären offener Fragen</h2>
+            <pre contenteditable>
+- Hier kommen die neuen Fragen hinein
+            </pre>
         </section>
 
         <section class="step-subtitle">
             <h3>Teil 3</h3>
-            <h2>Technische und Architektonische Herausforderungen</h2>
+            <h2>Ausgewählte Technische und Architektonische Herausforderungen</h2>
         </section>
 
         <!--<section class="todo">-->
             <!--<img src="embarc/Vergleich.jpg" >-->
         <!--</section>-->
-
-<!--
-        <section class="todo">
-<pre>
-- Unabhängigkeit der Module
-  - In der Entwicklung
-  - Beim Deployment
-  - Verhalten bei Fehlerfall, Ausfall
-- Verhalten Fremdsystemen gegenüber
-  - SEO
-  - Preview
-- Skalierbarkeit in der Entwicklung
-  - Freie Wahl des Frameworks
-  - Update der Bibliotheken
-  - Eignung für Vertikale Architektur
-  - Gemeinsame Bibliothek, Wieververwendung
-  - Freiheitsgrad der Modulgröße
-  - Migrationspfad von klassischer Web-App
-- UX, Konsistenz
-  - Gleichzeitige, synchronisierte Darstellung mehrerer Module
-  - Schnelle First-Page Impression
-  - Kommunikation zwischen Modulen
-  - Offline-Fähigkeit
-</pre>
-        </section>
--->
 
 <!--
         <section>
@@ -485,28 +525,92 @@ und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man B
         </section>
 -->
 
+        <section class="step-subtitle">
+            <h3>Technik</h3>
+            <h2>Zentrales Statemanagement: Redux</h2>
+            <h3>Heißt auch <em>Global Mediator Pattern</em></h3>
+            <h2>Zustand wird zentral gehalten, UI-Logik geht aus den Komponenten</h2>
+            <p>Ansätze: <span class="highlight">Micro Components</span>, <span class="highlight">Majestic Modular Monoliths</span></p>
+            <p>Bedient Anforderungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span>,
+                <span class="highlight">Gemeinsame Bibliothek, Wieververwendung</span></p>
+        </section>
+
         <section>
             <h1>Techniken</h1>
         </section>
 
         <section>
-            <h3>Client-Seitige Integration</h3>
+            <h2>Client-Seitige Integration</h2>
             <p>Zentrale Herausforderung von <span class="highlight">Micro Components</span></p>
+            <p>Herausforderung auch immer...</p>
             <ul>
-                <li><span class="highlight">Web Component</span> (Laden als JavaScript Modul):
-                <code></code>
-                </li>
-                <li><span class="highlight">script-Tag und rendering in Mount-Punkt</span>:
-                    bettet nur HTML ein</li>
-                <li><span class="highlight"><a href="https://github.com/gustafnk/h-include" target="_blank">h-include</a></span>:
-                    bettet nur HTML ein</li>
-                <li><span class="highlight"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe" target="_blank">
-            iframe</a></span>: bettet komplette Anwendung ein, hat viele technische Herausforderungen</li>
+                <li>Ladezeiten
+                <li>einheitliches UI und UX
+                <li>Verteilter Zustand
+                <li>Serverside-Rendering
             </ul>
-            <p>Herausforderung immer: Ladezeiten, einheitliches UI und UX, Serverside-Rendering</p>
         </section>
 
         <section>
+            <h3>Web Components</h3>
+            <p>Web Component ummantelt Modul</p>
+            <p>Beispiel: <a href="http://djcordhose.github.io/architecture/code/web-components/" target="_blank">http://djcordhose.github.io/architecture/code/web-components</a></p>
+            <p>Laden als JavaScript ES6 Modul, HTMLImport ist tot</p>
+<pre><code data-trim>
+import 'my-element';
+&lt;my-element greeting="Hello">&lt;/my-element>
+</code></pre>
+<pre><code data-trim>
+class MyElement extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        this.greeting = this.getAttribute("greeting") || 'Hello';
+    }
+
+    connectedCallback() {
+        render();
+        this.btn = this.shadowRoot.querySelector('button');
+        this.btn.addEventListener('click', (event) => ...);
+    }
+}
+customElements.define('my-element', MyElement);
+</code></pre>
+
+            <p>Keine Komplette Isolation, Funktioniert in der Praxis nicht gut mit beliebigem Framework</p>
+        </section>
+
+        <section>
+            <h3>iFrame</h3>
+            <p>Beispiel: <a href="http://djcordhose.github.io/architecture/code/integration/" target="_blank">http://djcordhose.github.io/architecture/code/integration/</a></p>
+            <p>Lädt komplett isolierte Anwendung</p>
+            <pre><code data-trim>
+&lt;iframe height="300" width="500"
+    src="http://djcordhose.github.io/architecture/code/integration/iframe.html"
+    sandbox="allow-scripts allow-top-navigation allow-same-origin">&lt;/iframe>
+</code></pre>
+            <ul>
+                <li>Kein geteiltes Styling
+                <li>Einbetten mit richtiger Größe ein Albtraum
+                <li>Kommunikation mit Außenwelt lästig
+            </ul>
+        </section>
+
+        <section>
+            <h3>Problem: Ladezeiten Wenn jedes Modul sein eigenes Framework mitbringt</h3>
+            <ul class="fragment">
+                <li>Frameworks wie React oder Angular bringen von sich aus immer mehr als 100KB
+                <li>(UI-)Bibliotheken haben oft dieselbe Größe oder mehr
+                <li>Bei mehreren Modulen ist man schnell im MB-Bereich: Langsamer Aufbau der Seite
+            </ul>
+            <p class="fragment">Lösung: k(l)eine Frameworks und Bibliotheken nutzen</p>
+            <ul class="fragment">
+                <li>Preact kann Anwendungen unter 10KB bringen
+                <li>Web-Componentes sind Teil der Browser API (noch nicht überall)
+            </ul>
+        </section>
+
+        <section class="todo">
             <h3>Kommunikation zwischen getrennten Anwendungen</h3>
             <ul>
                 <li><span class="highlight">Web Sockets</span>
@@ -527,11 +631,11 @@ und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man B
         </section>
 
         <section class="step-subtitle">
-            <h3>Pattern</h3>
+            <h3>Architektur-Muster</h3>
             <h2>Smart and Dumb Components</h2>
             <h3>Heißt auch <em>Mediator Pattern</em></h3>
             <p>Ansätze: <span class="highlight">Micro Components</span>, <span class="highlight">Majestic Modular Monoliths</span></p>
-            <p>Herausfordeungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span>,
+            <p>Bedient Anforderungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span>,
                 <span class="highlight">Gemeinsame Bibliothek, Wieververwendung</span></p>
         </section>
 
@@ -621,12 +725,12 @@ export class SubComponent {
         </section>
 
         <section class="step-subtitle">
-            <h3>Pattern</h3>
+            <h3>Architektur-Muster</h3>
             <h2>Zentrales Statemanagement: Redux</h2>
             <h3>Heißt auch <em>Global Mediator Pattern</em></h3>
             <h2>Zustand wird zentral gehalten, UI-Logik geht aus den Komponenten</h2>
             <p>Ansätze: <span class="highlight">Micro Components</span>, <span class="highlight">Majestic Modular Monoliths</span></p>
-            <p>Herausfordeungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span>,
+            <p>Bedient Anforderungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span>,
                 <span class="highlight">Gemeinsame Bibliothek, Wieververwendung</span></p>
         </section>
 
@@ -653,7 +757,7 @@ export class SubComponent {
         </section>
 
         <section>
-            <h2>Redux ist unabhängig vom Framework</h2>
+            <h3>Redux ist unabhängig vom Framework</h3>
             <p>Implementierungen existieren für alle wichtigen UI-Frameworks</p>
             <ul>
                 <li>React: <a href="http://redux.js.org/docs/basics/UsageWithReact.html" target="_blank">
@@ -670,19 +774,21 @@ export class SubComponent {
             </ul>
         </section>
 
+<!--
         <section>
-            <h3>Resultierende Architektur anhand des Redux Musters</h3>
+            <h4>Resultierende Architektur anhand des Redux Musters</h4>
             <img src="redux-03-resulting-redux-architecture.png"  height="600" style="border:0;box-shadow:0 0 0 0"/>
         </section>
+-->
 
         <section>
-            <h3>Redux extrahiert Verwantwortlichkeiten aus UI-Framework</h3>
-            <img src="redux-02-extracting-responsibility.png" height="550" style="border:0;box-shadow:0 0 0 0"/>
+            <h4>Redux extrahiert Verwantwortlichkeiten aus UI-Framework</h4>
+            <img src="redux-02-extracting-responsibility.png" height="500" style="border:0;box-shadow:0 0 0 0"/>
         </section>
 
         <section>
-            <h2>Code Sample: Reducer</h2>
-            <h3>Nur eine Funktion, daher unabhängig vom UI Framework</h3>
+            <h3>Code Sample: Reducer</h3>
+            <h4>Nur eine Funktion, daher unabhängig vom UI Framework</h4>
             <pre class="fragment"><code data-trim data-num-start="1">
 type Greeting = {
 	greeting: string;
@@ -738,6 +844,7 @@ async function loadGreetings(dispatch) {
             </div>
         </section>
 
+<!--
         <section>
             <h3>Zusammenfassung Redux</h3>
             <ul class="fragment">
@@ -750,36 +857,17 @@ async function loadGreetings(dispatch) {
                 <li>Business Logik ausschließlich in puren Funktionen - Reducer (beste Testbarkeit)
                 <li>Nur Reducer dürfen State verändern
                 <li>Initialisierung durch initiale Aktion
+-->
             </ul>
         </section>
 
         <section class="step-subtitle">
-            <h3>Pattern</h3>
+            <h3>Architektur-Muster</h3>
             <h2>Universal Web Application</h2>
             <h3>Mit demselben Code auf Client und Server Seite rendern</h3>
             <p>Ansätze: <span class="highlight">Links</span>, <span class="highlight">Majestic Modular Monoliths</span></p>
-            <p>Herausfordeungen: <span class="highlight">SEO</span>,
+            <p>Bedient Anforderungen: <span class="highlight">SEO</span>,
                 <span class="highlight">Preview</span>, <span class="highlight">First-Page-Impression</span></p>
-        </section>
-
-        <section>
-            <h2>Grenzen: SPA Ansatz selbst</h2>
-        <!--</section>-->
-
-        <!--<section>-->
-            <!--<h3>Probleme von Single-Page Applications</h3>-->
-            <ul class="fragment">
-                <li>SEO
-                <li>First-Page-Impressions
-                <li>Preview, z.B.
-                    <ul>
-                        <li>bei der Vorschau von Suchergebnissen
-                        <li> oder dem Teilen von Links durch Social Media
-                    </ul>
-
-                </li>
-                <!--<li>Progressive Enhancement-->
-            </ul>
         </section>
 
         <section>
