@@ -192,11 +192,12 @@ Universal
             <h2><a href="https://www.embarc.de/">Embarc GmbH</a></h2>
         </section>
 
+<!--
         <section class="todo">
 <pre>
-- Technischen Teil reduzieren auf was inhaltlich bereits da ist, rest löschen
 </pre>
         </section>
+-->
 
         <section>
             <h2>Moderne Frontend-Architektur</h2>
@@ -210,7 +211,7 @@ Universal
         </section>
 
         <section>
-            <h2>Axiom I</h2>
+            <h3>Axiom I</h3>
             <h2>Beste UI / UX kann nur durch Single Page Applications (SPA) erreicht werden</h2>
         </section>
 
@@ -256,8 +257,8 @@ Universal
 -->
 
             <section>
-                <h2>Axiom II</h2>
-                <h2>Wartbarkeit und Skalierung in der Größe ist nur durch Modularisierung erreichbar</h2>
+                <h4>Axiom II</h4>
+                <h3>Wartbarkeit und Skalierung in der Größe ist nur durch Modularisierung erreichbar</h3>
             <p>Moderne Frontends...</p>
             <ul>
                 <li class="fragment">sollen aus einzelnen <span class="highlight">Modulen</span> zusammensetzbar sein</li>
@@ -271,7 +272,7 @@ Universal
         </section>
 
         <section>
-            <h2>Widerspruch aus Aixom I und II</h2>
+            <h2>Widerspruch aus Axiom I und II</h2>
             <p><span class="highlight">Wenn man die Module für Wartbarkeit entkoppelt wie bei Micro Frontends muss man wie für das konsistente UI wieder koppeln</span></p>
             <p>Oder: man muss sich entscheiden, will man die beste Erfahrung für den Nutzer oder für den Entwicklungsprozess</p>
             <!--
@@ -373,19 +374,20 @@ Universal
 
         <section>
             <h3>Prominentes Beispiel: XING</h3>
-            <img src="img/screenshot-xing.png">
+            <img src="img/screenshot-xing.png" height="550">
         </section>
 
         <section class="step-subtitle">
             <h3>Ansatz 2</h3>
-            <h2>Eine einzelne Klassische Single Page Application mit statischem Build</h2>
+            <h2>Single Page Application</h2>
+            <p>Eine einzelne Klassische Single Page Application mit statischem Build</p>
             <ul>
-                <li>Jedes Team entwickelt sein eigenes npm Modul (wie Maven Modul)</li>
-                <li>Daraus wird in einem statischen Build eine komplette Anwendung erzeugt und deployed
-                <li>Zur Laufzeit kann Anwendung auch Lazy nachgeladen werden
+                <li>Jedes Team entwickelt eigenes npm Modul</li>
+                <li>statischer Build integriert komplette Anwendung
+                <li>Zur Laufzeit Lazy-Loading möglich
                 <li>Anwendung nutzt ein Framework mit einer Version
                 <li>Gemeinsame Bibliothek sinnvoll
-                <li>Einzelne Komponenten können aus Modul exportiert werden
+                <li>Export einzelner Komponenten möglich
             </ul>
             <p><span class="highlight">Majestic Modular Monoliths</span></p>
         </section>
@@ -400,7 +402,7 @@ Universal
 
         <section>
             <h3>Prominentes Beispiel: Google Docs</h3>
-            <img src="img/screenshot-google-docs.png">
+            <img src="img/screenshot-google-docs.png" height="550">
         </section>
 
         <section class="step-subtitle">
@@ -441,10 +443,10 @@ Universal
         <section>
             <h3>Es gibt keinen <em>besten</em> Architektur-Ansatz</h3>
             <h4 class="fragment">Daher...</h4>
-            <p class="fragment">
-Man muss die Anforderungen kennen und die müssen stimmen
-und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man Bock hat.
-            </p>
+            <h2 class="fragment">
+Man muss die Anforderungen kennen und die müssen stimmen.
+            </h2>
+            <!--und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man Bock hat.-->
             <p class="fragment"><small> - Oliver Zeigermann, embarc</small></p>
         </section>
 
@@ -527,40 +529,29 @@ und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man B
 
         <section class="step-subtitle">
             <h3>Technik</h3>
-            <h2>Zentrales Statemanagement: Redux</h2>
-            <h3>Heißt auch <em>Global Mediator Pattern</em></h3>
-            <h2>Zustand wird zentral gehalten, UI-Logik geht aus den Komponenten</h2>
-            <p>Ansätze: <span class="highlight">Micro Components</span>, <span class="highlight">Majestic Modular Monoliths</span></p>
-            <p>Bedient Anforderungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span>,
-                <span class="highlight">Gemeinsame Bibliothek, Wieververwendung</span></p>
+            <h2>Globaler Event Bus</h2>
+            <p>Komponenten publizieren und können sich auf Events registrieren</p>
+            <p>Ansätze: <span class="highlight">Micro Components</span></p>
+            <p>Bedient Anforderungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span></p>
         </section>
 
-        <section>
-            <h1>Techniken</h1>
-        </section>
-
-        <section>
+        <section class="step-subtitle">
+            <h3>Technik</h3>
             <h2>Client-Seitige Integration</h2>
-            <p>Zentrale Herausforderung von <span class="highlight">Micro Components</span></p>
-            <p>Herausforderung auch immer...</p>
-            <ul>
-                <li>Ladezeiten
-                <li>einheitliches UI und UX
-                <li>Verteilter Zustand
-                <li>Serverside-Rendering
-            </ul>
+            <p>Ansätze: <span class="highlight">Micro Components</span></p>
+            <p>Bedient Anforderungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span></p>
         </section>
 
         <section>
             <h3>Web Components</h3>
             <p>Web Component ummantelt Modul</p>
-            <p>Beispiel: <a href="http://djcordhose.github.io/architecture/code/web-components/" target="_blank">http://djcordhose.github.io/architecture/code/web-components</a></p>
             <p>Laden als JavaScript ES6 Modul, HTMLImport ist tot</p>
-<pre><code data-trim>
+            <p><a href="http://djcordhose.github.io/architecture/code/web-components/" target="_blank">Beispiel:</a></p>
+<pre class="fragment"><code data-trim>
 import 'my-element';
 &lt;my-element greeting="Hello">&lt;/my-element>
 </code></pre>
-<pre><code data-trim>
+<pre class="fragment"><code data-trim>
 class MyElement extends HTMLElement {
     constructor() {
         super();
@@ -610,24 +601,35 @@ customElements.define('my-element', MyElement);
             </ul>
         </section>
 
-        <section class="todo">
-            <h3>Kommunikation zwischen getrennten Anwendungen</h3>
+        <section class="step-subtitle">
+            <h3>Technik</h3>
+            <h2>Kommunikation zwischen getrennten Anwendungen</h2>
+            <p>Ansätze: <span class="highlight">Links</span></p>
+            <p>Bedient Anforderungen: <span class="highlight"><em>nicht</em> gleichzeitige, <em>aber</em> synchronisierte Darstellung mehrerer Module</span></p>
+        </section>
+
+        <section>
+            <h3>Real-Time</h3>
             <ul>
-                <li><span class="highlight">Web Sockets</span>
+                <li><span class="highlight">Web Sockets</span>: Erfordert Server Verbindung
                 </li>
-                <li><span class="highlight">PWA Push</span>
-                </li>
-                <li><span class="highlight">Cookies</span>
-                </li>
-                <li><span class="highlight">URL Parameter</span>
-                </li>
-                <li><span class="highlight">Session Storage</span>
+                <li><span class="highlight">PWA Push</span>: Erfordert Service Worker und Server
                 </li>
             </ul>
         </section>
 
         <section>
-            <h1>Architektur-Muster</h1>
+            <h3>Parameter-Übergabe</h3>
+            <ul>
+                <li><span class="highlight">Cookies</span>: gut für Session Id, Tokens
+                </li>
+                <li><span class="highlight">URL Parameter</span>: begrenzte Länge, nicht alles möchte man in der URL haben
+                </li>
+                <li><span class="highlight">Session Storage</span>: Key/Value, wird gelöscht wenn Tab geschlossen wird
+                </li>
+                <li><span class="highlight">Local Storage</span>: Key/Value, bleibt bestehen bis zur expliziten Löschung
+                </li>
+            </ul>
         </section>
 
         <section class="step-subtitle">
@@ -728,7 +730,7 @@ export class SubComponent {
             <h3>Architektur-Muster</h3>
             <h2>Zentrales Statemanagement: Redux</h2>
             <h3>Heißt auch <em>Global Mediator Pattern</em></h3>
-            <h2>Zustand wird zentral gehalten, UI-Logik geht aus den Komponenten</h2>
+            <p>Zustand wird zentral gehalten, UI-Logik geht aus den Komponenten</p>
             <p>Ansätze: <span class="highlight">Micro Components</span>, <span class="highlight">Majestic Modular Monoliths</span></p>
             <p>Bedient Anforderungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span>,
                 <span class="highlight">Gemeinsame Bibliothek, Wieververwendung</span></p>
@@ -925,27 +927,41 @@ async function loadGreetings(dispatch) {
         <section>
             <h3>Urteil</h3>
             <ul>
-                <li class="fragment"><span class="highlight">Links</span>: bester Entwicklungsprozess
+                <li class="fragment"><span class="highlight">Links</span>: <strong>bester Entwicklungsprozess</strong>
                     <ul>
-                        <li class="fragment">Modularisierung: beste Story für Modularisierung, Migration, Deployment</li>
-                        <li class="fragment">UI/UX: schwächste Integration von UI/UX</li>
+                        <li class="fragment">beste Story für Modularisierung, Migration, Deployment</li>
+                        <li class="fragment">schwächste Integration von UI/UX</li>
                     </ul>
                 </li>
-                <li class="fragment"><span class="highlight">Majestic Modular Monoliths</span>: beste Erfahrung für den Nutzer
+                <li class="fragment"><span class="highlight">Majestic Modular Monoliths</span>: <strong>beste Erfahrung für den Nutzer</strong>
                     <ul>
-                        <li class="fragment">Modularisierung: schwächste Story für unabhängige Teams</li>
-                        <li class="fragment">UI/UX: bestes und konsistentestes UX/UI, starke Stories für State Management und Universal Web Apps</li>
+                        <li class="fragment">schwächste Story für unabhängige Teams</li>
+                        <li class="fragment">bestes und konsistentestes UX/UI, starke Stories für State Management und Universal Web Apps</li>
                     </ul>
                 </li>
-                <li class="fragment"><span class="highlight">Micro Components</span>: Kompromiss
+                <li class="fragment"><span class="highlight">Micro Components</span>: <strong>Kompromiss</strong>
                     <ul>
-                        <li class="fragment">Modularisierung: Migration von Klassicher Wep-App schwer denkbar</li>
-                        <li class="fragment">UI/UX: UX/UI gut für Intranet oder Desktop, große technische Herausforderung</li>
+                        <li class="fragment">migration von Klassicher Wep-App schwer denkbar</li>
+                        <li class="fragment">UX/UI gut für Intranet oder Desktop, große technische Herausforderung</li>
                     </ul>
                 </li>
             </ul>
         </section>
 
+        <section>
+            <h3>Vielen Dank!</h3>
+            <h2>Es gibt keine perfekte Architektur für jeden Satz von Anforderungen</h2>
+            <h3>Du musst deine Anforderungen kennen und dabei ehrlich zu dir sein</h3>
+            <p>
+                <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
+                <a href="https://www.embarc.de/">Embarc GmbH</a>
+            </p>
+            <p>
+                <a href="http://bit.ly/oop-frontend">
+                    http://bit.ly/oop-frontend</a></p>
+        </section>
+
+<!--
         <section>
             <h3>The Doctor is In</h3>
             <small>
@@ -999,6 +1015,7 @@ async function loadGreetings(dispatch) {
                 <a href="http://bit.ly/oop-frontend">
                 http://bit.ly/oop-frontend</a></small></p>
         </section>
+-->
 
     </div>
 
