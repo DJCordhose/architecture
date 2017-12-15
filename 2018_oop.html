@@ -199,6 +199,7 @@ Universal
         </section>
 -->
 
+<!--
         <section>
             <h2>Moderne Frontend-Architektur</h2>
             <p>Moderne Frontends ...</p>
@@ -209,22 +210,21 @@ Universal
                 <li class="fragment">sollen in kurzer Zeit und <span class="highlight">kostengünstig</span> zu entwickeln sein</li>
             </ul>
         </section>
+-->
 
         <section>
             <h3>Axiom I</h3>
-            <h2>Beste UI / UX kann nur durch Single Page Applications (SPA) erreicht werden</h2>
+            <h2>Beste UI / UX kann nur durch Single Page Applications (SPA), Mobile oder Desktop App erreicht werden</h2>
         </section>
 
         <section>
-            <h2>SPAs</h2>
-            <p>verschieben eure Anwendung in den Browser</p>
+            <h2>SPAs / Desktop Apps / Mobile Apps</h2>
+            <p>verschieben Hauptteile eurer Anwendung in den Client</p>
             <img src="img/webapp-architecture-spa.png" style="max-width: 40%; float: left">
             <ul style="width: 50%; float: right; font-size: 80%">
-                <li class="fragment">eine einzie (single) HTML Seite (Page) pro Modul
-                <li class="fragment">Seite ist eher Anwendung als Inhalt
-                <li class="fragment">Server nur noch Daten-Schnittstelle (JSON/REST API)</li>
-                <li class="fragment">erlaubt Offline-Betrieb (u.a. über Service Workers)
-                <li class="fragment">dieselbe UI/UX wie eine Desktop App möglich
+                <li class="fragment">Server ist hauptsächlich Daten-Schnittstelle (JSON/REST API)</li>
+                <li class="fragment">Server kann Business Logic enthalten, diese kann aber komplett im Client liegen
+                <li class="fragment">erlaubt Offline-Betrieb für SPAs (u.a. über Service Workers)
             </ul>
         </section>
 
@@ -257,8 +257,8 @@ Universal
 -->
 
             <section>
-                <h4>Axiom II</h4>
-                <h3>Wartbarkeit und Skalierung in der Größe ist nur durch Modularisierung erreichbar</h3>
+                <h3>Axiom II</h3>
+                <h4>Wartbarkeit und Skalierung im größeren Kontext ist nur durch Modularisierung erreichbar</h4>
             <p>Moderne Frontends...</p>
             <ul>
                 <li class="fragment">sollen aus einzelnen <span class="highlight">Modulen</span> zusammensetzbar sein</li>
@@ -273,7 +273,7 @@ Universal
 
         <section>
             <h2>Widerspruch aus Axiom I und II</h2>
-            <p><span class="highlight">Wenn man die Module für Wartbarkeit entkoppelt wie bei Micro Frontends muss man wie für das konsistente UI wieder koppeln</span></p>
+            <p><span class="highlight">Wenn man die Module für Wartbarkeit entkoppelt (Micro Frontends) muss man sie für ein UI aus einem Guss wieder koppeln</span></p>
             <p>Oder: man muss sich entscheiden, will man die beste Erfahrung für den Nutzer oder für den Entwicklungsprozess</p>
             <!--
              - Cohesion Decoupling Microservices
@@ -293,22 +293,25 @@ Universal
             </a></small></p>
         </section>
 
+<!--
         <section class="step-subtitle">
             <h3>Teil 1</h3>
             <h2>Architektonische Herausforderung</h2>
         </section>
 
+-->
         <section>
-            <h3>Weitere Schwierigkeit</h3>
+            <!--<h3>Weitere Schwierigkeit</h3>-->
             <h2>Wir nehmen Frontend-Architektur nicht für voll</h2>
             <p>Zitate</p>
             <ul>
                 <li class="fragment"><em>Frontend-Architektur: Ich dachte sowas gibt es gar nicht</em></li>
                 <li class="fragment"><em>Das Frontend kloppen wir am Ende einfach irgendwie drauf</em></li>
-                <li class="fragment"><em>Architektur für ein bisschen CSS-Pixel-Geschupsse?</em></li>
+                <li class="fragment"><em>Architektur für ein bisschen CSS-Pixel-Geschubse?</em></li>
             </ul>
         </section>
 
+<!--
         <section>
             <img src="img/frontend-architecture.png" height="600px">
 
@@ -317,6 +320,7 @@ Universal
             </a></small></p>
         </section>
 
+-->
         <section>
             <img src="img/frontend-katz-twitter.png" height="600px">
 
@@ -327,15 +331,20 @@ Universal
             </a></small></p>
         </section>
 
+        <section class="step-subtitle">
+            <h3>Teil 1</h3>
+            <h2>Lösungsmöglichkeiten</h2>
+        </section>
+
         <section>
             <h2>Micro Frontend Architektur-Ansätze</h2>
             <p>Integration...</p>
             <ol>
                 <li class="fragment">über Links - Codename <span class="highlight">Links</span></li>
-                <li class="fragment">im Browser - Codename <span class="highlight">Micro Components</span></li>
                 <li class="fragment">zur Build-Zeit - Codename <span class="highlight">
                     Majestic Modular Monoliths</span>
                     (Kudos an <a href="https://twitter.com/DJCordhose/status/908251990005821440" target="_blank">@axelfontaine</a> für den Namen)</li>
+                <li class="fragment">im Browser - Codename <span class="highlight">Micro Components</span></li>
             </ol>
         </section>
 
@@ -346,7 +355,7 @@ Universal
 
 -->
         <section class="step-subtitle">
-            <h3>Ansatz 1</h3>
+            <h3>Ansatz 1: Größte Unabhängigkeit</h3>
             <h2>Eigenständige Anwendungen über Links verbunden</h2>
             <p>Integration mehrerer Anwendungen über Links, die eine neue Anwendung öffnen und/oder die alte ersetzen</p>
             <ul>
@@ -358,6 +367,7 @@ Universal
             <p><small>Variante: App Shell hat JavaScript Rahmen, weniger flexibel, kann aber u.a. Zusand halten</small></p>
         </section>
 
+<!--
         <section>
             <h3>Eigenständige Anwendungen in Eigenständiger Darstellung</h3>
             <div class="fragment" style="float: left">
@@ -373,9 +383,12 @@ Universal
             <p style="clear: both" class="fragment">Jede Anwendung wird komplett neu aufgebaut</p>
         </section>
 
+-->
         <section>
             <h3>Prominentes Beispiel: XING</h3>
-            <img src="img/screenshot-xing.png" height="550">
+            <a href="https://www.xing.com/app/startpage" target="_blank">
+                <img src="img/screenshot-xing.png" height="550">
+            </a>
         </section>
 
         <section>
@@ -387,20 +400,21 @@ Universal
         </section>
 
         <section class="step-subtitle">
-            <h3>Ansatz 2</h3>
+            <h3>Ansatz 2: Bestes UX</h3>
             <h2>Single Page Application</h2>
             <p>Eine einzelne Klassische Single Page Application mit statischem Build</p>
             <ul>
                 <li>Jedes Team entwickelt eigenes npm Modul</li>
                 <li>statischer Build integriert komplette Anwendung
                 <li>Zur Laufzeit Lazy-Loading möglich
-                <li>Anwendung nutzt ein Framework mit einer Version
+                <li>Anwendung nutzt <span class="highlight">ein</span> Framework mit <span class="highlight">einer</span> Version
                 <li>Gemeinsame Bibliothek sinnvoll
                 <li>Export einzelner Komponenten möglich
             </ul>
             <p><span class="highlight">Majestic Modular Monoliths</span></p>
         </section>
 
+<!--
         <section>
             <h3>Gemeinsame Anwendungen in gemeinsamer Darstellung</h3>
             <div class="fragment">
@@ -408,14 +422,18 @@ Universal
             </div>
             <p style="clear: both" class="fragment">Server-Zugriff nur für Daten oder einmalig für Code</p>
         </section>
+-->
 
         <section>
             <h3>Prominentes Beispiel: Google Docs</h3>
-            <img src="img/screenshot-google-docs.png" height="550">
+            <img src="img/screenshot-google-docs.png" height="500px">
+            <p><small>Keine systematischen UX Probleme</small></p>
         </section>
 
+
+
         <section class="step-subtitle">
-            <h3>Ansatz 3</h3>
+            <h3>Ansatz 3: Mittelweg</h3>
             <h2>Zusammensetzen der Anwendung im Browser</h2>
             <ul>
                 <li>Anwendung ist in logische Module aufgeteilt, die als ganze Anwendung zusammen laufen
@@ -426,6 +444,7 @@ Universal
             <p><span class="highlight">Micro Components</span></p>
         </section>
 
+<!--
         <section>
             <h3>Eigenständige Anwendungen in gemeinsamer Dargestellt</h3>
             <div class="fragment">
@@ -434,6 +453,7 @@ Universal
             <p style="clear: both" class="fragment">Jede Anwendung kann komplett eigenen Stack haben</p>
         </section>
 
+-->
         <section>
             <h3>Prominentes Beispiel: Spotify</h3>
             <img src="img/screenshot-spotify.png" height="450px">
@@ -454,7 +474,7 @@ Universal
             <ul>
                 <li class="fragment">Seite einer <span class="highlight">Link</span>-App kann ein <span class="highlight">Micro Components</span> App sein
                 <li class="fragment">Teil einer <span class="highlight">Micro Components</span> kann ein <span class="highlight">Majestic Modular Monolith</span> sein
-                <li class="fragment">Seite einer <span class="highlight">Link</span>-App kann ein <span class="highlight">Majestic Modular Monolith</span> sein
+                <li class="fragment">Seite einer <span class="highlight">Link</span>-App kann ein <span class="highlight">Majestic Modular Monolith</span> sein (Google Drive vs Google Docs)
             </ul>
         </section>
 
@@ -462,23 +482,29 @@ Universal
             <h3>Es gibt keinen <em>besten</em> Architektur-Ansatz</h3>
             <h4 class="fragment">Daher...</h4>
             <h2 class="fragment">
-Man muss die Anforderungen kennen und die müssen stimmen.
+Man muss die Anforderungen kennen und die müssen passen.
             </h2>
             <!--und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man Bock hat.-->
             <p class="fragment"><small> - Oliver Zeigermann, embarc</small></p>
         </section>
 
+<!--
         <section>
-            <h3>Liste typischer Anforderungen</h3>
+            <h3>Liste typischer Ziele/Einflüsse</h3>
+            <p class="todo">Ziele herausheben (level 1) und pro Top 3 Ziel eine Folie</p>
         <pre>
 - Unabhängigkeit der Module
   - In der Entwicklung
-  - Beim Deployment
+- Velocity / Entwicklungsgeschwindigkeit
+  - Unabhänges Deployment
+- Robustheit
   - Verhalten bei Fehlerfall, Ausfall
-- Verhalten Fremdsystemen gegenüber
-  - SEO
-  - Preview
+- Risko Minimierung
+  - schrittweises Ausrollen von technischen Innovationen
+  - schrittweise Migration, kein Big Bang
+  - Feature-Stau
 - Skalierbarkeit in der Entwicklung
+  - Anzahl der Teams
   - Freie Wahl des Frameworks
   - Update der Bibliotheken
   - Eignung für Vertikale Architektur
@@ -490,17 +516,67 @@ Man muss die Anforderungen kennen und die müssen stimmen.
   - Schnelle First-Page Impression
   - Kommunikation zwischen Modulen
   - Offline-Fähigkeit
+- Verhalten Fremdsystemen gegenüber
+  - SEO
+  - Preview
         </pre>
                 </section>
+-->
 
         <section>
-            <img src="img/feynman-twitter.png">
-
-            <p><small><a href="https://twitter.com/ProfFeynman/status/932645521096716290" target="_blank">
-                https://twitter.com/ProfFeynman/status/932645521096716290
-            </a></small></p>
+            <h3>Typische Ziele/Einflüsse</h3>
+            <ul>
+                <li>Entwicklungsgeschwindigkeit
+                <li>Robustheit
+                <li>Risko-Minimierung
+                <li>Skalierbarkeit der Entwicklung
+                <li>UX, Konsistenz
+            </ul>
         </section>
 
+        <section>
+            <h3>UX, Konsistenz</h3>
+            <ul>
+                <li class="fragment">Gleichzeitige, synchronisierte Darstellung mehrerer Module
+                <li class="fragment">Schnelle erste Darstellung
+                <li class="fragment">Offline-Fähigkeit
+                <li class="fragment">Unverögerte Reaktion
+            </ul>
+        </section>
+
+        <section>
+            <h3>Risko Minimierung</h3>
+            <ul>
+                <li class="fragment">schrittweises Ausrollen von technischen Innovationen
+                <li class="fragment">schrittweise Migration, kein Big Bang
+                <li class="fragment">Feature-Stau
+            </ul>
+        </section>
+
+        <section>
+            <h3>Skalierbarkeit der Entwicklung / Entwicklungsgeschwindigkeit</h3>
+            <ul>
+                <li class="fragment">Anzahl der Teams
+                <li class="fragment">Freie Wahl des Frameworks
+                <li class="fragment">Update der Bibliotheken
+                <li class="fragment">Eignung für Vertikale Architektur
+                <li class="fragment">Gemeinsame Bibliothek, Wieververwendung
+                <li class="fragment">Freiheitsgrad der Modulgröße
+                <li class="fragment">Migrationspfad von klassischer Web-App
+            </ul>
+        </section>
+
+        <!--
+                <section>
+                    <img src="img/feynman-twitter.png">
+
+                    <p><small><a href="https://twitter.com/ProfFeynman/status/932645521096716290" target="_blank">
+                        https://twitter.com/ProfFeynman/status/932645521096716290
+                    </a></small></p>
+                </section>
+        -->
+
+<!--
         <section>
             <img src="img/kickme.png">
 
@@ -508,12 +584,14 @@ Man muss die Anforderungen kennen und die müssen stimmen.
                 https://twitter.com/rhundhausen/status/932815147273474049
             </a></small></p>
         </section>
+-->
 
         <section>
             <h2>Übung #1</h2>
             <h3>Unterhalte dich mit deinen Sitznachbarn über dein eigenes (oder eine dir bekanntes) Frontend</h3>
             <p>Welche Anforderungen gibt es in dem Projekt?</p>
-            <p>Wo würde das Frontend architektonisch passen?</p>
+            <p>Ähnelt eure Frontend Architektur einer der gezeigten Ansätze?</p>
+            <p>Welcher der Ansätze passt am besten zu deinem Projekt?</p>
             <p>Welche Fragen ergeben sich für dich?</p>
             <p><small>Diese Fragen klären wir dann im Nachgang</small></p>
         </section>
@@ -526,7 +604,7 @@ Man muss die Anforderungen kennen und die müssen stimmen.
         </section>
 
         <section class="step-subtitle">
-            <h3>Teil 3</h3>
+            <h3>Teil 2</h3>
             <h2>Ausgewählte Technische und Architektonische Herausforderungen</h2>
         </section>
 
@@ -1001,11 +1079,19 @@ async function loadGreetings(dispatch) {
                 </li>
                 <li class="fragment"><span class="highlight">Micro Components</span>: <strong>Kompromiss</strong>
                     <ul>
-                        <li class="fragment">migration von Klassicher Wep-App schwer denkbar</li>
-                        <li class="fragment">UX/UI gut für Intranet oder Desktop, große technische Herausforderung</li>
+                        <li class="fragment">migration von Klassischer Wep-App schwer denkbar</li>
+                        <li class="fragment">UX/UI gut für Intranet oder Desktop</li>
                     </ul>
                 </li>
             </ul>
+        </section>
+
+        <section>
+            <h3>Empfehlung</h3>
+            <p class="highlight">Anwendung komplett trennen und mit Links verbinden wo möglich</p>
+            <p>Wahrscheinlich sind mehr Trennungen möglich als ihre denkt</p>
+            <p class="highlight">Getrennte Anwendungen als
+                Majestic Modular Monoliths außer wenn starke Anforderung an Unabhängigkeit</p>
         </section>
 
         <section>
