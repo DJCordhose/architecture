@@ -400,6 +400,37 @@ Universal
         </section>
 
         <section class="step-subtitle">
+            <h3>Technik</h3>
+            <h2>Kommunikation zwischen getrennten Anwendungen</h2>
+            <p>Ansätze: <span class="highlight">Links</span></p>
+            <p>Bedient Anforderungen: <span class="highlight"><em>nicht</em> gleichzeitige, <em>aber</em> synchronisierte Darstellung mehrerer Module</span></p>
+        </section>
+
+        <section>
+            <h3>Real-Time</h3>
+            <ul>
+                <li><span class="highlight">Web Sockets</span>: Erfordert Server Verbindung
+                </li>
+                <li><span class="highlight">PWA Push</span>: Erfordert Service Worker und Server
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Parameter-Übergabe</h3>
+            <ul>
+                <li><span class="highlight">Cookies</span>: gut für Session Id, Tokens
+                </li>
+                <li><span class="highlight">URL Parameter</span>: begrenzte Länge, nicht alles möchte man in der URL haben
+                </li>
+                <li><span class="highlight">Session Storage</span>: Key/Value, wird gelöscht wenn Tab geschlossen wird
+                </li>
+                <li><span class="highlight">Local Storage</span>: Key/Value, bleibt bestehen bis zur expliziten Löschung
+                </li>
+            </ul>
+        </section>
+
+        <section class="step-subtitle">
             <h3>Ansatz 2: Bestes UX</h3>
             <h2>Single Page Application</h2>
             <p>Eine einzelne Klassische Single Page Application mit statischem Build</p>
@@ -469,6 +500,72 @@ Universal
             <p><small>überraschende UX Schwächen, Apps nur gleichzeitig dargestellt, aber nicht komplett integriert</small></p>
         </section>
 
+        <section class="step-subtitle">
+            <h3>Technik</h3>
+            <h2>Client-Seitige Integration</h2>
+            <p>Ansätze: <span class="highlight">Micro Components</span></p>
+            <p>Bedient Anforderungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span></p>
+        </section>
+
+        <section>
+            <h3>Web Components</h3>
+            <p>Web Component ummantelt Modul</p>
+            <p>Laden als JavaScript ES6 Modul, HTMLImport ist tot</p>
+            <p><a href="http://djcordhose.github.io/architecture/code/web-components/" target="_blank">Beispiel:</a></p>
+            <pre class="fragment"><code data-trim>
+import 'my-element';
+&lt;my-element greeting="Hello">&lt;/my-element>
+</code></pre>
+            <pre class="fragment"><code data-trim>
+class MyElement extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        this.greeting = this.getAttribute("greeting") || 'Hello';
+    }
+
+    connectedCallback() {
+        render();
+        this.btn = this.shadowRoot.querySelector('button');
+        this.btn.addEventListener('click', (event) => ...);
+    }
+}
+customElements.define('my-element', MyElement);
+</code></pre>
+
+            <p>Keine Komplette Isolation, Funktioniert in der Praxis nicht gut mit beliebigem Framework</p>
+        </section>
+
+        <section>
+            <h3>iFrame</h3>
+            <p>Beispiel: <a href="http://djcordhose.github.io/architecture/code/integration/" target="_blank">http://djcordhose.github.io/architecture/code/integration/</a></p>
+            <p>Lädt komplett isolierte Anwendung</p>
+            <pre><code data-trim>
+&lt;iframe height="300" width="500"
+    src="http://djcordhose.github.io/architecture/code/integration/iframe.html"
+    sandbox="allow-scripts allow-top-navigation allow-same-origin">&lt;/iframe>
+</code></pre>
+            <ul>
+                <li>Kein geteiltes Styling
+                <li>Einbetten mit richtiger Größe ein Albtraum
+                <li>Kommunikation mit Außenwelt lästig
+            </ul>
+        </section>
+
+        <section>
+            <h3>Problem: Ladezeiten Wenn jedes Modul sein eigenes Framework mitbringt</h3>
+            <ul class="fragment">
+                <li>Frameworks wie React oder Angular bringen von sich aus immer mehr als 100KB
+                <li>(UI-)Bibliotheken haben oft dieselbe Größe oder mehr
+                <li>Bei mehreren Modulen ist man schnell im MB-Bereich: Langsamer Aufbau der Seite
+            </ul>
+            <p class="fragment">Lösung: k(l)eine Frameworks und Bibliotheken nutzen</p>
+            <ul class="fragment">
+                <li>Preact kann Anwendungen unter 10KB bringen
+                <li>Web-Componentes sind Teil der Browser API (noch nicht überall)
+            </ul>
+        </section>
+
         <section>
             <h3>Ansätze sind nicht wechselseitig exklusiv</h3>
             <ul>
@@ -476,6 +573,11 @@ Universal
                 <li class="fragment">Teil einer <span class="highlight">Micro Components</span> kann ein <span class="highlight">Majestic Modular Monolith</span> sein
                 <li class="fragment">Seite einer <span class="highlight">Link</span>-App kann ein <span class="highlight">Majestic Modular Monolith</span> sein (Google Drive vs Google Docs)
             </ul>
+        </section>
+
+        <section class="step-subtitle">
+            <h3>Teil 2</h3>
+            <h2>Matching mit Zielen</h2>
         </section>
 
         <section>
@@ -491,7 +593,6 @@ Man muss die Anforderungen kennen und die müssen passen.
 <!--
         <section>
             <h3>Liste typischer Ziele/Einflüsse</h3>
-            <p class="todo">Ziele herausheben (level 1) und pro Top 3 Ziel eine Folie</p>
         <pre>
 - Unabhängigkeit der Module
   - In der Entwicklung
@@ -603,11 +704,6 @@ Man muss die Anforderungen kennen und die müssen passen.
             </pre>
         </section>
 
-        <section class="step-subtitle">
-            <h3>Teil 2</h3>
-            <h2>Ausgewählte Technische und Architektonische Herausforderungen</h2>
-        </section>
-
         <!--<section class="todo">-->
             <!--<img src="embarc/Vergleich.jpg" >-->
         <!--</section>-->
@@ -623,6 +719,7 @@ Man muss die Anforderungen kennen und die müssen passen.
         </section>
 -->
 
+<!--
         <section class="step-subtitle">
             <h3>Technik</h3>
             <h2>Globaler Event Bus</h2>
@@ -637,95 +734,11 @@ Man muss die Anforderungen kennen und die müssen passen.
             <p>Ansätze: <span class="highlight">Micro Components</span></p>
             <p>Bedient Anforderungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span></p>
         </section>
-
-        <section>
-            <h3>Web Components</h3>
-            <p>Web Component ummantelt Modul</p>
-            <p>Laden als JavaScript ES6 Modul, HTMLImport ist tot</p>
-            <p><a href="http://djcordhose.github.io/architecture/code/web-components/" target="_blank">Beispiel:</a></p>
-<pre class="fragment"><code data-trim>
-import 'my-element';
-&lt;my-element greeting="Hello">&lt;/my-element>
-</code></pre>
-<pre class="fragment"><code data-trim>
-class MyElement extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-        this.greeting = this.getAttribute("greeting") || 'Hello';
-    }
-
-    connectedCallback() {
-        render();
-        this.btn = this.shadowRoot.querySelector('button');
-        this.btn.addEventListener('click', (event) => ...);
-    }
-}
-customElements.define('my-element', MyElement);
-</code></pre>
-
-            <p>Keine Komplette Isolation, Funktioniert in der Praxis nicht gut mit beliebigem Framework</p>
-        </section>
-
-        <section>
-            <h3>iFrame</h3>
-            <p>Beispiel: <a href="http://djcordhose.github.io/architecture/code/integration/" target="_blank">http://djcordhose.github.io/architecture/code/integration/</a></p>
-            <p>Lädt komplett isolierte Anwendung</p>
-            <pre><code data-trim>
-&lt;iframe height="300" width="500"
-    src="http://djcordhose.github.io/architecture/code/integration/iframe.html"
-    sandbox="allow-scripts allow-top-navigation allow-same-origin">&lt;/iframe>
-</code></pre>
-            <ul>
-                <li>Kein geteiltes Styling
-                <li>Einbetten mit richtiger Größe ein Albtraum
-                <li>Kommunikation mit Außenwelt lästig
-            </ul>
-        </section>
-
-        <section>
-            <h3>Problem: Ladezeiten Wenn jedes Modul sein eigenes Framework mitbringt</h3>
-            <ul class="fragment">
-                <li>Frameworks wie React oder Angular bringen von sich aus immer mehr als 100KB
-                <li>(UI-)Bibliotheken haben oft dieselbe Größe oder mehr
-                <li>Bei mehreren Modulen ist man schnell im MB-Bereich: Langsamer Aufbau der Seite
-            </ul>
-            <p class="fragment">Lösung: k(l)eine Frameworks und Bibliotheken nutzen</p>
-            <ul class="fragment">
-                <li>Preact kann Anwendungen unter 10KB bringen
-                <li>Web-Componentes sind Teil der Browser API (noch nicht überall)
-            </ul>
-        </section>
-
+-->
         <section class="step-subtitle">
-            <h3>Technik</h3>
-            <h2>Kommunikation zwischen getrennten Anwendungen</h2>
-            <p>Ansätze: <span class="highlight">Links</span></p>
-            <p>Bedient Anforderungen: <span class="highlight"><em>nicht</em> gleichzeitige, <em>aber</em> synchronisierte Darstellung mehrerer Module</span></p>
-        </section>
-
-        <section>
-            <h3>Real-Time</h3>
-            <ul>
-                <li><span class="highlight">Web Sockets</span>: Erfordert Server Verbindung
-                </li>
-                <li><span class="highlight">PWA Push</span>: Erfordert Service Worker und Server
-                </li>
-            </ul>
-        </section>
-
-        <section>
-            <h3>Parameter-Übergabe</h3>
-            <ul>
-                <li><span class="highlight">Cookies</span>: gut für Session Id, Tokens
-                </li>
-                <li><span class="highlight">URL Parameter</span>: begrenzte Länge, nicht alles möchte man in der URL haben
-                </li>
-                <li><span class="highlight">Session Storage</span>: Key/Value, wird gelöscht wenn Tab geschlossen wird
-                </li>
-                <li><span class="highlight">Local Storage</span>: Key/Value, bleibt bestehen bis zur expliziten Löschung
-                </li>
-            </ul>
+            <h3>Teil 3</h3>
+            <h2>Größte Architektonische Herausforderung</h2>
+            <h4>Wie bekommen wir Majestic Modular Monoliths in den Griff?</h4>
         </section>
 
         <section class="step-subtitle">
@@ -901,6 +914,7 @@ export class SubComponent {
             <h4>Redux extrahiert Verwantwortlichkeiten aus UI-Framework</h4>
             <img src="redux-02-extracting-responsibility.png" height="500" style="border:0;box-shadow:0 0 0 0"/>
         </section>
+<!--
 
         <section>
             <h3>Code Sample: Reducer</h3>
@@ -951,6 +965,7 @@ async function loadGreetings(dispatch) {
             <p>Wieder nur eine Funktion, der einzige Ort an dem asynchrone Operationen erlaubt sind</p>
         </section>
 
+-->
         <section>
             <h3>Ist das nur eine spinnige Idee, oder nutzt das echt jemand?</h3>
             <div class="fragment">
