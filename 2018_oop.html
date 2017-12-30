@@ -195,6 +195,7 @@ Universal
 <!--
         <section class="todo">
 <pre>
+- https://softwarearchitekt.at/post/2017/12/28/a-software-architect-s-approach-towards-using-angular-and-spas-in-general-for-microservices-aka-microfrontends.aspx
 </pre>
         </section>
 -->
@@ -258,17 +259,20 @@ Universal
 
             <section>
                 <h3>Axiom II</h3>
-                <h4>Wartbarkeit und Skalierung im größeren Kontext ist nur durch Modularisierung erreichbar</h4>
-            <p>Moderne Frontends...</p>
+                <h2>Wartbarkeit und Skalierung im größeren Kontext ist nur durch Modularisierung erreichbar</h2>
+        </section>
+
+        <section>
+            <h3>Moderne Frontends...</h3>
             <ul>
                 <li class="fragment">sollen aus einzelnen <span class="highlight">Modulen</span> zusammensetzbar sein</li>
                 <li class="fragment">müssen zu modernen <span class="highlight">Backend-Architekturen</span> passen</li>
                 <li class="fragment">sollen einzeln zu <span class="highlight">deployen</span> sein</li>
                 <li class="fragment">pro Modul am besten Wahl von <span class="highlight">freie Technologie</span> sein</li>
             </ul>
-        <p class="fragment">Das passende Buzzword dazu ist <span class="highlight">Micro Frontends</span> (<a href="https://www.thoughtworks.com/radar/techniques/micro-frontends" target="_blank">
-            https://www.thoughtworks.com/radar/techniques/micro-frontends
-        </a>)</p>
+            <p class="fragment">Das passende Buzzword dazu ist <span class="highlight">Micro Frontends</span> (<a href="https://www.thoughtworks.com/radar/techniques/micro-frontends" target="_blank">
+                https://www.thoughtworks.com/radar/techniques/micro-frontends
+            </a>)</p>
         </section>
 
         <section>
@@ -775,7 +779,7 @@ Man muss die Anforderungen kennen und die müssen passen.
         </section>
 
         <section>
-            <img src="smart-dumb-properties.png">
+            <img src="img/component-communication.png">
             <p><small>
                 Copyright 2017, Nils Hartmann
             </small></p>
@@ -912,7 +916,10 @@ export class SubComponent {
 
         <section>
             <h4>Redux extrahiert Verwantwortlichkeiten aus UI-Framework</h4>
-            <img src="redux-02-extracting-responsibility.png" height="500" style="border:0;box-shadow:0 0 0 0"/>
+            <img src="img/redux-02-extracting-responsibility.png" height="500" style="border:0;box-shadow:0 0 0 0"/>
+            <p><small>
+                Copyright 2017, Nils Hartmann
+            </small></p>
         </section>
 <!--
 
@@ -1104,7 +1111,7 @@ async function loadGreetings(dispatch) {
         <section>
             <h3>Empfehlung</h3>
             <p class="highlight">Anwendung komplett trennen und mit Links verbinden wo möglich</p>
-            <p>Wahrscheinlich sind mehr Trennungen möglich als ihre denkt</p>
+            <p>Wahrscheinlich sind mehr Trennungen möglich als ihr denkt</p>
             <p class="highlight">Getrennte Anwendungen als
                 Majestic Modular Monoliths außer wenn starke Anforderung an Unabhängigkeit</p>
         </section>
