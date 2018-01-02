@@ -857,6 +857,7 @@ export class SubComponent {
             <img src="exercise/detail-smart.jpg">
         </section>
 
+<!--
         <section class="step-subtitle">
             <h3>Architektur-Muster</h3>
             <h2>Zentrales Statemanagement: Redux</h2>
@@ -907,12 +908,6 @@ export class SubComponent {
             </ul>
         </section>
 
-<!--
-        <section>
-            <h4>Resultierende Architektur anhand des Redux Musters</h4>
-            <img src="redux-03-resulting-redux-architecture.png"  height="600" style="border:0;box-shadow:0 0 0 0"/>
-        </section>
--->
 
         <section>
             <h4>Redux extrahiert Verwantwortlichkeiten aus UI-Framework</h4>
@@ -921,7 +916,6 @@ export class SubComponent {
                 Copyright 2017, Nils Hartmann
             </small></p>
         </section>
-<!--
 
         <section>
             <h3>Code Sample: Reducer</h3>
@@ -972,7 +966,6 @@ async function loadGreetings(dispatch) {
             <p>Wieder nur eine Funktion, der einzige Ort an dem asynchrone Operationen erlaubt sind</p>
         </section>
 
--->
         <section>
             <h3>Ist das nur eine spinnige Idee, oder nutzt das echt jemand?</h3>
             <div class="fragment">
@@ -982,7 +975,6 @@ async function loadGreetings(dispatch) {
             </div>
         </section>
 
-<!--
         <section>
             <h3>Zusammenfassung Redux</h3>
             <ul class="fragment">
@@ -995,7 +987,6 @@ async function loadGreetings(dispatch) {
                 <li>Business Logik ausschließlich in puren Funktionen - Reducer (beste Testbarkeit)
                 <li>Nur Reducer dürfen State verändern
                 <li>Initialisierung durch initiale Aktion
--->
             </ul>
         </section>
 
@@ -1021,69 +1012,7 @@ async function loadGreetings(dispatch) {
             <img src="exercise/master-views.jpg">
         </section>
 
-        <!--
-                <section class="step-subtitle">
-                    <h3>Architektur-Muster</h3>
-                    <h2>Universal Web Application</h2>
-                    <h3>Mit demselben Code auf Client und Server Seite rendern</h3>
-                    <p>Ansätze: <span class="highlight">Links</span>, <span class="highlight">Majestic Modular Monoliths</span></p>
-                    <p>Bedient Anforderungen: <span class="highlight">SEO</span>,
-                        <span class="highlight">Preview</span>, <span class="highlight">First-Page-Impression</span></p>
-                </section>
-
-                <section>
-                    <h3>SPA: First-Page-Impression</h3>
-                    <div>
-                        <a href="code/spa/public/index.html" target="_blank">
-                            <img src="spa-first-page-impression.png" style="height: 500px;">
-                        </a>
-                    </div>
-                    <p><small>Selbst für eine einfache Web Application kann das Laden und das Aufbauen der Anwendung einige Zeit kosten
-                        und was vom Sever kommt ist eine leere Seite</small></p>
-                </section>
-
-                <section>
-                    <h3>Universal Rendering: First-Page-Impression</h3>
-                    <div>
-                        <a href="http://localhost:3001/" target="_blank">
-                            <img src="universal-first-page-impression.png" style="height: 500px;">
-                        </a>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Universal Rendering</h3>
-                    <ul class="fragment">
-                        <li>First-Page-Impression wird auf dem Server gerendert
-                        <li>Links werden als normale HTML-Links in die Seite gerendert
-                        <li>Beliebig viele andere Seiten werden ebenfalls statisch gerendert
-                        <li>Läuft dann (zumindest zum Teil) auch ohne JavaScript
-                        <li>Code fast 100% geteilt zwischen Client und Server
-                        <li>serverseitiges Rendering mit <a href="https://nodejs.org" target="_blank">https://nodejs.org</a>
-                        <li>Neben Markup liefert der Browser ebenso Zustand
-                        <li>Wird von JS-Frameworks React, Angular und Vue unterstützt
-                    </ul>
-                </section>
-
-                <section>
-                    <h3>Herausforderungen / Schwächen</h3>
-                    <ul class="fragment">
-                        <li>Aller Zustand muss beim serverseitigen Rendering komplett vorliegen (oder man rendert statische Platzhalter)
-                        <li>Falls First Page Impression ungültig: Flackern bei Neurendering im Client
-                            <ul>
-                                <li>Unterschiedliche Locales auf Server und Client
-                                <li>Zeitliche veränderliche Daten (Timestamp, Börsenkurs)
-                            </ul>
-                        </li>
-                        <li>Auch auf dem Server muss JavaScript laufen (zumindest für das Rendering Layer)
-                        <li>Unklar, ob/wie das mit Web Components - besonders Shadow Dom - funktionieren könnte (headless chrome?,
-                        <a href="https://twitter.com/DJCordhose/status/900328374601740288" target="_blank">
-                            https://twitter.com/DJCordhose/status/900328374601740288</a>)
-                        <li>Hilft nur bei "Time to first Meaningful Paint", nicht bei "Time to Interactive"
-                    </ul>
-                </section>
-        -->
-
+-->
         <section>
             <h3>Urteil</h3>
             <ul>
