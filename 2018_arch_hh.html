@@ -159,7 +159,8 @@
 
         <section>
             <h3>Nutzer möchten eine konsistente, gut bedienbare UI erleben</h3>
-            <img src="sketch/user.png" height="500px">
+            <!--<img src="sketch/user.png" height="500px">-->
+            <img src="img/nils/anwendersicht.png">
         </section>
 
         <section>
@@ -171,7 +172,7 @@
         <section>
             <h2>SPA</h2>
             <p>verschieben daher Hauptteile eurer Anwendung in den Client</p>
-            <img src="img/webapp-architecture-spa.png" style="max-width: 40%; float: left">
+            <img src="img/nils/webapp-architecture.png" style="max-width: 40%; float: left">
             <ul style="width: 50%; float: right; font-size: 80%">
                 <li class="fragment">Server ist hauptsächlich Daten-Schnittstelle (JSON/REST API)</li>
                 <li class="fragment">Server kann Business Logic enthalten, diese kann aber komplett im Client liegen
@@ -181,7 +182,8 @@
 
         <section>
             <h3>Größere Anwendungen können nicht von einem einzigen Team entwickelt werden</h3>
-            <img src="sketch/dev.png" height="500px">
+            <!--<img src="sketch/dev.png" height="500px">-->
+            <img src="img/nils/entwicklerteams-und-anwender.png">
         </section>
 
         <section>
@@ -263,7 +265,7 @@
         </section>
 
         <section>
-            <h3>Risko Minimierung</h3>
+            <h3>Risko-Minimierung</h3>
             <ul>
                 <li class="fragment">schrittweises Ausrollen von technischen Innovationen
                 <li class="fragment">schrittweise Migration, kein Big Bang
@@ -277,7 +279,7 @@
                 <li class="fragment">Anzahl der Teams
                 <li class="fragment">Freie Wahl des Frameworks
                 <li class="fragment">Update der Bibliotheken
-                <li class="fragment">Eignung für Vertikale Architektur
+                <li class="fragment">Eignung für vertikale Architektur
                 <li class="fragment">Gemeinsame Bibliothek, Wiederverwendung
                 <li class="fragment">Freiheitsgrad der Modulgröße
                 <li class="fragment">Migrationspfad von klassischer Web-App
@@ -384,6 +386,9 @@
 
         <section>
             <h3>Eigenständige Anwendungen in Eigenständiger Darstellung</h3>
+            <img src="img/nils/link-integration.png">
+<!--
+
             <div class="fragment" style="float: left">
                 <img src="sketch/link1.jpg" height="300">
             </div>
@@ -394,6 +399,7 @@
             <div class="fragment" style="float: left">
               <img src="sketch/link2.jpg" height="300" style="float: right">
             </div>
+-->
             <p style="clear: both" class="fragment">Jede Anwendung wird komplett neu aufgebaut</p>
         </section>
 
@@ -448,7 +454,7 @@
         <section class="step-subtitle">
             <h3>Ansatz 2: Bestes UX</h3>
             <h2>Single Page Application</h2>
-            <p>Eine einzelne Klassische Single Page Application mit statischem Build</p>
+            <p>Eine einzelne Single Page Application mit statischem Build</p>
             <ul>
                 <li>Jedes Team entwickelt eigenes npm Modul</li>
                 <li>statischer Build integriert komplette Anwendung
@@ -489,7 +495,7 @@
         </section>
 
         <section>
-            <h3>Eigenständige Anwendungen in gemeinsamer Dargestellt</h3>
+            <h3>Eigenständige Anwendungen in gemeinsamer Darstellung</h3>
             <div class="fragment">
                 <img src="sketch/modules.jpg" height="300">
             </div>
@@ -575,23 +581,23 @@ customElements.define('my-element', MyElement);
         </section>
 
         <section>
-            <h3>Problem: Ladezeiten Wenn jedes Modul sein eigenes Framework mitbringt</h3>
+            <h3>Problem: Ladezeiten, wenn jedes Modul sein eigenes Framework mitbringt</h3>
             <ul class="fragment">
-                <li>Frameworks wie React oder Angular bringen von sich aus immer mehr als 100KB
+                <li>Frameworks wie React oder Angular bringen von sich aus immer mehr als 100KB mit
                 <li>(UI-)Bibliotheken haben oft dieselbe Größe oder mehr
                 <li>Bei mehreren Modulen ist man schnell im MB-Bereich: Langsamer Aufbau der Seite
             </ul>
             <p class="fragment">Lösung: k(l)eine Frameworks und Bibliotheken nutzen</p>
             <ul class="fragment">
                 <li>Preact kann Anwendungen unter 10KB bringen
-                <li>Web-Componentes sind Teil der Browser API (noch nicht überall)
+                <li>Web-Components sind Teil der Browser API (noch nicht überall)
             </ul>
         </section>
 
         <section>
             <h3>Ansätze sind nicht wechselseitig exklusiv</h3>
             <ul>
-                <li class="fragment">Seite einer <span class="highlight">Link</span>-App kann ein <span class="highlight">Micro Components</span> App sein
+                <li class="fragment">Seite einer <span class="highlight">Link</span>-App kann eine <span class="highlight">Micro Components</span> App sein
                 <li class="fragment">Teil einer <span class="highlight">Micro Components</span> kann ein <span class="highlight">Majestic Modular Monolith</span> sein
                 <li class="fragment">Seite einer <span class="highlight">Link</span>-App kann ein <span class="highlight">Majestic Modular Monolith</span> sein (Google Drive vs Google Docs)
             </ul>
@@ -604,8 +610,8 @@ customElements.define('my-element', MyElement);
             </a>
             <ul>
                 <li>Welche Ansätze findest du in dieser Anwendung?</li>
-                <li>Welche Schwächen entdeckts du im UI?</li>
-                <li>Welche Anforderungen an den Entwicklungsprozess hat es wohl gegeben?</li>
+                <li>Welche Anforderungen (auch an den Entwicklungsprozess) hat es wohl gegeben?</li>
+                <li>Welchen Ansatz hättest du gewählt?</li>
             </ul>
         </section>
 
@@ -651,8 +657,8 @@ customElements.define('my-element', MyElement);
             </p>
             <img src="qr_code-twitter.png" height="200">
             <p>
-                <a href="http://bit.ly/oop-frontend">
-                    http://bit.ly/oop-frontend</a></p>
+                <a href="http://bit.ly/arch-hh">
+                    http://bit.ly/arch-hh</a></p>
         </section>
 
 <!--
