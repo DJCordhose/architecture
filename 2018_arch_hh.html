@@ -159,8 +159,8 @@
 
         <section>
             <h3>Nutzer möchten eine konsistente, gut bedienbare UI erleben</h3>
-            <!--<img src="sketch/user.png" height="500px">-->
-            <img src="img/nils/anwendersicht.png">
+            <img src="sketch/user.png" height="500px">
+            <!--<img src="img/nils/anwendersicht.png">-->
         </section>
 
         <section>
@@ -182,8 +182,8 @@
 
         <section>
             <h3>Größere Anwendungen können nicht von einem einzigen Team entwickelt werden</h3>
-            <!--<img src="sketch/dev.png" height="500px">-->
-            <img src="img/nils/entwicklerteams-und-anwender.png">
+            <img src="sketch/dev.png" height="500px">
+            <!--<img src="img/nils/entwicklerteams-und-anwender.png">-->
         </section>
 
         <section>
@@ -197,7 +197,7 @@
                 <li class="fragment">sollen aus einzelnen <span class="highlight">Modulen</span> zusammensetzbar sein</li>
                 <li class="fragment">müssen zu modernen <span class="highlight">Backend-Architekturen</span> passen</li>
                 <li class="fragment">sollen einzeln zu <span class="highlight">deployen</span> sein</li>
-                <li class="fragment">sollen pro Modul am besten <span class="highlight">freie Wahl von Technologie</span> erlauben</li>
+                <li class="fragment">sollen pro Modul am besten die <span class="highlight">freie Wahl von Technologie</span> erlauben</li>
             </ul>
             <p class="fragment">Das passende Buzzword dazu ist <span class="highlight">Micro Frontends</span> (<a href="https://www.thoughtworks.com/radar/techniques/micro-frontends" target="_blank">
                 https://www.thoughtworks.com/radar/techniques/micro-frontends
@@ -296,7 +296,7 @@
 
         <section>
             <h2>Übung #1</h2>
-            <h3>Unterhalte dich mit deinen Sitznachbarn über dein eigenes (oder eine dir bekanntes) Frontend</h3>
+            <h3>Unterhalte dich mit deinen Sitznachbarn über dein eigenes (oder ein dir bekanntes) Frontend</h3>
             <p>Welche Anforderungen gibt es in dem Projekt?</p>
             <p>Wie begegnet ihr diesen?</p>
         </section>
@@ -430,7 +430,9 @@
         <section>
             <h3>Real-Time</h3>
             <ul>
-                <li><span class="highlight">Web Sockets</span>: Erfordert Server Verbindung
+                <li><span class="highlight">Long Polling</span>: Erfordert Server Verbindung
+                </li>
+                <li><span class="highlight">Web Sockets</span>: Erfordert Server Verbindung, geht immer noch nicht überall
                 </li>
                 <li><span class="highlight">PWA Push</span>: Erfordert Service Worker und Server
                 </li>
@@ -442,13 +444,14 @@
             <ul>
                 <li><span class="highlight">Cookies</span>: gut für Session Id, Tokens
                 </li>
-                <li><span class="highlight">URL Parameter</span>: begrenzte Länge, nicht alles möchte man in der URL haben
+                <li><span class="highlight">URL Parameter</span>: begrenzte Länge, nicht alles möchte man in der URL haben, Bookmark und verschickbarer Link möglich
                 </li>
                 <li><span class="highlight">Session Storage</span>: Key/Value, wird gelöscht wenn Tab geschlossen wird
                 </li>
                 <li><span class="highlight">Local Storage</span>: Key/Value, bleibt bestehen bis zur expliziten Löschung
                 </li>
             </ul>
+            <p><small>Alle Änsätze halten auch bei Reload den Zustand</small></p>
         </section>
 
         <section class="step-subtitle">
@@ -456,8 +459,8 @@
             <h2>Single Page Application</h2>
             <p>Eine einzelne Single Page Application mit statischem Build</p>
             <ul>
-                <li>Jedes Team entwickelt eigenes npm Modul</li>
-                <li>statischer Build integriert komplette Anwendung
+                <li>Jedes Team entwickelt eigenes Modul</li>
+                <li>Statischer Build integriert komplette Anwendung
                 <li>Zur Laufzeit Lazy-Loading möglich
                 <li>Anwendung nutzt <span class="highlight">ein</span> Framework mit <span class="highlight">einer</span> Version
                 <li>Gemeinsame Bibliothek sinnvoll
@@ -525,12 +528,16 @@
             <h2>Client-Seitige Integration</h2>
             <p>Ansätze: <span class="highlight">Micro Components</span></p>
             <p>Bedient Anforderungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span></p>
+            <ul>
+                <li>Web Components</li>
+                <li>iFrames</li>
+            </ul>
         </section>
 
         <section>
             <h3>Web Components</h3>
             <p>Web Component ummantelt Modul</p>
-            <p>Laden als JavaScript ES6 Modul, HTMLImport ist tot</p>
+            <!--<p>Laden als JavaScript ES6 Modul, HTMLImport ist tot</p>-->
             <p><a href="http://djcordhose.github.io/architecture/code/web-components/" target="_blank">Beispiel:</a></p>
             <pre class="fragment"><code data-trim>
 import 'my-element';
@@ -545,7 +552,7 @@ class MyElement extends HTMLElement {
     }
 
     connectedCallback() {
-        render();
+        render(); // whatever framework
         this.btn = this.shadowRoot.querySelector('button');
         this.btn.addEventListener('click', (event) => ...);
     }
@@ -553,7 +560,7 @@ class MyElement extends HTMLElement {
 customElements.define('my-element', MyElement);
 </code></pre>
 
-            <p>Keine Komplette Isolation, Funktioniert in der Praxis nicht gut mit beliebigem Framework</p>
+            <p><small>Keine Komplette Isolation, Funktioniert in der Praxis nicht gut mit beliebigem Framework</small></p>
         </section>
 
         <section>
@@ -572,14 +579,6 @@ customElements.define('my-element', MyElement);
             </ul>
         </section>
 
-        <section class="step-subtitle">
-            <h3>Technik</h3>
-            <h2>Globaler Event Bus</h2>
-            <p>Komponenten publizieren und können sich auf Events registrieren</p>
-            <p>Ansätze: <span class="highlight">Micro Components</span></p>
-            <p>Bedient Anforderungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span></p>
-        </section>
-
         <section>
             <h3>Problem: Ladezeiten, wenn jedes Modul sein eigenes Framework mitbringt</h3>
             <ul class="fragment">
@@ -593,6 +592,16 @@ customElements.define('my-element', MyElement);
                 <li>Web-Components sind Teil der Browser API (noch nicht überall)
             </ul>
         </section>
+
+<!--
+        <section class="step-subtitle">
+            <h3>Technik</h3>
+            <h2>Globaler Event Bus</h2>
+            <p>Komponenten publizieren und können sich auf Events registrieren</p>
+            <p>Ansätze: <span class="highlight">Micro Components</span></p>
+            <p>Bedient Anforderungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span></p>
+        </section>
+-->
 
         <section>
             <h3>Ansätze sind nicht wechselseitig exklusiv</h3>
@@ -613,6 +622,16 @@ customElements.define('my-element', MyElement);
                 <li>Welche Anforderungen (auch an den Entwicklungsprozess) hat es wohl gegeben?</li>
                 <li>Welchen Ansatz hättest du gewählt?</li>
             </ul>
+        </section>
+
+        <section>
+            <h3>Mobile Seitenansichten</h3>
+            <div>
+                <img src="img/screenshot-xing-mobile-profile.png" height="310">
+                <img src="img/screenshot-xing-contacts.png" height="310">
+                <img src="img/screenshot-xing-messenger.png" height="310">
+            </div>
+            <p>Profile - Contacts - Messenger</p>
         </section>
 
         <section>
