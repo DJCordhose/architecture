@@ -420,7 +420,8 @@
                    src="video/outlook.mp4" type="video/mp4"
                    height="600px"
             ></video>
-            <p><small>Deutliche UX Schwächen, unterschiedliche Technologien, jede App wird anders dargestellt</small></p>
+            <p><small>UX-Schwächen, unterschiedliche Technologien, jede App wird anders dargestellt<br>
+                Wechsel der App dauert (Service Workers können die Zeit ab 2. Aufruf vermindern)</small></p>
         </section>
 
 
@@ -434,7 +435,7 @@
         <section>
             <h3>Real-Time</h3>
             <ul>
-                <li><span class="highlight">Long Polling</span>: Erfordert Server Verbindung
+                <li><span class="highlight">Long Polling</span>: Erfordert Server Verbindung, kann viel Server Resourcen fressen
                 </li>
                 <li><span class="highlight">Web Sockets</span>: Erfordert Server Verbindung, geht immer noch nicht überall
                 </li>
@@ -533,6 +534,7 @@
             <p>Ansätze: <span class="highlight">Micro Components</span></p>
             <p>Bedient Anforderungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span></p>
             <ul>
+                <li>einfache <em>script</em> Tags und unterschiedliche Mount Points (z.B. http://www.sport1.de/fussball/bundesliga/live-ticker)</li>
                 <li>Web Components</li>
                 <li>iFrames</li>
             </ul>
