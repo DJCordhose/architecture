@@ -264,14 +264,7 @@ Konzepten und auch mit welchen konkreten Technologien man darauf reagieren kann.
         </section>
 
         <section>
-            <h3>Typische Ziele/Einflüsse</h3>
-            <ul>
-                <li>Entwicklungsgeschwindigkeit
-                <li>Robustheit
-                <li>Risko-Minimierung
-                <li>Skalierbarkeit der Entwicklung
-                <li>UX, Konsistenz
-            </ul>
+            <h2>Typische Ziele/Einflüsse</h2>
         </section>
 
         <section>
@@ -306,6 +299,7 @@ Konzepten und auch mit welchen konkreten Technologien man darauf reagieren kann.
             </ul>
         </section>
 
+<!--
         <section>
             <img src="img/feynman-twitter.png">
 
@@ -313,9 +307,10 @@ Konzepten und auch mit welchen konkreten Technologien man darauf reagieren kann.
                 https://twitter.com/ProfFeynman/status/932645521096716290
             </a></small></p>
         </section>
+-->
 
         <section>
-            <h2>Übung #1</h2>
+            <h2>Übung</h2>
             <h3>Unterhalte dich mit deinen Sitznachbarn über dein eigenes (oder ein dir bekanntes) Frontend</h3>
             <p>Welche Anforderungen gibt es in dem Projekt?</p>
             <p>Wie begegnet ihr diesen?</p>
@@ -504,7 +499,12 @@ Konzepten und auch mit welchen konkreten Technologien man darauf reagieren kann.
             <p><small>Keine systematischen UX Probleme</small></p>
         </section>
 
-
+        <section class="step-subtitle">
+            <h2>Universal Rendering</h2>
+            <p>Mit demselben Code sowohl auf dem Server vorrendern als auch im Client interaktiv sein</p>
+            <p>Ansätze: <span class="highlight">Majestic Modular Monoliths</span></p>
+            <p>Bedient Anforderungen: <span class="highlight">SEO</span>, <span class="highlight">schnelle erste Page-Impression</span></p>
+        </section>
 
         <section class="step-subtitle">
             <h3>Ansatz 3: Mittelweg</h3>
@@ -562,24 +562,8 @@ Konzepten und auch mit welchen konkreten Technologien man darauf reagieren kann.
             <!--<p>Laden als JavaScript ES6 Modul, HTMLImport ist tot</p>-->
             <p><a href="http://djcordhose.github.io/architecture/code/web-components/" target="_blank">Beispiel:</a></p>
             <pre class="fragment"><code data-trim>
-import 'my-element';
+&lt;script type="module" src="./my-element.js">&lt;/script>
 &lt;my-element greeting="Hello">&lt;/my-element>
-</code></pre>
-            <pre class="fragment"><code data-trim>
-class MyElement extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-        this.greeting = this.getAttribute("greeting") || 'Hello';
-    }
-
-    connectedCallback() {
-        render(); // whatever framework
-        this.btn = this.shadowRoot.querySelector('button');
-        this.btn.addEventListener('click', (event) => ...);
-    }
-}
-customElements.define('my-element', MyElement);
 </code></pre>
 
             <p><small>Keine Komplette Isolation, Funktioniert in der Praxis nicht gut mit beliebigem Framework</small></p>
@@ -635,17 +619,26 @@ customElements.define('my-element', MyElement);
         </section>
 
         <section>
-            <h3>Übung #2</h3>
+            <h2>Ein Quiz</h2>
             <a href="https://www.xing.com/app/startpage" target="_blank">
                 <img src="img/screenshot-xing.png" height="350">
             </a>
-            <ul>
-                <li>Welche Ansätze findest du in dieser Anwendung?</li>
-                <li>Welche Anforderungen (auch an den Entwicklungsprozess) hat es wohl gegeben?</li>
-                <li>Welchen Ansatz hättest du gewählt?</li>
-            </ul>
         </section>
 
+        <section>
+            <h3>Fragen</h3>
+            <p>Welcher Ansatz / Technik kommen hier <strong>nicht</strong> vor?</p>
+            <ol>
+                <li>Links</li>
+                <li>Majestic Modular Monolith</li>
+                <li>Cookies</li>
+                <li>React</li>
+                <li>Micro Components</li>
+                <li>Web Sockets</li>
+            </ol>
+        </section>
+
+<!--
         <section>
             <h3>Mobile Seitenansichten</h3>
             <div>
@@ -655,6 +648,7 @@ customElements.define('my-element', MyElement);
             </div>
             <p>Profile - Contacts - Messenger</p>
         </section>
+-->
 
         <section>
             <h3>Urteil</h3>
