@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Frontend Softwarearchitektur</title>
+    <title>Micro Frontends: JavaScript Integration Patterns</title>
 
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
@@ -146,21 +146,20 @@
     <div class="slides">
 
         <section>
-            <h2>Was macht moderne (JavaScript) Frontend-Architektur so schwierig?</h2>
+            <h2>Micro Frontends: JavaScript Integration Patterns</h2>
             <h3><a href="http://www.oop-konferenz.de/oop2018/programm/konferenzprogramm/sessiondetails/action/detail/session/do-11-2/title/was-macht-moderne-javascript-frontend-architektur-so-schwierig.html" target="_blank">
-                OOP 2018</a></h3>
+                enterjs 2018</a></h3>
             <div>
                     <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
                     <a href="http://twitter.com/djcordhose">@DJCordhose</a>
             </div>
-            <p style="clear: both"><small>Folien: <a href="http://bit.ly/oop-frontend">
-                http://bit.ly/oop-frontend</a></small></p>
-            <h2><a href="https://www.embarc.de/">embarc GmbH</a></h2>
+            <p style="clear: both"><small>Folien: <a href="http://bit.ly/enterjs-micro-frontends">
+                http://bit.ly/enterjs-micro-frontends</a></small></p>
         </section>
 
         <section data-markdown class="todo">
             <textarea data-template>
-* Kürzen von 90 auf 75 Minuten
+* Kürzen von 90 auf 70 bzw. 60 Minuten
 * Designing very large (JavaScript) applications: https://medium.com/@cramforce/designing-very-large-javascript-applications-6e013a3291a3
 * Framework unabhängig
 * Mehr Technik
@@ -174,7 +173,6 @@
             </textarea>
         </section>
    
-
         <section class="step-subtitle">
             <h3>Teil 1</h3>
             <h2>Im Spannungsfeld der Anforderungen</h2>
@@ -192,7 +190,7 @@
             <p>Logik muss nahe an Interaktion und Daten müssen nahe an Logik liegen</p>
         </section>
 
-        <section>
+        <section class="jax">
             <h2>SPA</h2>
             <p>verschieben daher Hauptteile eurer Anwendung in den Client</p>
             <img src="img/nils/webapp-architecture.png" style="max-width: 40%; float: left">
@@ -263,10 +261,18 @@
                 Man muss die Anforderungen kennen und die müssen passen.
             </h2>
             <!--und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man Bock hat.-->
-            <p class="fragment"><small> - Oliver Zeigermann, embarc</small></p>
+            <p class="fragment"><small> - Oliver Zeigermann</small></p>
         </section>
 
         <section>
+            <img src="img/kickme.png">
+
+            <p><small><a href="https://twitter.com/rhundhausen/status/932815147273474049" target="_blank">
+                https://twitter.com/rhundhausen/status/932815147273474049
+            </a></small></p>
+        </section>
+   
+    <section>
             <h2>Typische Ziele/Einflüsse</h2>
         </section>
 
@@ -302,7 +308,7 @@
             </ul>
         </section>
 
-<!--
+<!-- 
         <section>
             <img src="img/feynman-twitter.png">
 
@@ -310,43 +316,27 @@
                 https://twitter.com/ProfFeynman/status/932645521096716290
             </a></small></p>
         </section>
--->
-
-        <section>
-            <h2>Übung</h2>
-            <h3>Tausche dich mit deinen Sitznachbarn über dein eigenes (oder ein dir bekanntes) Frontend aus</h3>
-            <p>Welche Anforderungen gibt es in dem Projekt?</p>
-            <p>Wie begegnet ihr diesen?</p>
-        </section>
+ -->
 
         <section class="step-subtitle">
             <h3>Teil 2</h3>
             <h2>Lösungsansätze</h2>
         </section>
 
-        <!--
-                <section>
-                    &lt;!&ndash;<img src="img/light-elevator.jpg" height="600px">&ndash;&gt;
+        
+                <!-- <section>
                     <img src="img/light-elevator-twitter.png" height="600px">
 
                     <p><small><a href="https://twitter.com/ThePracticalDev/status/933373477255630853" target="_blank">
                         https://twitter.com/ThePracticalDev/status/933373477255630853
                     </a></small></p>
-                </section>
-        -->
+                </section> -->
+       
 
 
-        <!--
-                <section>
-                    <img src="img/kickme.png">
+        
 
-                    <p><small><a href="https://twitter.com/rhundhausen/status/932815147273474049" target="_blank">
-                        https://twitter.com/rhundhausen/status/932815147273474049
-                    </a></small></p>
-                </section>
-        -->
-
-        <section>
+        <section class="jax">
             <!--<h3>Weitere Schwierigkeit</h3>-->
             <h2>Wir nehmen Frontend-Architektur nicht für voll</h2>
             <p>Zitate</p>
@@ -357,16 +347,16 @@
             </ul>
         </section>
 
-<!--
-        <section>
+
+        <!-- <section>
             <img src="img/frontend-architecture.png" height="600px">
 
             <p><small><a href="https://twitter.com/markdalgleish/status/908146609942257664" target="_blank">
                 https://twitter.com/markdalgleish/status/908146609942257664
             </a></small></p>
-        </section>
+        </section> -->
 
--->
+
         <section>
             <img src="img/frontend-katz-twitter.png" height="600px">
 
@@ -391,6 +381,7 @@
 
         <section class="step-subtitle">
             <h2>Ansatz 1</h2>
+            <p><span class="highlight">Links</span></p>
         </section>
 
         <section class="step-subtitle">
@@ -450,7 +441,23 @@
         </section>
 
         <section>
-            <h3>Real-Time</h3>
+            <h3>Parameter-Übergabe</h3>
+            <ul>
+                <li><span class="highlight">Cookies</span>: gut für Session Id, Authentication Tokens
+                </li>
+                <li><span class="highlight">URL Parameter</span>: begrenzte Länge, nicht alles möchte man in der URL haben, Bookmark und verschickbarer Link möglich
+                </li>
+                <li><span class="highlight">Local Storage</span>: Key/Value, bleibt bestehen bis zur expliziten Löschung
+                </li>
+                <li><span class="highlight">Session Storage</span>: Key/Value, nur gültig für aktuellen Tab
+                </li>
+            </ul>
+            <p><em>Alle Ansätze halten auch bei Reload den Zustand und funktionieren problemlos mit Back-Button</em></p>
+        </section>
+
+        <section>
+            <p class="todo">Nils: Grafik</p>
+            <h3>Real-Time Kommunikation bei mehreren offenen Tabs/Windows</h3>
             <ul>
                 <li><span class="highlight">Long Polling</span>: Erfordert Server Verbindung, kann viel Server Resourcen fressen
                 </li>
@@ -459,37 +466,26 @@
                 <li><span class="highlight">PWA Push</span>: Erfordert Service Worker und Server
                 </li>
             </ul>
-        </section>
-
-        <section>
-            <h3>Parameter-Übergabe</h3>
-            <ul>
-                <li><span class="highlight">Cookies</span>: gut für Session Id, Tokens
-                </li>
-                <li><span class="highlight">URL Parameter</span>: begrenzte Länge, nicht alles möchte man in der URL haben, Bookmark und verschickbarer Link möglich
-                </li>
-                <li><span class="highlight">Session Storage</span>: Key/Value, wird gelöscht wenn Tab geschlossen wird
-                </li>
-                <li><span class="highlight">Local Storage</span>: Key/Value, bleibt bestehen bis zur expliziten Löschung
-                </li>
-            </ul>
-            <p><small>Alle Ansätze halten auch bei Reload den Zustand</small></p>
+            <p>Outlook Online verwendet alle drei Techniken</p>
         </section>
 
         <section class="step-subtitle">
             <h2>Ansatz 2</h2>
+            <p><span class="highlight">Majestic Modular Monoliths</span></p>
         </section>
 
         <section class="step-subtitle">
-            <h2>Single Page Application</h2>
+                <p class="todo">Nils: Grafik</p>
+                <h2>Single Page Application</h2>
             <p>Eine einzelne Single Page Application mit statischem Build</p>
             <ul>
                 <li>Jedes Team entwickelt eigenes Modul</li>
                 <li>Statischer Build integriert komplette Anwendung
+                <li>Deployment als Monolith
                 <li>Zur Laufzeit Lazy-Loading möglich
                 <li>Anwendung nutzt <span class="highlight">ein</span> Framework mit <span class="highlight">einer</span> Version
-                <li>Gemeinsame Bibliothek sinnvoll
-                <li>Export einzelner Komponenten möglich
+                <li>Gemeinsame allgemeine Bibliothek sinnvoll (Buttons, Menüs, Formulare etc.)
+                <li>Export einzelner spezieller Komponenten aus Teams möglich
             </ul>
             <p><span class="highlight">Majestic Modular Monoliths</span></p>
         </section>
@@ -509,20 +505,38 @@
         </section>
 
         <section class="step-subtitle">
-            <h2>Universal Rendering</h2>
-            <p>Mit demselben Code sowohl auf dem Server vorrendern als auch im Client interaktiv sein</p>
-            <p>Ansätze: <span class="highlight">Majestic Modular Monoliths</span></p>
-            <p>Bedient Anforderungen: <span class="highlight">SEO</span>, <span class="highlight">schnelle erste Page-Impression</span></p>
-        </section>
+                <h3>Technik</h3>
+                <h2>Zustandsmanagement</h2>
+                <p>Bedient Anforderungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span></p>
+                <ul>
+                    <li>Zustand, der über viele Komponenten verteilt ist, macht Programme kompliziert</li>
+                    <li>Gemeinsame Nutzung von State in unterschiedlichen Komponenten-Hierarchien ist schwierig</li>
+                    <li>Zustandmanagement und UI-Handler werden aus UI-Komponenten extrahiert</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Über Komponenten verteilter Zustand</h2>
+                <img src="img/distributed-state.png" />
+            </section>
+    
+            <section>
+                    <h3>Redux</h3>
+                    <img src="img/redux-04-react-to-redux-resulting-architecture.png" style="border:0;box-shadow:0 0 0 0" height="500px">
+                    <p><small><a href="http://redux.js.org/" target="_blank">http://redux.js.org/</a></small></p>
+                </section>
+    
 
         <section class="step-subtitle">
             <h2>Ansatz 3</h2>
+            <p><span class="highlight">Micro Components</span></p>
         </section>
 
         <section class="step-subtitle">
             <h2>Zusammensetzen der Anwendung im Browser</h2>
             <ul>
                 <li>Anwendung ist in logische Module aufgeteilt, die als ganze Anwendung zusammen laufen
+                <li>Integration zur Laufzeit
                 <li>Frameworks frei wählbar pro Modul
                 <li>Gesamtanwendung wahrscheinlich groß
             </ul>
@@ -568,26 +582,39 @@
         <section class="step-subtitle">
             <h3>Technik</h3>
             <h2>Client-Seitige Integration</h2>
-            <p>Ansätze: <span class="highlight">Micro Components</span></p>
             <p>Bedient Anforderungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span></p>
             <ul>
                 <li>einfache <em>script</em> Tags und unterschiedliche Mount Points (wie bei Sport1)</li>
                 <li>Web Components</li>
                 <li>iFrames</li>
             </ul>
+            <p><em>Achtung: Auf Ladezeiten achten, wenn jedes Modul sein eigenes Framework mitbringt</em></p>
         </section>
 
         <section>
-            <h3>Web Components</h3>
-            <p>Web Component ummantelt Modul</p>
-            <!--<p>Laden als JavaScript ES6 Modul, HTMLImport ist tot</p>-->
-            <p><a href="http://djcordhose.github.io/architecture/code/web-components/" target="_blank">Beispiel:</a></p>
+            <h3>Web Component ummantelt Modul</h3>
+            <p>Laden als JavaScript ES6 Modul, HTMLImport ist tot</p>
+            <!-- <p><a href="http://djcordhose.github.io/architecture/code/web-components/" target="_blank">Beispiel:</a></p> -->
             <pre class="fragment"><code data-trim>
-&lt;script type="module" src="./my-element.js">&lt;/script>
+import 'my-element';
 &lt;my-element greeting="Hello">&lt;/my-element>
 </code></pre>
+            <pre class="fragment"><code data-trim class="javascript">
+class MyElement extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        // ...
+    }
 
-            <p><small>Keine Komplette Isolation, funktioniert in der Praxis nicht gut mit beliebigem Framework</small></p>
+    connectedCallback() {
+        // render Angular / React component
+    }
+}
+customElements.define('my-element', MyElement);
+</code></pre>
+
+            <p>Keine komplette Isolation, funktioniert in der Praxis nicht gut mit beliebigem Framework</p>
         </section>
 
         <section>
@@ -606,29 +633,17 @@
             </ul>
         </section>
 
-        <section>
-            <h3>Problem: Ladezeiten, wenn jedes Modul sein eigenes Framework mitbringt</h3>
-            <ul class="fragment">
-                <li>Frameworks wie React oder Angular bringen von sich aus immer mehr als 100KB mit
-                <li>(UI-)Bibliotheken haben oft dieselbe Größe oder mehr
-                <li>Bei mehreren Modulen ist man schnell im MB-Bereich: Langsamer Aufbau der Seite
-            </ul>
-            <p class="fragment">Lösung: k(l)eine Frameworks und Bibliotheken nutzen</p>
-            <ul class="fragment">
-                <li>Preact kann Anwendungen unter 10KB bringen
-                <li>Web-Components sind Teil der Browser API (noch nicht überall)
-            </ul>
-        </section>
-
-<!--
         <section class="step-subtitle">
+            <p class="todo">Nils: Illustration</p>
             <h3>Technik</h3>
             <h2>Globaler Event Bus</h2>
             <p>Komponenten publizieren und können sich auf Events registrieren</p>
-            <p>Ansätze: <span class="highlight">Micro Components</span></p>
             <p>Bedient Anforderungen: <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span></p>
         </section>
--->
+
+        <section>
+            <h2>Bewertung</h2>
+        </section>
 
         <section>
             <h3>Ansätze sind nicht wechselseitig exklusiv</h3>
@@ -638,7 +653,6 @@
                 <li class="fragment">Seite einer <span class="highlight">Link</span>-App kann ein <span class="highlight">Majestic Modular Monolith</span> sein (Google Drive vs Google Docs)
             </ul>
         </section>
-
 
         <section>
             <h3>Urteil</h3>
@@ -665,101 +679,6 @@
         </section>
 
         <section>
-            <h3>Empfehlung</h3>
-            <p class="highlight">Anwendung komplett trennen und mit Links verbinden wo möglich</p>
-            <p>Wahrscheinlich sind mehr Trennungen möglich als ihr denkt</p>
-            <p class="highlight">Getrennte Anwendungen als
-                Majestic Modular Monoliths außer wenn starke Anforderung an Unabhängigkeit</p>
-        </section>
-
-        <section>
-            <h2>Ein Quiz</h2>
-            <a href="https://www.xing.com/app/startpage" target="_blank">
-                <img src="img/screenshot-xing.png" height="350">
-            </a>
-        </section>
-
-        <section data-transition="zoom">
-            <h3>Frage 1</h3>
-            <p>Wie viele Entwicklungsteams arbeiten an XING?</p>
-            <ol style=" list-style: lower-roman;">
-                <li>1</li>
-                <li>2-10</li>
-                <li>10-30</li>
-                <li>>30</li>
-            </ol>
-        </section>
-
-        <section data-transition="none">
-            <h3>Antwort 1</h3>
-            <p>Wie viele Entwicklungsteams arbeiten an XING?</p>
-            <ol style=" list-style: lower-roman;">
-                <li>1</li>
-                <li>2-10</li>
-                <li>10-30</li>
-                <li style="color: red">>30</li>
-            </ol>
-            <p><strong>Die meisten davon Cross-Functional für eine komplette Vertikale</strong></p>
-        </section>
-
-        <section data-transition="zoom">
-            <h3>Frage 2</h3>
-            <p>Welcher Ansatz / Technik kommt bei XING <strong>nicht</strong> zum Einsatz?</p>
-            <ol style=" list-style: lower-roman;">
-                <li>React</li>
-                <li>Links</li>
-                <li>Majestic Modular Monolith</li>
-                <li>Cookies</li>
-                <li>Micro Components</li>
-                <li>Web Sockets</li>
-            </ol>
-        </section>
-
-        <section data-transition="none">
-            <h3>Antwort 2</h3>
-            <p>Welcher Ansatz / Technik kommt bei XING <strong>nicht</strong> zum Einsatz?</p>
-            <ol style=" list-style: lower-roman;">
-                <li>React</li>
-                <li>Links</li>
-                <li>Majestic Modular Monolith</li>
-                <li>Cookies</li>
-                <li style="color: red">Micro Components</li>
-                <li>Web Sockets</li>
-            </ol>
-        </section>
-
-        <section data-transition="zoom">
-            <h3>Frage 3</h3>
-            <p>Wie viele Versionen von React sind hier zur selben Zeit im Einsatz?</p>
-            <ol style=" list-style: lower-roman;">
-                <li>1</li>
-                <li>2-5</li>
-                <li>5-10</li>
-            </ol>
-        </section>
-
-        <section data-transition="none">
-            <h3>Antwort 3</h3>
-            <p>Wie viele Versionen von React sind hier zur selben Zeit im Einsatz?</p>
-            <ol style=" list-style: lower-roman;">
-                <li>1</li>
-                <li style="color: red">2-5</li>
-                <li>5-10</li>
-            </ol>
-        </section>
-<!--
-        <section>
-            <h3>Mobile Seitenansichten</h3>
-            <div>
-                <img src="img/screenshot-xing-mobile-profile.png" height="310">
-                <img src="img/screenshot-xing-contacts.png" height="310">
-                <img src="img/screenshot-xing-messenger.png" height="310">
-            </div>
-            <p>Profile - Contacts - Messenger</p>
-        </section>
--->
-
-        <section>
             <h4>Vielen Dank!</h4>
             <h3>Es gibt keine perfekte Architektur für jeden Satz von Anforderungen</h3>
             <p>Du musst deine Anforderungen kennen und dabei ehrlich zu dir sein</p>
@@ -771,9 +690,13 @@
             <p>
                 <a href="http://bit.ly/oop-frontend">
                     http://bit.ly/oop-frontend</a></p>
-        </section>
+                    <p class="todo">
+                            Mehr Informationen: 
+                            https://www.heise.de/developer/artikel/Integrations-Patterns-bei-JavaScript-Anwendungen-3970085.html?seite=all
+                        </p>
+                    </section>
 
-<!--
+
         <section>
             <h3>The Doctor is In</h3>
             <small>
@@ -827,7 +750,7 @@
                 <a href="http://bit.ly/oop-frontend">
                 http://bit.ly/oop-frontend</a></small></p>
         </section>
--->
+
 
     </div>
 
@@ -837,10 +760,13 @@
 <script src="reveal.js/js/reveal.js"></script>
 <script src="lib/jquery-2.2.4.js"></script>
 <script>
+    // uncomment for jax
+        $('.jax').remove();
     if (window.location.hostname.indexOf('localhost') !== -1) {
     } else {
         // only applies to public version
         $('.preparation').remove();
+        $('.todo').remove();
     }
     Reveal.addEventListener( 'ready', function( event ) {
         if (window.location.hostname.indexOf('localhost') !== -1) {
