@@ -175,8 +175,8 @@
                     <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
                     <a href="http://twitter.com/djcordhose">@DJCordhose</a>
             </div>
-            <p style="clear: both"><small>Folien: <a href="http://bit.ly/enterjs-micro-frontends">
-                http://bit.ly/enterjs-micro-frontends</a></small></p>
+            <p style="clear: both"><small>Folien: <a href="https://bit.ly/enterjs-micro-frontends">
+                https://bit.ly/enterjs-micro-frontends</a></small></p>
         </section>
 
         <section data-markdown class="todo">
@@ -212,6 +212,7 @@
             </ul>
         </section>
 
+        
         <section>
             <h3>Größere Anwendungen können nicht von einem einzigen Team entwickelt werden</h3>
             <img src="sketch/dev.png" height="500px">
@@ -536,7 +537,24 @@
                     <img src="img/redux-04-react-to-redux-resulting-architecture.png" style="border:0;box-shadow:0 0 0 0" height="500px">
                     <p><small><a href="http://redux.js.org/" target="_blank">http://redux.js.org/</a></small></p>
                 </section>
-    
+
+                <section>
+                    <h3>Redux ist unabhängig vom Framework</h3>
+                    <p>Implementierungen existieren für alle wichtigen UI-Frameworks</p>
+                    <ul>
+                        <li>React: <a href="http://redux.js.org/docs/basics/UsageWithReact.html" target="_blank">
+                            http://redux.js.org/docs/basics/UsageWithReact.html
+                        </a>
+                        <li>Angular: <a href="https://github.com/ngrx/store" target="_blank">https://github.com/ngrx/store</a></li>
+                        <li>Vue:
+                            <a href="https://github.com/vuejs/vuex" target="_blank">https://github.com/vuejs/vuex</a> /
+        
+                            <a href="https://github.com/revue/revue" target="_blank">https://github.com/revue/revue</a>
+                        <li>Web Components (Polymer): Empfohlene Implementierung des <em>Global Mediator Pattern</em>,
+                        <a href="https://twitter.com/DJCordhose/status/899943415353311232" target="_blank">https://twitter.com/DJCordhose/status/899943415353311232</a>
+                        <a href="https://tur-nr.github.io/polymer-redux/" target="_blank">https://tur-nr.github.io/polymer-redux/</a>
+                    </ul>
+                </section>
 
         <section class="step-subtitle">
             <h2>Ansatz 3</h2>
@@ -614,7 +632,7 @@ import 'my-element';
 class MyElement extends HTMLElement {
     constructor() {
         super();
-        this.attachShadow({ mode: 'open' });
+        this.attachShadow({ mode: 'closed' });
         // ...
     }
 
