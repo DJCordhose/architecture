@@ -144,6 +144,17 @@
 <div class="reveal">
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
+
+            <section data-markdown class="preparation" style="font-size: xx-large">
+                    <textarea data-template>
+### Preparation
+
+* Angular Projekt unter Code erzeugen
+* Später mit einchecken (.gitignore anpassen)
+
+                        </textarea>
+                        </section>
+
         <section>
             <h2>Webarchitektur</h2>
             <div>
@@ -156,11 +167,16 @@
 
         </section>
 
-        <!-- <section data-markdown class="todo">
+        <section data-markdown class="todo">
             <textarea data-template>
+
+- auf Redux umbauen und Code in die Folien wie bei Smart/Dumb 
+  - https://github.com/ngrx/platform/blob/master/docs/store/README.md
+- ngFor und ngIf ausprobieren
+- Router und Links
             </textarea>
         </section>
-    -->
+   
         <section class="step-subtitle">
             <h3>Teil 1</h3>
             <h2>Im Spannungsfeld der Anforderungen</h2>
@@ -217,12 +233,6 @@ https://angular.io/guide/quickstart
 * ng new ng-sandbox
 * cd ng-sandbox
 * ng serve
-
-
-
-Note:
-* https://angular.io/tutorial
-ng generate service greeting
             </textarea>
             </section>
        
@@ -554,14 +564,19 @@ ng generate service greeting
             </small></p>
         </section>
 
+        <section data-markdown>
+                <textarea data-template>
+## Code-Sample Angular
 
-                <section>
-            <h2>Code Sample Angular</h2>
-                    <a href="code/spa/public/index.html" target="_blank">
-                        <img src="spa.png">
-                    </a>
+<a href="code/spa/public/index.html" target="_blank">
+    <img src="spa.png">
+</a>
 
-                </section>
+Note:
+* https://angular.io/tutorial
+
+                    </textarea>
+                    </section>
 
         <section>
             <h2>Smart Component</h2>
@@ -583,7 +598,13 @@ export class AppComponent {
   }
 }
             </code></pre>
-        </section>
+            <pre><code data-trim contenteditable>
+ng generate service greeting
+                </code></pre>
+                <p><a target="_blank" href="https://angular.io/tutorial/toh-pt4">
+                    https://angular.io/tutorial/toh-pt4</p>
+                </a></p>
+                </section>
 
         <section>
             <h2>Dumb Component</h2>
@@ -612,9 +633,9 @@ export class SubComponent {
 
 
         <section>
-            <h2>Übung #2</h2>
+            <h2>Beispiel</h2>
             <img src="exercise/detail.png">
-            <p>Zeichne Kandidation für Smart-/Dumb-Components ein</p>
+            <p>Was Kandidation für Smart-/Dumb-Components?</p>
         </section>
 
         <section>
