@@ -27,8 +27,20 @@ export class AppComponent implements OnInit {
     this.remote();
   }
 
+  async remoteAsPromise() {
+    this.remoteGreeting = (await this.greetingService
+      .requestGreeting(this.title)
+      .toPromise()).message;
+  }
+  // remoteAsPromise() {
+  //   this.greetingService
+  //   .requestGreeting(this.title).toPromise()
+  //   .then(data => (this.remoteGreeting = data.message));
+  // }
+
   remote() {
     this.greetingService
       .requestGreeting(this.title)
       .subscribe(data => (this.remoteGreeting = data.message));
+  }
 }
