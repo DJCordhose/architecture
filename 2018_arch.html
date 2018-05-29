@@ -174,7 +174,10 @@
   - http://ngxs.io/
 - auf Redux umbauen und Code in die Folien wie bei Smart/Dumb 
   - https://github.com/ngrx/platform/blob/master/docs/store/README.md
-- Router und Links (https://www.djamware.com/post/5b00bb9180aca726dee1fd6d/mean-stack-angular-6-crud-web-application)
+- Router und Links
+  - https://angular.io/tutorial/toh-pt5
+  - https://www.djamware.com/post/5b00bb9180aca726dee1fd6d/mean-stack-angular-6-crud-web-application
+  - https://angular.io/guide/router
 - Module
             </textarea>
         </section>
@@ -207,17 +210,22 @@
             </ul>
         </section>
 
+
         <section data-markdown>
             <textarea data-template>
-### Creating an SPA with Angular 6
+### How to implement an SPA?
 
-https://blog.angular.io/version-6-of-angular-now-available-cc56b0efa7a4
-        </textarea>
+* https://stateofjs.com/
+
+React is no. 1, Angular is still important, especially in the field of enterprise 
+
+            </textarea>
         </section>
    
         <section data-markdown>
             <textarea data-template>
-### Installation
+### Creating an SPA with Angular 6
+
 * https://nodejs.org
 * https://yarnpkg.com
 * https://github.com/angular/angular-cli
@@ -259,7 +267,7 @@ https://angular.io/guide/template-syntax
 
 <section data-markdown>
         <textarea data-template>
-### Remote calls / Services / Observables vs Promises
+### Services / Remote calls / Observables vs Promises
 
 * ng generate service greeting
 
@@ -571,6 +579,36 @@ https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter
             <img src="img/screenshot-google-docs-comment.png" height="500px">
             <p><small>Keine systematischen UX Probleme</small></p>
         </section>
+
+<section data-markdown>
+        <textarea data-template>
+### Modules
+
+* ng generate module ngrx-sandbox --module=app
+* cd ngrx-sandbox
+* ng generate component counter
+* <pre><code>exports: [CounterComponent]</code></pre>
+
+https://github.com/angular/angular-cli
+https://angular.io/guide/ngmodules
+https://angular.io/guide/sharing-ngmodules
+https://angular.io/guide/frequent-ngmodules
+https://angular.io/guide/feature-modules
+https://angular.io/guide/module-types
+    </textarea>
+    </section>
+
+    <section data-markdown class="todo">
+        <textarea data-template>
+### Router, Links, Lazy Loading
+
+https://github.com/angular/angular-cli
+https://angular.io/guide/router
+https://angular.io/guide/lazy-loading-ngmodules
+
+    </textarea>
+    </section>
+
 
         <section class="step-subtitle">
             <h3>Architektur-Muster</h3>
