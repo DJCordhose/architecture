@@ -7,8 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Hello';
-
-  update(title) {
-    this.title = title;
+  get chars() {
+    return ['H', 'e', 'l', 'l', 'o'];
   }
 }

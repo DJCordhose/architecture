@@ -1,7 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
+  <h1 *ngIf='title'>
     {{ title }}, World!
   </h1>
-  <input [value]='title' (input)='update($event.target.value)'>
+  <input [(ngModel)]='title'>
+  <p>
+    <span *ngFor='let char of chars'>{{char}}</span>
+  </p>
 </div>
