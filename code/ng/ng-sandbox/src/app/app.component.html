@@ -7,4 +7,6 @@
   <p>
     <span *ngFor='let char of chars'>{{char}}</span>
   </p>
+  <p>Remote: {{remoteGreeting}}</p>
+  <button (click)='remote()'>Request from server</button>
 </div>

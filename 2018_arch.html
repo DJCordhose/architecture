@@ -150,7 +150,7 @@
 ### Preparation
 
 * Angular Projekt unter Code erzeugen
-* Später mit einchecken (.gitignore anpassen)
+* Später mit einchecken
 
                         </textarea>
                         </section>
@@ -169,11 +169,14 @@
 
         <section data-markdown class="todo">
             <textarea data-template>
-
+- Why another state management framework for Angular?
+  - https://medium.com/@amcdnl/why-another-state-management-framework-for-angular-b4b4c19ef664
+  - http://ngxs.io/
 - auf Redux umbauen und Code in die Folien wie bei Smart/Dumb 
   - https://github.com/ngrx/platform/blob/master/docs/store/README.md
-- ngFor und ngIf ausprobieren
 - Router und Links (https://www.djamware.com/post/5b00bb9180aca726dee1fd6d/mean-stack-angular-6-crud-web-application)
+- Module
+- http mit rxjs
             </textarea>
         </section>
    
@@ -235,8 +238,40 @@ https://angular.io/guide/quickstart
 * ng serve
             </textarea>
             </section>
-       
-        <section data-markdown>
+
+            <section data-markdown>
+                    <textarea data-template>
+### Templates
+
+* ng-model:
+  * https://angular.io/guide/template-syntax#ngModel
+  * <pre><code><input [value]='title' (input)='update($event.target.value)'></code></pre>
+  * <pre><code><input [(ngModel)]='title'></code></pre>
+
+* control flow
+  * https://angular.io/guide/template-syntax#built-in-structural-directives
+  * <pre><code>*ngIf='title'</code></pre>
+  * <pre><code><span *ngFor='let char of chars'>{{char}}</span></code></pre>
+
+https://angular.io/guide/template-syntax
+</textarea>
+</section>
+
+
+<section data-markdown>
+        <textarea data-template>
+### Remote calls
+
+* ng generate service greeting
+
+https://github.com/angular/angular-cli
+https://angular.io/guide/http
+https://angular.io/guide/observables-in-angular#http
+https://angular.io/tutorial/toh-pt6#asyncpipe
+    </textarea>
+    </section>
+
+<section data-markdown>
                 <textarea data-template>
 ### Adding Material Design
 * ng add @angular/material
@@ -244,6 +279,20 @@ https://angular.io/guide/quickstart
 * ng generate @angular/material:material-dashboard --name=my-dashboard
             </textarea>
             </section>
+
+            <section data-markdown>
+                    <textarea data-template>
+### Creating an SPA with React
+
+* npm install -g create-react-app
+* create-react-app my-app --scripts-version=react-scripts-ts
+* cd my-app
+* yarn start
+
+https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter
+            </textarea>
+        </section>
+
     
         <section>
             <h3>Größere Anwendungen können nicht von einem einzigen Team entwickelt werden</h3>
