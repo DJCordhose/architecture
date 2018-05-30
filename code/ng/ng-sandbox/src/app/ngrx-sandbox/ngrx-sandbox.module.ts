@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CounterComponentComponent } from './counter-component/counter-component.component';
+import { CounterComponent } from './counter.component';
+
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './counter';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [CounterComponentComponent],
-  exports: [CounterComponentComponent]
+  imports: [CommonModule, StoreModule.forRoot({ count: counterReducer })],
+  declarations: [CounterComponent],
+  exports: [CounterComponent]
 })
 export class NgrxSandboxModule {}
