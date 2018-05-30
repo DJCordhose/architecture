@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { INCREMENT, DECREMENT, RESET, LOAD } from './counter';
+import { INCREMENT, DECREMENT, RESET, LOAD, SET } from './counter';
+
+import { ActivatedRoute } from '@angular/router';
 
 interface AppState {
   count: number;
@@ -22,12 +24,17 @@ export class CounterComponent implements OnInit {
 
   count$: Observable<number>;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private route: ActivatedRoute) {
     this.count$ = store.pipe(select('count'));
   }
 
   ngOnInit() {
-    this.store.dispatch({ type: INCREMENT });
+    const count = this.route.snapshot.paramMap.get('count');
+    if (count) {
+      this.store.dispatch({ type: SET, payload: Number(count) });
+    } else {
+      this.store.dispatch({ type: RESET });
+    }
   }
 
   increment() {
