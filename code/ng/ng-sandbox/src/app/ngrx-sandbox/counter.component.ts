@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { INCREMENT, DECREMENT, RESET } from './counter';
+import { INCREMENT, DECREMENT, RESET, LOAD } from './counter';
 
 interface AppState {
   count: number;
@@ -15,6 +15,8 @@ interface AppState {
   <button (click)="decrement()">Decrement</button>
 
   <button (click)="reset()">Reset Counter</button>
+  <br>
+  <button (click)="load()">Load Remote</button>
 `})
 export class CounterComponent implements OnInit {
 
@@ -38,5 +40,9 @@ export class CounterComponent implements OnInit {
 
   reset() {
     this.store.dispatch({ type: RESET });
+  }
+
+  load() {
+    this.store.dispatch({ type: LOAD });
   }
 }

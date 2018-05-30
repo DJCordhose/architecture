@@ -6,6 +6,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NgrxSandboxModule } from './ngrx-sandbox/ngrx-sandbox.module';
 
+import { EffectsModule } from '@ngrx/effects';
+import { RemoteEffects } from './ngrx-sandbox/remote.effects';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -14,7 +17,8 @@ import { NgrxSandboxModule } from './ngrx-sandbox/ngrx-sandbox.module';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    NgrxSandboxModule
+    NgrxSandboxModule,
+    EffectsModule.forRoot([RemoteEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
