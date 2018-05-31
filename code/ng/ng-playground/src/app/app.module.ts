@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
 import { AdminUserComponent } from './admin.user.component';
 import { TitleComponent } from './title.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TitleComponent } from './title.component';
     TableComponent,
     ButtonComponent,
     AdminUserComponent,
-    TitleComponent
+    TitleComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
