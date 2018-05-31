@@ -3,11 +3,17 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ButtonComponent } from './button.component';
 import { AppComponent } from './app.component';
+import { TableComponent } from './table/table.component';
+import { AdminUserComponent } from './admin.user.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TableComponent,
+    ButtonComponent,
+    AdminUserComponent
   ],
   imports: [
     BrowserModule,
