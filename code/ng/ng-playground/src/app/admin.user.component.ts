@@ -17,9 +17,9 @@ interface Column {
 
 @Component({
   selector: 'app-admin-user',
-  template: `<div>
+  template: `
   <div>
-    <div>
+    <app-master [titles]='titles' (send)='clicked()'></app-master>
     <app-title>
       <h1>{{title}}</h1>
     </app-title>
@@ -56,10 +56,14 @@ interface Column {
 })
 export class AdminUserComponent {
   private title = 'Benutzerverwaltung';
+  private titles = [{name: 'olli'}, {name: 'Opa'}];
   private users: User[];
   private columns: Column[];
   private selectedUser: User = {name: 'marcel', group: 'faf', login: 'fa'};
 
+  clicked() {
+    console.log('clicked');
+  }
   search() {
     console.log('search');
   }

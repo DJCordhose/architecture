@@ -613,7 +613,7 @@ https://angular.io/guide/router
         </section>
 
         <section>
-            <h3>Smart Components</h3>
+            <h3>Smart Components / Container</h3>
             <ul>
                 <li>Verwalten Teilzustand der Anwendung
                 <li>Reichen Teile des Zustands als unveränderliche Daten an Unterkomponente weiter
@@ -624,7 +624,7 @@ https://angular.io/guide/router
         </section>
 
         <section>
-            <h3>Dumb Components</h3>
+            <h3>Dumb/Presentational Components</h3>
             <ul>
                 <li>Managen höchstens transienten State
                 <li>enthalten keine Logik
@@ -661,7 +661,7 @@ Note:
             <h2>Smart Component</h2>
             <pre><code data-trim contenteditable>
 @Component({
-  template: `&lt;sub greeting={{greeting}} (onSend)="sent($event)"></sub>`
+  template: `&lt;sub [greeting]={{greeting}} (onSend)="sent($event)"></sub>`
 })
 export class AppComponent {
   // component state
@@ -710,6 +710,17 @@ export class SubComponent {
             </code></pre>
         </section>
 
+        <section data-markdown>
+                <textarea data-template>
+### Many Leves of nesting
+
+* https://angular.io/guide/component-interaction
+* https://stackoverflow.com/questions/43832941/angular-2-4-5-smart-dumb-and-deeply-nested-component-communication
+* Custom Events do not bubble: https://stackoverflow.com/questions/42918423/angular-2-how-do-i-emit-an-event-up-through-multiple-nested-components
+* https://angular.io/guide/template-syntax#remember-the-brackets
+
+                    </textarea>
+                    </section>
 
         <section>
             <h2>Beispiel</h2>
