@@ -20,7 +20,9 @@ interface Column {
   template: `<div>
   <div>
     <div>
-    <h1>{{title}}</h1>
+    <app-title>
+      <h1>{{title}}</h1>
+    </app-title>
     <div>
       <app-button (send)='search()' title='Suchen'></app-button>
       <app-button (send)='all()' title='Alle'></app-button>
