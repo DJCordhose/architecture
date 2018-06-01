@@ -27,6 +27,9 @@ interface Column {
       <app-button (send)='search()' title='Suchen'></app-button>
       <app-button (send)='all()' title='Alle'></app-button>
       <app-button (send)='reset()' title='Zürücksetzen'></app-button>
+    </div>
+    </div>
+    <app-detail [element]='selectedUser' (saveEvent)='saveUser($event)'></app-detail>
   </div>
   </div>`
   // template: `<div>
@@ -56,6 +59,7 @@ export class AdminUserComponent {
   private titles = [{name: 'olli'}, {name: 'Opa'}];
   private users: User[];
   private columns: Column[];
+  private selectedUser: User = {name: 'marcel', group: 'faf', login: 'fa'};
 
   clicked() {
     console.log('clicked');
@@ -63,11 +67,17 @@ export class AdminUserComponent {
   search() {
     console.log('search');
   }
+
   all() {
     console.log('all');
   }
+
   reset() {
     console.log('reset');
+  }
+
+  saveUser(user: User) {
+    console.log(user);
   }
 
 }
