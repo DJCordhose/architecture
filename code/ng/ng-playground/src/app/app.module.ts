@@ -11,6 +11,7 @@ import { AdminUserComponent } from './admin.user.component';
 import { TitleComponent } from './title.component';
 import { DetailComponent } from './detail/detail.component';
 import { MasterComponent } from './master.component';
+import { TableWrapperComponent } from './table.wrapper.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MasterComponent } from './master.component';
     AdminUserComponent,
     TitleComponent,
     DetailComponent,
-    MasterComponent
+    MasterComponent,
+    TableWrapperComponent
   ],
   imports: [
     BrowserModule,

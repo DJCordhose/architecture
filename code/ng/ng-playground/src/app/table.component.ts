@@ -14,7 +14,7 @@ import { User } from './types';
         <td>
         <div><table><tr><td *ngFor="let c of columns">{{ c.name }}</td></tr>
         <tr>
-        <td><input [(ngModel)]='searchName' (blur)='sendSearchEdited()' type="text"></td>
+        <td ><input [(ngModel)]='searchName' (blur)='sendSearchEdited()' type="text"></td>
         <td><input [(ngModel)]='searchLogin' (blur)='sendSearchEdited()' type="text"></td>
         <td><input [(ngModel)]='searchUserGroup' (blur)='sendSearchEdited()' type="text"></td>
         </tr>

@@ -9,9 +9,9 @@ export class Column {
   name: string;
   sortable: boolean;
   searchable: boolean;
-  type: string;
+  type: 'text'|'dropdown';
 
-  constructor(name: string, sortable: boolean, searchable: boolean, type: string) {
+  constructor(name: string, sortable: boolean, searchable: boolean, type: 'text'|'dropdown') {
     this.name = name;
     this.sortable = sortable;
     this.searchable = searchable;
@@ -27,7 +27,7 @@ export class Column {
     <app-title>
       <h1>{{title}}</h1>
     </app-title>
-    <app-table [columns]='columns' [data]='users' (searchEdited)='searchEdited($event)'></app-table>
+    <app-wrapper [columns]='columns' [data]='users' (searchEdited)='searchEdited($event)'></app-wrapper>
     <app-button-bar>
          <app-button (send)='search()' title='Suchen'></app-button>
          <app-button (send)='all()' title='Alle'></app-button>
@@ -66,9 +66,9 @@ export class AdminUserComponent {
 
   constructor(private userService: UserService) {
     this.columns = [
-      new Column('Name', true, true, 'string'),
-      new Column('Login', true, true, 'string'),
-      new Column('Benutzergrupppe', true, true, 'string'),
+      new Column('Name', true, true, 'text'),
+      new Column('Login', true, true, 'text'),
+      new Column('Benutzergrupppe', true, true, 'dropdown'),
     ];
   }
 
