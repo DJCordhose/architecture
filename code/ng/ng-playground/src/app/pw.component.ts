@@ -19,7 +19,6 @@ export class PwComponent {
       this.compare = 'Password do not match';
     } else {
       this.compare = '';
-      console.log('sending: '+this.password2);
       this.passwordEmiter.emit({'password':this.password2});
     }
   }
