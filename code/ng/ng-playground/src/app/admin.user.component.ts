@@ -28,9 +28,7 @@ interface Column {
          <app-button (send)='all()' title='Alle'></app-button>
          <app-button (send)='reset()' title='Zürücksetzen'></app-button>
     </app-button-bar>
-    </div>
     <app-detail [element]='selectedUser' (saveEvent)='saveUser($event)'></app-detail>
-  </div>
   </div>`
   // template: `<div>
   // <app-master>
