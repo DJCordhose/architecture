@@ -17,9 +17,9 @@ interface Column {
 
 @Component({
   selector: 'app-admin-user',
-  template: `<div>
+  template: `
   <div>
-    <div>
+    <app-master [titles]='titles' (send)='clicked()'></app-master>
     <app-title>
       <h1>{{title}}</h1>
     </app-title>
@@ -29,6 +29,7 @@ interface Column {
          <app-button (send)='reset()' title='Zürücksetzen'></app-button>
     </app-button-bar>
     </div>
+    <app-detail [element]='selectedUser' (saveEvent)='saveUser($event)'></app-detail>
   </div>
   </div>`
   // template: `<div>
@@ -55,17 +56,28 @@ interface Column {
 })
 export class AdminUserComponent {
   private title = 'Benutzerverwaltung';
+  private titles = [{name: 'olli'}, {name: 'Opa'}];
   private users: User[];
   private columns: Column[];
+  private selectedUser: User = {name: 'marcel', group: 'faf', login: 'fa'};
 
+  clicked() {
+    console.log('clicked');
+  }
   search() {
     console.log('search');
   }
+
   all() {
     console.log('all');
   }
+
   reset() {
     console.log('reset');
+  }
+
+  saveUser(user: User) {
+    console.log(user);
   }
 
 }
