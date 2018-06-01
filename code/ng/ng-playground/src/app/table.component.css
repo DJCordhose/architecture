@@ -1,0 +1,6 @@
+p {font: normal; font-family:Arial; font-size: 13px; text-align: middle}
+table {background-color: #f8f8f8; width: 80% ; padding: 0px}
+th {text-align: left; font-size: 18px; background-color: #e7f0f3 }
+tr {border-collapse: collapse;}
+tr.even {background-color: #ffffff}
+td{padding: 0px}
