@@ -30,12 +30,13 @@ export class Column {
     <app-title>
       <h1>{{title}}</h1>
     </app-title>
-    <div>
     <app-table [columns]='columns' [data]='users'></app-table>
-      <app-button (send)='search()' title='Suchen'></app-button>
-      <app-button (send)='all()' title='Alle'></app-button>
-      <app-button (send)='reset()' title='Zürücksetzen'></app-button>
-  </div>
+    <app-button-bar>
+         <app-button (send)='search()' title='Suchen'></app-button>
+         <app-button (send)='all()' title='Alle'></app-button>
+         <app-button (send)='reset()' title='Zürücksetzen'></app-button>
+    </app-button-bar>
+    <app-detail [element]='selectedUser' (saveEvent)='saveUser($event)'></app-detail>
   </div>`
   // template: `<div>
   // <app-master>
@@ -64,6 +65,7 @@ export class AdminUserComponent {
   private titles = [{name: 'olli'}, {name: 'Opa'}];
   private users: User[];
   private columns: Column[];
+  private selectedUser: User = {name: 'marcel', group: 'faf', login: 'fa'};
 
   constructor(){
   
@@ -81,11 +83,17 @@ export class AdminUserComponent {
   search() {
     console.log('search');
   }
+
   all() {
     console.log('all');
   }
+
   reset() {
     console.log('reset');
+  }
+
+  saveUser(user: User) {
+    console.log(user);
   }
 
 }
