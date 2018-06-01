@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import {NavigationService, Menues} from './navigation.service';
-import { UserService, User } from './user.service';
+import { UserService } from './user.service';
+import { User } from './types';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,7 @@ import { UserService, User } from './user.service';
 export class AppComponent {
   private title = 'app';
   private menues: string[] = [];
-  private users:User[] = [];
-  
+  private users: User[] = [];
   constructor(private navigationService: NavigationService, private userService: UserService) {
 
   }

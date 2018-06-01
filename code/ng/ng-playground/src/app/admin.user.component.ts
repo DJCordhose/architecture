@@ -2,11 +2,8 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 import {NavigationService, Menues} from './navigation.service';
 
-export interface User {
-  name: string;
-  login: string;
-  group: string;
-}
+import {UserService} from './user.service';
+import { User } from './types';
 
 export class Column {
   name: string;
@@ -30,7 +27,7 @@ export class Column {
     <app-title>
       <h1>{{title}}</h1>
     </app-title>
-    <app-table [columns]='columns' [data]='users'></app-table>
+    <app-table [columns]='columns' [data]='users' (searchEdited)='searchEdited($event)'></app-table>
     <app-button-bar>
          <app-button (send)='search()' title='Suchen'></app-button>
          <app-button (send)='all()' title='Alle'></app-button>
@@ -65,16 +62,14 @@ export class AdminUserComponent {
   private titles = [{name: 'olli'}, {name: 'Opa'}];
   private users: User[];
   private columns: Column[];
-  private selectedUser: User = {name: 'marcel', group: 'faf', login: 'fa'};
+  private selectedUser: User = {name: 'marcel', usergroup: 'faf', login: 'fa'};
 
-  constructor(){
-  
+  constructor(private userService: UserService) {
     this.columns = [
       new Column('Name', true, true, 'string'),
       new Column('Login', true, true, 'string'),
       new Column('Benutzergrupppe', true, true, 'string'),
     ];
-    
   }
 
   clicked() {
@@ -86,6 +81,11 @@ export class AdminUserComponent {
 
   all() {
     console.log('all');
+    this.userService.loadUsers().subscribe(users => {
+      console.log(users);
+      this.users = users;
+    }
+    );
   }
 
   reset() {
@@ -94,6 +94,10 @@ export class AdminUserComponent {
 
   saveUser(user: User) {
     console.log(user);
+  }
+
+  searchEdited(searches: string[]) {
+    console.log(searches);
   }
 
 }

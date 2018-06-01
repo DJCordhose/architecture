@@ -28,7 +28,11 @@ app.get("/tables/:menue", (req, res) => {
 
 const mockUserData = {
   columns: ["Name", "Login", "Usergroup"],
-  data: [["test", "test", "testgroup"], ["Christian", "CF", "attendant"], ["Oliver", "OZ", "presenter"]]
+  data: [
+    {name: "test", login: "test", usergroup: "testgroup"}, 
+    {name: "Christian", login: "CF", usergroup: "attendant"}, 
+    {name: "Oliver", login: "OZ", usergroup: "presenter"}
+  ]
 };
 
 
@@ -39,9 +43,9 @@ app.post("/searchUser", (req, res) => {
   const ug = req.body.ug
 
   searchData = mockUserData.data.filter(entry => 
-    (name == null || name == entry[0]) 
-    && (login == null || login == entry[1]) 
-    && (ug == null || ug == entry[2])); 
+    (name == null || name == entry.name) 
+    && (login == null || login == entry.login) 
+    && (ug == null || ug == entry.usergroup)); 
   console.log(searchData);
   res.json(searchData);
 });

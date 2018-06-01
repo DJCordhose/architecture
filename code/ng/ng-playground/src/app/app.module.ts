@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ButtonComponent } from './button.component';
 import { ButtonBarComponent } from './buttonbar.component';
 import { AppComponent } from './app.component';
-import { TableComponent } from './table/table.component';
+import { TableComponent } from './table.component';
 import { AdminUserComponent } from './admin.user.component';
 import { TitleComponent } from './title.component';
 import { DetailComponent } from './detail/detail.component';
