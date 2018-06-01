@@ -35,7 +35,7 @@
 src="https://djcordhose.github.io/architecture/code/integration/iframe.html"
 -->
 <iframe height="300" width="500"
-        src="http://djcordhose.github.io/architecture/code/integration/iframe.html"
+        src="iframe.html"
         sandbox="allow-scripts allow-top-navigation allow-same-origin"
 >
 </iframe>
@@ -90,6 +90,8 @@ src="https://djcordhose.github.io/architecture/code/integration/iframe.html"
         console.log('App2 received event: ', msg);
         display(msg);
     };
+
+    document.cookie = 'name=123';
 
     console.log(typeof app2Func);
 </script>
