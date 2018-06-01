@@ -35,8 +35,7 @@
 src="https://djcordhose.github.io/architecture/code/integration/iframe.html"
 -->
 <iframe height="300" width="500"
-        src="iframe.html"
-        sandbox="allow-scripts allow-top-navigation allow-same-origin"
+        src="http://localhost:3001"
 >
 </iframe>
 <div>
@@ -94,6 +93,11 @@ src="https://djcordhose.github.io/architecture/code/integration/iframe.html"
     document.cookie = 'name=123';
 
     console.log(typeof app2Func);
+
+    function menueAction(svg, action) {
+        display(svg)
+        display(action)
+    }
 </script>
 
 
