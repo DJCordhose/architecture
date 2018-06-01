@@ -2,17 +2,24 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 import {NavigationService, Menues} from './navigation.service';
 
-interface User {
+export interface User {
   name: string;
   login: string;
   group: string;
 }
 
-interface Column {
+export class Column {
   name: string;
   sortable: boolean;
   searchable: boolean;
-  type: 'dropdown' | 'text';
+  type: string;
+
+  constructor(name: string, sortable: boolean, searchable: boolean, type: string) {
+    this.name = name;
+    this.sortable = sortable;
+    this.searchable = searchable;
+    this.type = type;
+  }
 }
 
 @Component({
@@ -23,6 +30,7 @@ interface Column {
     <app-title>
       <h1>{{title}}</h1>
     </app-title>
+    <app-table [columns]='columns' [data]='users'></app-table>
     <app-button-bar>
          <app-button (send)='search()' title='Suchen'></app-button>
          <app-button (send)='all()' title='Alle'></app-button>
@@ -58,6 +66,16 @@ export class AdminUserComponent {
   private users: User[];
   private columns: Column[];
   private selectedUser: User = {name: 'marcel', group: 'faf', login: 'fa'};
+
+  constructor(){
+  
+    this.columns = [
+      new Column('Name', true, true, 'string'),
+      new Column('Login', true, true, 'string'),
+      new Column('Benutzergrupppe', true, true, 'string'),
+    ];
+    
+  }
 
   clicked() {
     console.log('clicked');
