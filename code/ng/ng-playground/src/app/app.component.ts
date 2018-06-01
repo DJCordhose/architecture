@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import {NavigationService, Menues} from './navigation.service';
+import { UserService, User } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,14 @@ import {NavigationService, Menues} from './navigation.service';
 export class AppComponent {
   private title = 'app';
   private menues: string[] = [];
-
-  constructor(private navigationService: NavigationService) {
+  private users:User[] = [];
+  
+  constructor(private navigationService: NavigationService, private userService: UserService) {
 
   }
 
   doClick() {
     this.navigationService.loadNavigation('oma').subscribe(navigation => this.menues = navigation.menues);
+    this.userService.loadUsers('test', 'test', 'testgroup').subscribe(users => this.users = users);
   }
 }
