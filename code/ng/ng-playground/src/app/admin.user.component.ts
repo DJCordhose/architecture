@@ -23,11 +23,11 @@ interface Column {
     <app-title>
       <h1>{{title}}</h1>
     </app-title>
-    <div>
-      <app-button (send)='search()' title='Suchen'></app-button>
-      <app-button (send)='all()' title='Alle'></app-button>
-      <app-button (send)='reset()' title='Zürücksetzen'></app-button>
-    </div>
+    <app-button-bar>
+         <app-button (send)='search()' title='Suchen'></app-button>
+         <app-button (send)='all()' title='Alle'></app-button>
+         <app-button (send)='reset()' title='Zürücksetzen'></app-button>
+    </app-button-bar>
     </div>
   </div>
   </div>`

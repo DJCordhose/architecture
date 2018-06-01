@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ButtonComponent } from './button.component';
+import { ButtonBarComponent } from './buttonbar.component';
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
 import { AdminUserComponent } from './admin.user.component';
@@ -14,6 +15,7 @@ import { TitleComponent } from './title.component';
     AppComponent,
     TableComponent,
     ButtonComponent,
+    ButtonBarComponent,
     AdminUserComponent,
     TitleComponent
   ],
