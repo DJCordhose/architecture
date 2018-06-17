@@ -191,11 +191,12 @@
             * Welche der Szenarien passt am besten zu meinem Projekt?
              -->
       <section>
-        <h2>Micro Frontends: JavaScript Integration Patterns</h2>
-        <h3>
+        <h3 style="line-height: 1;margin:0">Micro Frontends:</h3>
+        <h2>JavaScript Integration Patterns</h2>
+        <div style="margin-top: 60px">
           <a href="https://www.enterjs.de/single?id=6446%C2%B5-frontends%3A-javascript-integration-patterns" target="_blank">
             enterjs 2018</a>
-        </h3>
+        </div>
         <div>
           <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
           <a href="http://twitter.com/djcordhose">@DJCordhose</a>
@@ -560,20 +561,23 @@
       </section>
 
       <section style="background: url(img/link-badge.png) no-repeat right top;">
-        <p class="todo">Nils: Grafik</p>
+
         <h3>Real-Time Kommunikation bei mehreren offenen Tabs/Windows</h3>
-        <ul>
-          <li>
-            <span class="highlight">Long Polling</span>: Erfordert Server Verbindung, kann viel Server Resourcen fressen
-          </li>
-          <li>
-            <span class="highlight">Web Sockets</span>: Erfordert Server Verbindung, geht immer noch nicht überall
-          </li>
-          <li>
-            <span class="highlight">PWA Push</span>: Erfordert Service Worker und Server
-          </li>
-        </ul>
-        <p>Outlook Online verwendet alle drei Techniken</p>
+        <img src="img/link-integration-real-time-kommunikation.png" height="300px" />
+        <div style="font-size:70%">
+          <ul>
+            <li>
+              <span class="highlight">Long Polling</span>: Erfordert Server Verbindung, kann viel Server Resourcen fressen
+            </li>
+            <li>
+              <span class="highlight">Web Sockets</span>: Erfordert Server Verbindung, geht immer noch nicht überall
+            </li>
+            <li>
+              <span class="highlight">PWA Push</span>: Erfordert Service Worker und Server
+            </li>
+          </ul>
+          <p>Outlook Online verwendet alle drei Techniken</p>
+        </div>
       </section>
 
       <section class="step-subtitle">
@@ -682,7 +686,7 @@
       <section style="background: url(img/mc-badge.png) no-repeat right top;">
         <h3>Eigenständige Anwendungen in gemeinsamer Darstellung</h3>
         <div class="fragment">
-          <img style="margin-bottom: 0" src="sketch/eigenstaendige-anwendungen.png" height="350px">
+          <img style="margin-bottom: 0" src="img/micro-components.png" height="350px">
         </div>
         <p style="clear: both" class="fragment">Jede Anwendung kann komplett eigenen Stack haben</p>
         <p style="clear: both" class="fragment">Kommunikation über EventBus, direkte Listener oder gemeinsamer Zustand</p>
@@ -729,6 +733,10 @@
         <p>Bedient Anforderungen:
           <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module
             <span class="todo-bahnfahrt">(????? synchronisierung????, ganze Folie verstehe ich nicht)</span>
+            <p class="todo-bahnfahrt">Gilt für alle "Bedient Anforderungen": warum? das sind immer (nahezu) die gleichen? Dann lieber einmal vorweg
+              erzählen?
+            </p>
+
           </span>
         </p>
         <ul>
@@ -765,7 +773,7 @@ class MyElement extends HTMLElement {
 customElements.define('my-element', MyElement);
 </code></pre>
 
-        <p>Achtung! Keine komplette Isolation, funktioniert in der Praxis nicht gut mit beliebigem Framework</p>
+        <p class="fragment">Achtung! Keine komplette Isolation, funktioniert in der Praxis nicht gut mit beliebigem Framework</p>
       </section>
 
       <section style="background: url(img/mc-badge.png) no-repeat right top;">
@@ -787,61 +795,68 @@ customElements.define('my-element', MyElement);
       </section>
 
       <section style="background: url(img/mc-badge.png) no-repeat right top;">
-        <p class="todo">Nils: Illustration</p>
-        <h3>Technik</h3>
-        <h2>Globaler Event Bus</h2>
-        <p>Komponenten publizieren und können sich auf Events registrieren</p>
-        <p>Bedient Anforderungen:
-          <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span>
-        </p>
+        <h3 style="margin-bottom: 0">Globaler Event Bus</h3>
+        <img src="img/event-bus-mit-micro-components.png" height="400px" style="margin-top:0;margin-bottom:0" />
+        <p style="margin-bottom: 0">Komponenten publizieren und können sich auf Events registrieren</p>
+        <small>
+          <p style="margin-bottom: 0">Bedient Anforderungen:
+            <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span>
+
+          </p>
+          <p class="todo-bahnfahrt">"Herausforderung" ok?</p>
+          <p style="margin-top: 0">(Herausforderung: Zustand über Events synchron halten)</p>
+          <p>Beispiel:
+            <a href="https://github.com/postaljs/postal.js/ " target="_blank ">PostalJS</a>
+          </p>
+        </small>
       </section>
 
-      <section class="step-subtitle">
+      <section class="step-subtitle ">
         <h2>Bewertung</h2>
       </section>
 
       <section>
         <h3>Ansätze sind nicht wechselseitig exklusiv</h3>
         <ul>
-          <li class="fragment">Seite einer
-            <span class="highlight">Link</span>-App kann eine
-            <span class="highlight">Micro Components</span> App sein
-            <li class="fragment">Teil einer
-              <span class="highlight">Micro Components</span> kann ein
-              <span class="highlight">Majestic Modular Monolith</span> sein
-              <li class="fragment">Seite einer
-                <span class="highlight">Link</span>-App kann ein
-                <span class="highlight">Majestic Modular Monolith</span> sein (Google Drive vs Google Docs)
+          <li class="fragment ">Seite einer
+            <span class="highlight ">Link</span>-App kann eine
+            <span class="highlight ">Micro Components</span> App sein
+            <li class="fragment ">Teil einer
+              <span class="highlight ">Micro Components</span> kann ein
+              <span class="highlight ">Majestic Modular Monolith</span> sein
+              <li class="fragment ">Seite einer
+                <span class="highlight ">Link</span>-App kann ein
+                <span class="highlight ">Majestic Modular Monolith</span> sein (Google Drive vs Google Docs)
         </ul>
       </section>
 
       <section>
         <h3>Urteil</h3>
         <ul>
-          <li class="fragment">
-            <span class="highlight">Links</span>:
+          <li class="fragment ">
+            <span class="highlight ">Links</span>:
             <strong>bester Entwicklungsprozess</strong>
             <ul>
-              <li class="fragment">beste Story für Modularisierung, Migration, Deployment</li>
-              <li class="fragment">schwächste Integration von UI/UX</li>
+              <li class="fragment ">beste Story für Modularisierung, Migration, Deployment</li>
+              <li class="fragment ">schwächste Integration von UI/UX</li>
             </ul>
           </li>
-          <li class="fragment">
-            <span class="highlight">Majestic Modular Monoliths</span>:
+          <li class="fragment ">
+            <span class="highlight ">Majestic Modular Monoliths</span>:
             <strong>beste Erfahrung für den Nutzer</strong>
             <ul>
-              <li class="fragment">schwächste Story für unabhängige Teams</li>
-              <li class="fragment">bestes und konsistentestes UX/UI, starke Stories für State Management und Universal Web Apps</li>
+              <li class="fragment ">schwächste Story für unabhängige Teams</li>
+              <li class="fragment ">bestes und konsistentestes UX/UI, starke Stories für State Management und Universal Web Apps</li>
             </ul>
           </li>
-          <li class="fragment">
-            <span class="highlight">Micro Components</span>:
+          <li class="fragment ">
+            <span class="highlight ">Micro Components</span>:
             <strong>Kompromiss</strong>
             <ul>
-              <li class="fragment">migration von Klassischer Wep-App schwer denkbar
-                <span class="todo-bahnfahrt">warum?</span>
+              <li class="fragment ">migration von Klassischer Wep-App schwer denkbar
+                <span class="todo-bahnfahrt ">warum?</span>
               </li>
-              <li class="fragment">UX/UI gut für Intranet oder Desktop</li>
+              <li class="fragment ">UX/UI gut für Intranet oder Desktop</li>
             </ul>
           </li>
         </ul>
@@ -852,20 +867,20 @@ customElements.define('my-element', MyElement);
         <h3>Es gibt keine perfekte Architektur für jeden Satz von Anforderungen</h3>
         <p>Du musst deine Anforderungen kennen und dabei ehrlich zu dir sein</p>
         <p>
-          <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
-          <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
-          <a href="https://www.embarc.de/">embarc GmbH</a>
+          <a href="http://zeigermann.eu ">Oliver Zeigermann</a> /
+          <a href="http://twitter.com/djcordhose ">@DJCordhose</a> /
+          <a href="https://www.embarc.de/ ">embarc GmbH</a>
         </p>
         <p>
-          <a href="https://nilshartmann.net">Nils Hartmann</a> /
-          <a href="http://twitter.com/nilshartmann">@nilshartmann</a>
+          <a href="https://nilshartmann.net ">Nils Hartmann</a> /
+          <a href="http://twitter.com/nilshartmann ">@nilshartmann</a>
         </p>
 
         <p>
-          <a href="https://bit.ly/enterjs-micro-frontends">
+          <a href="https://bit.ly/enterjs-micro-frontends ">
             https://bit.ly/enterjs-micro-frontends</a>
         </p>
-        <p class="todo">
+        <p class="todo ">
           Mehr Informationen: https://www.heise.de/developer/artikel/Integrations-Patterns-bei-JavaScript-Anwendungen-3970085.html?seite=all
         </p>
       </section>
@@ -873,7 +888,7 @@ customElements.define('my-element', MyElement);
 
       <section>
         <h3>The Doctor is In
-          <span class="todo-bahnfahrt">Raus?</span>
+          <span class="todo-bahnfahrt ">Raus?</span>
         </h3>
         <small>
           <table>
@@ -931,16 +946,16 @@ customElements.define('my-element', MyElement);
         </small>
         <small>
           <p>
-            <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
-            <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
-            <a href="https://www.embarc.de/">Embarc GmbH</a>
+            <a href="http://zeigermann.eu ">Oliver Zeigermann</a> /
+            <a href="http://twitter.com/djcordhose ">@DJCordhose</a> /
+            <a href="https://www.embarc.de/ ">Embarc GmbH</a>
           </p>
           <p>
-            <a href="https://nilshartmann.net">Nils Hartmann</a> /
-            <a href="http://twitter.com/nilshartmann">@nilshartmann</a>
+            <a href="https://nilshartmann.net ">Nils Hartmann</a> /
+            <a href="http://twitter.com/nilshartmann ">@nilshartmann</a>
           </p>
           <p>
-            <a href="https://bit.ly/enterjs-micro-frontends">
+            <a href="https://bit.ly/enterjs-micro-frontends ">
               https://bit.ly/enterjs-micro-frontends</a>
           </p>
         </small>
@@ -951,17 +966,19 @@ customElements.define('my-element', MyElement);
 
   </div>
 
-  <script src="reveal.js/lib/js/head.min.js"></script>
-  <script src="reveal.js/js/reveal.js"></script>
-  <script src="lib/jquery-2.2.4.js"></script>
+  <script src="reveal.js/lib/js/head.min.js "></script>
+  <script src="reveal.js/js/reveal.js "></script>
+  <script src="lib/jquery-2.2.4.js "></script>
   <script>
     // uncomment for jax
     $('.jax').remove();
+    $('.todo-bahnfahrt').remove();
     if (window.location.hostname.indexOf('localhost') !== -1) {
     } else {
       // only applies to public version
       $('.preparation').remove();
       $('.todo').remove();
+
     }
     Reveal.addEventListener('ready', function (event) {
       if (window.location.hostname.indexOf('localhost') !== -1) {
@@ -974,10 +991,10 @@ customElements.define('my-element', MyElement);
       // applies to all versions
       $('code').addClass('line-numbers');
     });
-    // $('section').attr('data-background-image', "backgrounds/light-metal.jpg");
-    // $('section').attr('data-background-image', "backgrounds/pink.jpg");
-    $('section').attr('data-background-image', "backgrounds/white.jpg");
-//    $('section').attr('data-background-image', "backgrounds/code.jpg");
+    // $('section').attr('data-background-image', "backgrounds/light-metal.jpg ");
+    // $('section').attr('data-background-image', "backgrounds/pink.jpg ");
+    $('section').attr('data-background-image', "backgrounds/white.jpg ");
+//    $('section').attr('data-background-image', "backgrounds/code.jpg ");
   </script>
 
   <script>
