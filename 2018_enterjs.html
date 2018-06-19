@@ -226,7 +226,7 @@
             </textarea>
       </section> -->
 
-      <section class="step-subtitle weg">
+      <section class="step-subtitle">
         <h3>Teil 1</h3>
         <h2>Im Spannungsfeld der Anforderungen</h2>
       </section>
@@ -265,7 +265,7 @@
         <h2>Wartbarkeit und Skalierung im größeren Kontext ist nur durch Modularisierung erreichbar</h2>
       </section>
 
-      <section class="weg">
+      <section class="jax">
         <h3>Moderne Frontends...</h3>
         <ul>
           <li class="fragment">sollen aus einzelnen
@@ -303,17 +303,6 @@
           </ul>
         </div>
       </section>
-      <section data-markdown>
-          <textarea data-template>
-### Konsistente UI ist gekoppelt
-<img src='dan_soc.png'>
-
-<small>
-https://twitter.com/dan_abramov/status/1008131488481730561
-</small>
-              </textarea>
-        </section>
-  
 
       <section>
         <video controls poster="video/good-cheap-fast.jpg" src="video/good-cheap-fast.mp4" type="video/mp4"></video>
@@ -326,10 +315,9 @@ https://twitter.com/dan_abramov/status/1008131488481730561
         </p>
       </section>
 
-
-      <section class="weg">
+      <section>
         <h3>Es gibt keinen
-          <em>besten</em> Architektur-Ansatz</h3>
+          <em>universell</em> passenden Architektur-Ansatz</h3>
         <h4 class="fragment">Daher...</h4>
         <h2 class="fragment">
           Man muss die Anforderungen kennen und die müssen passen.
@@ -351,12 +339,12 @@ https://twitter.com/dan_abramov/status/1008131488481730561
         </p>
       </section> -->
 
-      <section class="weg">
+      <section>
         <h2>Typische Anforderungen</h2>
         <h3>an Web-Anwendungen</h3>
       </section>
 
-      <section class="weg">
+      <section class="jax">
         <h4>Anforderungen</h4>
         <h3>UX, Konsistenz</h3>
         <ul>
@@ -367,7 +355,7 @@ https://twitter.com/dan_abramov/status/1008131488481730561
         </ul>
       </section>
 
-      <section class="weg">
+      <section>
         <h4>Anforderungen</h4>
         <h3>(technische) Risiko-Minimierung</h3>
         <ul>
@@ -377,7 +365,7 @@ https://twitter.com/dan_abramov/status/1008131488481730561
         </ul>
       </section>
 
-      <section class="weg">
+      <section>
         <h4>Anforderungen</h4>
         <h3>Skalierbarkeit der Entwicklung / Entwicklungsgeschwindigkeit</h3>
         <ul>
@@ -401,10 +389,35 @@ https://twitter.com/dan_abramov/status/1008131488481730561
         </section>
  -->
 
-      <section class="step-subtitle weg">
+  <section class="step-subtitle">
         <h3>Teil 2</h3>
         <h2>Lösungsansätze</h2>
       </section>
+
+            <!-- <section data-markdown>
+          <textarea data-template>
+### Konsistente UI ist gekoppelt
+
+<img src='dan_soc.png'>
+
+<small>
+https://twitter.com/dan_abramov/status/1008131488481730561
+</small>
+              </textarea>
+        </section> -->
+  
+ <section data-markdown>
+    <textarea data-template>
+### Wer auseinander reißt muss auch wieder zusammen setzen
+
+Die beiden zentralen Fragen?
+
+1. Wie reißt man die Anwendung auseinander für modularisierte Entwicklung?
+1. Wie steckt man die Module für konsistentes UX wieder zusammen?
+
+_In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätze_
+        </textarea>
+  </section>
 
 
       <!-- <section>
@@ -446,7 +459,7 @@ https://twitter.com/dan_abramov/status/1008131488481730561
         </section> -->
 
 
-      <section class="weg">
+      <section class="jax">
         <img src="img/frontend-katz-twitter.png" height="600px">
 
         <p>
@@ -548,13 +561,8 @@ https://twitter.com/dan_abramov/status/1008131488481730561
 
 
       <section style="background: url(img/link-badge.png) no-repeat right top;">
-        <h3>Technik</h3>
+        <h3>Wie stecken wir wieder zusammen?</h3>
         <h2>Kommunikation zwischen getrennten Anwendungen</h2>
-        <p>Bedient Anforderungen:
-          <span class="highlight">
-            <em>nicht</em> gleichzeitige,
-            <em>aber</em> synchronisierte Darstellung mehrerer Module</span>
-        </p>
       </section>
 
       <section style="background: url(img/link-badge.png) no-repeat right top;">
@@ -625,8 +633,7 @@ https://twitter.com/dan_abramov/status/1008131488481730561
               <span class="highlight">ein</span> Framework mit
               <span class="highlight">einer</span> Version
               <li>Gemeinsame allgemeine Bibliothek sinnvoll (Buttons, Menüs, Formulare etc.)
-                <li class="todo-bahnfahrt">Nächsten Punkt raus?</li>
-                <li>Export einzelner spezieller Komponenten aus Teams möglich ("Fassaden")
+                <li class="jax">Export einzelner spezieller Komponenten aus Teams möglich ("Fassaden")
         </ul>
       </section>
 
@@ -647,11 +654,8 @@ https://twitter.com/dan_abramov/status/1008131488481730561
       </section>
 
       <section style="background: url(img/mmm-badge.png) no-repeat right top;">
-        <h3>Technik</h3>
+        <h3>Wie stecken wir wieder zusammen?</h3>
         <h2>Externes Zustandsmanagement</h2>
-        <p>Bedient Anforderungen:
-          <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span>
-        </p>
         <ul>
           <li>Zustand, der über viele Komponenten verteilt ist, macht Programme kompliziert</li>
           <li>Gemeinsame Nutzung von Zustand in unterschiedlichen Komponenten-Hierarchien ist schwierig</li>
@@ -756,17 +760,8 @@ https://twitter.com/dan_abramov/status/1008131488481730561
       </section>
 
       <section style="background: url(img/mc-badge.png) no-repeat right top;">
-        <h3>Technik</h3>
-        <h2>Client-seitige Integration</h2>
-        <p>Bedient Anforderungen:
-          <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module
-            <span class="todo-bahnfahrt">(????? synchronisierung????, ganze Folie verstehe ich nicht)</span>
-            <p class="todo-bahnfahrt">Gilt für alle "Bedient Anforderungen": warum? das sind immer (nahezu) die gleichen? Dann lieber einmal vorweg
-              erzählen?
-            </p>
-
-          </span>
-        </p>
+        <h3>Wie stecken wir wieder zusammen?</h3>
+        <h2>Module im Browser zusammensetzen</h2>
         <ul>
           <li>HTML
             <em>script</em> Tags und unterschiedliche Mount Points (wie bei Sport1)</li>
@@ -1002,15 +997,16 @@ customElements.define('my-element', MyElement);
   <script src="reveal.js/js/reveal.js "></script>
   <script src="lib/jquery-2.2.4.js "></script>
   <script>
-    $('.weg').remove();
+    // $('.weg').remove();
     // uncomment for jax
     $('.jax').remove();
-    $('.todo-bahnfahrt').remove();
+    // $('.todo-bahnfahrt').remove();
     if (window.location.hostname.indexOf('localhost') !== -1) {
     } else {
       // only applies to public version
       $('.preparation').remove();
       $('.todo').remove();
+      $('.local').remove();
 
     }
     Reveal.addEventListener('ready', function (event) {
