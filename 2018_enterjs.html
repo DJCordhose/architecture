@@ -39,6 +39,14 @@
       height: 500px;
     }
 
+    .weg:before {
+      content: 'Streichen?';
+    }
+
+    .weg {
+      color: red !important;
+    }
+
     .todo:before {
       content: 'TODO: ';
     }
@@ -221,7 +229,7 @@ Separating concerns by files is as effective as separating school friendships by
             </textarea>
       </section>
 
-      <section class="step-subtitle">
+      <section class="step-subtitle weg">
         <h3>Teil 1</h3>
         <h2>Im Spannungsfeld der Anforderungen</h2>
       </section>
@@ -261,7 +269,7 @@ Separating concerns by files is as effective as separating school friendships by
         <h2>Wartbarkeit und Skalierung im größeren Kontext ist nur durch Modularisierung erreichbar</h2>
       </section>
 
-      <section>
+      <section class="weg">
         <h3>Moderne Frontends...</h3>
         <ul>
           <li class="fragment">sollen aus einzelnen
@@ -302,7 +310,6 @@ Separating concerns by files is as effective as separating school friendships by
 
 
       <section>
-        <!--<h3>Was macht UX so schwierig?</h3>-->
         <video controls poster="video/good-cheap-fast.jpg" src="video/good-cheap-fast.mp4" type="video/mp4"></video>
         <p>
           <small>
@@ -314,20 +321,19 @@ Separating concerns by files is as effective as separating school friendships by
       </section>
 
 
-      <section>
+      <section class="weg">
         <h3>Es gibt keinen
           <em>besten</em> Architektur-Ansatz</h3>
         <h4 class="fragment">Daher...</h4>
         <h2 class="fragment">
           Man muss die Anforderungen kennen und die müssen passen.
         </h2>
-        <!--und nicht nur hingelogen sein, damit man seine Architektur machen kann wie man Bock hat.-->
         <p class="fragment">
           <small> - Oliver Zeigermann</small>
         </p>
       </section>
 
-      <section>
+      <!-- <section>
         <img src="img/kickme.png">
 
         <p>
@@ -337,14 +343,14 @@ Separating concerns by files is as effective as separating school friendships by
             </a>
           </small>
         </p>
-      </section>
+      </section> -->
 
-      <section>
+      <section class="weg">
         <h2>Typische Anforderungen</h2>
         <h3>an Web-Anwendungen</h3>
       </section>
 
-      <section>
+      <section class="weg">
         <h4>Anforderungen</h4>
         <h3>UX, Konsistenz</h3>
         <ul>
@@ -355,7 +361,7 @@ Separating concerns by files is as effective as separating school friendships by
         </ul>
       </section>
 
-      <section>
+      <section class="weg">
         <h4>Anforderungen</h4>
         <h3>(technische) Risiko-Minimierung</h3>
         <ul>
@@ -365,7 +371,7 @@ Separating concerns by files is as effective as separating school friendships by
         </ul>
       </section>
 
-      <section>
+      <section class="weg">
         <h4>Anforderungen</h4>
         <h3>Skalierbarkeit der Entwicklung / Entwicklungsgeschwindigkeit</h3>
         <ul>
@@ -389,7 +395,7 @@ Separating concerns by files is as effective as separating school friendships by
         </section>
  -->
 
-      <section class="step-subtitle">
+      <section class="step-subtitle weg">
         <h3>Teil 2</h3>
         <h2>Lösungsansätze</h2>
       </section>
@@ -434,7 +440,7 @@ Separating concerns by files is as effective as separating school friendships by
         </section> -->
 
 
-      <section>
+      <section class="weg">
         <img src="img/frontend-katz-twitter.png" height="600px">
 
         <p>
@@ -619,19 +625,19 @@ Separating concerns by files is as effective as separating school friendships by
       </section>
 
       <section style="background: url(img/mmm-badge.png) no-repeat right top;">
-        <h3>Gemeinsame Anwendungen in gemeinsamer Darstellung</h3>
-        <div class="fragment">
-          <img src="sketch/module-gemeinsamer-state-v2.png" height="450px">
-        </div>
-        <p style="clear: both" class="fragment">Server-Zugriff nur für Daten oder einmalig für Code</p>
-      </section>
-
-      <section style="background: url(img/mmm-badge.png) no-repeat right top;">
         <h3>Prominentes Beispiel: Google Docs</h3>
         <img src="img/screenshot-google-docs-comment.png" height="500px">
         <p>
           <small>Keine systematischen UX Probleme</small>
         </p>
+      </section>
+
+      <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <h3>Gemeinsame Anwendungen in gemeinsamer Darstellung</h3>
+        <div class="fragment">
+          <img src="sketch/module-gemeinsamer-state-v2.png" height="450px">
+        </div>
+        <p style="clear: both" class="fragment">Server-Zugriff nur für Daten oder einmalig für Code</p>
       </section>
 
       <section style="background: url(img/mmm-badge.png) no-repeat right top;">
@@ -795,7 +801,7 @@ customElements.define('my-element', MyElement);
       <section style="background: url(img/mc-badge.png) no-repeat right top;">
         <h3>iFrame</h3>
         <p>Beispiel:
-          <a href="http://djcordhose.github.io/architecture/code/integration/" target="_blank">http://djcordhose.github.io/architecture/code/integration/</a>
+          <a href="code/integration/" target="_blank">http://djcordhose.github.io/architecture/code/integration/</a>
         </p>
         <p>Lädt komplett isolierte Anwendung</p>
         <pre><code data-trim>
@@ -906,7 +912,7 @@ customElements.define('my-element', MyElement);
       </section>
 
 
-      <section>
+      <section class="jax">
         <h3>The Doctor is In
           <span class="todo-bahnfahrt ">Raus?</span>
         </h3>
@@ -990,6 +996,7 @@ customElements.define('my-element', MyElement);
   <script src="reveal.js/js/reveal.js "></script>
   <script src="lib/jquery-2.2.4.js "></script>
   <script>
+    $('.weg').remove();
     // uncomment for jax
     $('.jax').remove();
     $('.todo-bahnfahrt').remove();
