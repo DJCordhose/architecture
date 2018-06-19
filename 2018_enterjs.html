@@ -47,6 +47,10 @@
       color: red !important;
     }
 
+    .presenter h1 {
+      color: rgb(255, 0, 234) !important;
+    }
+
     .todo:before {
       content: 'TODO: ';
     }
@@ -71,10 +75,6 @@
     .reveal {
       -ms-touch-action: auto !important;
       touch-action: auto !important;
-    }
-
-    .todo-bahnfahrt {
-      color: red;
     }
 
     .reveal h2,
@@ -198,6 +198,11 @@
             * Welche Anforderungen werden mit den jeweiligen Szenarien erfüllt? Welche (neuen) Probleme ergeben sich daraus jeweils?
             * Welche der Szenarien passt am besten zu meinem Projekt?
              -->
+
+      <section class="presenter">
+        <h1>Nils</h1>
+      </section>
+
       <section>
         <h3 style="line-height: 1;margin:0">Micro Frontends:</h3>
         <h2>JavaScript Integration Patterns</h2>
@@ -327,7 +332,7 @@
         </p>
       </section>
 
-      <!-- <section>
+        <!-- <section>
         <img src="img/kickme.png">
 
         <p>
@@ -388,6 +393,10 @@
             </a></small></p>
         </section>
  -->
+
+ <section class="presenter">
+    <h1>Olli</h1>
+  </section>
 
   <section class="step-subtitle">
         <h3>Teil 2</h3>
@@ -607,6 +616,10 @@ _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätz
         </div>
       </section>
 
+      <section class="presenter">
+          <h1>Nils</h1>
+        </section>
+
       <section class="step-subtitle">
         <h3>Ansatz 2</h3>
         <h2>Majestic Modular Monoliths</h2>
@@ -699,6 +712,10 @@ _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätz
                 <a href="https://tur-nr.github.io/polymer-redux/" target="_blank">https://tur-nr.github.io/polymer-redux/</a>
         </ul>
       </section>
+
+      <section class="presenter">
+          <h1>Olli</h1>
+        </section>
 
       <section class="step-subtitle">
         <h3>Ansatz 3</h3>
@@ -826,8 +843,7 @@ customElements.define('my-element', MyElement);
             <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span>
 
           </p>
-          <p class="todo-bahnfahrt">"Herausforderung" ok?</p>
-          <p style="margin-top: 0">(Herausforderung: Zustand über Events synchron halten)</p>
+          <p style="margin-top: 0">Herausforderung: Zustand über Events synchron halten</p>
           <p>Beispiel:
             <a href="https://github.com/postaljs/postal.js/ " target="_blank ">PostalJS</a>
           </p>
@@ -876,9 +892,7 @@ customElements.define('my-element', MyElement);
             <span class="highlight ">Micro Components</span>:
             <strong>Kompromiss</strong>
             <ul>
-              <li class="fragment ">migration von Klassischer Wep-App schwer denkbar
-                <span class="todo-bahnfahrt ">warum?</span>
-              </li>
+              <li class="fragment ">Technik für Integration im Browser nicht wirklich überzeugend</li>
               <li class="fragment ">UX/UI gut für Intranet oder Desktop</li>
             </ul>
           </li>
@@ -915,7 +929,6 @@ customElements.define('my-element', MyElement);
 
       <section class="jax">
         <h3>The Doctor is In
-          <span class="todo-bahnfahrt ">Raus?</span>
         </h3>
         <small>
           <table>
@@ -1000,13 +1013,13 @@ customElements.define('my-element', MyElement);
     // $('.weg').remove();
     // uncomment for jax
     $('.jax').remove();
-    // $('.todo-bahnfahrt').remove();
     if (window.location.hostname.indexOf('localhost') !== -1) {
     } else {
       // only applies to public version
       $('.preparation').remove();
       $('.todo').remove();
       $('.local').remove();
+      $('.presenter').remove();
 
     }
     Reveal.addEventListener('ready', function (event) {
