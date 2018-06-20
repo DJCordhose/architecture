@@ -1,0 +1,1097 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Micro Frontends: JavaScript Integration Patterns</title>
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <!--<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">-->
+  <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
+  <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
+  <!--<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">-->
+  <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+  <style>
+    /*pre code {*/
+
+    /*display: block;*/
+
+    /*padding: 0.5em;*/
+
+    /*background: #FFFFFF !important;*/
+
+    /*color: #000000 !important;*/
+
+    /*}*/
+
+    .right-img {
+      margin-left: 10px !important;
+      float: right;
+      height: 500px;
+    }
+
+    .weg:before {
+      content: 'Streichen?';
+    }
+
+    .weg {
+      color: red !important;
+    }
+
+    .presenter h1 {
+      color: rgb(255, 0, 234) !important;
+    }
+
+    .todo:before {
+      content: 'TODO: ';
+    }
+
+    .todo {
+      color: red !important;
+    }
+
+    code span.line-number {
+      color: lightcoral;
+    }
+
+    .reveal pre code {
+      max-height: 1000px !important;
+    }
+
+    img {
+      border: 0 !important;
+      box-shadow: 0 0 0 0 !important;
+    }
+
+    .reveal {
+      -ms-touch-action: auto !important;
+      touch-action: auto !important;
+    }
+
+    .reveal h2,
+    .reveal h3,
+    .reveal h4 {
+      letter-spacing: 2px;
+      font-family: 'Amiri', serif;
+      /* font-family: 'Times New Roman', Times, serif; */
+      font-weight: bold;
+      font-style: italic;
+      letter-spacing: -2px;
+      text-transform: none !important;
+    }
+
+    .reveal em {
+      font-weight: bold;
+    }
+
+    .reveal .step-subtitle h1 {
+      letter-spacing: 1px;
+    }
+
+    .reveal .step-subtitle h2,
+    .reveal .step-subtitle h3 {
+      text-transform: none;
+
+      font-weight: normal;
+      /* font-weight: 400; */
+      /* font-family: 'Amiri', serif; */
+      font-family: 'Lobster', serif;
+      letter-spacing: 1px;
+      color: #2aa198;
+      /* text-decoration: underline; */
+    }
+
+    .reveal .step-subtitle h3 {
+      text-decoration: underline;
+      font-style: normal
+    }
+
+    /* .reveal .step-subtitle h2 {
+      font-style: italic;
+    } */
+
+    .reveal .front-page h1,
+    .reveal .front-page h2 {
+      font-family: "League Gothic";
+      font-style: normal;
+      text-transform: uppercase !important;
+      letter-spacing: 1px;
+    }
+
+    .reveal .front-page h1 {
+      font-size: 2.5em !important;
+    }
+
+    .reveal .highlight {
+      /* #D3337B;*/
+      color: #268bd2;
+    }
+
+    .reveal section img {
+      background: none;
+    }
+
+    .reveal img.with-border {
+      border: 1px solid #586e75 !important;
+      box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .reveal li {
+      margin-bottom: 8px;
+    }
+
+    /* For li's that use FontAwesome icons as bullet-point */
+
+    .reveal ul.fa-ul li {
+      list-style-type: none;
+    }
+  </style>
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+
+  <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <!--         
+            JavaScript Integration Patterns
+
+             Moderne Webanwendungen werden meist als als Single-Page-Anwendung mit JavaScript oder TypeScript gebaut, um für Anwenderinnen
+            und Anwender das bestmögliche Verhalten zu erreichen. Gerade bei größeren und langlebigen Single-Page-Anwendungen hat es
+            aber einen Reiz, das Frontend in kleinere Teile aufzuspalten, die von unterschiedlichen Teams autonom entwickelt werden können.
+            In diesem Vortrag wollen wir die aus unserer Sicht zentralen Szenarien für solche „Micro Frontends“ herausarbeiten. Wir wollen
+            noch nicht zu viel verraten und es spannend halten, aber ein Königswegs ist weiterhin nicht in Sicht. Deswegen schauen wir
+            uns verschiedene Varianten an und prüfen, inwiefern sie sich umsetzen lassen und worin jeweils deren Vor- und Nachteile bestehen.
+             -->
+
+      <section class="presenter">
+        <h1>Nils</h1>
+      </section>
+
+      <section>
+        <h3 style="line-height: 1;margin:0">Mircro Frontends:</h3>
+        <h2>JavaScript Integration Patterns</h2>
+        <div style="margin-top: 60px">
+          <a href="https://jax.de/web-development-javascript/javascript-integration-patterns/" target="_blank">
+            W-JAX 2018</a>
+        </div>
+        <div>
+          <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
+          <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
+          <a href="https://www.embarc.de/ ">embarc GmbH</a>
+        </div>
+        <div>
+          <a href="https://nilshartmann.net">Nils Hartmann</a> /
+          <a href="https://twitter.com/nilshartmann">@nilshartmann</a> /
+          <a href="https://eos-technology.solutions/ ">EOS TS</a>
+        </div>
+        <p style="clear: both">
+          <small>Folien:
+            <a href="TODO">
+              TODO</a>
+          </small>
+        </p>
+      </section>
+
+      <section data-markdown class="todo">
+        <textarea data-template>
+- kürzen auf 60 Minuten
+- JAX Folien hinein nehmen
+- neuen bit.ly Link
+            </textarea>
+      </section>
+
+      <section class="step-subtitle">
+        <h3>Teil 1</h3>
+        <h2>Im Spannungsfeld der Anforderungen</h2>
+      </section>
+
+      <section>
+        <h3>Nutzer möchten eine konsistente, gut bedienbare UI erleben</h3>
+        <img src="sketch/user.png" height="500px">
+        <!--<img src="img/nils/anwendersicht.png">-->
+      </section>
+
+      <section>
+        <h3>Axiom I</h3>
+        <h2>Beste UI / UX kann nur durch Single Page Applications (SPA), Mobile oder Desktop App erreicht werden</h2>
+        <p>Logik muss nahe an Interaktion und Daten müssen nahe an Logik liegen</p>
+      </section>
+
+      <section class="jax">
+        <h2>SPA</h2>
+        <p>verschieben daher Hauptteile eurer Anwendung in den Client</p>
+        <img src="img/nils/webapp-architecture.png" style="max-width: 40%; float: left">
+        <ul style="width: 50%; float: right; font-size: 80%">
+          <li class="fragment">Server ist hauptsächlich Daten-Schnittstelle (JSON/REST API)</li>
+          <li class="fragment">Server kann Business Logic enthalten, diese kann aber komplett im Client liegen
+            <li class="fragment">erlaubt Offline-Betrieb für SPAs (u.a. über Service Workers)
+        </ul>
+      </section>
+
+      <section>
+        <h3>Problem: Größere Anwendungen können nicht von einem einzigen Team entwickelt werden</h3>
+        <img src="sketch/dev.png" height="480px">
+        <!--<img src="img/nils/entwicklerteams-und-anwender.png">-->
+      </section>
+
+      <section>
+        <h3>Axiom II</h3>
+        <h2>Wartbarkeit und Skalierung im größeren Kontext ist nur durch Modularisierung erreichbar</h2>
+      </section>
+
+      <section class="jax">
+        <h3>Moderne Frontends...</h3>
+        <ul>
+          <li class="fragment">sollen aus einzelnen
+            <span class="highlight">Modulen</span> zusammensetzbar sein</li>
+          <li class="fragment">müssen zu modernen
+            <span class="highlight">Backend-Architekturen</span> passen</li>
+          <li class="fragment">sollen einzeln zu
+            <span class="highlight">deployen</span> sein</li>
+          <li class="fragment">sollen pro Modul am besten die
+            <span class="highlight">freie Wahl von Technologie</span> erlauben</li>
+        </ul>
+        <p class="fragment">Das passende Buzzword dazu ist
+          <span class="highlight">Micro Frontends</span> (
+          <a href="https://www.thoughtworks.com/radar/techniques/micro-frontends" target="_blank">
+            https://www.thoughtworks.com/radar/techniques/micro-frontends
+          </a>)</p>
+      </section>
+
+      <section>
+        <h2>Spannung zwischen Axiom I und II</h2>
+        <p>
+          <span class="highlight">Wenn man die Module für Wartbarkeit entkoppelt (Micro Frontends) muss man sie für beste UI/UX aus einem Guss wieder
+            koppeln
+          </span>
+        </p>
+        <p class="fragment">Das geht das nicht ohne Kompromisse</p>
+        <div class="fragment">
+          <ul>
+            <li>Wo will man Abstriche machen?
+              <ol>
+                <li>Erfahrung des Nutzers?
+                  <li>Entwicklungsprozess?
+                  </li>
+              </ol>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <video controls poster="video/good-cheap-fast.jpg" src="video/good-cheap-fast.mp4" type="video/mp4"></video>
+        <p>
+          <small>
+            <a href="https://twitter.com/missingcloudltd/status/826203153934729218" target="_blank">
+              https://twitter.com/missingcloudltd/status/826203153934729218
+            </a>
+          </small>
+        </p>
+      </section>
+
+      <section>
+        <h3>Es gibt keinen
+          <em>universell</em> passenden Architektur-Ansatz</h3>
+        <h4 class="fragment">Daher...</h4>
+        <h2 class="fragment">
+          Man muss die Anforderungen kennen und die müssen passen.
+        </h2>
+        <p class="fragment">
+          <small> - Oliver Zeigermann</small>
+        </p>
+      </section>
+
+      <!-- <section>
+        <img src="img/kickme.png">
+
+        <p>
+          <small>
+            <a href="https://twitter.com/rhundhausen/status/932815147273474049" target="_blank">
+              https://twitter.com/rhundhausen/status/932815147273474049
+            </a>
+          </small>
+        </p>
+      </section> -->
+
+      <section>
+        <h2>Typische Anforderungen</h2>
+        <h3>an Web-Anwendungen</h3>
+      </section>
+
+      <section class="jax">
+        <h4>Anforderungen</h4>
+        <h3>UX, Konsistenz</h3>
+        <ul>
+          <li class="fragment">Gleichzeitige, synchronisierte Darstellung mehrerer Module (keine Inkonsistenzen)
+            <li class="fragment">Schnelle erste Darstellung
+              <li class="fragment">Unverzögerte Reaktion (Bei Eingaben, Drag'n'Drop, Ansicht wechseln, ...)
+                <li class="fragment">Offline-Fähigkeit
+        </ul>
+      </section>
+
+      <section>
+        <h4>Anforderungen</h4>
+        <h3>(technische) Risiko-Minimierung</h3>
+        <ul>
+          <li class="fragment">schrittweises Ausrollen von technischen Innovationen
+            <li class="fragment">schrittweise Migration, kein Big Bang
+              <li class="fragment">Feature-Stau
+        </ul>
+      </section>
+
+      <section>
+        <h4>Anforderungen</h4>
+        <h3>Skalierbarkeit der Entwicklung / Entwicklungsgeschwindigkeit</h3>
+        <ul>
+          <li class="fragment">Anzahl der Teams
+            <li class="fragment">Freie Wahl des Frameworks
+              <li class="fragment">Update der Bibliotheken
+                <li class="fragment">Eignung für vertikale Architektur
+                  <li class="fragment">Gemeinsame Bibliothek, Wiederverwendung
+                    <li class="fragment">Freiheitsgrad der Modulgröße
+                      <li class="fragment">Migrationspfad von klassischer Web-App
+        </ul>
+      </section>
+
+      <!-- 
+        <section>
+            <img src="img/feynman-twitter.png">
+
+            <p><small><a href="https://twitter.com/ProfFeynman/status/932645521096716290" target="_blank">
+                https://twitter.com/ProfFeynman/status/932645521096716290
+            </a></small></p>
+        </section>
+ -->
+
+      <section class="presenter">
+        <h1>Olli</h1>
+      </section>
+
+      <section class="step-subtitle">
+        <h3>Teil 2</h3>
+        <h2>Lösungsansätze</h2>
+      </section>
+
+      <!-- <section data-markdown>
+          <textarea data-template>
+### Konsistente UI ist gekoppelt
+
+<img src='dan_soc.png'>
+
+<small>
+https://twitter.com/dan_abramov/status/1008131488481730561
+</small>
+              </textarea>
+        </section> -->
+
+      <section data-markdown>
+        <textarea data-template>
+### Wer auseinander reißt muss auch wieder zusammen setzen
+
+Die beiden zentralen Fragen?
+
+1. Wie reißt man die Anwendung auseinander für modularisierte Entwicklung?
+1. Wie steckt man die Module für konsistentes UX wieder zusammen?
+
+_In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätze_
+        </textarea>
+      </section>
+
+
+      <!-- <section>
+                    <img src="img/light-elevator-twitter.png" height="600px">
+
+                    <p><small><a href="https://twitter.com/ThePracticalDev/status/933373477255630853" target="_blank">
+                        https://twitter.com/ThePracticalDev/status/933373477255630853
+                    </a></small></p>
+                </section> -->
+
+
+
+
+
+      <section class="jax">
+        <!--<h3>Weitere Schwierigkeit</h3>-->
+        <h2>Wir nehmen Frontend-Architektur nicht für voll</h2>
+        <p>Zitate</p>
+        <ul>
+          <li class="fragment">
+            <em>Frontend-Architektur: Ich dachte sowas gibt es gar nicht</em>
+          </li>
+          <li class="fragment">
+            <em>Das Frontend kloppen wir am Ende einfach irgendwie drauf</em>
+          </li>
+          <li class="fragment">
+            <em>Architektur für ein bisschen CSS-Pixel-Geschubse?</em>
+          </li>
+        </ul>
+      </section>
+
+
+      <!-- <section>
+            <img src="img/frontend-architecture.png" height="600px">
+
+            <p><small><a href="https://twitter.com/markdalgleish/status/908146609942257664" target="_blank">
+                https://twitter.com/markdalgleish/status/908146609942257664
+            </a></small></p>
+        </section> -->
+
+
+      <section class="jax">
+        <img src="img/frontend-katz-twitter.png" height="600px">
+
+        <p>
+          <small>
+            <a href="https://twitter.com/wycats" target="_blank">
+              @wycats
+            </a>:
+            <a href="https://twitter.com/wycats/status/930463710941872128" target="_blank">
+              https://twitter.com/wycats/status/930463710941872128
+            </a>
+          </small>
+        </p>
+      </section>
+
+      <section>
+        <h2>Architektur-Ansätze</h2>
+        <h3>für Micro Frontends</h3>
+        <p>Integration einzelner Micro Frontends (Module)...</p>
+        <ol>
+          <li class="fragment">
+            <div style="display:flex">
+              <div>über "normale" HTML Links</div>
+              <img src="img/link-badge.png" style="margin-left: 10px; margin-top:5px;margin-bottom:0;align-self: center;" />
+            </div>
+          </li>
+          <li class="fragment">
+            <div style="display:flex">
+              <div>zur Build-Zeit</div>
+              <img src="img/mmm-badge.png" style="margin-left: 10px; margin-top:5px;margin-bottom:0;align-self: center;" />
+            </div>
+
+            <small>
+              (Kudos an
+              <a href="https://twitter.com/DJCordhose/status/908251990005821440" target="_blank">@axelfontaine</a> für den Namen)</small>
+          </li>
+          <li class="fragment">
+            <div style="display:flex">
+              <div>im Browser</div>
+              <img src="img/mc-badge.png" style="margin-left: 10px; margin-top:5px;margin-bottom:0;align-self: center;" />
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="step-subtitle">
+        <h3>Ansatz 1</h3>
+        <h2>
+          Links
+        </h2>
+      </section>
+
+      <section style="background: url(img/link-badge.png) no-repeat right top;">
+        <h2>Eigenständige Anwendungen über Links verbinden</h2>
+        <p>Integration mehrerer Anwendungen über Links, die eine neue Anwendung öffnen und/oder die alte ersetzen</p>
+        <ul>
+          <li>jedes Modul ist eine eigene (SPA) Anwendung
+            <li>erlaubt Vertikalen wie eine klassische Web-App
+              <li>Module teilen keinen Zustand, aktualisieren einander nicht
+        </ul>
+        <p>
+          <small>Variante: App Shell hat JavaScript Rahmen, weniger flexibel, kann aber u.a. Zustand halten</small>
+        </p>
+      </section>
+
+      <section style="background: url(img/link-badge.png) no-repeat right top;">
+        <h3>Eigenständige Anwendungen in eigenständiger Darstellung</h3>
+        <img src="img/nils/link-integration.png">
+        <!--
+
+            <div class="fragment" style="float: left">
+                <img src="sketch/link1.jpg" height="300">
+            </div>
+            <div class="fragment" style="float: left; padding-left: 20px; padding-top: 120px; font-weight: bold">
+            - click -<br>
+            == >
+            </div>
+            <div class="fragment" style="float: left">
+              <img src="sketch/link2.jpg" height="300" style="float: right">
+            </div>
+-->
+        <p style="clear: both" class="fragment">Jede Anwendung wird beim Öffnen komplett neu aufgebaut</p>
+      </section>
+
+      <section style="background: url(img/link-badge.png) no-repeat right top;">
+        <h3>Prominentes Beispiel: Outlook Online</h3>
+        <a href="https://outlook.live.com/mail" target="_blank">
+          <img src="img/screenshot-outlook-mit-highlight.png" height="550">
+        </a>
+        <!--<p><small><a href="https://twitter.com/DJCordhose/status/949293959892828162" target="_blank">React</a></small></p>-->
+      </section>
+
+      <section style="background: url(img/link-badge.png) no-repeat right top;">
+        <video controls src="video/outlook.mp4" type="video/mp4" height="600px"></video>
+        <p>
+          <small>UX-Schwächen, unterschiedliche Technologien, jede App wird anders dargestellt
+            <br> Wechsel der App dauert (Service Workers können die Zeit ab 2. Aufruf vermindern)</small>
+        </p>
+      </section>
+
+
+      <section style="background: url(img/link-badge.png) no-repeat right top;">
+        <h3>Wie stecken wir wieder zusammen?</h3>
+        <h2>Kommunikation zwischen getrennten Anwendungen</h2>
+      </section>
+
+      <section style="background: url(img/link-badge.png) no-repeat right top;">
+        <h3>Parameter-Übergabe</h3>
+        <ul>
+          <li>
+            <span class="highlight">Cookies</span>: gut für Session Id, Authentication Tokens
+          </li>
+          <li>
+            <span class="highlight">URL Parameter</span>: begrenzte Länge, nicht alles möchte man in der URL haben, Bookmark und verschickbarer Link
+            möglich
+          </li>
+          <li>
+            <span class="highlight">Local Storage</span>: Key/Value, bleibt bestehen bis zur expliziten Löschung
+          </li>
+          <li>
+            <span class="highlight">Session Storage</span>: Key/Value, nur gültig für aktuellen Tab
+          </li>
+        </ul>
+        <p>
+          <em>Alle Ansätze halten auch bei Reload den Zustand und funktionieren problemlos mit Back-Button</em>
+        </p>
+      </section>
+
+      <section style="background: url(img/link-badge.png) no-repeat right top;">
+
+        <h3>Real-Time Kommunikation bei mehreren offenen Tabs/Windows</h3>
+        <img src="img/link-integration-real-time-kommunikation.png" height="300px" />
+        <div style="font-size:70%">
+          <ul>
+            <li>
+              <span class="highlight">Long Polling</span>: Erfordert Server Verbindung, kann viel Server Resourcen fressen
+            </li>
+            <li>
+              <span class="highlight">Web Sockets</span>: Erfordert Server Verbindung, geht immer noch nicht überall
+            </li>
+            <li>
+              <span class="highlight">PWA Push</span>: Erfordert Service Worker und Server
+            </li>
+            <li>
+                <span class="highlight">Local Storage</span>: Ohne Server wenn in demselben Browser
+              </li>
+            </ul>
+          <p>Outlook Online verwendet alle drei Server basierten Techniken</p>
+        </div>
+      </section>
+
+      <section class="presenter">
+        <h1>Nils</h1>
+      </section>
+
+      <section class="step-subtitle">
+        <h3>Ansatz 2</h3>
+        <h2>Majestic Modular Monoliths</h2>
+      </section>
+
+      <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <h3>Single Page Application</h3>
+        <img src="img/majest-modular-monolith.png" />
+      </section>
+
+      <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <h3>Single Page Application</h3>
+        <img src="img/spa-build-deploy.png" />
+        <p>Eine einzelne Single Page Application mit statischem Build</p>
+        <ul>
+          <li>Jedes Team entwickelt eigenes Modul
+            <ul>
+              <li style="font-size:80%">Module können per (In-House-) npm Registry veröffentlicht und ausgetauscht werden</li>
+            </ul>
+          </li>
+          <li class="fragment">Statischer Build integriert komplette Anwendung
+            <li class="fragment">Deployment als Monolith
+
+        </ul>
+      </section>
+
+
+      <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <h3>Single Page Application</h3>
+        <ul>
+          <li>Zur Laufzeit Lazy-Loading möglich
+            <ul>
+              <li style="font-size:80%">Für schnelle erste Seitendarstellung</li>
+            </ul>
+          </li>
+          <li>Anwendung nutzt
+            <span class="highlight">ein</span> Framework mit
+            <span class="highlight">einer</span> Version
+            <li>Gemeinsame allgemeine Bibliothek sinnvoll (Buttons, Menüs, Formulare etc.)
+              <li class="jax">Export einzelner spezieller Komponenten aus Teams möglich ("Fassaden")
+        </ul>
+      </section>
+
+      <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <h3>Prominentes Beispiel: Google Docs</h3>
+        <img src="img/screenshot-google-docs-comment.png" height="500px">
+        <p>
+          <small>Keine systematischen UX Probleme</small>
+        </p>
+      </section>
+
+      <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <h3>Gemeinsame Anwendungen in gemeinsamer Darstellung</h3>
+        <div>
+          <img src="img/module-gemeinsamer-state.png" height="450px">
+        </div>
+      </section>
+
+      <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <h3>Wie stecken wir wieder zusammen?</h3>
+        <h2>Externes Zustandsmanagement</h2>
+        <ul>
+          <li>Zustand, der über viele Komponenten verteilt ist, macht Programme kompliziert</li>
+          <li>Gemeinsame Nutzung von Zustand in unterschiedlichen Komponenten-Hierarchien ist schwierig</li>
+          <li>Zustandsmanagement und UI-Handler werden aus UI-Komponenten extrahiert</li>
+        </ul>
+      </section>
+
+      <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <h2>Über Komponenten verteilter Zustand</h2>
+        <img src="img/distributed-state.png" />
+      </section>
+
+      <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <h3>Redux</h3>
+        <img src="img/redux-04-react-to-redux-resulting-architecture.png" style="border:0;box-shadow:0 0 0 0" height="500px">
+        <p>
+          <small>
+            <a href="http://redux.js.org/" target="_blank">http://redux.js.org/</a>
+          </small>
+        </p>
+      </section>
+
+      <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <h3>Redux ist unabhängig vom UI-Framework</h3>
+        <p>Implementierungen existieren für alle wichtigen UI-Frameworks</p>
+        <ul style="font-size:80%">
+          <li>React:
+            <a href="http://redux.js.org/docs/basics/UsageWithReact.html" target="_blank">
+              http://redux.js.org/docs/basics/UsageWithReact.html
+            </a>
+            <li>Angular:
+              <a href="https://github.com/ngrx/store" target="_blank">https://github.com/ngrx/store</a>
+            </li>
+            <li>Vue:
+              <a href="https://github.com/vuejs/vuex" target="_blank">https://github.com/vuejs/vuex</a>
+              <li>Web Components (Polymer): Empfohlene Implementierung des
+                <em>Global Mediator Pattern</em>,
+                <a href="https://twitter.com/DJCordhose/status/899943415353311232" target="_blank">https://twitter.com/DJCordhose/status/899943415353311232</a>
+                <a href="https://tur-nr.github.io/polymer-redux/" target="_blank">https://tur-nr.github.io/polymer-redux/</a>
+        </ul>
+      </section>
+
+      <section class="presenter">
+        <h1>Olli</h1>
+      </section>
+
+      <section class="step-subtitle">
+        <h3>Ansatz 3</h3>
+        <h2>Micro Components</h2>
+      </section>
+
+      <section style="background: url(img/mc-badge.png) no-repeat right top;">
+        <h2>Zusammensetzen der Anwendung im Browser</h2>
+        <ul>
+          <li>Anwendung ist in logische Module aufgeteilt, die als ganze Anwendung zusammen laufen
+            <li>Integration zur Laufzeit
+              <li>Frameworks frei wählbar pro Modul
+                <li>Artefakt der Gesamtanwendung wahrscheinlich groß
+        </ul>
+      </section>
+
+      <section style="background: url(img/mc-badge.png) no-repeat right top;">
+        <h3>Eigenständige Anwendungen in gemeinsamer Darstellung</h3>
+        <div class="fragment">
+          <img style="margin-bottom: 0" src="img/micro-components.png" height="350px">
+        </div>
+        <p style="clear: both" class="fragment">Jede Anwendung kann komplett eigenen Stack haben</p>
+        <p style="clear: both" class="fragment">Kommunikation über EventBus, Local Storage, direkte Listener oder gemeinsamer Zustand</p>
+      </section>
+
+      <section style="background: url(img/mc-badge.png) no-repeat right top;">
+        <h3>Prominentes Beispiel: Spotify</h3>
+        <img src="img/screenshot-spotify.png" height="450px">
+        <p>
+          <small>
+            <a href="https://www.quora.com/What-is-the-technology-stack-behind-the-Spotify-web-client/answer/Andreas-Blixt" target="_blank">https://www.quora.com/What-is-the-technology-stack-behind-the-Spotify-web-client/answer/Andreas-Blixt</a>
+            <br>
+            <a href="https://www.quora.com/How-are-Spotify-Web-Player-components-developed" target="_blank">https://www.quora.com/How-are-Spotify-Web-Player-components-developed</a>
+            <br>
+            <a href="https://www.reddit.com/r/reactjs/comments/5sgkro/til_spotify_is_using_reactredux_in_their_web_app/" target="_blank">https://www.reddit.com/r/reactjs/comments/5sgkro/til_spotify_is_using_reactredux_in_their_web_app/</a>
+          </small>
+        </p>
+
+      </section>
+
+      <section style="background: url(img/mc-badge.png) no-repeat right top;">
+        <video controls src="video/micro_frontend_spotify.mp4" type="video/mp4" height="600px"></video>
+        <p>
+          <small>überraschende UX Schwächen, Apps nur gleichzeitig dargestellt, aber nicht komplett integriert</small>
+        </p>
+      </section>
+
+      <section style="background: url(img/mc-badge.png) no-repeat right top;">
+        <h3>Beispiel: Technologie-Migration</h3>
+        <p>Angular (Übersicht) nach React (Spielfeld und Ticker), Kommunikation über Long Polling</p>
+        <img src="img/screenshot-sport1.jpg" height="400px">
+        <p>
+          <small>
+            <a href="http://www.sport1.de/fussball/bundesliga/live-ticker" target="_blank">
+              http://www.sport1.de/fussball/bundesliga/live-ticker
+            </a>
+          </small>
+        </p>
+      </section>
+
+      <section style="background: url(img/mc-badge.png) no-repeat right top;">
+        <h3>Wie stecken wir wieder zusammen?</h3>
+        <h2>Module im Browser zusammensetzen</h2>
+        <ul>
+          <li>HTML
+            <em>script</em> Tags und unterschiedliche Mount Points (wie bei Sport1)</li>
+          <li>Web Components</li>
+          <li>iFrames</li>
+        </ul>
+        <p>
+          <em>Achtung: Auf Ladezeiten achten, wenn jedes Modul sein eigenes Framework mitbringt</em>
+        </p>
+      </section>
+
+      <section style="background: url(img/mc-badge.png) no-repeat right top;">
+        <h3>Beispiel: Web Component ummantelt Modul</h3>
+        <p>Laden als JavaScript ES6 Modul, HTMLImport ist tot</p>
+        <!-- <p><a href="http://djcordhose.github.io/architecture/code/web-components/" target="_blank">Beispiel:</a></p> -->
+        <pre class="fragment"><code data-trim>
+import 'my-element';
+&lt;my-element greeting="Hello">&lt;/my-element>
+</code></pre>
+        <pre class="fragment"><code data-trim class="javascript">
+class MyElement extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'closed' });
+        // ...
+    }
+
+    connectedCallback() {
+        // render Angular / React component
+    }
+}
+customElements.define('my-element', MyElement);
+</code></pre>
+
+        <p class="fragment">Achtung! Keine komplette Isolation, funktioniert in der Praxis nicht gut mit beliebigem Framework</p>
+      </section>
+
+      <section style="background: url(img/mc-badge.png) no-repeat right top;">
+        <h3>iFrame</h3>
+        <p>Beispiel:
+          <a href="code/integration/" target="_blank">http://djcordhose.github.io/architecture/code/integration/</a>
+        </p>
+        <p>Lädt komplett isolierte Anwendung</p>
+        <pre><code data-trim>
+&lt;iframe height="300" width="500"
+    src="http://djcordhose.github.io/architecture/code/integration/iframe.html"
+    sandbox="allow-scripts allow-top-navigation allow-same-origin">&lt;/iframe>
+</code></pre>
+        <ul>
+          <li>Kein geteiltes Styling
+            <li>Einbetten mit richtiger Größe ein Albtraum
+              <li>Kommunikation mit Außenwelt lästig
+        </ul>
+      </section>
+
+      <section style="background: url(img/mc-badge.png) no-repeat right top;">
+        <h3 style="margin-bottom: 0">Globaler Event Bus</h3>
+        <img src="img/event-bus-mit-micro-components.png" height="400px" style="margin-top:0;margin-bottom:0" />
+        <p style="margin-bottom: 0">Komponenten publizieren und können sich auf Events registrieren</p>
+        <small>
+          <p style="margin-bottom: 0">Bedient Anforderungen:
+            <span class="highlight">Gleichzeitige, synchronisierte Darstellung mehrerer Module</span>
+
+          </p>
+          <p style="margin-top: 0">Herausforderung: Zustand über Events synchron halten</p>
+          <p>Beispiel:
+            <a href="https://github.com/postaljs/postal.js/ " target="_blank ">PostalJS</a>
+          </p>
+          <p>Alternative: Local Storage
+            </p>
+          </small>
+      </section>
+
+      <section class="step-subtitle ">
+        <h2>Bewertung</h2>
+      </section>
+
+      <section>
+        <h3>Ansätze sind nicht wechselseitig exklusiv</h3>
+        <ul>
+          <li class="fragment ">Seite einer
+            <span class="highlight ">Link</span>-App kann eine
+            <span class="highlight ">Micro Components</span> App sein
+            <li class="fragment ">Teil einer
+              <span class="highlight ">Micro Components</span> kann ein
+              <span class="highlight ">Majestic Modular Monolith</span> sein
+              <li class="fragment ">Seite einer
+                <span class="highlight ">Link</span>-App kann ein
+                <span class="highlight ">Majestic Modular Monolith</span> sein (Google Drive vs Google Docs)
+        </ul>
+      </section>
+
+      <section>
+        <h3>Urteil</h3>
+        <ul>
+          <li class="fragment ">
+            <span class="highlight ">Links</span>:
+            <strong>bester Entwicklungsprozess</strong>
+            <ul>
+              <li class="fragment ">beste Story für Modularisierung, Migration, Deployment</li>
+              <li class="fragment ">schwächste Integration von UI/UX</li>
+            </ul>
+          </li>
+          <li class="fragment ">
+            <span class="highlight ">Majestic Modular Monoliths</span>:
+            <strong>beste Erfahrung für den Nutzer</strong>
+            <ul>
+              <li class="fragment ">schwächste Story für unabhängige Teams</li>
+              <li class="fragment ">bestes und konsistentestes UX/UI, starke Stories für State Management und Universal Web Apps</li>
+            </ul>
+          </li>
+          <li class="fragment ">
+            <span class="highlight ">Micro Components</span>:
+            <strong>Kompromiss</strong>
+            <ul>
+              <li class="fragment ">Technik für Integration im Browser nicht wirklich überzeugend</li>
+              <li class="fragment ">UX/UI gut für Intranet oder Desktop</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>Vielen Dank!</h4>
+        <h3>Es gibt keine perfekte Architektur für jeden Satz von Anforderungen</h3>
+        <p>Du musst deine Anforderungen kennen und dabei ehrlich zu dir sein</p>
+        <p>
+          <a href="http://zeigermann.eu ">Oliver Zeigermann</a> /
+          <a href="http://twitter.com/djcordhose ">@DJCordhose</a> /
+          <a href="https://www.embarc.de/ ">embarc GmbH</a>
+        </p>
+        <p>
+          <a href="https://nilshartmann.net ">Nils Hartmann</a> /
+          <a href="http://twitter.com/nilshartmann ">@nilshartmann</a> /
+          <a href="https://eos-technology.solutions/ ">EOS TS</a>
+        </p>
+
+        <p>
+          <a href="https://bit.ly/enterjs-micro-frontends ">
+            https://bit.ly/enterjs-micro-frontends</a>
+        </p>
+        <small style="margin-top:60px">
+          Integration Patterns bei JavaScript Anwendungen (heise developer):
+          <br>
+          <a href="https://www.heise.de/developer/artikel/Integrations-Patterns-bei-JavaScript-Anwendungen-3970085.html?seite=all"
+            target="_blank">http://bit.ly/heise-js-integration-patterns
+          </a>
+        </small>
+      </section>
+
+
+      <section class="jax">
+        <h3>The Doctor is In
+        </h3>
+        <small>
+          <table>
+            <tr>
+              <th></th>
+              <th>Architektur</th>
+              <th>Mythos</th>
+              <th>UI / UX</th>
+            </tr>
+            <tr>
+              <th>20</th>
+              <td>Muss man für SPAs und Universal Apps JavaScript programmieren?</td>
+              <td>Warum soll man überhaupt JavaScript machen?
+              </td>
+              <td>Geht das nicht alles auch mit CSS?
+              </td>
+            </tr>
+            <tr>
+              <th>40</th>
+              <td>
+              </td>
+              <td>Widersprechen SPAs nicht der Grundidee es Webs?</td>
+              <td>Wie realisiert man komplexe UI-Komponenten (ala TreeGrid)?
+              </td>
+            </tr>
+            <tr>
+              <th>60</th>
+
+              <td>
+                <b>Risiko: Frage eurer Wahl</b>
+              </td>
+              <td>
+                <b>Risiko: Frage eurer Wahl</b>
+              </td>
+              <td>
+                <b>Risiko: Frage eurer Wahl</b>
+              </td>
+            </tr>
+            <tr>
+              <th>80</th>
+              <td>Wieso funktioniert für SPAs kein Schichtenmodell?
+              </td>
+              <td>Wie schneide ich Module? Geht das mit DDD Aggregate Root?
+              </td>
+              <td>Wann passt eine klassische Web-App besser als eine SPA?
+              </td>
+            </tr>
+            <tr>
+              <th>100</th>
+              <td></td>
+              <td>Was ist denn eigentlich mit Progressive Web Apps (PWA)?</td>
+              <td>Muss ich immer wählen zwischen Frontend-Monolithen oder UX Katastrophe?</td>
+            </tr>
+          </table>
+        </small>
+        <small>
+          <p>
+            <a href="http://zeigermann.eu ">Oliver Zeigermann</a> /
+            <a href="http://twitter.com/djcordhose ">@DJCordhose</a> /
+            <a href="https://www.embarc.de/ ">Embarc GmbH</a>
+          </p>
+          <p>
+            <a href="https://nilshartmann.net ">Nils Hartmann</a> /
+            <a href="http://twitter.com/nilshartmann ">@nilshartmann</a>
+          </p>
+          <p>
+            <a href="https://bit.ly/enterjs-micro-frontends ">
+              https://bit.ly/enterjs-micro-frontends</a>
+          </p>
+        </small>
+      </section>
+
+
+    </div>
+
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js "></script>
+  <script src="reveal.js/js/reveal.js "></script>
+  <script src="lib/jquery-2.2.4.js "></script>
+  <script>
+    // $('.weg').remove();
+    // uncomment for jax
+    $('.jax').remove();
+    if (window.location.hostname.indexOf('localhost') !== -1) {
+    } else {
+      // only applies to public version
+      $('.preparation').remove();
+      $('.todo').remove();
+      $('.local').remove();
+      $('.presenter').remove();
+
+    }
+    Reveal.addEventListener('ready', function (event) {
+      if (window.location.hostname.indexOf('localhost') !== -1) {
+        // only applies to presentation version
+        Reveal.configure({ controls: false });
+      } else {
+        // only applies to public version
+        $('.fragment').removeClass('fragment');
+      }
+      // applies to all versions
+      $('code').addClass('line-numbers');
+    });
+    // $('section').attr('data-background-image', "backgrounds/light-metal.jpg ");
+    // $('section').attr('data-background-image', "backgrounds/pink.jpg ");
+    $('section').attr('data-background-image', "backgrounds/white.jpg ");
+//    $('section').attr('data-background-image', "backgrounds/code.jpg ");
+  </script>
+
+  <script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      width: 1100,
+
+      transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+      // Optional reveal.js plugins
+      dependencies: [
+        {
+          src: 'reveal.js/lib/js/classList.js', condition: function () {
+            return !document.body.classList;
+          }
+        },
+        {
+          src: 'reveal.js/plugin/markdown/marked.js', condition: function () {
+            return !!document.querySelector('[data-markdown]');
+          }
+        },
+        {
+          src: 'reveal.js/plugin/markdown/markdown.js', condition: function () {
+            return !!document.querySelector('[data-markdown]');
+          }
+        },
+        {
+          src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+            return !!document.querySelector('pre code');
+          }, callback: function () {
+            hljs.initHighlightingOnLoad();
+          }
+        },
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+        { src: 'reveal.js/plugin/notes/notes.js', async: true },
+        { src: 'lib/js/line-numbers.js' }
+      ]
+    });
+
+  </script>
+
+</body>
+
+</html>
