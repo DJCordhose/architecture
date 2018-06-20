@@ -613,8 +613,11 @@ _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätz
             <li>
               <span class="highlight">PWA Push</span>: Erfordert Service Worker und Server
             </li>
-          </ul>
-          <p>Outlook Online verwendet alle drei Techniken</p>
+            <li>
+                <span class="highlight">Local Storage</span>: Ohne Server wenn in demselben Browser
+              </li>
+            </ul>
+          <p>Outlook Online verwendet alle drei Server basierten Techniken</p>
         </div>
       </section>
 
@@ -750,7 +753,7 @@ _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätz
           <img style="margin-bottom: 0" src="img/micro-components.png" height="350px">
         </div>
         <p style="clear: both" class="fragment">Jede Anwendung kann komplett eigenen Stack haben</p>
-        <p style="clear: both" class="fragment">Kommunikation über EventBus, direkte Listener oder gemeinsamer Zustand</p>
+        <p style="clear: both" class="fragment">Kommunikation über EventBus, Local Storage, direkte Listener oder gemeinsamer Zustand</p>
       </section>
 
       <section style="background: url(img/mc-badge.png) no-repeat right top;">
@@ -859,7 +862,9 @@ customElements.define('my-element', MyElement);
           <p>Beispiel:
             <a href="https://github.com/postaljs/postal.js/ " target="_blank ">PostalJS</a>
           </p>
-        </small>
+          <p>Alternative: Local Storage
+            </p>
+          </small>
       </section>
 
       <section class="step-subtitle ">
