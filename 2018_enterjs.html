@@ -332,7 +332,7 @@
         </p>
       </section>
 
-        <!-- <section>
+      <!-- <section>
         <img src="img/kickme.png">
 
         <p>
@@ -394,16 +394,16 @@
         </section>
  -->
 
- <section class="presenter">
-    <h1>Olli</h1>
-  </section>
+      <section class="presenter">
+        <h1>Olli</h1>
+      </section>
 
-  <section class="step-subtitle">
+      <section class="step-subtitle">
         <h3>Teil 2</h3>
         <h2>Lösungsansätze</h2>
       </section>
 
-            <!-- <section data-markdown>
+      <!-- <section data-markdown>
           <textarea data-template>
 ### Konsistente UI ist gekoppelt
 
@@ -414,9 +414,9 @@ https://twitter.com/dan_abramov/status/1008131488481730561
 </small>
               </textarea>
         </section> -->
-  
- <section data-markdown>
-    <textarea data-template>
+
+      <section data-markdown>
+        <textarea data-template>
 ### Wer auseinander reißt muss auch wieder zusammen setzen
 
 Die beiden zentralen Fragen?
@@ -426,7 +426,7 @@ Die beiden zentralen Fragen?
 
 _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätze_
         </textarea>
-  </section>
+      </section>
 
 
       <!-- <section>
@@ -617,8 +617,8 @@ _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätz
       </section>
 
       <section class="presenter">
-          <h1>Nils</h1>
-        </section>
+        <h1>Nils</h1>
+      </section>
 
       <section class="step-subtitle">
         <h3>Ansatz 2</h3>
@@ -627,12 +627,21 @@ _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätz
 
       <section style="background: url(img/mmm-badge.png) no-repeat right top;">
         <h3>Single Page Application</h3>
+        <img src="img/majest-modular-monolith.png" />
+      </section>
+
+      <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <h3>Single Page Application</h3>
         <img src="img/spa-build-deploy.png" />
         <p>Eine einzelne Single Page Application mit statischem Build</p>
         <ul>
-          <li>Jedes Team entwickelt eigenes Modul</li>
-          <li>Statischer Build integriert komplette Anwendung
-            <li>Deployment als Monolith
+          <li>Jedes Team entwickelt eigenes Modul
+            <ul>
+              <li style="font-size:80%">Module können per (In-House-) npm Registry veröffentlicht und ausgetauscht werden</li>
+            </ul>
+          </li>
+          <li class="fragment">Statischer Build integriert komplette Anwendung
+            <li class="fragment">Deployment als Monolith
 
         </ul>
       </section>
@@ -641,12 +650,16 @@ _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätz
       <section style="background: url(img/mmm-badge.png) no-repeat right top;">
         <h3>Single Page Application</h3>
         <ul>
-          <li>Zur Laufzeit Lazy-Loading möglich (Performance!)
-            <li>Anwendung nutzt
-              <span class="highlight">ein</span> Framework mit
-              <span class="highlight">einer</span> Version
-              <li>Gemeinsame allgemeine Bibliothek sinnvoll (Buttons, Menüs, Formulare etc.)
-                <li class="jax">Export einzelner spezieller Komponenten aus Teams möglich ("Fassaden")
+          <li>Zur Laufzeit Lazy-Loading möglich
+            <ul>
+              <li style="font-size:80%">Für schnelle erste Seitendarstellung</li>
+            </ul>
+          </li>
+          <li>Anwendung nutzt
+            <span class="highlight">ein</span> Framework mit
+            <span class="highlight">einer</span> Version
+            <li>Gemeinsame allgemeine Bibliothek sinnvoll (Buttons, Menüs, Formulare etc.)
+              <li class="jax">Export einzelner spezieller Komponenten aus Teams möglich ("Fassaden")
         </ul>
       </section>
 
@@ -660,10 +673,9 @@ _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätz
 
       <section style="background: url(img/mmm-badge.png) no-repeat right top;">
         <h3>Gemeinsame Anwendungen in gemeinsamer Darstellung</h3>
-        <div class="fragment">
-          <img src="sketch/module-gemeinsamer-state-v2.png" height="450px">
+        <div>
+          <img src="img/module-gemeinsamer-state.png" height="450px">
         </div>
-        <p style="clear: both" class="fragment">Server-Zugriff nur für Daten oder einmalig für Code</p>
       </section>
 
       <section style="background: url(img/mmm-badge.png) no-repeat right top;">
@@ -703,9 +715,7 @@ _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätz
               <a href="https://github.com/ngrx/store" target="_blank">https://github.com/ngrx/store</a>
             </li>
             <li>Vue:
-              <a href="https://github.com/vuejs/vuex" target="_blank">https://github.com/vuejs/vuex</a> /
-
-              <a href="https://github.com/revue/revue" target="_blank">https://github.com/revue/revue</a>
+              <a href="https://github.com/vuejs/vuex" target="_blank">https://github.com/vuejs/vuex</a>
               <li>Web Components (Polymer): Empfohlene Implementierung des
                 <em>Global Mediator Pattern</em>,
                 <a href="https://twitter.com/DJCordhose/status/899943415353311232" target="_blank">https://twitter.com/DJCordhose/status/899943415353311232</a>
@@ -714,8 +724,8 @@ _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätz
       </section>
 
       <section class="presenter">
-          <h1>Olli</h1>
-        </section>
+        <h1>Olli</h1>
+      </section>
 
       <section class="step-subtitle">
         <h3>Ansatz 3</h3>
@@ -910,7 +920,8 @@ customElements.define('my-element', MyElement);
         </p>
         <p>
           <a href="https://nilshartmann.net ">Nils Hartmann</a> /
-          <a href="http://twitter.com/nilshartmann ">@nilshartmann</a>
+          <a href="http://twitter.com/nilshartmann ">@nilshartmann</a> /
+          <a href="https://eos-technology.solutions/ ">EOS TS</a>
         </p>
 
         <p>
@@ -1048,6 +1059,7 @@ customElements.define('my-element', MyElement);
       progress: true,
       history: true,
       center: true,
+      width: 1100,
 
       transition: 'slide', // none/fade/slide/convex/concave/zoom
 
