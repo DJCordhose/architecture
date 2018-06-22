@@ -91,6 +91,18 @@ src="/code/integration/iframe.html"
         display(msg);
     };
 
+    window.onmessage = event => {
+        const msg = event.data;
+        console.log('App2 received event: ', msg);
+        display(msg);
+    };
+
+    window.addEventListener('storage', event => {
+        console.log('storage', event);
+        const msg = `local storage item ${event.key} changed to ${event.newValue}`; 
+        display(msg);
+    });
+
     document.cookie = 'name=123';
 
     console.log(typeof app2Func);

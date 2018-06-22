@@ -23,13 +23,18 @@
 <p>
     <button id="cookie">Show cookie from parent</button>
 </p>
+<p>
+    <button id="local-storage">Change Local Storage</button>
+</p>
 <div>
 </div>
 <script>
+    let cnt = 0;
     const btn = document.querySelector('button#post');
     const directBtn = document.querySelector('button#direct');
     const navBtn = document.querySelector('button#nav');
     const cookieBtn = document.querySelector('button#cookie');
+    const localStorageBtn = document.querySelector('button#local-storage');
     const dv =  document.querySelector('div');
 
     navBtn.addEventListener('click', () => {
@@ -39,6 +44,10 @@
         } catch (error) {
             display(error.toString());
         }
+    });
+
+    localStorageBtn.addEventListener('click', () => {
+        localStorage.setItem('from-cookie', cnt++);
     });
 
     cookieBtn.addEventListener('click', () => {

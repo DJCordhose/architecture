@@ -175,55 +175,19 @@
   <div class="reveal">
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
-      <!--         
-            Micro Frontends: JavaScript Integration Patterns
-            Gerade bei größeren und langlebigen Projekten hat es einen Reiz, das Frontend in kleinere Teile aufzuspalten. Jedes Team könnte dann einen Teil des UIs besitzen und möglichst autonom entwickeln. Potenziell sogar als komplette Vertikale zusammen mit den entsprechenden Teilen des Backends, die eventuell einem Microservices-Ansatz folgen.
-            
-            In diesem Vortrag werden wir die aus unserer Sicht zentralen Szenarien für Micro Frontends herausarbeiten. Wir gehen dabei auf verschiedene Varianten ein und schauen uns an, ob man das wirklich so umsetzen kann oder wo praktische Probleme liegen.
-            
-            Mit diesem Wissen ausgestattet begeben wir uns dann auf die Reise durch die Welt der Anforderungen.
-            
-            * Welche Architektur passt für deine Anforderungen? 
-            * Wo musst du Kompromisse eingehen? 
-            * Welche Anforderungen beißen sich mit anderen? 
-            
-            Wir wollen nicht zu viel verraten und es spannend halten, aber ein Königswegs ist weiterhin nicht in Sicht. 
-            
-            Vorkenntnisse:
-            * Grundsätzliches Wissen, wie Frontends in JavaScript programmiert werden (zum Beispiel mit React, Angular, Vue ...)
-            * Kenntnisse eines konkreten JavaScript-Frameworks sind nicht notwendig. 
-            
-            Lernziele:
-            * Welche unterschiedlichen Szenarien gibt es, ein Frontend in kleine Teile aufzuteilen?
-            * Welche Anforderungen werden mit den jeweiligen Szenarien erfüllt? Welche (neuen) Probleme ergeben sich daraus jeweils?
-            * Welche der Szenarien passt am besten zu meinem Projekt?
-             -->
-
-      <section class="presenter">
-        <h1>Nils</h1>
-      </section>
 
       <section>
         <h3 style="line-height: 1;margin:0">Micro Frontends:</h3>
         <h2>JavaScript Integration Patterns</h2>
-        <div style="margin-top: 60px">
-          <a href="https://www.enterjs.de/single?id=6446%C2%B5-frontends%3A-javascript-integration-patterns" target="_blank">
-            enterjs 2018</a>
-        </div>
         <div>
           <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
           <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
           <a href="https://www.embarc.de/ ">embarc GmbH</a>
         </div>
-        <div>
-          <a href="https://nilshartmann.net">Nils Hartmann</a> /
-          <a href="https://twitter.com/nilshartmann">@nilshartmann</a> /
-          <a href="https://eos-technology.solutions/ ">EOS TS</a>
-        </div>
         <p style="clear: both">
           <small>Folien:
-            <a href="https://bit.ly/enterjs-micro-frontends">
-              https://bit.ly/enterjs-micro-frontends</a>
+            <a href="http://djcordhose.github.io/architecture/2018_s.html">
+              http://djcordhose.github.io/architecture/2018_s.html</a>
           </small>
         </p>
       </section>
@@ -250,7 +214,7 @@
         <p>Logik muss nahe an Interaktion und Daten müssen nahe an Logik liegen</p>
       </section>
 
-      <section class="jax">
+      <section>
         <h2>SPA</h2>
         <p>verschieben daher Hauptteile eurer Anwendung in den Client</p>
         <img src="img/nils/webapp-architecture.png" style="max-width: 40%; float: left">
@@ -272,7 +236,7 @@
         <h2>Wartbarkeit und Skalierung im größeren Kontext ist nur durch Modularisierung erreichbar</h2>
       </section>
 
-      <section class="jax">
+      <section>
         <h3>Moderne Frontends...</h3>
         <ul>
           <li class="fragment">sollen aus einzelnen
@@ -351,7 +315,7 @@
         <h3>an Web-Anwendungen</h3>
       </section>
 
-      <section class="jax">
+      <section>
         <h4>Anforderungen</h4>
         <h3>UX, Konsistenz</h3>
         <ul>
@@ -395,10 +359,6 @@
             </a></small></p>
         </section>
  -->
-
-      <section class="presenter">
-        <h1>Olli</h1>
-      </section>
 
       <section class="step-subtitle">
         <h3>Teil 2</h3>
@@ -469,21 +429,6 @@ _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätz
             </a></small></p>
         </section> -->
 
-
-      <section class="jax">
-        <img src="img/frontend-katz-twitter.png" height="600px">
-
-        <p>
-          <small>
-            <a href="https://twitter.com/wycats" target="_blank">
-              @wycats
-            </a>:
-            <a href="https://twitter.com/wycats/status/930463710941872128" target="_blank">
-              https://twitter.com/wycats/status/930463710941872128
-            </a>
-          </small>
-        </p>
-      </section>
 
       <section>
         <h2>Architektur-Ansätze</h2>
@@ -621,10 +566,6 @@ _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätz
         </div>
       </section>
 
-      <section class="presenter">
-        <h1>Nils</h1>
-      </section>
-
       <section class="step-subtitle">
         <h3>Ansatz 2</h3>
         <h2>Majestic Modular Monoliths</h2>
@@ -664,7 +605,7 @@ _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätz
             <span class="highlight">ein</span> Framework mit
             <span class="highlight">einer</span> Version
             <li>Gemeinsame allgemeine Bibliothek sinnvoll (Buttons, Menüs, Formulare etc.)
-              <li class="jax">Export einzelner spezieller Komponenten aus Teams möglich ("Fassaden")
+              <li>Export einzelner spezieller Komponenten aus Teams möglich ("Fassaden")
         </ul>
       </section>
 
@@ -682,6 +623,130 @@ _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätz
           <img src="img/module-gemeinsamer-state.png" height="450px">
         </div>
       </section>
+
+      <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <h3>Architektur-Muster</h3>
+        <h2>Smart and Dumb Components</h2>
+        <h3>Heißt auch <em>Mediator Pattern</em></h3>
+    </section>
+
+    <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <h3>Smart Components / Container</h3>
+        <ul>
+            <li>Verwalten Teilzustand der Anwendung
+            <li>Reichen Teile des Zustands als unveränderliche Daten an Unterkomponente weiter
+            <li>Enthalten UI Logik, die sie als Callbacks an ihre Unterkomponenten weiter geben können
+            <li>Meist spezifisch für eine Domäne
+            <li>Nicht außerhalb der Domäne wiederverwendbar
+        </ul>
+    </section>
+
+    <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <h3>Dumb / Presentational Components</h3>
+        <ul>
+            <li>Managen höchstens transienten State
+            <li>enthalten keine Logik
+            <li>Unterkomponente sind meist selbst nur Dumb Components (es gibt
+                <a target="_blank" href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.z8xy5zvhs">
+                    Ausnahmen</a>)
+            <li>haben kein Wissen oder Abhängigkeit zu Oberkomponenten
+            <li>wiederverwendbar
+        </ul>
+    </section>
+
+    <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <img src="img/component-communication.png">
+        <p><small>
+            Copyright 2017, Nils Hartmann
+        </small></p>
+    </section>
+
+    <section data-markdown style="background: url(img/mmm-badge.png) no-repeat right top;">
+            <textarea data-template>
+## Code-Sample Angular
+
+<a href="code/spa/public/index.html" target="_blank">
+<img src="spa.png">
+</a>
+
+                </textarea>
+                </section>
+
+    <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <h2>Smart Component</h2>
+        <pre><code data-trim contenteditable>
+@Component({
+template: `&lt;sub [greeting]={{greeting}} (onSend)="sent($event)"></sub>`
+})
+export class AppComponent {
+  // component state
+  private greeting: string = 'Hiho';
+
+  // dependency injection
+  constructor(private greetingService: GreetingService) {
+  }
+
+  // "Business Logic" delegated to service
+  sent(greeting) {
+    this.greeting = this.greetingService.greetBack(greeting);
+  }
+}
+        </code></pre>
+        <pre><code data-trim contenteditable>
+ng generate service greeting
+            </code></pre>
+            <p><a target="_blank" href="https://angular.io/tutorial/toh-pt4">
+                https://angular.io/tutorial/toh-pt4</p>
+            </a></p>
+            </section>
+
+    <section style="background: url(img/mmm-badge.png) no-repeat right top;">
+        <h2>Dumb Component</h2>
+        <pre><code data-trim contenteditable>
+@Component({
+selector: 'sub',
+template: `
+<input [(ngModel)]="greeting">
+<p>{{greeting}}, World</p>
+<button (click)="send()">Send</button>
+`,
+})
+export class SubComponent {
+  @Input() greeting: string;
+
+  // rxjs observer
+  @Output() onSend = new EventEmitter();
+
+  // no business logic, just event emitting
+  send() {
+    this.onSend.emit(this.greeting);
+  }
+}
+        </code></pre>
+    </section>
+
+    <section style="font-size: xx-large" style="background: url(img/mmm-badge.png) no-repeat right top;">
+      <h2>Grenzen von Smart / Dumb</h2>
+      <p class="fragment"><em>Besonders bei wachsenden und langlebigen Anwendungen</em></p>
+      <ul>
+          <li class="fragment">Tendenz zu "Gottkomponenten": Zustand und Logik wandern langsam nach oben in eine einzige Komponente
+          <li class="fragment">Vermischung von Framework und UI-Logik (erschwert Austausch das Frameworks)
+          <li class="fragment">Verteilter, veränderlicher Zustand erschwert Wartbarkeit
+              <ul>
+                  <li>Zustand oft nicht klar zuzuordnen</li>
+                  <li>In welchem Zustand ist die Anwendung?
+              </ul>
+          </li>
+          <li class="fragment">Architektur immer noch unklar
+              <ul>
+                  <li>Wo ist Nebenläufigkeit erlaubt?
+                  <li>Wie läuft die Initialisierungsphase
+                  <li>Wie testet man die Business Logik?
+              </ul>
+          </li>
+      </ul>
+  </section>
+
 
       <section style="background: url(img/mmm-badge.png) no-repeat right top;">
         <h3>Wie stecken wir wieder zusammen?</h3>
@@ -726,10 +791,6 @@ _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätz
                 <a href="https://twitter.com/DJCordhose/status/899943415353311232" target="_blank">https://twitter.com/DJCordhose/status/899943415353311232</a>
                 <a href="https://tur-nr.github.io/polymer-redux/" target="_blank">https://tur-nr.github.io/polymer-redux/</a>
         </ul>
-      </section>
-
-      <section class="presenter">
-        <h1>Olli</h1>
       </section>
 
       <section class="step-subtitle">
@@ -915,111 +976,6 @@ customElements.define('my-element', MyElement);
           </li>
         </ul>
       </section>
-
-      <section>
-        <h4>Vielen Dank!</h4>
-        <h3>Es gibt keine perfekte Architektur für jeden Satz von Anforderungen</h3>
-        <p>Du musst deine Anforderungen kennen und dabei ehrlich zu dir sein</p>
-        <p>
-          <a href="http://zeigermann.eu ">Oliver Zeigermann</a> /
-          <a href="http://twitter.com/djcordhose ">@DJCordhose</a> /
-          <a href="https://www.embarc.de/ ">embarc GmbH</a>
-        </p>
-        <p>
-          <a href="https://nilshartmann.net ">Nils Hartmann</a> /
-          <a href="http://twitter.com/nilshartmann ">@nilshartmann</a> /
-          <a href="https://eos-technology.solutions/ ">EOS TS</a>
-        </p>
-
-        <p>
-          <a href="https://bit.ly/enterjs-micro-frontends ">
-            https://bit.ly/enterjs-micro-frontends</a>
-        </p>
-        <small style="margin-top:60px">
-          Integration Patterns bei JavaScript Anwendungen (heise developer):
-          <br>
-          <a href="https://www.heise.de/developer/artikel/Integrations-Patterns-bei-JavaScript-Anwendungen-3970085.html?seite=all"
-            target="_blank">http://bit.ly/heise-js-integration-patterns
-          </a>
-        </small>
-      </section>
-
-
-      <section class="jax">
-        <h3>The Doctor is In
-        </h3>
-        <small>
-          <table>
-            <tr>
-              <th></th>
-              <th>Architektur</th>
-              <th>Mythos</th>
-              <th>UI / UX</th>
-            </tr>
-            <tr>
-              <th>20</th>
-              <td>Muss man für SPAs und Universal Apps JavaScript programmieren?</td>
-              <td>Warum soll man überhaupt JavaScript machen?
-              </td>
-              <td>Geht das nicht alles auch mit CSS?
-              </td>
-            </tr>
-            <tr>
-              <th>40</th>
-              <td>
-              </td>
-              <td>Widersprechen SPAs nicht der Grundidee es Webs?</td>
-              <td>Wie realisiert man komplexe UI-Komponenten (ala TreeGrid)?
-              </td>
-            </tr>
-            <tr>
-              <th>60</th>
-
-              <td>
-                <b>Risiko: Frage eurer Wahl</b>
-              </td>
-              <td>
-                <b>Risiko: Frage eurer Wahl</b>
-              </td>
-              <td>
-                <b>Risiko: Frage eurer Wahl</b>
-              </td>
-            </tr>
-            <tr>
-              <th>80</th>
-              <td>Wieso funktioniert für SPAs kein Schichtenmodell?
-              </td>
-              <td>Wie schneide ich Module? Geht das mit DDD Aggregate Root?
-              </td>
-              <td>Wann passt eine klassische Web-App besser als eine SPA?
-              </td>
-            </tr>
-            <tr>
-              <th>100</th>
-              <td></td>
-              <td>Was ist denn eigentlich mit Progressive Web Apps (PWA)?</td>
-              <td>Muss ich immer wählen zwischen Frontend-Monolithen oder UX Katastrophe?</td>
-            </tr>
-          </table>
-        </small>
-        <small>
-          <p>
-            <a href="http://zeigermann.eu ">Oliver Zeigermann</a> /
-            <a href="http://twitter.com/djcordhose ">@DJCordhose</a> /
-            <a href="https://www.embarc.de/ ">Embarc GmbH</a>
-          </p>
-          <p>
-            <a href="https://nilshartmann.net ">Nils Hartmann</a> /
-            <a href="http://twitter.com/nilshartmann ">@nilshartmann</a>
-          </p>
-          <p>
-            <a href="https://bit.ly/enterjs-micro-frontends ">
-              https://bit.ly/enterjs-micro-frontends</a>
-          </p>
-        </small>
-      </section>
-
-
     </div>
 
   </div>
