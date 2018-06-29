@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  beers = ['astra', 'holsten', 'jever', 'ratsherren'];
+
+  update(title: string) {
+    console.log(title);
+    this.title = title;
+  }
 }
