@@ -21,6 +21,9 @@ export function counterReducer(state: number = 0, action: Action) {
     case RESET:
       return 0;
 
+    case FAILED:
+      return -1;
+
     default:
       return state;
   }

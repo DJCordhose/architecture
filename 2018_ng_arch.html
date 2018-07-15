@@ -176,6 +176,19 @@
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
 
+        <section data-markdown class="preparation">
+            <textarea data-template>
+### Preparation
+* Start Data Server
+  * cd code\server
+  * yarn dev
+* Start Angular Sample App
+  * cd code\ng\ng-sandbox
+  * ng serve
+
+        </textarea>
+    </section>
+
       <section>
         <h2>Architecture with Angular</h2>
         <div>
@@ -198,10 +211,6 @@
   - alles noch mal durchgucken, macht das so Sinn?
   - Altair durchprobieren
 
-- ngrx/store
-- ngrx/effets
-- links, router
-
 - Auf der Rückfahrt, Präsentation für Tallinn bauen
             </textarea>
       </section>
@@ -217,7 +226,6 @@
               <li class="fragment"  >Each interaction repeats this round-trip
           </ul>
       </section>
-
 
       <section>
         <h2>SPAs</h2>
@@ -662,6 +670,21 @@ export class ButtonComponent {
   </textarea>
       </section>
   
+      <section data-markdown>
+          <textarea data-template>
+### Demo
+* Redux Tools
+* Backend Calls
+* Routing
+  * http://localhost:4200/root
+  * http://localhost:4200/counter
+* Extract Parameters from URL: http://localhost:4200/counter/100  
+
+http://localhost:4200/
+            </textarea>
+          </section>
+    
+
   <!-- <section data-markdown style="font-size: xx-large">
           <textarea data-template>
   ### Alternative for @ngrx/store
@@ -672,28 +695,104 @@ export class ButtonComponent {
   </textarea>
   </section>
    -->
-  
-      <section data-markdown class="todo">
-          <textarea data-template>
-  ### Code for all parts of Redux using ngrx/store
-              </textarea>
-        </section>
-  
 
-      <section>
-          <h2>Different Types of State</h2>
-          <img src="img/three-kinds-of-state.png">
-      </section>
+   <section>
+<h3>Reducer</h3>
+<pre><code data-trim contenteditable class="javascript">
+export function counterReducer(state: number = 0, action: Action) {
+  switch (action.type) {
+    case INCREMENT:
+      return state + 1;
 
-      <section data-markdown class="todo">
-          <textarea data-template>
-  ### Communication with Server
-  * Write Server
-  * do direct http returning rxjs
-  * show usage of Effects
-  * which is better?
-              </textarea>
-        </section>
+    case DECREMENT:
+      return state - 1;
+
+    case RESET:
+      return 0;
+
+    default:
+      return state;
+  }
+}
+</code></pre>
+<pre><code data-trim contenteditable class="javascript">
+import { NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './counter';
+
+@NgModule({
+  imports: [StoreModule.forRoot({ count: counterReducer })],
+})
+export class AppModule {}    
+</code></pre>
+</section>
+
+   <section>
+<h3>Connection to Store</h3>
+<pre><code data-trim contenteditable class="javascript">
+
+interface AppState {
+  count: number;
+}
+
+@Component({
+  template: `<div>Current Count: {{ count$ | async }}</div>`
+})
+export class CounterComponent {
+
+  count$: Observable<number>;
+
+  constructor(private store: Store<AppState>) {
+    this.count$ = store.pipe(select('count'));
+  }
+
+  reset() {
+    this.store.dispatch({ type: RESET });
+  }
+
+}
+</code></pre>
+</section>
+
+<section>
+    <h2>Different Types of State</h2>
+    <img src="img/three-kinds-of-state.png">
+</section>
+
+
+   <section>
+<h3>@ngrx/effects</h3>
+<pre><code data-trim contenteditable class="javascript">
+@Injectable()
+export class RemoteEffects {
+  constructor(private greetingService: GreetingService, private actions$: Actions) {}
+
+  @Effect()
+  login$: Observable<Action> = this.actions$.pipe(
+    ofType('LOAD'),
+    mergeMap(action => this.greetingService.requestGreeting('huhu').pipe(
+      // If successful, dispatch success action with result
+      map(data => ({ type: 'SET', payload: data.message.length })),
+      // If request fails, dispatch failed action
+      catchError(() => of({ type: 'FAILED'}))
+    ))
+  );
+}
+</code></pre>
+<pre><code data-trim contenteditable class="javascript">
+import { EffectsModule } from '@ngrx/effects';
+import { RemoteEffects } from './ngrx-sandbox/remote.effects';
+
+@NgModule({
+  imports: [EffectsModule.forRoot([RemoteEffects])],
+})
+export class AppModule {}    
+    </code></pre>
+    <small>
+<a href='https://github.com/ngrx/platform/blob/master/docs/effects/README.md'>https://github.com/ngrx/platform/blob/master/docs/effects/README.md</a>
+</small>
+</textarea>
+</section>
 
       <section>
           <h3>Is anyone really using this?</h3>
@@ -732,7 +831,7 @@ export class ButtonComponent {
 
         </section>
 
-        <section data-markdown class="todo">
+        <section data-markdown>
             <textarea data-template>
 ## Splitting application into Modules
 * For a shared component library?
