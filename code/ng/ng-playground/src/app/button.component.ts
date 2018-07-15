@@ -4,7 +4,7 @@ import {NavigationService, Menues} from './navigation.service';
 
 @Component({
   selector: 'app-button',
-  template: `<button (click)='doClick()'>{{title}}</button>`
+  template: `<button (click)='send.emit()'>{{title}}</button>`
 })
 export class ButtonComponent {
   @Input() private title = '';

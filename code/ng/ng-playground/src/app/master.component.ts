@@ -7,7 +7,7 @@ import {NavigationService, Menues} from './navigation.service';
   template: `<app-title [titles]='titles'>
   <h1>{{title}}</h1>
 </app-title>
-<app-button (send)='buttonSend()' title='Suchen'></app-button>
+<app-button (send)='send.emit()' title='Suchen'></app-button>
 
 `
 })
@@ -17,9 +17,9 @@ export class MasterComponent {
 
   @Output() send = new EventEmitter();
 
-  private buttonSend() {
+  // private buttonSend() {
 
-    this.send.emit();
-  }
+  //   this.send.emit();
+  // }
 
 }
