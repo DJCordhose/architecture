@@ -193,11 +193,16 @@
 
       <section data-markdown class="todo">
         <textarea data-template>
-- im Blueprint nachziehen
-- server communication
-- links, router
+- Montag auf der Fahrt
+  - Ahanhd der Folien im Blueprint nachziehen
+  - alles noch mal durchgucken, macht das so Sinn?
+  - Altair durchprobieren
+
 - ngrx/store
 - ngrx/effets
+- links, router
+
+- Auf der Rückfahrt, Präsentation für Tallinn bauen
             </textarea>
       </section>
 
@@ -351,6 +356,8 @@ app.listen(3000, function() {
     </code></pre>
     <pre><code data-trim contenteditable>
 node server.js
+// restarts with every change
+nodemon server.js
       </code></pre>
 </section>
 
@@ -518,7 +525,7 @@ export class SubComponent {
             </section>
 
     <section>
-        <h3>Code Sample: Intermediate Component</h3>
+        <h3>Code Sample: Intermediate Dumb Component</h3>
         <pre><code data-trim contenteditable>
 @Component({
   selector: 'app-container',
@@ -539,7 +546,7 @@ export class Container {
     // } 
 }
         </code></pre>
-        <p>Usage</p>
+        <p>Usage from Smart Component</p>
         <pre><code data-trim contenteditable>
 <app-container [titles]='titles' (send)='clicked()'></app-container>
             </code></pre>
