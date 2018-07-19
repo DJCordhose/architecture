@@ -198,27 +198,10 @@
         </div>
         <p style="clear: both">
           <small>Slides:
-            <a href="http://djcordhose.github.io/architecture/2018_ng_arch.html">
-              http://djcordhose.github.io/architecture/2018_ng_arch.html</a>
+            <a href="http://djcordhose.github.io/architecture/2018_ng_arch_s.html">
+              http://djcordhose.github.io/architecture/2018_ng_arch_s.html</a>
           </small>
         </p>
-      </section>
-
-      <section data-markdown class="todo">
-        <textarea data-template>
-- Matrial UI Angular anatomy
-
-- Montag auf der Fahrt
-  - Ahanhd der Folien im Blueprint nachziehen
-  - alles noch mal durchgucken, macht das so Sinn?
-  - Altair durchprobieren
-
-- Auf der Rückfahrt 
-  * Präsentation für Tallinn bauen
-    * Aus dem hier und was wir für JavaZone gemacht haben (wegen passender Beschreibung und Englisch)
-      * https://github.com/DJCordhose/react-workshop/blob/master/2017_javazone.html
-  * Erfahrung des  dataviz Talks in den data2day Workshop einbauen
-            </textarea>
       </section>
 
       <section>
@@ -257,7 +240,7 @@ React is no. 1, Angular is still important, especially in the field of enterpris
         </textarea>
     </section>
 
-    <section data-markdown>
+    <!-- <section data-markdown>
       <textarea data-template>
 ### Creating a TypeScript based SPA with React
 
@@ -280,11 +263,11 @@ https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter
 * npm install -g @angular/cli
 
     </textarea>
-    </section>
+  </section> -->
 
     <section data-markdown>
       <textarea data-template>
-### Creating a new application
+### Creating an SPA with Angular 6
 
 https://angular.io/guide/quickstart
 
@@ -339,12 +322,13 @@ https://angular.io/guide/template-syntax
     <textarea data-template>
 ### Services / Remote calls / Observables vs Promises
 
-* ng generate service greeting
+* https://github.com/angular/angular-cli
 
-https://github.com/angular/angular-cli
-https://angular.io/guide/http
-https://angular.io/guide/observables-in-angular#http
-https://medium.com/@benlesh/rxjs-observable-interop-with-promises-and-async-await-bebb05306875
+* https://angular.io/guide/http
+
+* https://angular.io/guide/observables-in-angular#http
+
+* https://medium.com/@benlesh/rxjs-observable-interop-with-promises-and-async-await-bebb05306875
 </textarea>
 </section>
 
@@ -818,7 +802,7 @@ export class AppModule {}
                   <li>Central and immutable state: store
                           <li>Only reducers are allowed to modify state
                                   <li>State moves from Smart Components to store
-                  <li>UI logic moves from Smart Components in Action-Creators and Reducer
+                  <li>UI logic moves from Smart Components in Action-Creators / Services and Reducer
                   <li>Asynchronous code only in Action-Creators / Services or Effects
                   <li>Initializing of the app with central action
           </ul>
@@ -837,84 +821,7 @@ export class AppModule {}
 
         </section>
 
-        <section data-markdown>
-            <textarea data-template>
-## Splitting application into Modules
-* For a shared component library?
-* To develop as single modules and later comine into a deployment monolith?
-        </textarea>
-        </section>
-    
-    
-<section data-markdown>
-        <textarea data-template>
-### Modules
-
-* ng generate module ngrx-sandbox --module=app
-* cd ngrx-sandbox
-* ng generate component counter
-* <pre><code>exports: [CounterComponent]</code></pre>
-
-https://github.com/angular/angular-cli
-https://angular.io/guide/ngmodules
-https://angular.io/guide/sharing-ngmodules
-https://angular.io/guide/frequent-ngmodules
-https://angular.io/guide/feature-modules
-https://angular.io/guide/module-types
-    </textarea>
-    </section>
-
-    <section data-markdown>
-        <textarea data-template>
-### Router, Links
-
-* ng generate module app-routing --flat --module=app
-
-https://github.com/angular/angular-cli
-https://angular.io/tutorial/toh-pt5
-https://angular.io/guide/router
-    </textarea>
-    </section>
-
-    <section data-markdown class="todo">
-        <textarea data-template>
-## Using a component library?
-
-* How many levels of freedom do we need?
-* What browsers are targetted?
-* Do we need data tables?
-
-    </textarea>
-    </section>
-
-    <section data-markdown class="todo">
-            <textarea data-template>
-### Adding Material Design
-* ng add @angular/material
-* yarn
-* ng generate @angular/material:material-dashboard --name=my-dashboard
-
-https://material.angular.io/
-
-https://github.com/angular/material2
-
-https://blog.angular.io/version-6-of-angular-now-available-cc56b0efa7a4
-        </textarea>
-        </section>
-
-        <section data-markdown class="todo">
-            <textarea data-template>
-### Anatomy of Angular Material
-
-  * Angular Material supports the most recent two versions of all major browsers: Chrome (including Android), Firefox, Safari (including iOS), and IE11 / Edge
-      </textarea>
-    </section>
-
-    <section data-markdown class="todo">
-        <textarea data-template>
-https://ng-bootstrap.github.io/#/home
-</textarea>
-</section>
+        
 
     </div>
 
