@@ -200,7 +200,7 @@
 
       <section data-markdown class="todo">
           <textarea data-template>
-* Anatomy of Angular Material
+* Organisational Topics
           </textarea>
           </section>
 
@@ -267,36 +267,13 @@ https://angular.io/guide/module-types
     </textarea>
     </section>
 
-    <section data-markdown class="todo">
-            <textarea data-template>
-### Adding Material Design
-* ng add @angular/material
-* yarn
-* ng generate @angular/material:material-dashboard --name=my-dashboard
-
-https://material.angular.io/
-
-https://github.com/angular/material2
-
-https://blog.angular.io/version-6-of-angular-now-available-cc56b0efa7a4
-        </textarea>
-        </section>
-
-        <section data-markdown class="todo">
-            <textarea data-template>
-### Anatomy of Angular Material
-
-  * Angular Material supports the most recent two versions of all major browsers: Chrome (including Android), Firefox, Safari (including iOS), and IE11 / Edge
-      </textarea>
-    </section>
-
     <section data-markdown>
         <textarea data-template>
 ### Ng Bootstrap
 
 * Based on Bootstrap 4
 * Only uses Bootstrap CSS
-* No usage of jQuery
+* No additional dependencies
 
 Links
 * Bootstrap 4: https://getbootstrap.com/
@@ -359,6 +336,7 @@ https://ng-bootstrap.github.io/#/components/datepicker/examples
 
 * using ordinary HTML elements (e.g. _div_ for container, _button_ for something that reacts to a click)
 * styling using CSS classes
+* No usage of jQuery and Bootstrap plugin
 * directives are used to attach behavior to native DOM elements 
 (<a href='https://github.com/ng-bootstrap/ng-bootstrap/blob/master/src/dropdown/dropdown.ts'>ngbDropdown, ngbDropdownMenu, ngbDropdownToggle</a>)
 * special angular components only when needed 
@@ -388,6 +366,123 @@ Links
 
 </textarea>
 </section>
+
+<section data-markdown>
+    <textarea data-template>
+### Material Design
+* ng add @angular/material
+* yarn
+* ng generate @angular/material:material-dashboard --name=my-dashboard
+* ng generate @angular/material:material-nav --name=my-nav
+* ng generate @angular/material:material-table --name=my-tabl
+
+
+Links
+* https://material.angular.io/
+* https://github.com/angular/material2
+* https://blog.angular.io/version-6-of-angular-now-available-cc56b0efa7a4
+* Gesture Support via http://hammerjs.github.io/
+* Animations via https://angular.io/guide/animations
+</textarea>
+</section>
+
+<section>
+<h3>Example: Date Picker</h3>
+
+<img src='img/material/datepicker.png' height="200px">
+
+<pre><code data-trim contenteditable class="html">
+<mat-form-field>
+  &lt;input matInput [matDatepicker]="picker" [(ngModel)]="model">
+  &lt;mat-datepicker-toggle matSuffix [for]="picker">&lt;/mat-datepicker-toggle>
+  &lt;mat-datepicker #picker>&lt;/mat-datepicker>
+</mat-form-field>
+</code></pre>
+<small>
+https://material.angular.io/components/datepicker/overview
+
+https://github.com/angular/material2/blob/master/src/lib/datepicker/datepicker.ts
+</small>
+</section>
+
+<section>
+<h3>Example: Grid List</h3>
+
+<img src='img/material/grid-list.png' height="200px">
+
+<pre><code data-trim contenteditable class="html">
+<mat-grid-list cols="4">
+  &lt;mat-grid-tile
+      *ngFor="let tile of tiles"
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows"
+      [style.background]="tile.color">
+    {{tile.text}}
+    &lt;/mat-grid-tile>
+</mat-grid-list>
+</code></pre>
+<small>
+  https://material.angular.io/components/grid-list/examples
+</small>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Anatomy of Angular Material
+
+* layout elements as components (grid-list, cards, tabs, simple tree, navigation, toolbar)
+* directives for material-like buttons and inputs
+* <a href='https://material.angular.io/components/input/overview'>input elements</a> need the 
+<a href='https://github.com/angular/material2/blob/master/src/lib/input/input.ts'>matInput directive</a> to work as a 
+<a href='https://material.angular.io/components/form-field/overview'>material form field</a> 
+* other input elemenets as components (select, option, radio, checkbox)
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Material CDK: _A Component Dev Kit for Angular_
+
+Basis to create components, used for material components
+
+Contains
+* behaviors
+  * break points
+  * positioning (overlay)
+  * reacting to scroll events
+* components 
+  * simple table
+  * basic tree
+
+<small>
+https://material.angular.io/cdk
+
+https://blog.angular.io/a-component-dev-kit-for-angular-9f06e3b4b3b4
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Verdict
+
+#### both
+* only contain basic components
+* lack data grid / table, complex tree
+* can be themed 
+* make use of Angular conectpes (components, directives, pipes)
+
+#### angular material
+* many abstractions, concepts
+* high cognitive load
+
+#### ng Bootstrap
+* often just needs a class
+* close to pure bootstrap mindset
+      </textarea>
+    </section>
+    
 
 
 
