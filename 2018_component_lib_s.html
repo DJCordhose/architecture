@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Component Libraries with Angular</title>
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <!--<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">-->
+  <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
+  <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
+  <!--<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">-->
+  <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+  <style>
+    /*pre code {*/
+
+    /*display: block;*/
+
+    /*padding: 0.5em;*/
+
+    /*background: #FFFFFF !important;*/
+
+    /*color: #000000 !important;*/
+
+    /*}*/
+
+    .right-img {
+      margin-left: 10px !important;
+      float: right;
+      height: 500px;
+    }
+
+    .weg:before {
+      content: 'Streichen?';
+    }
+
+    .weg {
+      color: red !important;
+    }
+
+    .presenter h1 {
+      color: rgb(255, 0, 234) !important;
+    }
+
+    .todo:before {
+      content: 'TODO: ';
+    }
+
+    .todo {
+      color: red !important;
+    }
+
+    code span.line-number {
+      color: lightcoral;
+    }
+
+    .reveal pre code {
+      max-height: 1000px !important;
+    }
+
+    img {
+      border: 0 !important;
+      box-shadow: 0 0 0 0 !important;
+    }
+
+    .reveal {
+      -ms-touch-action: auto !important;
+      touch-action: auto !important;
+    }
+
+    .reveal h2,
+    .reveal h3,
+    .reveal h4 {
+      letter-spacing: 2px;
+      font-family: 'Amiri', serif;
+      /* font-family: 'Times New Roman', Times, serif; */
+      font-weight: bold;
+      font-style: italic;
+      letter-spacing: -2px;
+      text-transform: none !important;
+    }
+
+    .reveal em {
+      font-weight: bold;
+    }
+
+    .reveal .step-subtitle h1 {
+      letter-spacing: 1px;
+    }
+
+    .reveal .step-subtitle h2,
+    .reveal .step-subtitle h3 {
+      text-transform: none;
+
+      font-weight: normal;
+      /* font-weight: 400; */
+      /* font-family: 'Amiri', serif; */
+      font-family: 'Lobster', serif;
+      letter-spacing: 1px;
+      color: #2aa198;
+      /* text-decoration: underline; */
+    }
+
+    .reveal .step-subtitle h3 {
+      text-decoration: underline;
+      font-style: normal
+    }
+
+    /* .reveal .step-subtitle h2 {
+      font-style: italic;
+    } */
+
+    .reveal .front-page h1,
+    .reveal .front-page h2 {
+      font-family: "League Gothic";
+      font-style: normal;
+      text-transform: uppercase !important;
+      letter-spacing: 1px;
+    }
+
+    .reveal .front-page h1 {
+      font-size: 2.5em !important;
+    }
+
+    .reveal .highlight {
+      /* #D3337B;*/
+      color: #268bd2;
+    }
+
+    .reveal section img {
+      background: none;
+    }
+
+    .reveal img.with-border {
+      border: 1px solid #586e75 !important;
+      box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .reveal li {
+      margin-bottom: 8px;
+    }
+
+    /* For li's that use FontAwesome icons as bullet-point */
+
+    .reveal ul.fa-ul li {
+      list-style-type: none;
+    }
+  </style>
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+
+  <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+        <!-- <section data-markdown class="preparation">
+            <textarea data-template>
+### Preparation
+
+        </textarea>
+    </section> -->
+
+      <section>
+        <h2>Component Libraries with Angular</h2>
+        <div>
+          <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
+          <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
+          <a href="https://www.embarc.de/ ">embarc GmbH</a>
+        </div>
+        <p style="clear: both">
+          <small>Slides:
+            <a href="http://djcordhose.github.io/architecture/2018_component_lib_s.html">
+              http://djcordhose.github.io/architecture/2018_component_lib_s.html</a>
+          </small>
+        </p>
+      </section>
+
+      <section data-markdown class="todo">
+          <textarea data-template>
+* Anatomy of Angular Material
+          </textarea>
+          </section>
+
+      <section data-markdown class="todo">
+          <textarea data-template>
+# Organisational Topics
+
+* LifeCycle of a component
+* 
+
+Organisational Topics
+Birth
+Decision for Common Component
+Life
+Maintainer
+How to changing/conflicting requirements?
+Death
+How to a phase a common component?
+
+            </textarea>
+            </section>
+
+
+        <section data-markdown>
+            <textarea data-template>
+## Splitting application into Angular Modules
+* For a shared component library?
+* To develop as single modules and later comine into a deployment monolith?
+        </textarea>
+        </section>
+    
+        <section data-markdown>
+            <textarea data-template>
+  # Technical
+              </textarea>
+              </section>
+      
+<section data-markdown>
+        <textarea data-template>
+### Modules
+
+* ng generate module ngrx-sandbox --module=app
+* cd ngrx-sandbox
+* ng generate component counter
+* <pre><code>exports: [CounterComponent]</code></pre>
+
+https://github.com/angular/angular-cli
+https://angular.io/guide/ngmodules
+https://angular.io/guide/sharing-ngmodules
+https://angular.io/guide/frequent-ngmodules
+https://angular.io/guide/feature-modules
+https://angular.io/guide/module-types
+    </textarea>
+    </section>
+
+    <section data-markdown class="todo">
+        <textarea data-template>
+## Using a component library?
+
+* How many levels of freedom do we need?
+* What browsers are targetted?
+* Do we need data tables?
+
+    </textarea>
+    </section>
+
+    <section data-markdown class="todo">
+            <textarea data-template>
+### Adding Material Design
+* ng add @angular/material
+* yarn
+* ng generate @angular/material:material-dashboard --name=my-dashboard
+
+https://material.angular.io/
+
+https://github.com/angular/material2
+
+https://blog.angular.io/version-6-of-angular-now-available-cc56b0efa7a4
+        </textarea>
+        </section>
+
+        <section data-markdown class="todo">
+            <textarea data-template>
+### Anatomy of Angular Material
+
+  * Angular Material supports the most recent two versions of all major browsers: Chrome (including Android), Firefox, Safari (including iOS), and IE11 / Edge
+      </textarea>
+    </section>
+
+    <section data-markdown>
+        <textarea data-template>
+### Ng Bootstrap
+
+* Based on Bootstrap 4
+* Only uses Bootstrap CSS
+* No usage of jQuery
+
+Links
+* Bootstrap 4: https://getbootstrap.com/
+* Ng Bootstrap: https://ng-bootstrap.github.io/
+* Code: https://github.com/ng-bootstrap/ng-bootstrap
+* Getting stared: https://ng-bootstrap.github.io/#/getting-started
+</textarea>
+</section>
+
+<section>
+<h3>Example: Dropdown</h3>
+<img src='img/ng-bootstrap/dropdown.png' height="200px">
+
+<pre><code data-trim contenteditable class="html">
+&lt;div ngbDropdown class="d-inline-block">
+  &lt;button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+    Toggle dropdown
+  &lt;/button>
+  &lt;div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+    <button class="dropdown-item">Action - 1</button>
+    <button class="dropdown-item">Another Action</button>
+    <button class="dropdown-item">Something else is here</button>
+  &lt;/div>
+&lt;/div>
+</code>
+</pre>
+<small>
+https://ng-bootstrap.github.io/#/components/dropdown/examples
+</small>
+</section>
+
+<section>
+<h3>Example: Date Picker</h3>
+
+<small>
+Not present in original Bootstrap
+</small>
+<br>
+
+<img src='img/ng-bootstrap/date-picker.png' height="200px">
+
+<pre><code data-trim contenteditable class="html">
+&lt;ngb-datepicker [(ngModel)]="model">&lt;/ngb-datepicker>
+</code></pre>
+<pre><code data-trim contenteditable class="javascript">
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+
+class NgbdDatepickerDemo {
+  model: NgbDateStruct;
+}
+</code></pre>
+<small>
+https://ng-bootstrap.github.io/#/components/datepicker/examples
+</small>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Anatomy of Ng Bootstrap
+
+* using ordinary HTML elements (e.g. _div_ for container, _button_ for something that reacts to a click)
+* styling using CSS classes
+* directives are used to attach behavior to native DOM elements 
+(<a href='https://github.com/ng-bootstrap/ng-bootstrap/blob/master/src/dropdown/dropdown.ts'>ngbDropdown, ngbDropdownMenu, ngbDropdownToggle</a>)
+* special angular components only when needed 
+(<a href='https://github.com/ng-bootstrap/ng-bootstrap/blob/master/src/datepicker/datepicker.ts'>ngb-datepicker</a>)
+
+<small>
+https://angular.io/api/core/Directive
+<br>
+<a href='https://medium.com/@tkssharma/understanding-viewchildren-viewchild-contentchildren-and-contentchild-b16c9e0358e'>
+Understanding @ViewChildren, @ViewChild, @ContentChildren and @ContentChild</a>
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### ng Bootstrap Modules
+
+* Exports one module per component
+* Type: Widget feature module
+
+Links
+* Basics: https://angular.io/guide/ngmodules
+* How to share in module: https://angular.io/guide/sharing-ngmodules
+* Types of modules: https://angular.io/guide/module-types
+* Example Module: https://github.com/ng-bootstrap/ng-bootstrap/blob/master/src/dropdown/dropdown.module.ts
+
+</textarea>
+</section>
+
+
+
+    </div>
+
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js "></script>
+  <script src="reveal.js/js/reveal.js "></script>
+  <script src="lib/jquery-2.2.4.js "></script>
+  <script>
+    // $('.weg').remove();
+    // uncomment for jax
+    $('.jax').remove();
+    if (window.location.hostname.indexOf('localhost') !== -1) {
+    } else {
+      // only applies to public version
+      $('.preparation').remove();
+      $('.todo').remove();
+      $('.local').remove();
+      $('.presenter').remove();
+
+    }
+    Reveal.addEventListener('ready', function (event) {
+      if (window.location.hostname.indexOf('localhost') !== -1) {
+        // only applies to presentation version
+        Reveal.configure({ controls: false });
+      } else {
+        // only applies to public version
+        $('.fragment').removeClass('fragment');
+      }
+      // applies to all versions
+      $('code').addClass('line-numbers');
+    });
+    // $('section').attr('data-background-image', "backgrounds/light-metal.jpg ");
+    // $('section').attr('data-background-image', "backgrounds/pink.jpg ");
+    $('section').attr('data-background-image', "backgrounds/white.jpg ");
+//    $('section').attr('data-background-image', "backgrounds/code.jpg ");
+  </script>
+
+  <script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      width: 1100,
+
+      transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+      // Optional reveal.js plugins
+      dependencies: [
+        {
+          src: 'reveal.js/lib/js/classList.js', condition: function () {
+            return !document.body.classList;
+          }
+        },
+        {
+          src: 'reveal.js/plugin/markdown/marked.js', condition: function () {
+            return !!document.querySelector('[data-markdown]');
+          }
+        },
+        {
+          src: 'reveal.js/plugin/markdown/markdown.js', condition: function () {
+            return !!document.querySelector('[data-markdown]');
+          }
+        },
+        {
+          src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+            return !!document.querySelector('pre code');
+          }, callback: function () {
+            hljs.initHighlightingOnLoad();
+          }
+        },
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+        { src: 'reveal.js/plugin/notes/notes.js', async: true },
+        { src: 'lib/js/line-numbers.js' }
+      ]
+    });
+
+  </script>
+
+</body>
+
+</html>
