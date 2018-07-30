@@ -12,4 +12,7 @@
   <p>
   <span *ngFor='let beer of beers; let isLast=last'>{{beer}}{{!isLast ? ',': null}} </span>
 </p>
+<p>Greeting from sever: {{greeting}}</p>
+<p>Reponse from sever: {{response | async}}</p>
+<button (click)="load()">Load Greeting from server</button>
 </div>

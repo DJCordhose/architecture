@@ -183,7 +183,7 @@
   * cd code\server
   * yarn dev
 * Start Angular Sample App
-  * cd code\ng\ng-sandbox
+  * cd code\ng\blueprint
   * ng serve
 
         </textarea>
@@ -266,6 +266,24 @@ React is no. 1, Angular is still important, especially in the field of enterpris
 
         </textarea>
     </section>
+
+    <section>
+      <h3 style="line-height: 1em">Single-Page Applications</h3>
+      <h2>Components with Templates</h2>
+      <p style="color: #2aa198">A SPA is composed of (business) components:</p>
+      <ul class="fragment">
+          <li>Templates describe the UI of the component
+          <li>But now:
+            <ul>
+              <li>Logic is part of the component</li>
+              <li>Logic is a "first-class" citizen and no longer a "loose" snippet (like in jQuery)
+              <li><span class="highlight" >Logic is fully executed on the client</span></li>
+            </ul>
+            <li class="fragment">Prominent Frameworks: React, Angular, and Vue</li>
+      </ul>
+  </section>
+  
+  
 
     <!-- <section data-markdown>
       <textarea data-template>
@@ -413,24 +431,25 @@ export class GreetingService {
     </code></pre>
         </section>
 
-<section>
-    <h3 style="line-height: 1em">Single-Page Applications</h3>
-    <h2>Components with Templates</h2>
-    <p style="color: #2aa198">A SPA is composed of (business) components:</p>
-    <ul class="fragment">
-        <li>Templates describe the UI of the component
-        <li>But now:
-          <ul>
-            <li>Logic is part of the component</li>
-            <li>Logic is a "first-class" citizen and no longer a "loose" snippet (like in jQuery)
-            <li><span class="highlight" >Logic is fully executed on the client</span></li>
-          </ul>
-          <li class="fragment">Prominent Frameworks: React, Angular, and Vue</li>
-    </ul>
-</section>
+        <section>
+    <h2>Using Services</h2>
+    <p>Access it using type based dependecy injection</p>
+    <pre><code data-trim contenteditable class="javascript">
+constructor(private greetingService: GreetingService) {
+}
+    </code></pre>
+    <p>Dealing with Observables</p>
+    <pre><code data-trim contenteditable class="javascript">
+load(): void {
+  this.greetingService.requestGreeting(this.title)
+    .subscribe(greeting => this.greeting = greeting.message);
+}
+    </code></pre>
+    <p><a href='https://angular.io/guide/rx-library'>https://angular.io/guide/rx-library</a></p>
+        </section>
 
 <section class="step-subtitle">
-    <h3>Architecture Pattern</h3>
+    <h3>Composing an Application from Components</h3>
     <h1>Smart and Dumb Components<span style="color:#D3337B">*</span></h1>
     <h3 style='color:#586e75;font-family: "Amiri", serif;letter-spacing:-2px;text-decoration:none;font-weight:bold'><span style="color:#D3337B">*</span>also known as <em style='font-family: "League Gothic", Impact, sans-serif;letter-spacing:1px;font-style:normal;text-transform:uppercase'>Mediator Pattern</em> with Web Components / Polymer</h3>
 </section>
