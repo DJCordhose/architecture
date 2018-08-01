@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  beers = ['astra', 'holsten', 'jever', 'ratsherren'];
+  beers = ['kitzmann', 'steinbach', 'zirndorfer', 'jever', 'ratsherren'];
   greeting: string;
   response: Observable<string>;
 
