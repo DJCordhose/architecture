@@ -1109,6 +1109,12 @@ customElements.define('my-element', MyElement);
   <script src="reveal.js/js/reveal.js "></script>
   <script src="lib/jquery-2.2.4.js "></script>
   <script>
+    function snapShotClean() {
+      $('section').removeAttr('class style data-background-image hidden aria-hidden');
+      $('section').find('font').unwrap();
+      $('section').find('*').removeAttr('class style data-fragment-index');
+    }
+
     // $('.weg').remove();
     // uncomment for jax
     // $('.jax').remove();

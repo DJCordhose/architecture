@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Architecture with Angular</title>
+  <title>Frontend Architectures</title>
 
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -176,136 +176,8 @@
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
 
-        <section data-markdown class="preparation">
-            <textarea data-template>
-### Preparation
-* Start Data Server
-  * cd code\server
-  * yarn dev
-* Start Angular Sample Apps
-* For the basics
-  * cd code\ng\blueprint
-  * ng serve --port=4201
-  * http://localhost:4201/
-* For Redux    
-  * cd code\ng\ng-sandbox
-  * ng serve --port=4200
-  * http://localhost:4200/
 
-        </textarea>
-    </section>
-
-      <section>
-        <h2>Overview of current (JavaScript) frontend architectures</h2>
-        <div style="margin-top: 60px">
-          <a href="https://www.topconf.com/conference//topconf-tallinn-2018/talk/overview-of-current-javascript-frontend-architectures/" target="_blank">
-            Topconf Tallinn 2018</a>
-        </div>
-
-        <div>
-          <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
-          <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
-        </div>
-        <p style="clear: both">
-          <small>Slides:
-            <a href="http://djcordhose.github.io/architecture/2018_arch_topconf.html">
-              http://djcordhose.github.io/architecture/2018_arch_topconf.html</a>
-          </small>
-        </p>
-      </section>
-
-      <section data-markdown>
-          <textarea data-template>
-### Which Framework?
-
-* Might be off-topic but people will keep asking me anyway :D
-* This is a very biased and a very wrong answer
-* But it is at least an answer
-            </textarea>
-          </section>
-
-                <section data-markdown class="todo">
-        <textarea data-template>
-### State of JS kopieren aus anderen Talks
-          </textarea>
-        </section>
-
-      <section data-markdown>
-        <textarea data-template>
-### Why React?
-<img src='img/twitter-nils-react.png'>
-
-<small>
-https://twitter.com/nilshartmann/status/1055769094660722688
-</small>
-          </textarea>
-        </section>
-
-      <section data-markdown>
-        <textarea data-template>
-### Choose Angular when you want a complete framework
-
-and like other (hopefully smarter) people to make the right choices for you 
-          </textarea>
-        </section>
-        
-      <section data-markdown>
-        <textarea data-template>
-### Why not just Web Components?
-
-* Binding to model
-* Templates
-* Re-Rendering
-* Declarative vs Imperative
-
-      </textarea>
-  </section>
-
-  <section data-markdown class="todo">
-    <textarea data-template>
-### Why not just PubSub?
-
-Komponenten malen mit registrieren und deregistrieren
-
-Speicherleck
-Schwer zu verstehen
-    </textarea>
-  </section>
-
-  <section data-markdown>
-    <textarea data-template>
-### React, Angular and Vue solve all of these
-
-* Binding to model
-  * One-Way-Binding
-* Templates
-  * JSX, HTML with directives, HTML 
-* Re-Rendering
-  * Virtual DOM or Zones checking Model updates
-
-  </textarea>
-</section>
-
-<section data-markdown class="todo">
-    <textarea data-template>
-### Nils  
-
-bei mir zieht ja das "standard" argument nicht, ich finde, wenn irgendwas mindestens "quasi-standard" bzw einigermaßen
-etabliert ist, kommt es für den Einsatz in Frage (gleiche Diskussion jee oder spring mE).
-
-Demnach wäre bei mir nicht nur WebComponents in der Verlosung, sondern eben auch Angular, Vue, React etc pp. Und dann
-würde ich überlegen, wie ich eigentlich Anwendungen bauen will, welche Features sind mir wichtig, wo gefallen mir API,
-Doku, Tooling etc. Das würde ich dann nehmen.
-
-Und ich persönlich finde, dass die WebComponents auf dem falschen "Level" abstrahieren bzw nicht genügend Features
-bieten (state handling etc). Das alles finde ich in react viel viel besser (vermutlich auch in Angular/Vue) und würde
-deswegen WCs nicht verwenden
-Ich finde Custom Elements schön und gut, aber die Art+Weise wie ich die entwickeln müsste, würde mir nicht gefallen
-
-</textarea>
-</section>
-
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
   <textarea data-template>
 
 Dan Abramov (@dan_abramov) tweeted at 10:28 PM on Tue, Jul 24, 2018:
@@ -388,7 +260,7 @@ https://auth0.com/blog/react-context-api-managing-state-with-ease/
           </li>
         </ul>
       </section>
-
+ -->
               <!-- <section data-markdown>
           <textarea data-template>
 ### Konsistente UI ist gekoppelt
@@ -429,6 +301,79 @@ https://twitter.com/mislav/status/1022058279000842240
 </textarea>
 </section> -->
 
+<!-- <section data-markdown class="todo">
+    <textarea data-template>
+### Nils  
+
+bei mir zieht ja das "standard" argument nicht, ich finde, wenn irgendwas mindestens "quasi-standard" bzw einigermaßen
+etabliert ist, kommt es für den Einsatz in Frage (gleiche Diskussion jee oder spring mE).
+
+Demnach wäre bei mir nicht nur WebComponents in der Verlosung, sondern eben auch Angular, Vue, React etc pp. Und dann
+würde ich überlegen, wie ich eigentlich Anwendungen bauen will, welche Features sind mir wichtig, wo gefallen mir API,
+Doku, Tooling etc. Das würde ich dann nehmen.
+
+Und ich persönlich finde, dass die WebComponents auf dem falschen "Level" abstrahieren bzw nicht genügend Features
+bieten (state handling etc). Das alles finde ich in react viel viel besser (vermutlich auch in Angular/Vue) und würde
+deswegen WCs nicht verwenden
+Ich finde Custom Elements schön und gut, aber die Art+Weise wie ich die entwickeln müsste, würde mir nicht gefallen
+
+</textarea>
+</section> -->
+
+
+        <section data-markdown class="preparation">
+            <textarea data-template>
+### Preparation
+* Start Data Server
+  * cd code\server
+  * yarn dev
+* Start Angular Sample Apps
+* For Redux    
+  * cd code\ng\ng-sandbox
+  * ng serve --port=4200
+  * http://localhost:4200/
+
+        </textarea>
+    </section>
+<!-- 
+React, Angular (2 and up), and lately also Vue govern the realm of modern frontend frameworks. Largely independent of
+which framework you choose there is a variety of architectural approaches you can use. The challenges you face in
+frontend architecture are very different from backend architectures in that the control and data flow rather goes in
+cycles than traversing through layers. Additionally, decoupling of parts of the application must not impact the user
+experience, so that the user has the impression of one consistent and coherent system. These challenges are often
+underestimated and most attention goes to the backend.
+
+
+We will shed some light into the matter and cover the main architectural challenges including
+* where to maintain state 
+* how to decouple parts of your application 
+* how to change relevant parts of the UI when state changes 
+* how to structure your application when it grows  
+
+If you are not interested in JavaScript or the browser, this session can still be interesting as all these patterns are
+applicable to any other language and any other runtime environment.
+
+40 Minuten
+ -->
+      <section>
+        <h2>Overview of current (JavaScript) Frontend Architectures</h2>
+        <div>
+          <a href="https://www.topconf.com/conference//topconf-tallinn-2018/talk/overview-of-current-javascript-frontend-architectures/" target="_blank">
+            Topconf Tallinn 2018</a>
+        </div>
+
+        <div>
+          <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
+          <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
+        </div>
+        <p style="clear: both">
+          <small>Slides:
+            <a href="http://bit.ly/topconf-js">
+              http://bit.ly/topconf-js</a>
+          </small>
+        </p>
+      </section>
+
       <section>
           <h2>Classic Web Applications</h2>
           <img src="img/webapp-architecture-classic.png" style="max-width: 40%; float: left">
@@ -438,7 +383,8 @@ https://twitter.com/mislav/status/1022058279000842240
               <li class="fragment"  >HTML is sent back to the Browser
             <li class="fragment"  ><span class="highlight">Browser only shows the page</span> to the user
               <li class="fragment"  >Each interaction repeats this round-trip
-          </ul>
+            <li class="fragment"  >Some interaction within Browser using JavaScript snippets
+                    </ul>
       </section>
 
       <section>
@@ -450,7 +396,8 @@ https://twitter.com/mislav/status/1022058279000842240
             <li class="fragment">Server has Data-API (JSON/REST API)</li>
             <li class="fragment">Server can still hold Business Logic (or it is on the client only)
             <li class="fragment">allows for Offline and best UX
-        </ul>
+            <li class="fragment">same challenges as all rich frontend applications
+                  </ul>
     </section>
 
     <section>
@@ -463,65 +410,11 @@ https://twitter.com/mislav/status/1022058279000842240
       </a></small></p>
   </section>
 
-
-    <section>
-          <img src="img/frontend-architecture.png" height="600px">
-
-          <p><small><a href="https://twitter.com/markdalgleish/status/908146609942257664" target="_blank">
-              https://twitter.com/markdalgleish/status/908146609942257664
-          </a></small></p>
-      </section>
-
-    <!-- <section>
-      <img src="img/kickme.png">
-
-      <p>
-        <small>
-          <a href="https://twitter.com/rhundhausen/status/932815147273474049" target="_blank">
-            https://twitter.com/rhundhausen/status/932815147273474049
-          </a>
-        </small>
-      </p>
-    </section> -->
-
-
-
-    <!-- <section>
-                  <img src="img/light-elevator-twitter.png" height="600px">
-
-                  <p><small><a href="https://twitter.com/ThePracticalDev/status/933373477255630853" target="_blank">
-                      https://twitter.com/ThePracticalDev/status/933373477255630853
-                  </a></small></p>
-              </section> -->
-
-
-
-    <!-- 
-      <section>
-          <img src="img/feynman-twitter.png">
-
-          <p><small><a href="https://twitter.com/ProfFeynman/status/932645521096716290" target="_blank">
-              https://twitter.com/ProfFeynman/status/932645521096716290
-          </a></small></p>
-      </section>
--->
-
-    <section data-markdown>
-        <textarea data-template>
-### How to implement an SPA?
-
-* https://stateofjs.com/
-
-React is no. 1, Angular is still important, especially in the field of enterprise 
-
-        </textarea>
-    </section>
-
     <section>
       <h3 style="line-height: 1em">Single-Page Applications</h3>
       <h2>Components with Templates</h2>
       <p style="color: #2aa198">A SPA is composed of (business) components:</p>
-      <ul class="fragment">
+      <ul>
           <li>Templates describe the UI of the component
           <li>But now:
             <ul>
@@ -529,175 +422,120 @@ React is no. 1, Angular is still important, especially in the field of enterpris
               <li>Logic is a "first-class" citizen and no longer a "loose" snippet (like in jQuery)
               <li><span class="highlight" >Logic is fully executed on the client</span></li>
             </ul>
-            <li class="fragment">Prominent Frameworks: React, Angular, and Vue</li>
+            <li>Prominent Frameworks: React, Angular, and Vue</li>
       </ul>
   </section>
-  
-  
 
-    <!-- <section data-markdown>
-      <textarea data-template>
-### Creating a TypeScript based SPA with React
 
-* npm install -g create-react-app
-* create-react-app my-react-app --scripts-version=react-scripts-ts
-* cd my-react-app
-* yarn start
+      <section data-markdown>
+          <textarea data-template>
+### Which Framework?
 
-https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter
-</textarea>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-### Creating an SPA with Angular 6
-
-* https://nodejs.org
-* https://yarnpkg.com
-* https://github.com/angular/angular-cli
-* npm install -g @angular/cli
-
-    </textarea>
-  </section> -->
+* Might be off-topic but people will keep asking me anyway :D
+* Technically it does not matter much
+* This is a very biased and a very wrong answer
+* But it is at least an answer
+            </textarea>
+          </section>
 
     <section data-markdown>
-      <textarea data-template>
-### Creating an SPA with Angular 6
+        <textarea data-template>
+### Annual Survey among JS Developers
 
-https://angular.io/guide/quickstart
+<img src='img/js-frameworks-2018.png' height="500px">
 
-* ng new blueprint
-* cd blueprint
-* ng serve
-  </textarea>
+https://2018.stateofjs.com/front-end-frameworks/conclusion  
+
+        </textarea>
+    </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Why React?
+<img src='img/twitter-nils-react.png' height="500px">
+
+<small>
+https://twitter.com/nilshartmann/status/1055769094660722688
+</small>
+          </textarea>
+        </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Angular
+
+* choose Angular when you want a complete framework
+* and like other (hopefully smarter) people to make the right choices for you 
+          </textarea>
+        </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Vue.js
+
+* took over template syntax and quite some audience from Angular.js 1
+* easy to master
+* templates doable by frontend (HTML/CSS) people
+          </textarea>
+        </section>
+          
+      <section data-markdown>
+        <textarea data-template>
+### Why not just Web Components?
+
+* Binding to model
+* Templates
+* Re-Rendering
+* Declarative vs Imperative
+
+      </textarea>
   </section>
 
   <section data-markdown>
     <textarea data-template>
-### Be careful
+### Why not just PubSub?
 
-Directives are 
-* ngModel
-* *ngIf
-* *ngFor
-* etc.
+The classic for listening to changes
 
-_camelCase_ is important
-      </textarea>
-      </section>
+* Hard to understand flow
+* We tend to forget to de-register 
+  * things become slow
+  * memory leaks
+  * requires re-loads
+    </textarea>
+  </section>
 
-            <section data-markdown>
-                    <textarea data-template>
-### Templates
+  <section data-markdown>
+      <textarea data-template>
+  ### Polymer LitElement and lit-html
+  
+  Solves these issues within the JS world using mostly standards
+  
+  https://github.com/Polymer/lit-element
+  <br>
+  https://polymer.github.io/lit-html/
 
-* One-Way-Binding
-  * <pre><code><input [value]='title' (input)='update($event.target.value)'></code></pre>
-* Two-Way-Binding
-  * FormsModule is required to use ngModel: https://angular.io/guide/template-syntax#ngModel
-  * <pre><code>&lt;&shy;input [(ngModel)]='title'></code></pre>
+  <p class="fragment"><em>But not 1.0, yet, and than use another framework?</em></p>
 
-https://angular.io/guide/template-syntax
 </textarea>
-</section>
-
-<section data-markdown>
-  <textarea data-template>
-### Templates
-
-* control flow
-  * https://angular.io/guide/template-syntax#built-in-structural-directives
-  * <pre><code>*ngIf='title'</code></pre>
-  * <pre><code data-trim contenteditable>&lt;&shy;span *ngFor='let char of chars'>{{char}}&lt;&shy;/span></code></pre>
-
-https://angular.io/guide/template-syntax
-</textarea>
-</section>
-
-<section data-markdown>
+  </section>
+  
+  
+  <section data-markdown>
     <textarea data-template>
-### Services / Remote calls / Observables vs Promises
+### React, Angular and Vue solve all of these
 
-* https://github.com/angular/angular-cli
+* Binding to model
+  * One-Way-Binding
+* Templates
+  * JSX, HTML with directives, HTML 
+* Re-Rendering
+  * Virtual DOM or Zones checking Model updates
 
-* https://angular.io/guide/http
-
-* https://angular.io/guide/observables-in-angular#http
-
-* https://medium.com/@benlesh/rxjs-observable-interop-with-promises-and-async-await-bebb05306875
-</textarea>
+  </textarea>
 </section>
 
-<section>
-    <h2>Server Side</h2>
-    <pre><code data-trim contenteditable>
-// server.js
-const express = require("express");
-const cors = require('cors')
-const app = express();
-
-app.use(cors())
-
-app.get("/:greeting", function(req, res) {
-  const greeting = req.params.greeting;
-  res.json({ message: `${greeting}, World` });
-});
-
-app.listen(3000, function() {
-  console.log("Greeting app listening on port 3000!");
-});
-
-    </code></pre>
-    <pre><code data-trim contenteditable>
-node server.js
-// restarts with every change
-nodemon server.js
-      </code></pre>
-</section>
-
-<section>
-    <h2>Services</h2>
-    <pre><code data-trim contenteditable>
-ng generate service greeting
-        </code></pre>
-    <pre><code data-trim contenteditable>
-const urlBase = "http://localhost:3000";
-
-export interface Message {
-  message: string;
-}
-
-@Injectable({
-  providedIn: "root"
-})
-export class GreetingService {
-  constructor(private http: HttpClient) {}
-
-  requestGreeting(name: string): Observable&lt;Message> {
-    const url = `${urlBase}/${name}`;
-    return this.http.get&lt;Message>(url);
-  }
-}
-
-    </code></pre>
-        </section>
-
-        <section>
-    <h2>Using Services</h2>
-    <p>Access it using type based dependecy injection</p>
-    <pre><code data-trim contenteditable class="javascript">
-constructor(private greetingService: GreetingService) {
-}
-    </code></pre>
-    <p>Dealing with Observables</p>
-    <pre><code data-trim contenteditable class="javascript">
-load(): void {
-  this.greetingService.requestGreeting(this.title)
-    .subscribe(greeting => this.greeting = greeting.message);
-}
-    </code></pre>
-    <p><a href='https://angular.io/guide/rx-library'>https://angular.io/guide/rx-library</a></p>
-        </section>
-
+        
 <section class="step-subtitle">
     <h3>Composing an Application from Components</h3>
     <h1>Smart and Dumb Components<span style="color:#D3337B">*</span></h1>
@@ -806,78 +644,6 @@ export class SubComponent {
     </section>
 
 
-    <section data-markdown>
-        <textarea data-template>
-### Many Leves of nesting Angular Components
-
-* https://angular.io/guide/component-interaction
-* https://stackoverflow.com/questions/43832941/angular-2-4-5-smart-dumb-and-deeply-nested-component-communication
-* Custom Events do not bubble: https://stackoverflow.com/questions/42918423/angular-2-how-do-i-emit-an-event-up-through-multiple-nested-components
-* https://angular.io/guide/template-syntax#remember-the-brackets
-
-            </textarea>
-            </section>
-
-    <section>
-        <h3>Code Sample: Intermediate Dumb Component</h3>
-        <pre><code data-trim contenteditable class="javascript">
-@Component({
-  selector: 'app-container',
-  template: `<div class='contaner-layout'>
-    <app-title [titles]='titles'>
-        <h1>Hello!</h1>
-    </app-title>
-    <app-button (send)='send.emit()' title='Search'></app-button>
-</div>`
-})
-export class Container {
-  @Input() titles;
-  @Output() send = new EventEmitter();
-
-  // optionally call this, if you need intermediate processing
-  // private buttonSend() {
-    //   this.send.emit();
-    // } 
-}
-        </code></pre>
-        <p>Usage from Smart Component</p>
-        <pre><code data-trim contenteditable>
-<app-container [titles]='titles' (send)='clicked()'></app-container>
-            </code></pre>
-            </section>
-
-    <section>
-        <h2>Title</h2>
-        <h3>Leaf Level Dumb Component</h3>
-        <pre><code data-trim contenteditable class="javascript">
-@Component({
-  selector: 'app-title',
-  template: `<div class='title'>
-  <ng-content></ng-content>
-  <span *ngFor='let title of titles'>{{title.name}}</span>
-</div>`
-})
-export class TitleComponent {
-  @Input() titles;
-}
-            </code></pre>
-            </section>
-
-    <section>
-        <h2>Button</h2>
-        <h3>Button: Leaf Level Dumb Component</h3>
-        <pre><code data-trim contenteditable class="javascript">
-@Component({
-  selector: 'app-button',
-  template: `<button (click)='send.emit()'>{{title}}</button>`
-})
-export class ButtonComponent {
-  @Input() private title = '';
-  @Output() send = new EventEmitter();
-}
-            </code></pre>
-            </section>
-
     <section class="next-step">
         <h3>Smart and Dumb Components</h3>
           <h2>Limitations</h2>
@@ -901,11 +667,17 @@ export class ButtonComponent {
           </ul>
       </section>
 
-      <section class="step-subtitle">
-          <h3>Statemanagement using a library</h3>
-          <h1>Redux as an Architectural Pattern</h1>
+      <section data-markdown>
+          <textarea data-template>
+  ### Data Layer – transmit and manage data
+  
+  <img src='img/js-data-layer-2018.png' height="500px">
+  
+  https://2018.stateofjs.com/data-layer/conclusion/
+  
+          </textarea>
       </section>
-
+  
       <section>
           <h1>Redux</h1>
           <ul>
@@ -923,7 +695,7 @@ export class ButtonComponent {
                   http://redux.js.org/docs/basics/UsageWithReact.html
               </a>
               <li>Angular: <a href="https://github.com/ngrx/platform" target="_blank">https://github.com/ngrx/platform</a></li>
-              <a href="https://github.com/vuejs/vuex" target="_blank">https://github.com/vuejs/vuex</a>
+              <li>Vue: <a href="https://github.com/vuejs/vuex" target="_blank">https://github.com/vuejs/vuex</a>
               <li>Web Components (Polymer): Redux is recommended implementation of <em>Global Mediator Pattern</em>,
                   <a href="https://twitter.com/DJCordhose/status/899943415353311232" target="_blank">https://twitter.com/DJCordhose/status/899943415353311232</a>
                   <a href="https://tur-nr.github.io/polymer-redux/" target="_blank">https://tur-nr.github.io/polymer-redux/</a>
@@ -942,20 +714,12 @@ export class ButtonComponent {
           <img src="img/redux-03-resulting-redux-architecture.png" style="max-height: 500px; border:0;box-shadow:0 0 0 0"/>
       </section>
 
-      <section data-markdown style="font-size: xx-large">
-          <textarea data-template>
-  ### @ngrx/store
-  
-  * yarn add @ngrx/store
-  * yarn add @ngrx/store-devtools
-  * yarn add @ngrx/effects
-  
-  https://github.com/ngrx/platform/blob/master/docs/store/README.md
-  https://github.com/ngrx/platform/blob/master/docs/store-devtools/README.md
-  https://github.com/ngrx/platform/blob/master/docs/effects/README.md
-  </textarea>
+
+      <section>
+          <h2>Different Types of State</h2>
+          <img src="img/three-kinds-of-state.png">
       </section>
-  
+      
       <section data-markdown>
           <textarea data-template>
 ### Demo
@@ -970,17 +734,6 @@ http://localhost:4200/
             </textarea>
           </section>
     
-
-  <!-- <section data-markdown style="font-size: xx-large">
-          <textarea data-template>
-  ### Alternative for @ngrx/store
-  
-  Why another state management framework for Angular?
-  * https://medium.com/@amcdnl/why-another-state-management-framework-for-angular-b4b4c19ef664
-  * http://ngxs.io/
-  </textarea>
-  </section>
-   -->
 
    <section>
 <h3>Reducer</h3>
@@ -1040,45 +793,6 @@ export class CounterComponent {
 </code></pre>
 </section>
 
-<section>
-    <h2>Different Types of State</h2>
-    <img src="img/three-kinds-of-state.png">
-</section>
-
-
-   <section>
-<h3>@ngrx/effects</h3>
-<pre><code data-trim contenteditable class="javascript">
-@Injectable()
-export class RemoteEffects {
-  constructor(private greetingService: GreetingService, private actions$: Actions) {}
-
-  @Effect()
-  login$: Observable<Action> = this.actions$.pipe(
-    ofType('LOAD'),
-    mergeMap(action => this.greetingService.requestGreeting('huhu').pipe(
-      // If successful, dispatch success action with result
-      map(data => ({ type: 'SET', payload: data.message.length })),
-      // If request fails, dispatch failed action
-      catchError(() => of({ type: 'FAILED'}))
-    ))
-  );
-}
-</code></pre>
-<pre><code data-trim contenteditable class="javascript">
-import { EffectsModule } from '@ngrx/effects';
-import { RemoteEffects } from './ngrx-sandbox/remote.effects';
-
-@NgModule({
-  imports: [EffectsModule.forRoot([RemoteEffects])],
-})
-export class AppModule {}    
-    </code></pre>
-    <small>
-<a href='https://github.com/ngrx/platform/blob/master/docs/effects/README.md'>https://github.com/ngrx/platform/blob/master/docs/effects/README.md</a>
-</small>
-</textarea>
-</section>
 
       <section>
           <h3>Is anyone really using this?</h3>
@@ -1086,7 +800,7 @@ export class AppModule {}
               <a href="https://www.xing.com/messenger" target="_blank">
               <img src="xing-messenger-redux.png" height="550px">
               </a>
-              <small>XING and many others use React and Redux</small>
+              <small>Microsoft Outlook, Twitter, Apple, XING and many others use React and Redux</small>
           </div>
       </section>
 
@@ -1133,24 +847,28 @@ https://twitter.com/jbandi/status/1023954402116358145
 
         <section>
 						<h3>Wrap Up</h3>
-						<p  style="color: #2aa198">Architectural Patterns for Angular Apps</span>
+						<p  style="color: #2aa198">Overview of current (JavaScript) Frontend Architectures</span>
             <ul>
-                <li class="fragment">Dependecy Injection
-                <li class="fragment">Services
-                <li class="fragment">Observables for everything
+                <li class="fragment">SPAs are just like any rich frontend application
+                <li class="fragment">Which framework you use does not matter too much
+                <li class="fragment">All make you compose your application from components
                 <li class="fragment">Composing your Application into Smart and Dumb Components
-                <li class="fragment">Redux
+                <li class="fragment">Redux as Data Layer
                   <ul>
                       <li>for large applications with many dependencies between parts / components
                       <li>provides architectural guidance where which part of the application goes
                   </ul>
                 </li>
               </ul>
+            <p>
+                <small>
+            <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
+                <br>
+        <a href="http://bit.ly/topconf-js">
+            http://bit.ly/topconf-js</a>
+        </small>
+            </p>
         </section>
-
-
-        
-
     </div>
 
   </div>
@@ -1172,6 +890,12 @@ https://twitter.com/jbandi/status/1023954402116358145
 
     }
     Reveal.addEventListener('ready', function (event) {
+        // do we want this???
+        $('li').addClass('fragment')
+
+        // make all links open in new tab
+        $('a').attr('target', '_blank')
+
       if (window.location.hostname.indexOf('localhost') !== -1) {
         // only applies to presentation version
         Reveal.configure({ controls: false });
