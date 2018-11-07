@@ -374,29 +374,40 @@ applicable to any other language and any other runtime environment.
         </p>
       </section>
 
-            <section data-markdown class="todo">
+            <!-- <section data-markdown class="todo">
         <textarea data-template>
-- neue Grafiken von Nils
             </textarea>
-      </section>
+      </section> -->
 
       <section>
           <h2>Classic Web Applications</h2>
-          <img src="img/webapp-architecture-classic.png" style="max-width: 40%; float: left">
+          <img src="img/webapp_arch01_classic.png" style="max-width: 40%; float: left">
           <ul style="max-width: 50%; float: right">
               <li class="fragment"  >Browser sends HTTP Request
             <li class="fragment"  >Content is <span class="highlight">rendered on the Server</span>
               <li class="fragment"  >HTML is sent back to the Browser
             <li class="fragment"  ><span class="highlight">Browser only shows the page</span> to the user
               <li class="fragment"  >Each interaction repeats this round-trip
-            <li class="fragment"  >Some interaction within Browser using JavaScript snippets
+            <li class="fragment">Frequent page load means severe limitation to UX
                     </ul>
       </section>
 
       <section>
-        <h2>SPAs</h2>
+        <h2>jquery / AJAX</h2>
+        <p>Add some adhoc JavaScript snippet when UI needs to be responsive</p>
+        <img src="img/webapp_arch_02_jquery.png" style="max-width: 40%; float: left">
+        <ul style="width: 50%; float: right; font-size: 80%">
+            <li class="fragment">some renedering in the Browser, some on the server
+            <li class="fragment">architecturally a PITA
+            <li class="fragment">starts as a solution nice, quick and easy to implement 
+            <li class="fragment">sooner or later results in unmaintainable code
+        </ul>
+    </section>
+
+    <section>
+        <h2>SPA: Single Page Application</h2>
         <p>Move your Application to the Client</p>
-        <img src="img/webapp-architecture-spa.png" style="max-width: 40%; float: left">
+        <img src="img/webapp_arch_03_spa.png" style="max-width: 40%; float: left">
         <ul style="width: 50%; float: right; font-size: 80%">
             <li class="fragment">only one (single) HTML page that mainly loads JavaScript and CSS</li>
             <li class="fragment">Server has Data-API (JSON/REST API)</li>
@@ -405,6 +416,7 @@ applicable to any other language and any other runtime environment.
             <li class="fragment">same challenges as all rich frontend applications
                   </ul>
     </section>
+
 
     <section>
       <img src="img/frontend-katz-twitter.png" height="600px">
