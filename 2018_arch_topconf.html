@@ -476,6 +476,21 @@ applicable to any other language and any other runtime environment.
       </ul>
   </section>
 
+  <section data-markdown>
+    <textarea data-template>
+### Why a Framework?
+
+* Binding to model
+* Templates
+* Declarative vs Imperative
+* Re-Rendering model change
+* Why not just PubSub (The classic for listening to changes)
+  * Hard to understand flow
+  * We tend to forget to de-register 
+    
+            </textarea>
+          </section>
+
 
       <section data-markdown>
           <textarea data-template>
@@ -506,7 +521,7 @@ https://2018.stateofjs.com/front-end-frameworks/conclusion
 <img src='img/frameworks-stack-overflow.png' height="500px">
 
 <small>
-https://insights.stackoverflow.com/trends?tags=angular%2Cangularjs%2Creactjs%2Cjquery%2Cvue.js%2Cvuejs2
+  https://insights.stackoverflow.com/trends?tags=angular%2Cangularjs%2Creactjs%2Cjquery%2Cvue.js%2Cvuejs2%2Cpolymer
 </small>
 </textarea>
 </section>
@@ -538,7 +553,7 @@ https://twitter.com/nilshartmann/status/1055769094660722688
 
       <section data-markdown>
         <textarea data-template>
-### Angular
+### Why Angular
 
 * choose Angular when you want a complete framework
 * and like other (hopefully smarter) people to make the right choices for you 
@@ -548,57 +563,15 @@ https://twitter.com/nilshartmann/status/1055769094660722688
 
       <section data-markdown>
         <textarea data-template>
-### Vue.js
+### Why Vue.js
 
 * took over template syntax and quite some audience from Angular.js 1
 * easy to master
 * templates doable by frontend (HTML/CSS) people
           </textarea>
         </section>
-          
-      <section data-markdown>
-        <textarea data-template>
-### Why not just Web Components?
 
-* Binding to model
-* Templates
-* Re-Rendering
-* Declarative vs Imperative
-
-      </textarea>
-  </section>
-
-  <section data-markdown>
-    <textarea data-template>
-### Why not just PubSub?
-
-The classic for listening to changes
-
-* Hard to understand flow
-* We tend to forget to de-register 
-  * things become slow
-  * memory leaks
-  * requires re-loads
-    </textarea>
-  </section>
-
-  <section data-markdown>
-      <textarea data-template>
-  ### Polymer LitElement and lit-html
-  
-  Solves these issues within the JS world using mostly standards
-  
-  https://github.com/Polymer/lit-element
-  <br>
-  https://polymer.github.io/lit-html/
-
-  <p class="fragment"><em>But not 1.0, yet, and than just another framework?</em></p>
-
-</textarea>
-  </section>
-  
-  
-  <section data-markdown>
+          <section data-markdown>
     <textarea data-template>
 ### React, Angular and Vue solve all of these
 
@@ -613,6 +586,24 @@ The classic for listening to changes
 </section>
 
         
+
+
+  <section data-markdown>
+      <textarea data-template>
+  ### Why WebComponents Polymer LitElement and lit-html
+  
+  Solves these issues within the JS world using mostly standards
+  
+  https://lit-element.polymer-project.org/
+  <br>
+  https://lit-html.polymer-project.org/
+
+  <p class="fragment"><em>But not 1.0, yet, and than just another framework?</em></p>
+
+</textarea>
+  </section>
+  
+  
 <section class="step-subtitle">
     <h3>Composing an Application from Components</h3>
     <h1>Smart and Dumb Components<span style="color:#D3337B">*</span></h1>
