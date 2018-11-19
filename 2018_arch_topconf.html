@@ -761,6 +761,34 @@ export class SubComponent {
       </section>
 
       <section>
+        <h2>Redux</h2>
+        <h3>Architectural guidance</h3>
+        <ul>
+                <li>Uni-directional data flow
+                <li>Central and immutable state: store
+                        <li>Only reducers are allowed to modify state
+                                <li>State moves from Smart Components to store
+                <li>UI logic moves from Smart Components in Action-Creators / Services and Reducer
+                <li>Asynchronous code only in Action-Creators / Services or Effects
+                <li>Initializing of the app with central action
+        </ul>
+    </section>
+
+    <!-- <section data-markdown>
+  <textarea data-template>
+### But don't overdo it
+
+<small>Spreading out your application into too many tiny fragments can make it hard to read and maintain</small>`
+<img src='ngrx-overdone.jpg' height="500px">
+
+<small>
+https://twitter.com/jbandi/status/1023954402116358145
+</small>
+    </textarea>
+  </section>
+ -->
+
+      <section>
           <h2>Redux is independent of UI framework</h2>
           <p style="color: #2aa198">Bindings exist for popular UI frameworks</p>
           <ul style="font-size: 80%">
@@ -876,34 +904,6 @@ export class CounterComponent {
               <small>Microsoft Outlook, Twitter, Apple, XING and many others use React and Redux</small>
           </div>
       </section>
-
-      <section>
-          <h2>Redux</h2>
-          <h3>Architectural guidance</h3>
-          <ul>
-                  <li>Uni-directional data flow
-                  <li>Central and immutable state: store
-                          <li>Only reducers are allowed to modify state
-                                  <li>State moves from Smart Components to store
-                  <li>UI logic moves from Smart Components in Action-Creators / Services and Reducer
-                  <li>Asynchronous code only in Action-Creators / Services or Effects
-                  <li>Initializing of the app with central action
-          </ul>
-      </section>
-
-      <section data-markdown>
-    <textarea data-template>
-### But don't overdo it
-
-<small>Spreading out your application into too many tiny fragments can make it hard to read and maintain</small>`
-<img src='ngrx-overdone.jpg' height="500px">
-
-<small>
-https://twitter.com/jbandi/status/1023954402116358145
-</small>
-      </textarea>
-    </section>
-
 
         <!-- <section>
 						<h3>Wrap Up Redux</h3>
