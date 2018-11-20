@@ -387,12 +387,12 @@ applicable to any other language and any other runtime environment.
 * frontend architecture: does this even exist?
 * frontend: we just wing it at the end!
 * why architecture for a little bit of CSS?
-* our full stack developers handle backend and frontend architecture
+<!-- * our full stack developers handle backend and frontend architecture -->
 
             </textarea>
       </section>
 
-      <section data-markdown>
+      <!-- <section data-markdown>
           <textarea data-template>
 
 <img src='img/js-arch.png' height="600px">
@@ -408,7 +408,7 @@ applicable to any other language and any other runtime environment.
             <p><small><a href="https://twitter.com/markdalgleish/status/908146609942257664" target="_blank">
                 https://twitter.com/markdalgleish/status/908146609942257664
             </a></small></p>
-        </section>
+        </section> -->
 
 
     <section>
@@ -483,7 +483,7 @@ applicable to any other language and any other runtime environment.
 * Binding to model
 * Templates
 * Declarative vs Imperative
-* Re-Rendering model change
+* Re-Rendering on model change
 * Why not just PubSub (The classic for listening to changes)
   * Hard to understand flow
   * We tend to forget to de-register 
@@ -581,20 +581,6 @@ https://twitter.com/nilshartmann/status/1055769094660722688
           </textarea>
         </section>
 
-          <section data-markdown>
-    <textarea data-template>
-### React, Angular and Vue solve all of these
-
-* Binding to model
-  * One-Way-Binding
-* Templates
-  * JSX, HTML with directives, HTML 
-* Re-Rendering
-  * Virtual DOM or Zones checking Model updates
-
-  </textarea>
-</section>
-
         
 
 
@@ -619,6 +605,21 @@ https://lit-html.polymer-project.org/
   </section>
   
   
+
+          <section data-markdown>
+    <textarea data-template>
+### React, Angular, WebComponents/LitElement, and Vue solve all of these
+
+* Binding to model
+  * One-Way-Binding
+* Templates
+  * JSX, HTML with directives, HTML 
+* Re-Rendering
+  * Virtual DOM or Zones checking Model updates
+
+  </textarea>
+</section>
+
 <section class="step-subtitle">
     <h3>Composing an Application from Components</h3>
     <h1>Smart and Dumb Components<span style="color:#D3337B">*</span></h1>
@@ -784,20 +785,6 @@ export class SubComponent {
         </ul>
     </section>
 
-    <!-- <section data-markdown>
-  <textarea data-template>
-### But don't overdo it
-
-<small>Spreading out your application into too many tiny fragments can make it hard to read and maintain</small>`
-<img src='ngrx-overdone.jpg' height="500px">
-
-<small>
-https://twitter.com/jbandi/status/1023954402116358145
-</small>
-    </textarea>
-  </section>
- -->
-
       <section>
           <h2>Redux is independent of UI framework</h2>
           <p style="color: #2aa198">Bindings exist for popular UI frameworks</p>
@@ -815,13 +802,12 @@ https://twitter.com/jbandi/status/1023954402116358145
       </section>
 
       <section>
-          <h3>Redux extracts responsibility out of the UI framework</h3>
+          <h3>Redux extracts responsibility out of Components</h3>
           <img src="img/redux-02-extracting-responsibility.png" style="max-height: 500px; border:0;box-shadow:0 0 0 0"/>
       </section>
 
       <section>
-          <h3>Redux Pattern</h3>
-          <h2>Resulting Architecture</h2>
+          <h3>Redux Pattern, Resulting Architecture</h3>
           <img src="img/redux-03-resulting-redux-architecture.png" style="max-height: 500px; border:0;box-shadow:0 0 0 0"/>
       </section>
 
@@ -914,6 +900,19 @@ export class CounterComponent {
               <small>Microsoft Outlook, Twitter, Apple, XING and many others use React and Redux</small>
           </div>
       </section>
+
+    <section data-markdown>
+  <textarea data-template>
+### But don't overdo it
+
+_Spreading out your application into too many tiny fragments can make it hard to read and maintain_
+
+<img src='ngrx-overdone.jpg' height="450px">
+<small>
+https://twitter.com/jbandi/status/1023954402116358145
+</small>
+    </textarea>
+  </section>
 
         <!-- <section>
 						<h3>Wrap Up Redux</h3>
