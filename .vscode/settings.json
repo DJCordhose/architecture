@@ -1,5 +1,9 @@
 {
   "cSpell.language": ",de",
   "liveServer.settings.multiRootWorkspaceName": "architecture",
-  "liveServer.settings.host": "localhost"
+  "liveServer.settings.host": "localhost",
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#FF0088"
+}
+
 }
