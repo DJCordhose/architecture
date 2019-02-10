@@ -197,6 +197,26 @@
         </textarea>
     </section>
 
+        <section data-markdown class="preparation">
+            <textarea data-template>
+### Preparation
+* Start Data Server
+  * cd code\server
+  * yarn dev
+* Start Angular Sample Apps
+* For the basics
+  * cd code\ng\blueprint
+  * ng serve --port=4201
+  * http://localhost:4201/
+* For Redux    
+  * cd code\ng\ng-sandbox
+  * ng serve --port=4200
+  * http://localhost:4200/
+
+        </textarea>
+    </section>
+
+
       <section>
         <h2>Frontend Frameworks</h2>
 
@@ -212,11 +232,128 @@
         </p>
       </section>
 
+      <section data-markdown class="todo">
+          <textarea data-template>
+* Anfangs TODOs aufräumen
+* Intros für Frameworks (ng ist da)
+  * Angular ist schon da, advanced, weil vorher in spa architecture schon intro
+  * React aus React Intro (mehr basic als ng, ohne Redux etc.)
+  * Web Components mit lit element aus Projekt
+  </textarea>
+        </section>
+
       <section data-markdown>
         <textarea data-template>
 ## Part I: Overview
 </textarea>
       </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Choosing tools
+<img src='img/scratch/worum-geht-es-bei-auswahl-tools.jpg'>
+
+</textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### NPM: The curse of having the choice
+
+* Framework vs Starter Kit (Best Practices)
+* No choices vs Choices that you can break away from
+
+<img src='img/scratch/Screenshot_20190113-131017.jpg' height="400px">
+
+</textarea>
+      </section>
+
+
+    <section data-markdown>
+        <textarea data-template>
+### Annual Survey among JS Developers
+
+<img src='img/js-frameworks-2018.png' height="500px">
+
+https://2018.stateofjs.com/front-end-frameworks/conclusion  
+
+        </textarea>
+    </section>
+
+    <section data-markdown>
+      <textarea data-template>
+### Questions on Framework on Stack Overflow
+
+<img src='img/frameworks-stack-overflow.png' height="500px">
+
+<small>
+  https://insights.stackoverflow.com/trends?tags=angular%2Cangularjs%2Creactjs%2Cjquery%2Cvue.js%2Cvuejs2%2Cpolymer
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+  <textarea data-template>
+### Tech likes React, Insurances like Angular
+
+<img src='img/tag_by_industry_graph-1-768x768.png' height="500px">
+
+<small>
+  https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+        <textarea data-template>
+### Why React?
+<img src='img/twitter-nils-react.png' height="500px">
+
+<small>
+https://twitter.com/nilshartmann/status/1055769094660722688
+</small>
+          </textarea>
+        </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Why Angular
+
+* choose Angular when you want a complete framework
+* and like other (hopefully smarter) people to make the right choices for you 
+* you like classes (while React people like functions)
+          </textarea>
+        </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Why Vue.js
+
+* took over template syntax and quite some audience from Angular.js 1
+* easy to master
+* templates doable by frontend (HTML/CSS) people
+          </textarea>
+        </section>
+
+  <section data-markdown>
+      <textarea data-template>
+### Why WebComponents Polymer LitElement and lit-html
+
+  
+* Solves these issues within the JS world using mostly standards
+* Class based
+* Flexible in programming style
+* Not implmented in Edge, yet, but Edge will use Chromium soon
+* polymer lit libs quite small
+* just another framework?
+
+https://lit-element.polymer-project.org/
+<br>
+https://lit-html.polymer-project.org/
+
+</textarea>
+  </section>
+
 
       <section data-markdown>
         <textarea data-template>
@@ -249,8 +386,6 @@ I think this is one of the biggest misunderstandings about React. It would be gr
   https://twitter.com/dan_abramov/status/1027245759232651270
         </textarea>
     </section>
-  
-  
 
   <section data-markdown class="todo">
           <textarea data-template>
@@ -278,8 +413,6 @@ https://auth0.com/blog/react-context-api-managing-state-with-ease/
 </textarea>
 </section>
 
-
-
       <section data-markdown>
         <textarea data-template>
 ## Part II: Practical Experiments
@@ -300,17 +433,15 @@ https://auth0.com/blog/react-context-api-managing-state-with-ease/
 2. yarn (dependency management): https://yarnpkg.com/en/docs/install
 3. (make sure you can install via packages through a proxy): https://www.freecodecamp.org/forum/t/npm-behind-a-proxy-server/19386
 1. web server: `npm install -g http-server`
-</section>
 </textarea>
-
+</section>
 <section data-markdown>
   <textarea data-template>
 ## Crash Course React
 
 https://reactjs.org/
-</section>
 </textarea>
-
+</section>
       <section data-markdown>
         <textarea data-template>
 ### Creating React project skeleton
@@ -324,23 +455,20 @@ https://facebook.github.io/create-react-app/docs/adding-typescript_
 1. `yarn start`
 1. Open http://localhost:3000/ 
 1. Do what the app tells you to do
-</section>
 </textarea>
-
+</section>
 <section data-markdown>
   <textarea data-template>
 ### Inspect the created files together
 
-</section>
 </textarea>
-
+</section>
 <section data-markdown class="todo">
   <textarea data-template>
 ### Basics of React programming with TypeScript
 
-</section>
 </textarea>
-
+</section>
 <section data-markdown>
   <textarea data-template>
 ### Learning More React
@@ -348,16 +476,16 @@ https://facebook.github.io/create-react-app/docs/adding-typescript_
 1. https://reactjs.org/
 1. learn by doing: https://reactjs.org/tutorial/tutorial.html
 1. learn by step by step: https://reactjs.org/docs/hello-world.html
-</section>
 </textarea>
+</section>
 
 <section data-markdown>
   <textarea data-template>
 ## Crash Course Angular
 
 https://angular.io/
-</section>
 </textarea>
+</section>
 
 <section data-markdown>
   <textarea data-template>
@@ -371,22 +499,269 @@ _Using Angular CLI https://cli.angular.io/_
 1. `yarn start`
 1. Open http://localhost:4200/
 1. Change the app code in your IDE and see it refreshed
-</section>
 </textarea>
+</section>
 
 <section data-markdown>
   <textarea data-template>
 ### Inspect the created files together
 
-</section>
 </textarea>
+</section>
 
-<section data-markdown class="todo">
+<section data-markdown>
   <textarea data-template>
 ### Basics of Angular development
 
-</section>
 </textarea>
+</section>
+
+  <section data-markdown>
+    <textarea data-template>
+### Be careful
+
+Directives are 
+* ngModel
+* *ngIf
+* *ngFor
+* etc.
+
+_camelCase_ is important
+      </textarea>
+      </section>
+
+            <section data-markdown>
+                    <textarea data-template>
+### Templates
+
+* One-Way-Binding
+  * <pre><code><input [value]='title' (input)='update($event.target.value)'></code></pre>
+* Two-Way-Binding
+  * FormsModule is required to use ngModel: https://angular.io/guide/template-syntax#ngModel
+  * <pre><code>&lt;&shy;input [(ngModel)]='title'></code></pre>
+
+https://angular.io/guide/template-syntax
+</textarea>
+</section>
+
+<section data-markdown>
+  <textarea data-template>
+### Templates
+
+* control flow
+  * https://angular.io/guide/template-syntax#built-in-structural-directives
+  * <pre><code>*ngIf='title'</code></pre>
+  * <pre><code data-trim contenteditable>&lt;&shy;span *ngFor='let char of chars'>{{char}}&lt;&shy;/span></code></pre>
+
+https://angular.io/guide/template-syntax
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Services / Remote calls / Observables vs Promises
+
+* https://github.com/angular/angular-cli
+
+* https://angular.io/guide/http
+
+* https://angular.io/guide/observables-in-angular#http
+
+* https://medium.com/@benlesh/rxjs-observable-interop-with-promises-and-async-await-bebb05306875
+</textarea>
+</section>
+
+<section>
+    <h2>Server Side</h2>
+    <pre><code data-trim contenteditable>
+// server.js
+const express = require("express");
+const cors = require('cors')
+const app = express();
+
+app.use(cors())
+
+app.get("/:greeting", function(req, res) {
+  const greeting = req.params.greeting;
+  res.json({ message: `${greeting}, World` });
+});
+
+app.listen(3000, function() {
+  console.log("Greeting app listening on port 3000!");
+});
+
+    </code></pre>
+    <pre><code data-trim contenteditable>
+node server.js
+// restarts with every change
+nodemon server.js
+      </code></pre>
+</section>
+
+<section>
+    <h2>Services</h2>
+    <pre><code data-trim contenteditable>
+ng generate service greeting
+        </code></pre>
+    <pre><code data-trim contenteditable>
+const urlBase = "http://localhost:3000";
+
+export interface Message {
+  message: string;
+}
+
+@Injectable({
+  providedIn: "root"
+})
+export class GreetingService {
+  constructor(private http: HttpClient) {}
+
+  requestGreeting(name: string): Observable&lt;Message> {
+    const url = `${urlBase}/${name}`;
+    return this.http.get&lt;Message>(url);
+  }
+}
+
+    </code></pre>
+        </section>
+
+        <section>
+    <h2>Using Services</h2>
+    <p>Access it using type based dependecy injection</p>
+    <pre><code data-trim contenteditable class="javascript">
+constructor(private greetingService: GreetingService) {
+}
+    </code></pre>
+    <p>Dealing with Observables</p>
+    <pre><code data-trim contenteditable class="javascript">
+load(): void {
+  this.greetingService.requestGreeting(this.title)
+    .subscribe(greeting => this.greeting = greeting.message);
+}
+    </code></pre>
+    <p><a href='https://angular.io/guide/rx-library'>https://angular.io/guide/rx-library</a></p>
+        </section>
+
+    <section data-markdown>
+        <textarea data-template>
+### Many Leves of nesting Angular Components
+
+* https://angular.io/guide/component-interaction
+* https://stackoverflow.com/questions/43832941/angular-2-4-5-smart-dumb-and-deeply-nested-component-communication
+* Custom Events do not bubble: https://stackoverflow.com/questions/42918423/angular-2-how-do-i-emit-an-event-up-through-multiple-nested-components
+* https://angular.io/guide/template-syntax#remember-the-brackets
+
+            </textarea>
+            </section>
+
+    <section>
+        <h3>Code Sample: Intermediate Dumb Component</h3>
+        <pre><code data-trim contenteditable class="javascript">
+@Component({
+  selector: 'app-container',
+  template: `<div class='contaner-layout'>
+    <app-title [titles]='titles'>
+        <h1>Hello!</h1>
+    </app-title>
+    <app-button (send)='send.emit()' title='Search'></app-button>
+</div>`
+})
+export class Container {
+  @Input() titles;
+  @Output() send = new EventEmitter();
+
+  // optionally call this, if you need intermediate processing
+  // private buttonSend() {
+    //   this.send.emit();
+    // } 
+}
+        </code></pre>
+        <p>Usage from Smart Component</p>
+        <pre><code data-trim contenteditable>
+<app-container [titles]='titles' (send)='clicked()'></app-container>
+            </code></pre>
+            </section>
+
+    <section>
+        <h2>Title</h2>
+        <h3>Leaf Level Dumb Component</h3>
+        <pre><code data-trim contenteditable class="javascript">
+@Component({
+  selector: 'app-title',
+  template: `<div class='title'>
+  <ng-content></ng-content>
+  <span *ngFor='let title of titles'>{{title.name}}</span>
+</div>`
+})
+export class TitleComponent {
+  @Input() titles;
+}
+            </code></pre>
+            </section>
+
+    <section>
+        <h2>Button</h2>
+        <h3>Button: Leaf Level Dumb Component</h3>
+        <pre><code data-trim contenteditable class="javascript">
+@Component({
+  selector: 'app-button',
+  template: `<button (click)='send.emit()'>{{title}}</button>`
+})
+export class ButtonComponent {
+  @Input() private title = '';
+  @Output() send = new EventEmitter();
+}
+            </code></pre>
+            </section>
+
+      <section data-markdown style="font-size: xx-large">
+          <textarea data-template>
+  ### @ngrx/store
+  
+  * yarn add @ngrx/store
+  * yarn add @ngrx/store-devtools
+  * yarn add @ngrx/effects
+  
+  https://github.com/ngrx/platform/blob/master/docs/store/README.md
+  https://github.com/ngrx/platform/blob/master/docs/store-devtools/README.md
+  https://github.com/ngrx/platform/blob/master/docs/effects/README.md
+  </textarea>
+      </section>
+
+   <section>
+<h3>@ngrx/effects</h3>
+<pre><code data-trim contenteditable class="javascript">
+@Injectable()
+export class RemoteEffects {
+  constructor(private greetingService: GreetingService, private actions$: Actions) {}
+
+  @Effect()
+  login$: Observable<Action> = this.actions$.pipe(
+    ofType('LOAD'),
+    mergeMap(action => this.greetingService.requestGreeting('huhu').pipe(
+      // If successful, dispatch success action with result
+      map(data => ({ type: 'SET', payload: data.message.length })),
+      // If request fails, dispatch failed action
+      catchError(() => of({ type: 'FAILED'}))
+    ))
+  );
+}
+</code></pre>
+<pre><code data-trim contenteditable class="javascript">
+import { EffectsModule } from '@ngrx/effects';
+import { RemoteEffects } from './ngrx-sandbox/remote.effects';
+
+@NgModule({
+  imports: [EffectsModule.forRoot([RemoteEffects])],
+})
+export class AppModule {}    
+    </code></pre>
+    <small>
+<a href='https://github.com/ngrx/platform/blob/master/docs/effects/README.md'>https://github.com/ngrx/platform/blob/master/docs/effects/README.md</a>
+</small>
+</textarea>
+</section>
+
 
 <section data-markdown>
   <textarea data-template>
@@ -395,17 +770,16 @@ _Using Angular CLI https://cli.angular.io/_
 1. https://angular.io/
 1. learn by doing: https://angular.io/tutorial
 1. learn by step by step: https://angular.io/guide/architecture
-</section>
 </textarea>
+</section>
 
 <section data-markdown>
   <textarea data-template>
 ## Crash Course Web Components
 
 https://www.webcomponents.org/
-</section>
 </textarea>
-
+</section>
 <section data-markdown>
   <textarea data-template>
 ### No installation and no tooling necessary
@@ -415,9 +789,8 @@ https://www.webcomponents.org/
 1. Open http://localhost:8080/
 1. Change the app code in your IDE and and refresh it in the browser
 
-</section>
 </textarea>
-
+</section>
 <section data-markdown>
   <textarea data-template>
 ### Learning more about Web Components
@@ -425,18 +798,16 @@ https://www.webcomponents.org/
 1. https://www.webcomponents.org/
 1. https://developers.google.com/web/fundamentals/web-components/
 1. https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements
-</section>
 </textarea>
-
+</section>
 
 <section data-markdown>
   <textarea data-template>
 ## Crash Course Web Components with lit element, PWA Starter Kit and TypeScript
 
 https://lit-element.polymer-project.org/
-</section>
 </textarea>
-
+</section>
 
 <section data-markdown>
   <textarea data-template>
@@ -452,9 +823,8 @@ _https://pwa-starter-kit.polymer-project.org/setup_
 1. Open http://localhost:8081/
 1. Change the app code in your IDE and and refresh it in the browser
 
-</section>
 </textarea>
-    </div>
+</section>    </div>
 
   </div>
 

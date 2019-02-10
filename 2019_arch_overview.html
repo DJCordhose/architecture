@@ -182,12 +182,22 @@
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
 
+        <!-- <section data-markdown class="todo">
+            <textarea data-template>
+    ### Overview Sketch
+    
+    * Welche Möglichkeiten gibt es noch? Auch Vaadin-Ansatz beleuchten
+    
+    
+    <img src='img/overview-sketch.jpg'>
+    
+            </textarea>
+          </section>
+     -->
+    
+    
       <section>
-        <h2>Overview of current (JavaScript) Frontend Architectures</h2>
-        <div>
-          <a href="TODO" target="_blank">
-            TODO</a>
-        </div>
+        <h2>Overview of current  Frontend Architectures</h2>
 
         <div>
           <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
@@ -201,157 +211,10 @@
         </p>
       </section>
 
-      <section data-markdown>
-          <textarea data-template>
-  <img src='img/twitter_arch_needs_impl.jpg' height="600px">
-  
-  <small>
-  https://twitter.com/DJCordhose/status/1083432218352062464  
-  </small>
-  </textarea>
-        </section>
-  
-        <section data-markdown>
-        <textarea data-template>
-### The ultimate goal of software architecture is, well, software
-
-<img src='img/twitter_implementation_is_king.jpg'>
-
-<small>
-https://twitter.com/DJCordhose/status/1084456405438996480  
-</small>
-</textarea>
-      </section>
-
-      <section data-markdown class="todo">
-        <textarea data-template>
-### The danger of choosing tools
-<img src='img/scratch/worum-geht-es-bei-auswahl-tools.jpg' height="400px">
-
-</textarea>
-      </section>
-
-      <section data-markdown class="todo">
-        <textarea data-template>
-### An Overview of the Most Exciting Proposals for the Web Platform Related to Web Components
-
-https://scotch.io/bar-talk/an-overview-of-the-most-exciting-proposals-for-the-web-platform-related-to-web-components/amp
-</textarea>
-      </section>
-
-      <section data-markdown class="todo">
-        <textarea data-template>
-### Shadow DOM might be be trouble - Do we need it at all?
-<img src='img/scratch/Screenshot_20190113-105239.jpg' height="400px">
-
-</textarea>
-      </section>
-
-      <section data-markdown class="todo">
-        <textarea data-template>
-### Style as a concept is global - but Shadom DOM makes everything local
-
-Passing layout properties over many layers using shadow DOM seems unfeasable
-<img src='img/scratch/Screenshot_20190116-125703.jpg' height="400px">
-
-</textarea>
-      </section>
-
-
-      <section data-markdown class="todo">
-        <textarea data-template>
-### The curse of having the choice
-
-* Framework vs Starter Kit (Best Practices)
-* No choices vs Choices that you can break away from
-
-<img src='img/scratch/Screenshot_20190113-131017.jpg' height="400px">
-
-</textarea>
-      </section>
-
-      <section data-markdown class="todo">
-        <textarea data-template>
-### Dividing frontend from backend is an antipattern
-    
-JavaScript has absolutely exploded in the past few years. Nowadays  significant chunks of functionality are moving from the backend to the frontend.
-
-
-      https://twitter.com/jbandi/status/1081876386674020353
-</textarea>
-      </section>
-
-      <section data-markdown class="todo">
-        <textarea data-template>
-## Variante
-### WebComponents? Die sind doch tot, oder?
-
-https://www.md-devdays.de/Act?id=1000079
-
-* speziell auf Web Components
-* Live Coding anhand von fs forms
-
-### Where do they make sense?
-Share components between different tech stacks
-1. Lib
-2. Interface Components between teams
-
-### Probleme CSS
-* https://github.com/w3c/webcomponents/issues/759
-* Neuer Ansatz: https://wicg.github.io/construct-stylesheets/
-* Angst: https://meowni.ca/posts/part-theme-explainer/
-
-### Two interesting parts 
-* Custom Components
-* Shadow Dom
-
-### Use Cases
-
-* Fine Grained Components: App Development using (w/ or w/o shadow dom)
-* Coarse Grained Components: Client side integration (using shadow dom)
-  * You can choose between something not quite mature Web Components and something horrible iFrames
-
-</textarea>
-</section>
-
-            <section data-markdown class="todo" style="font-size: xx-large">
-        <textarea data-template>
-### Micro Frontends Teil einbauen für 60 Minuten Version
-
-Eröffnung
-
-Nils: das problem ist finde ich, man hat zwei extreme:
-1. es soll einheitlich aussehen unter allen umständen
-2. es ist komplett wurscht wie's aussieht
-Auf die beiden Positionen kann man sich leicht committen team-übergreifend
-
-aber auf den 2. punkt committed sich natürlich keiner
-weil "ganz egal" ist es eben doch nicht
-
-auf den ersten auch nicht: "unter allen Umständen" kann echt viel heißen
-auch: es wird nie fertig
-
-und dann wirds schwer: wieviel abweichung von "einheitlichkeit" ist noch erlaubt.
-            </textarea>
-      </section>
-
-      <section data-markdown class="todo">
-        <textarea data-template>
-### Overview Sketch
-
-* Welche Möglichkeiten gibt es noch? Auch Vaadin-Ansatz beleuchten
-
-
-<img src='img/overview-sketch.jpg'>
-
-        </textarea>
-      </section>
-
-
 
       <section data-markdown>
           <textarea data-template>
-### JavaScript Architecture?
+### Frontend Architecture?
 
 <div class="fragment">
 Let my son quickly come up with one
@@ -382,8 +245,7 @@ Let my son quickly come up with one
         <textarea data-template>
 ### Things Grow - Why you might need frontend architecture
 
-<img src='img/js-pupper-project.png'>
-
+<img src='img/js-pupper-project.png' height="500px">
 <small>
 https://twitter.com/_developit/status/1077390391530405888
 </small>
@@ -394,8 +256,7 @@ https://twitter.com/_developit/status/1077390391530405888
         <textarea data-template>
 ### The Two Computer Sciences
 
-<img src='img/bret-victor-two-cs.jpg'>
-
+<img src='img/bret-victor-two-cs.jpg' height="500px">
 <small>
 https://twitter.com/worrydream/status/1071191862462038016
 </small>
@@ -406,8 +267,7 @@ https://twitter.com/worrydream/status/1071191862462038016
         <textarea data-template>
 ### UX vs the World
 
-<img src='img/ux-vs-constraints.jpg'>
-
+<img src='img/ux-vs-constraints.jpg' height="500px">
 <small>
 https://twitter.com/uxresearch/status/1079148047257395200
 </small>
@@ -415,23 +275,13 @@ https://twitter.com/uxresearch/status/1079148047257395200
       </section>
 
 
-      <!-- <section data-markdown>
-          <textarea data-template>
-
-<img src='img/js-arch.png' height="600px">
-  
-
-<small>https://twitter.com/mr_mig_by/status/1060267034422976513</small>
-              </textarea>
-        </section>
-  
             <section>
             <img src="img/frontend-architecture.png" height="600px">
 
             <p><small><a href="https://twitter.com/markdalgleish/status/908146609942257664" target="_blank">
                 https://twitter.com/markdalgleish/status/908146609942257664
             </a></small></p>
-        </section> -->
+        </section>
 
 
     <section>
@@ -483,511 +333,33 @@ https://twitter.com/uxresearch/status/1079148047257395200
                   </ul>
     </section>
 
-    <section>
-      <h3 style="line-height: 1em">Single-Page Applications</h3>
-      <h2>Components with Templates</h2>
-      <p style="color: #2aa198">A SPA is composed of (business) components:</p>
-      <ul>
-          <li>Templates describe the UI of the component
-          <li>But now:
-            <ul>
-              <li>Logic is part of the component</li>
-              <li>Logic is a "first-class" citizen and no longer a "loose" snippet (like in jQuery)
-              <li><span class="highlight" >Logic is fully executed on the client</span></li>
-            </ul>
-            <li>Prominent Frameworks: React, Angular, Vue, and Web Components (Polymer)</li>
-      </ul>
-  </section>
-
-  <section data-markdown>
-    <textarea data-template>
-### Why a Framework?
-
-* Binding to model
-* Templates
-* Declarative vs Imperative
-* Re-Rendering on model change
-* Why not just PubSub (The classic for listening to changes)
-  * Hard to understand flow
-  * We tend to forget to de-register 
+    <section data-markdown>
+        <textarea data-template>
+### Dividing frontend from backend is an antipattern
     
-            </textarea>
-          </section>
+JavaScript has absolutely exploded in the past few years. Nowadays significant chunks of functionality are moving from the backend to the frontend.
 
-      <section data-markdown>
-          <textarea data-template>
-### Which Framework?
+<small>
+https://twitter.com/jbandi/status/1081876386674020353
+</small>
+</textarea>
+      </section>
 
-* Might be off-topic but people will keep asking me anyway :D
-* Technically it does not matter much
-* There is no single right answer
-            </textarea>
-          </section>
+
 
     <section data-markdown>
         <textarea data-template>
-### Annual Survey among JS Developers
+### The ultimate goal of software architecture is, well, software
 
-<img src='img/js-frameworks-2018.png' height="500px">
-
-https://2018.stateofjs.com/front-end-frameworks/conclusion  
-
-        </textarea>
-    </section>
-
-    <section data-markdown>
-      <textarea data-template>
-### Questions on Framework on Stack Overflow
-
-<img src='img/frameworks-stack-overflow.png' height="500px">
+<img src='img/twitter_implementation_is_king.jpg'>
 
 <small>
-  https://insights.stackoverflow.com/trends?tags=angular%2Cangularjs%2Creactjs%2Cjquery%2Cvue.js%2Cvuejs2%2Cpolymer
+https://twitter.com/DJCordhose/status/1084456405438996480  
 </small>
 </textarea>
-</section>
-
-<section data-markdown>
-  <textarea data-template>
-### Tech likes React, Insurances likes Angular
-
-<img src='img/tag_by_industry_graph-1-768x768.png' height="500px">
-
-<small>
-  https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/
-</small>
-</textarea>
-</section>
-
-<section data-markdown>
-        <textarea data-template>
-### Why React?
-<img src='img/twitter-nils-react.png' height="500px">
-
-<small>
-https://twitter.com/nilshartmann/status/1055769094660722688
-</small>
-          </textarea>
-        </section>
-
-      <section data-markdown>
-        <textarea data-template>
-### Why Angular
-
-* choose Angular when you want a complete framework
-* and like other (hopefully smarter) people to make the right choices for you 
-* you like classes (while React people like functions)
-          </textarea>
-        </section>
-
-      <section data-markdown>
-        <textarea data-template>
-### Why Vue.js
-
-* took over template syntax and quite some audience from Angular.js 1
-* easy to master
-* templates doable by frontend (HTML/CSS) people
-          </textarea>
-        </section>
-
-  <section data-markdown>
-      <textarea data-template>
-### Why WebComponents Polymer LitElement and lit-html
-
-  
-* Solves these issues within the JS world using mostly standards
-* Class based
-* Flexible in programming style
-* Not implmented in Edge, yet, but in development
-* polymer lit lib not 1.0, yet
-* polymer lit libs quite small
-* just another framework?
-
-https://lit-element.polymer-project.org/
-<br>
-https://lit-html.polymer-project.org/
-
-</textarea>
-  </section>
-  
-          <section data-markdown>
-    <textarea data-template>
-### React, Angular, WebComponents/LitElement, and Vue solve all of these
-
-* Binding to model
-  * One-Way-Binding
-* Templates
-  * JSX, HTML with directives, HTML 
-* Re-Rendering
-  * Virtual DOM or Zones checking Model updates
-
-  </textarea>
-</section>
-
-<section data-markdown>
-  <textarea data-template>
-### TypeScript for business applications
-
-_All frameworks work well with TypeScript_
-
-<img src='img/typescript.jpg' height="400px">
-
-<small>
-https://www.typescriptlang.org/
-<br>
-Vue 3.0 based on TypeScript https://twitter.com/newsyc250/status/1063900647853121536
-<br>
-Vue Roadmap: https://github.com/vuejs/vue/projects/6#column-4065494
-</small>
-
-</textarea>
-</section>
-
-
-<section class="step-subtitle">
-    <h3>Composing an Application from Components</h3>
-    <h1>Smart and Dumb Components<span style="color:#D3337B">*</span></h1>
-    <h3 style='color:#586e75;font-family: "Amiri", serif;letter-spacing:-2px;text-decoration:none;font-weight:bold'><span style="color:#D3337B">*</span>also known as <em style='font-family: "League Gothic", Impact, sans-serif;letter-spacing:1px;font-style:normal;text-transform:uppercase'>Mediator Pattern</em> with Web Components / Polymer</h3>
-</section>
-
-<section>
-  <h3><span class="highlight">Smart</span> Components </h3>
-    <ul>
-      <li>Managing (part of) the application <span class="highlight">state</span>
-      <li>Contain UI <span class="highlight">logic</span></li>
-        <li>Pass parts of the state as immutable data to subcomponents</li>
-        <li>Pass callbacks to subcomponents for interaction</li>
-        <li>Mostly domain-specific, not intended to be reusable
-    </ul>
-    <p><em>Aka Container</em></p>
-</section>
-
-<section>
-    <h3><span class="highlight">Dumb</span> Components</h3>
-    <ul>
-      <li>only for <span class="highlight">presentation</span>, no logic
-      <ul>
-        <li>but might contain own ("transient") state
-        </li>
-      </ul>
-      <li>have <span class="highlight">no knowledge or dependencies</span> to their surrounding components
-        <li>children of Dumb Components are usually other Dumb Components
-        (but there are
-            <a target="_blank" href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.z8xy5zvhs">
-              exceptions</a>)
-        <li>reusable
-    </ul>
-    <p><em>Aka Presentational Component or just Component</em></p>
-</section>
-
-<section>
-    <img src="img/smart-dumb-properties.png">
-</section>
-
-
-<section data-markdown>
-  <textarea data-template>
-<img src='img/jan_de_v_design.jpg' height="600px">
-
-<small>
-<a href='https://twitter.com/Jan_de_V'>@Jan_de_V</a> <a href='https://twitter.com/TopconfEE'>@TopconfEE</a> 
-</small>
-
-</textarea>
-</section>
-
-
-    <section>
-        <h2>Smart Component</h2>
-        <pre><code data-trim contenteditable class="javascript">
-@Component({
-template: `&lt;sub [greeting]={{greeting}} (onSend)="sent($event)"></sub>`
-})
-export class AppComponent {
-  // component state
-  private greeting: string = 'Hiho';
-
-  // dependency injection
-  constructor(private greetingService: GreetingService) {
-  }
-
-  // "Business Logic" delegated to service
-  sent(greeting) {
-    this.greeting = this.greetingService.greetBack(greeting);
-  }
-}
-        </code></pre>
-      <p><a target="_blank" href="https://angular.io/tutorial/toh-pt4">
-          https://angular.io/tutorial/toh-pt4</p>
-      </a></p>
-    </section>
-
-    <section>
-        <h2>Dumb Component</h2>
-        <pre><code data-trim contenteditable class="javascript">
-@Component({
-selector: 'sub',
-template: `
-<input [(ngModel)]="greeting">
-<p>{{greeting}}, World</p>
-<button (click)="send()">Send</button>
-`,
-})
-export class SubComponent {
-  @Input() greeting: string;
-
-  // rxjs observer
-  @Output() onSend = new EventEmitter();
-
-  // no business logic, just event emitting
-  send() {
-    this.onSend.emit(this.greeting);
-  }
-}
-        </code></pre>
-    </section>
-
-    <section>
-        <h3>Example</h3>
-        <img src="exercise/detail.png">
-
-        <p><small>What would be candidates for Smart-/Dumb-Components?</small></p>
-    </section>
-
-    <section>
-        <h3>Dumb</h3>
-        <img src="exercise/detail-dumb.jpg">
-    </section>
-
-    <section>
-        <h3>Smart</h3>
-        <img src="exercise/detail-smart.jpg">
-    </section>
-
-
-    <section class="next-step">
-        <h3>Smart and Dumb Components</h3>
-          <h2>Limitations</h2>
-          <p style="color: #2aa198">Mainly with growing and long-living applications</p>
-          <ul>
-            <li class="fragment" style="font-size: 80%">"God-like" components: State and logic tend to slowly move up to a few really fat components
-            <li class="fragment" style="font-size: 80%">Distributed, mutatable state makes maintainability and understanding hard
-              <ul>
-                <li>Where does the state belong to?</li>
-                <li>In which state is the application?
-              </ul>
-            </li>
-            <li class="fragment" style="font-size: 80%">Mash up of framework and UI code (hardens switching the framework)
-              <li class="fragment" style="font-size: 80%">Still open questions regarding the architecture
-                  <ul>
-                      <li>How to handle asynchronous code?
-                      <li>How to do proper initialization of the application?
-                      <li>How to test the business logic?
-                  </ul>
-              </li>
-          </ul>
-      </section>
-
-      <section data-markdown>
-          <textarea data-template>
-  ### Data Layer – transmit and manage data
-  
-  <img src='img/js-data-layer-2018.png' height="500px">
-  
-  https://2018.stateofjs.com/data-layer/conclusion/
-  
-          </textarea>
-      </section>
-  
-      <section>
-          <h1>Redux</h1>
-          <ul>
-            <li><span class="highlight">Central</span> state management: one store for whole app, like a database</li>
-            <li><span class="highlight">External</span> state management: extract logic from the (UI-)components</li>
-          </ul>
-          <em>It's not only a framework, it's also a pattern (like MVC)</em>
-      </section>
-
-      <section>
-        <h2>Redux</h2>
-        <h3>Architectural guidance</h3>
-        <ul>
-                <li>Uni-directional data flow
-                <li>Central and immutable state: store
-                        <li>Only reducers are allowed to modify state
-                                <li>State moves from Smart Components to store
-                <li>UI logic moves from Smart Components in Action-Creators / Services and Reducer
-                <li>Asynchronous code only in Action-Creators / Services or Effects
-                <li>Initializing of the app with central action
-        </ul>
-    </section>
-
-      <section>
-          <h2>Redux is independent of UI framework</h2>
-          <p style="color: #2aa198">Bindings exist for popular UI frameworks</p>
-          <ul style="font-size: 80%">
-              <li>React: <a href="http://redux.js.org/docs/basics/UsageWithReact.html" target="_blank">
-                  http://redux.js.org/docs/basics/UsageWithReact.html
-              </a>
-              <li>Angular: <a href="https://github.com/ngrx/platform" target="_blank">https://github.com/ngrx/platform</a></li>
-              <li>Vue: <a href="https://github.com/vuejs/vuex" target="_blank">https://github.com/vuejs/vuex</a>
-              <li>Web Components (Polymer): Redux is recommended implementation of <em>Global Mediator Pattern</em>,
-                  <a href="https://twitter.com/DJCordhose/status/899943415353311232" target="_blank">https://twitter.com/DJCordhose/status/899943415353311232</a>
-                  <a href="https://tur-nr.github.io/polymer-redux/" target="_blank">https://tur-nr.github.io/polymer-redux/</a>
-          </ul>
-
-      </section>
-
-      <section>
-          <h3>Redux extracts responsibility out of Components</h3>
-          <img src="img/redux-02-extracting-responsibility.png" style="max-height: 500px; border:0;box-shadow:0 0 0 0"/>
-      </section>
-
-      <section>
-          <h3>Redux Pattern, Resulting Architecture</h3>
-          <img src="img/redux-03-resulting-redux-architecture.png" style="max-height: 500px; border:0;box-shadow:0 0 0 0"/>
       </section>
 
 
-      <!-- <section>
-          <h2>Different Types of State</h2>
-          <img src="img/three-kinds-of-state.png">
-      </section>
-      
-      <section data-markdown>
-          <textarea data-template>
-### Demo
-* Redux Tools
-* Backend Calls
-* Routing
-  * http://localhost:4200/root
-  * http://localhost:4200/counter
-* Extract Parameters from URL: http://localhost:4200/counter/100  
-
-http://localhost:4200/
-            </textarea>
-          </section> -->
-    
-
-   <section>
-<h3>Reducer</h3>
-<pre><code data-trim contenteditable class="javascript">
-export function counterReducer(state: number = 0, action: Action) {
-  switch (action.type) {
-    case INCREMENT:
-      return state + 1;
-
-    case DECREMENT:
-      return state - 1;
-
-    case RESET:
-      return 0;
-
-    default:
-      return state;
-  }
-}
-</code></pre>
-<pre><code data-trim contenteditable class="javascript">
-import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
-import { counterReducer } from './counter';
-
-@NgModule({
-  imports: [StoreModule.forRoot({ count: counterReducer })],
-})
-export class AppModule {}    
-</code></pre>
-</section>
-
-   <section>
-<h3>Connection to Store</h3>
-<pre><code data-trim contenteditable class="javascript">
-
-interface AppState {
-  count: number;
-}
-
-@Component({
-  template: `<div>Current Count: {{ count$ | async }}</div>`
-})
-export class CounterComponent {
-
-  count$: Observable&lt;number>;
-
-  constructor(private store: Store&lt;AppState>) {
-    this.count$ = store.pipe(select('count'));
-  }
-
-  reset() {
-    this.store.dispatch({ type: RESET });
-  }
-
-}
-</code></pre>
-</section>
-
-
-      <section>
-          <h3>Is anyone really using this?</h3>
-          <div class="fragment">
-              <a href="https://www.xing.com/messenger" target="_blank">
-              <img src="xing-messenger-redux.png" height="550px">
-              </a>
-              <small>Microsoft Outlook, Twitter, Apple, XING and many others use React and Redux</small>
-          </div>
-      </section>
-
-    <section data-markdown>
-  <textarea data-template>
-### But don't overdo it
-
-_Spreading out your application into too many tiny fragments can make it hard to read and maintain_
-
-<img src='ngrx-overdone.jpg' height="450px">
-<small>
-https://twitter.com/jbandi/status/1023954402116358145
-</small>
-    </textarea>
-  </section>
-
-        <!-- <section>
-						<h3>Wrap Up Redux</h3>
-						<p  style="color: #2aa198">A UI pattern for User Interfaces</span>
-            <ul class="fragment" style="font-size:80%">
-                <li>Mainstream solution
-                <li>Independent of framework
-                <li>Easy testing of business logic as logic is implemented only in pure functions ("Reducer")
-                <li>Great debugging because of dev tools
-                <li>Works great in large applications with many dependencies between parts / components
-              </ul>
-
-        </section> -->
-
-        <section>
-						<h3>Wrap Up</h3>
-						<p  style="color: #2aa198">Overview of current (JavaScript) Frontend Architectures</span>
-            <ul>
-                <li class="fragment">SPAs are just like any rich frontend application
-                <li class="fragment">Which framework you use does not matter too much
-                <li class="fragment">All make you compose your application from components
-                <li class="fragment">Composing your Application into Smart and Dumb Components
-                <li class="fragment">Redux as Data Layer
-                  <ul>
-                      <li>for large applications with many dependencies between parts / components
-                      <li>provides architectural guidance where which part of the application goes
-                  </ul>
-                </li>
-              </ul>
-            <p>
-                <small>
-            <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
-                <br>
-        <a href="http://bit.ly/topconf-js">
-            http://bit.ly/topconf-js</a>
-        </small>
-            </p>
-        </section>
     </div>
 
   </div>
