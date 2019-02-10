@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Web Components</title>
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <!--<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">-->
+  <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
+  <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
+  <!--<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">-->
+  <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+  <style>
+    /*pre code {*/
+
+    /*display: block;*/
+
+    /*padding: 0.5em;*/
+
+    /*background: #FFFFFF !important;*/
+
+    /*color: #000000 !important;*/
+
+    /*}*/
+
+    .right-img {
+      margin-left: 10px !important;
+      float: right;
+      height: 500px;
+    }
+
+    .weg:before {
+      content: 'Streichen?';
+    }
+
+    .weg {
+      color: red !important;
+    }
+
+    .presenter h1 {
+      color: rgb(255, 0, 234) !important;
+    }
+
+    .todo:before {
+      content: 'TODO: ';
+    }
+
+    .todo {
+      color: red !important;
+    }
+
+    code span.line-number {
+      color: lightcoral;
+    }
+
+    .reveal pre code {
+      max-height: 1000px !important;
+    }
+
+    img {
+      border: 0 !important;
+      box-shadow: 0 0 0 0 !important;
+    }
+
+    .reveal {
+      -ms-touch-action: auto !important;
+      touch-action: auto !important;
+    }
+
+    .reveal h2,
+    .reveal h3,
+    .reveal h4 {
+      letter-spacing: 2px;
+                        font-family: 'Calibri', sans-serif;
+                          /* font-family: 'Times New Roman', Times, serif; */
+                          font-weight: bold;
+                          color: black;
+                          font-style: italic;
+                          letter-spacing: -2px;
+                          text-transform: none !important;
+    }
+`
+    .reveal em {
+      font-weight: bold;
+    }
+
+    .reveal .step-subtitle h1 {
+      letter-spacing: 1px;
+    }
+
+    .reveal .step-subtitle h2,
+    .reveal .step-subtitle h3 {
+      text-transform: none;
+
+      font-weight: normal;
+      /* font-weight: 400; */
+      /* font-family: 'Amiri', serif; */
+      font-family: 'Lobster', serif;
+      letter-spacing: 1px;
+      color: #2aa198;
+      /* text-decoration: underline; */
+    }
+
+    .reveal .step-subtitle h3 {
+      text-decoration: underline;
+      font-style: normal
+    }
+
+    /* .reveal .step-subtitle h2 {
+      font-style: italic;
+    } */
+
+    .reveal .front-page h1,
+    .reveal .front-page h2 {
+      font-family: "League Gothic";
+      font-style: normal;
+      text-transform: uppercase !important;
+      letter-spacing: 1px;
+    }
+
+    .reveal .front-page h1 {
+      font-size: 2.5em !important;
+    }
+
+    .reveal .highlight {
+      /* #D3337B;*/
+      color: #268bd2;
+    }
+
+    .reveal section img {
+      background: none;
+    }
+
+    .reveal img.with-border {
+      border: 1px solid #586e75 !important;
+      box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .reveal li {
+      margin-bottom: 8px;
+    }
+
+    /* For li's that use FontAwesome icons as bullet-point */
+
+    .reveal ul.fa-ul li {
+      list-style-type: none;
+    }
+
+    .reveal {
+      color: black !important;
+    }       
+
+  </style>
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+
+  <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+      <section>
+        <h2>Web Components</h2>
+
+        <div>
+          <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
+          <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
+        </div>
+        <p style="clear: both">
+          <small>Slides:
+            <a href="TODO">
+              TODO</a>
+          </small>
+        </p>
+      </section>
+
+      <section data-markdown class="todo">
+          <textarea data-template>
+      ### Do we need a framework, would Web Components do?
+      
+      https://twitter.com/mislav/status/1022058279000842240
+      </textarea>
+      </section>
+      
+<section data-markdown class="todo">
+    <textarea data-template>
+### Nils  
+
+bei mir zieht ja das "standard" argument nicht, ich finde, wenn irgendwas mindestens "quasi-standard" bzw einigermaßen
+etabliert ist, kommt es für den Einsatz in Frage (gleiche Diskussion jee oder spring mE).
+
+Demnach wäre bei mir nicht nur WebComponents in der Verlosung, sondern eben auch Angular, Vue, React etc pp. Und dann
+würde ich überlegen, wie ich eigentlich Anwendungen bauen will, welche Features sind mir wichtig, wo gefallen mir API,
+Doku, Tooling etc. Das würde ich dann nehmen.
+
+Und ich persönlich finde, dass die WebComponents auf dem falschen "Level" abstrahieren bzw nicht genügend Features
+bieten (state handling etc). Das alles finde ich in react viel viel besser (vermutlich auch in Angular/Vue) und würde
+deswegen WCs nicht verwenden
+Ich finde Custom Elements schön und gut, aber die Art+Weise wie ich die entwickeln müsste, würde mir nicht gefallen
+
+</textarea>
+</section>
+      
+<section data-markdown class="todo">
+    <textarea data-template>
+### Benchmark over Frameworks
+
+  Justin Fagnani (@justinfagnani) tweeted at 9:27 PM on Tue, Feb 05, 2019:
+I'm really happy with where we've been able to keep (and improve on) lit-html performance while working around crazy bugs in browsers.
+
+Usual caveat that all benchmarks have problems, but in js-framework-benchmark we're beating almost all "well-known" libraries. https://t.co/VIhpWJkY1s
+(https://twitter.com/justinfagnani/status/1092882517709905921?s=03)
+</section>
+</textarea>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Web Components Live
+  https://wiredjs.com/
+  https://roughjs.com/
+</section>
+</textarea>
+
+  <section data-markdown class="todo">
+    <textarea data-template>
+### Web Components Theeming
+  https://meowni.ca/posts/part-theme-explainer/
+</section>
+</textarea>
+
+  <section data-markdown class="todo">
+    <textarea data-template>
+### Web Components 101
+  https://www.telerik.com/blogs/web-components-101-an-introduction-to-web-components
+</section>
+</textarea>
+
+<section data-markdown>
+<textarea data-template>
+### Web Components Compatibility
+
+<img src='img/web-components-support.jpg'>
+
+<small>
+https://www.webcomponents.org/
+<br>
+https://caniuse.com/#search=Web%20components
+</small>
+</section>
+</textarea>
+
+  <section data-markdown class="todo">
+    <textarea data-template>
+### Frameworks with Custom elements
+
+https://custom-elements-everywhere.com/      
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+<textarea data-template>
+
+Custom Elements with Angular, angular elements
+
+https://github.com/manfredsteyer/ngx-build-plus#advanced-example-externals-and-angular-elements
+
+https://github.com/manfredsteyer/ngx-build-plus
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### lit-html, lit-element 
+
+* change detection using comments: https://github.com/Polymer/lit-html/issues/748
+
+</textarea>
+  </section>
+
+  <section data-markdown class="todo">
+      <textarea data-template>
+### Web Components 
+
+Daniel: 
+* früher= browser lief vorweg, dann frameworks hinterher
+* heute umgekehrt
+
+Wieso gut?
+* access all browser dom api easily
+
+* Proposals: https://scotch.io/bar-talk/an-overview-of-the-most-exciting-proposals-for-the-web-platform-related-to-web-components/amp
+* Template instantiation: 
+* https://scotch.io/bar-talk/an-overview-of-the-most-exciting-proposals-for-the-web-platform-related-to-web-components/amp#toc-template-instantiation-with-substituted-values
+* https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Template-Instantiation.md
+
+* Constructable Stylesheet Objects
+* https://wicg.github.io/construct-stylesheets/
+* https://github.com/WICG/construct-stylesheets/blob/gh-pages/explainer.md
+
+</textarea>
+    </section>
+
+
+
+    </div>
+
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js "></script>
+  <script src="reveal.js/js/reveal.js "></script>
+  <script src="lib/jquery-2.2.4.js "></script>
+  <script>
+    // $('.weg').remove();
+    // uncomment for jax
+    $('.jax').remove();
+    if (window.location.hostname.indexOf('localhost') !== -1) {
+    } else {
+      // only applies to public version
+      $('.preparation').remove();
+      $('.todo').remove();
+      $('.local').remove();
+      $('.presenter').remove();
+
+    }
+    Reveal.addEventListener('ready', function (event) {
+        // do we want this???
+        $('li').addClass('fragment')
+
+        // make all links open in new tab
+        $('a').attr('target', '_blank')
+
+      if (window.location.hostname.indexOf('localhost') !== -1) {
+        // only applies to presentation version
+        Reveal.configure({ controls: false });
+      } else {
+        // only applies to public version
+        $('.fragment').removeClass('fragment');
+      }
+      // applies to all versions
+      $('code').addClass('line-numbers');
+    });
+    // $('section').attr('data-background-image', "backgrounds/light-metal.jpg ");
+    // $('section').attr('data-background-image', "backgrounds/pink.jpg ");
+    // $('section').attr('data-background-image', "backgrounds/white.jpg ");
+//    $('section').attr('data-background-image', "backgrounds/code.jpg ");
+$('section').attr('data-background-image', "backgrounds/sky.jpg");
+
+  </script>
+
+  <script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      width: 1100,
+
+      transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+      // Optional reveal.js plugins
+      dependencies: [
+        {
+          src: 'reveal.js/lib/js/classList.js', condition: function () {
+            return !document.body.classList;
+          }
+        },
+        {
+          src: 'reveal.js/plugin/markdown/marked.js', condition: function () {
+            return !!document.querySelector('[data-markdown]');
+          }
+        },
+        {
+          src: 'reveal.js/plugin/markdown/markdown.js', condition: function () {
+            return !!document.querySelector('[data-markdown]');
+          }
+        },
+        {
+          src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+            return !!document.querySelector('pre code');
+          }, callback: function () {
+            hljs.initHighlightingOnLoad();
+          }
+        },
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+        { src: 'reveal.js/plugin/notes/notes.js', async: true },
+        { src: 'lib/js/line-numbers.js' }
+      ]
+    });
+
+  </script>
+
+</body>
+
+</html>
