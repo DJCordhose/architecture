@@ -254,6 +254,138 @@ node -e "console.log('Hello World');"
                         <img src="img/Devtools-Screenshot.png">
                     </section>
 
+<section data-markdown>
+    <textarea data-template>
+### Basics
+      </textarea>
+</section>
+
+                <section id="basis">
+                    <h2>Object</h2>
+                        <pre><code class="javascript" contenteditable>let map = {
+    feld1: 'Huhu',
+    zweites$Feld: "Auch sowas geht!"
+};
+console.log(typeof map === "object"); // true
+console.log(map.feld1); // Huhu
+console.log(map["zweites$Feld"]); // possible as well
+
+map.hund = "Ganz neu geht auch";
+map.f = function() { return "Aha!" };
+
+delete map.hund; // delete
+console.log(map.hund); // undefined
+</code></pre>
+                </section>
+                <section>
+                    <h2>Runtime Types</h2>
+                        <pre><code class="javascript" contenteditable>let string = "String";
+typeof string === "string";
+
+let int = 1;
+typeof int === "number";
+
+let float = 1.0;
+typeof float === "number";
+
+let bool = true;
+typeof bool === "boolean";
+
+let func = function() {};
+typeof func === "function";
+
+typeof doesNotExist === "undefined";</code></pre>
+                </section>
+
+                <section>
+                    <h2><code>==, ===</code></h2>
+    <pre><code class="javascript" contenteditable>// == tries conversions, will confuse you`
+"dog" == "dog";
+1 == true;
+2 != false;
+2 != true;
+0 == false;
+-1 != false;
+-1 != true;
+1 == "1";
+1 == "1.0";
+
+// === without conversion, always take this
+"dog" === "dog";
+1 !== true;
+1 !== false;
+1 === 1;
+1 !== "1"</code></pre>
+            </section>
+
+
+                <section>
+                    <h2>undefined and null</h2>
+    <pre><code class="javascript" contenteditable>let obj = {
+    a: null,
+    b: undefined,
+    d: "d",
+    e: "e"
+};
+
+typeof obj.a; // => "object"
+typeof obj.b; // => "undefined"
+typeof obj.c; // => "undefined"
+
+obj.d = null;
+typeof obj.d; // => "object"
+
+obj.e = undefined;
+typeof obj.e; // => "undefined"</code></pre>
+                </section>
+
+
+                <section>
+                    <h2>Array</h2>
+                        <pre><code class="javascript" contenteditable>
+let array = ["a", "b", "c"];
+let el = array[2];
+array[1] = 20;
+typeof array === "object";
+// adds 4
+array.push(4);
+// at pos 1 remove 2 elements
+array.splice(1, 2);
+// at pos 1 remove 0 elements and insert "x"
+// Zudem wird an Position 1 "x" hinzugefügt
+array.splice(1, 0, "x");                        </code></pre>
+                </section>
+
+                <section>
+                    <h2>string</h2>
+<pre><code class="javascript" contenteditable>let s1 = 'Hallo, ';
+let s2 = "Olli's Oma";
+
+let s3 = s1 + s2;
+s3 === "Hallo, Olli's Oma";
+
+s3[1] === "a";
+s3.charAt(1) === s3[1];
+</code></pre>
+                </section>
+
+                <section>
+                    <h2>Functions</h2>
+                        <pre><code class="javascript" contenteditable>
+function f2() {
+    console.log("Called!");
+}
+let result2 = f2();
+result2 === undefined;
+
+let f1 = function(p1, p2) {
+    return p1 + p2;
+};
+let result1 = f1(1,2);
+result1 === 3;
+                        </code></pre>
+                </section>
+
 <section>
     <h2>ES6-Reference</h2>
     <p><a href="http://exploringjs.com/es6/" target="_blank">
@@ -535,19 +667,19 @@ in ${language}.`);
             <section>
                 <h3>fetch sending JSON using POST</h3>
                 <pre><code class="javascript" contenteditable>const url = `${BACKEND_URL}${path}`;
-    const objectBeSaved = ...;
-    
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(objectBeSaved)
-    })
-        .then(json => response.status === 201 ? /* success */ :
-                                                /* failure */)
-        .catch(ex => console.error('request failed', ex));
+const objectBeSaved = ...;
+
+fetch(url, {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(objectBeSaved)
+})
+.then(json => response.status === 201 ? /* success */ :
+                                        /* failure */)
+.catch(ex => console.error('request failed', ex));
     </code></pre>
     
             </section>
@@ -563,7 +695,7 @@ in ${language}.`);
                             </ul>
                         </section>
     
-                    <section>
+                    <!-- <section>
                             <h3>Create a Promoise and react asynchronously</h3>
        <pre class="fragment"><code class="javascript" contenteditable>const promise = new Promise(resolve =>
         setTimeout(
@@ -650,9 +782,25 @@ in ${language}.`);
     
     // Output:
     // error:  Promise rejected</code></pre>
-                    </section>
+                    </section> -->
     
+      <section>
+        <h3>fetch with async/await</h3>
 
+        <em>async/await recommended alternative to explicit Promise</em>
+        <pre class="fragment"><code class="javascript" contenteditable data-trim>
+async function loadGreetings() {          
+  try {
+    const response = await fetch('http://localhost:7000/greetings');
+    const json = await response.json();
+    // success: do something with json
+  } catch (err) {
+    console.error("Loading failed: ", ex);
+  }
+}
+  </code></pre>
+
+      </section>
 
 <section data-markdown>
     <textarea data-template>
@@ -1066,8 +1214,7 @@ Annotations in Java</a>)
 * install external type declarations transparently <a href="https://blogs.msdn.microsoft.com/typescript/2016/06/15/the-future-of-declaration-files/">using npm</a>
                         (e.g.<em>npm install @types/react --save</em>)
 * If there are no existing declaration files: still works, but less powerful
-
-        </ul>
+</textarea>
     </section>
 
   <section>
