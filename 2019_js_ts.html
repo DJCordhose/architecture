@@ -89,7 +89,6 @@
                           letter-spacing: -2px;
                           text-transform: none !important;
     }
-`
     .reveal em {
       font-weight: bold;
     }
@@ -199,28 +198,545 @@
 
       <section data-markdown>
           <textarea data-template>
-## JavaScript
+## Modern JavaScript
+
+Talking about ES6 and later
 </textarea>
 </section>
 
-<section data-markdown class="todo">
-    <textarea data-template>
-## Take from React Intro
-</textarea>
+                    <section>
+                        <h2>Hello World: Markup und DOM</h2>
+                        <pre><code class="xml" contenteditable>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello World!&lt;/title&gt;
+  &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div id="log">&lt;/div>
+      &lt;script&gt;
+          var element = document.getElementById("log");
+          element.innerHTML = "&lt;h1>Hello World&lt;/h1>";
+      &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <a href="code/helloworld2.html" target="_blank">Run</a>
+                    </section>
+
+                    <section>
+                        <h3>Hello World: API</h3>
+                        <pre><code class="xml" contenteditable>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+  &lt;script&gt;
+    document.title = 'Hello World 3';
+    var div = document.createElement('div');
+    var h1 = document.createElement('h1');
+    h1.textContent = 'Hello World';
+    div.appendChild(h1);
+    document.body.appendChild(div);
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <a href="code/helloworld3.html" target="_blank">Run</a>
+                    </section>
+                    <section>
+                        <h2>Hello World: node</h2>
+                        <pre><code class="javascript" contenteditable>
+node -e "console.log('Hello World');"
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Hello World: DevTools</h2>
+                        <img src="img/Devtools-Screenshot.png">
+                    </section>
+
+<section>
+    <h2>ES6-Reference</h2>
+    <p><a href="http://exploringjs.com/es6/" target="_blank">
+        http://exploringjs.com/es6/
+    </a>
 </section>
-  
+
+<section>
+    <h2>Build Process</h2>
+    <ul>
+        <li>ES6, 7, 8 - und JSX-Code must be converted to ES 5/6
+        <li>Tools
+            <ul><li>Babel (Compiler)
+                <li>Webpack (Bundler)
+                <li>Webpack Dev Sever (HTTP Server with Hot Reload)
+                </ul>
+    </ul>
+</section>
+
+            <section>
+                <h3>ES6: Classes</h3>
+                <pre class="fragment"><code class="javascript" contenteditable>class Person {
+    constructor(name) {
+        this._name = name;
+    }
+    get name() {
+        return this._name;
+    }
+}
+class Programmer extends Person {
+    constructor(name, language) {
+        super(name);
+        this.language = language;
+    }
+    code() {
+        return this.name + " codes in " + this.language;
+    }
+}</code></pre>
+                <pre><code class="javascript" contenteditable>const programmer = new Programmer('Erna', 'JavaScript');
+console.log(programmer.code());
+console.log(programmer instanceof Programmer); // true
+console.log(programmer instanceof Person); // true</code></pre>
+            </section>
+
+            <section>
+            <h3>ES6: Arrow Functions</h3>
+            <pre><code class="javascript" contenteditable>const displayInPage = (text) => {
+   return document.body.innerHTML +=
+       `${text}<br>`;
+};</code></pre>
+            <pre class="fragment"><code class="javascript" contenteditable>const displayInPage = text => document.body.innerHTML += `${text}<br>`;
+</code></pre>
+        </section>
+
+        <section>
+            <h3>ES6: Extended Object Literals</h3>
+   <pre><code class="javascript" contenteditable>const name = 'Oma';
+const person = {
+    // ES5: name: name
+    name
+};
+console.log(person.name); // Oma
+   </code></pre>
+        </section>
+
+
+                    <section>
+                        <h2>ES6: Modules, Imports und Exports</h2>
+                    </section>
+                    <section>
+                        <h3>ES6: Export of a single class</h3>
+   <pre><code class="javascript" contenteditable>// Person.js
+class Person {
+  // ...
+}
+export default Person;
+   </code></pre>
+                    </section>
+                    <section>
+                        <h3>ES6: Import</h3>
+   <pre><code class="javascript" contenteditable>// Programmer.js
+import Person from './Person';
+
+export default class Programmer extends Person {
+  // ...
+}
+   </code></pre>
+                    </section>
+                    <section>
+                        <h3>ES6: Named Export and Import</h3>
+   <pre><code class="javascript" contenteditable data-trim>// util.js
+export function displayInPage(text) {
+    document.body.innerHTML +=
+        `${text}<br>` ;
+}
+// or
+export { displayInPage };
+   </code></pre>
+   <pre class="fragment"><code class="javascript" contenteditable data-trim>import {displayInPage} from "./util";
+displayInPage('Hello, World');
+   </code></pre>
+   <!--<pre class="fragment"><code class="javascript" contenteditable data-trim>import {displayInPage as display} from "./util";-->
+<!--display('Hello, World');-->
+   <!--</code></pre>-->
+   <!--<pre class="fragment"><code class="javascript" contenteditable data-trim>import * as util from "./util";-->
+<!--util.displayInPage('Hello, World');-->
+   <!--</code></pre>-->
+                    </section>
+        <!--<section>-->
+                        <!--<h2>Neuerungen und Verbesserungen in ES6</h2>-->
+                    <!--</section>-->
+
+                    <!--<section>-->
+                      <!--<h3>Tagged Template Literals</h3>-->
+          <!--<p><a target="_blank" href="http://exploringjs.com/es6/ch_template-literals.html#_tagged-templates">-->
+         <!--Mini-DSLs: Template-Literals mit tag-->
+    <!--</a>-->
+    <!--</p>-->
+
+   <!--<pre class="fragment"><code class="javascript" contenteditable>function tag(strings, ...values) {-->
+  <!--console.log(strings);-->
+  <!--//[ '', ' codes in ', '.' ]-->
+  <!--console.log(values);-->
+  <!--//[ 'Oma', 'Haskell' ]-->
+  <!--return 'whatever you want';-->
+<!--}-->
+<!--</code></pre>-->
+
+   <!--<pre><code class="javascript" contenteditable>const expanded = tag`${person} codes in ${language}.`;-->
+<!--console.log(expanded);-->
+<!--//whatever you want-->
+<!--</code></pre>-->
+
+                    <!--</section>-->
+
+                    <section>
+                        <h3>ES6: Destructuring of Objects</h3>
+   <pre><code class="javascript" contenteditable>const person = {
+  name: 'Olli',
+  email: 'oliver.zeigermann@gmail.com'
+};</code></pre>
+   <pre class="fragment"><code class="javascript" contenteditable>const {name, notThere} = person;
+console.log(`name=${name}`);
+// name=Olli
+console.log(`notThere=${notThere}`);
+// notThere=undefined
+</code></pre>
+   <!--<pre class="fragment"><code class="javascript" contenteditable>const {address: {city}} = person;-->
+<!--console.log(`city=${city}`);-->
+<!--//city=Hamburg-->
+<!--</code></pre>-->
+                    </section>
+
+        <section>
+                        <h3>ES6: Template Literals</h3>
+          <p><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings">
+         String-Literals with Gaps
+    </a>
+    </p>
+
+   <pre><code class="javascript" contenteditable>const person = 'Oma';
+const language = 'Haskell';
+
+console.log(`${person} programs
+${10 * 1024 * 1024} lines of code
+in ${language}.`);
+// Output:
+// Oma programs
+// 10485760 lines of code
+// in Haskell.
+</code></pre>
+                    </section>
+
+
+                    <!--<section>-->
+                        <!--<h3>Destructuring bei Parametern</h3>-->
+   <!--<pre><code class="javascript" contenteditable>const person = {-->
+  <!--name: 'Olli',-->
+  <!--address: {-->
+    <!--city: 'Hamburg'-->
+  <!--},-->
+  <!--email: 'oliver.zeigermann@gmail.com'-->
+<!--};</code></pre>-->
+   <!--<pre class="fragment"><code class="javascript" contenteditable data-trim>-->
+<!--function print({email: contact}) {-->
+    <!--console.log(`contact=${contact}`);-->
+<!--}-->
+<!--print(person);-->
+<!--// contact=oliver.zeigermann@gmail.com-->
+<!--</code></pre>-->
+   <!--<pre class="fragment"><code class="javascript" contenteditable data-trim>-->
+<!--function g({name: x, y, z=10}) {-->
+  <!--console.log(`x=${x}`); // x=olli-->
+  <!--console.log(`y=${y}`); // y=undefined-->
+  <!--console.log(`z=${z}`); // z=10-->
+<!--}-->
+<!--g({ name: 'olli' });-->
+<!--</code></pre>-->
+                    <!--</section>-->
+                    <!--<section>-->
+                        <!--<h3>Destructuring bei Arrays</h3>-->
+   <!--<pre><code class="javascript" contenteditable>const [a, b] = [1, 2];-->
+<!--console.log(`a=${a}`);-->
+<!--// a=1-->
+<!--console.log(`b=${b}`);-->
+<!--// b=2-->
+<!--</code></pre>-->
+   <!--<pre class="fragment"><code class="javascript" contenteditable data-trim>-->
+<!--const [, b] = [1, 2];-->
+<!--console.log(`b=${b}`);-->
+<!--//b=2-->
+<!--</code></pre>-->
+                    <!--</section>-->
+                    <!--<section>-->
+                        <!--<h3>Erweiterte Objekt-Literale</h3>-->
+   <!--<pre><code class="javascript" contenteditable>const name = 'Oma';-->
+<!--const person = {-->
+    <!--// ES5: name: name-->
+    <!--name,-->
+    <!--// ES5: toString: function()-->
+    <!--toString() {-->
+        <!--return this.name;-->
+    <!--}-->
+<!--};-->
+<!--console.log(person.name); // Oma-->
+<!--console.log(person.toString()); // Oma-->
+   <!--</code></pre>-->
+                    <!--</section>-->
+                    <!--<section>-->
+                        <!--<h3>for..of</h3>-->
+          <!--<p><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of">-->
+         <!--Iterieren über alles was 'iterable' ist-->
+    <!--</a>-->
+    <!--</p>-->
+
+   <!--<pre><code class="javascript" contenteditable>for (const e of array2) {-->
+    <!--console.log(e);-->
+<!--}-->
+<!--// Hi-->
+<!--// Olli-->
+<!--// how are you-->
+<!--// ?-->
+<!--</code></pre>-->
+                    <!--</section>-->
+
+    <!--<section>-->
+                        <!--<h3>Spread-Operator</h3>-->
+          <!--<p><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator">-->
+          <!--Alles was 'iterable' ist kann in einzelne Parameter transformiert werden-->
+    <!--</a>-->
+    <!--</p>-->
+   <!--<pre><code class="javascript" contenteditable>const array1 = ['Olli', 'how are you'];-->
+<!--const array2 = ['Hi', ...array1, '?'];-->
+<!--console.log(array2);-->
+<!--// => ["Hi", "Olli", "how are you", "?"]-->
+<!--</code></pre>-->
+   <!--<pre class="fragment"><code class="javascript" contenteditable>console.log(...array1);-->
+<!--</code></pre>-->
+                    <!--</section>-->
+
+                <!--<section>-->
+                    <!--<h2>Verbesserungen bei Funktionen in ES6</h2>-->
+                <!--</section>-->
+                <section>
+                    <h2>fetch</h2>
+                    <p>Browser API to load and save data</p>
+                </section>
+            <section>
+            <h3>fetch as a simple GET</h3>
+            <pre><code class="javascript" contenteditable>const url = `${BACKEND_URL}${path}`;
+    
+    fetch(url)
+        .then(response => response.json())
+        .then(json => /* ... */)
+        .catch(ex => console.error('request failed', ex));
+    </code></pre>
+            </section>
+    
+            <section>
+                <h3>fetch sending JSON using POST</h3>
+                <pre><code class="javascript" contenteditable>const url = `${BACKEND_URL}${path}`;
+    const objectBeSaved = ...;
+    
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(objectBeSaved)
+    })
+        .then(json => response.status === 201 ? /* success */ :
+                                                /* failure */)
+        .catch(ex => console.error('request failed', ex));
+    </code></pre>
+    
+            </section>
+    
+            <section>
+                <h2>Promises</h2>
+            </section>
+                        <section>
+                            <h3>A Promise will resolve to a value, be rejected or abort with an error</h3>
+                            <ul>
+                                <li class="fragment">If it resolves this might be right now or in the future</li>
+                                <li class="fragment">In any case a reaction will be asynchronous</li>
+                            </ul>
+                        </section>
+    
+                    <section>
+                            <h3>Create a Promoise and react asynchronously</h3>
+       <pre class="fragment"><code class="javascript" contenteditable>const promise = new Promise(resolve =>
+        setTimeout(
+            () => resolve('Result from promise'),
+            1000)
+    );
+    </code></pre>
+        <pre><code class="javascript" contenteditable>promise.then(value => console.log(value));
+    // Output after 1 second: Result from promise
+    </code></pre>
+                        </section>
+                        <section>
+                            <h3>Chaining Execution</h3>
+       <pre><code class="javascript" contenteditable>const promise = new Promise(resolve =>
+        setTimeout(
+            () => resolve('Result from promise'),
+            1000)
+    );
+    </code></pre>
+        <pre class="fragment"><code class="javascript" contenteditable>// then returns a new promise
+    const promise2 = promise.then(value => `${value} plus stuff`);</code></pre>
+        <pre class="fragment"><code class="javascript" contenteditable>promise2.then(value => console.log(value));
+    // Output after 1 second: Result from promise plus stuff
+    </code></pre>
+                        </section>
+                <section>
+                    <h3>Errors abort the rest of the chain</h3>
+                    <p class="fragment">Unfortunately, such an error will be swallowed if you do not react to it</p>
+                </section>
+    
+                        <section>
+                            <h3>Catch Clause</h3>
+       <pre><code class="javascript" contenteditable>Promise
+        // creates and directly resolves promise
+        .resolve('Result from promise')
+        .then(x => {
+            // this will be printed
+            console.log(x);
+        })
+        .then(() => {
+            console.log('This will be printed');
+        })
+        // this will NOT be printed as no error occured
+        .catch(e => console.log('error: ', e))
+    
+    // Output:
+    // Result from promise
+    // This will be printed</code></pre>
+                        </section>
+                        <section>
+                            <h3>Catch Clause when there is an error</h3>
+       <pre><code class="javascript" contenteditable>Promise
+        // creates and directly resolves promise
+        .resolve('Result from promise')
+        .then(x => {
+            // this will be printed
+            console.log(x);
+            throw new Error('Something went wrong');
+        })
+        .then(() => {
+            console.log('This will NOT be printed');
+        })
+        // this will be printed
+        .catch(e => console.log('error: ', e))
+    
+    // Output:
+    // Result from promise
+    // error:  [Error: Something went wrong]</code></pre>
+                        </section>
+                        <section>
+                            <h3>Catch Clause when Promise is rejected</h3>
+       <pre><code class="javascript" contenteditable>Promise
+        // creates and directly rejects promise
+        .reject('Promise rejected')
+        .then(x => {
+            // this will NOT be printed
+            console.log(x);
+        })
+        .then(() => {
+            console.log('This will NOT be printed');
+        })
+        // this will be printed
+        .catch(e => console.log('error: ', e))
+    
+    // Output:
+    // error:  Promise rejected</code></pre>
+                    </section>
+    
+
+
 <section data-markdown>
     <textarea data-template>
 ## TypeScriptScript
 </textarea>
 </section>
 
-<section data-markdown class="todo">
-    <textarea data-template>
-## Take from React TypeScript vs Flow
-</textarea>
+<section>
+    <h2>Why using type systems?</h2>
+    <div class="fragment">
+        <h3>type systems make code easier to maintain</h3>
+        <p >type annotations / inferred types</p>
+        <ul >
+            <li>can make code more readable
+            <li>can make code easier to analyse
+            <li>can allow for reliable refactoring
+            <li>can allow for generally better IDE support
+            <li>can catch some (type related) errors early
+        </ul>
+    </div>
+    <p class="fragment"><a href="https://channel9.msdn.com/Events/Build/2016/B881" target="_blank">
+        Anders Hejlsberg@Build2016: <em>Big JavaScript codebases tend to become "read-only".</em>
+    </a></p>
 </section>
 
+<section>
+    <h3>weak to strong and dynamic to static</h3>
+    <div style="height: 580px">
+        <a href="https://twitter.com/DJCordhose/status/829242451294552066" target="_blank">
+            <img src="img/type-strategies-twitter.png">
+        </a>
+    </div>
+    <p><small>
+        <a href="https://twitter.com/DJCordhose/status/829242451294552066" target="_blank">
+            https://twitter.com/DJCordhose/status/829242451294552066
+        </a>
+    </small></p>
+</section>
+
+<section>
+    <h2>https://2018.stateofjs.com</h2>
+    <p>Recently published survey on the state of JavaScript</p>
+</section>
+
+<section>
+    <a href="http://stateofjs.com/2016/flavors/" target="_blank">
+        <img src="img/2018_flavors.jpg" height="600px">
+    </a>
+    <p><small><a href="https://2018.stateofjs.com/javascript-flavors/overview/" target="_blank">
+      https://2018.stateofjs.com/javascript-flavors/overview/
+    </a></small></p>
+</section>
+
+<section>
+    <h2>TypeScript</h2>
+    <h3 class="fragment">ease of use and tool support over soundness</h3>
+    <ul class="fragment">
+        <li>By Microsoft (Anders Hejlsberg)
+        <li>Based on ES67ES7/ES8
+        <li>Adds optional type annotations, visibility, and decorators
+        <li>Compiler checks and removes annotations
+          <li>External declarations can add type information to pure JavaScript
+        <li>Extensive support in
+
+        <a target="_blank" href="https://youtu.be/uceWBKISaF8">WebStorm</a> and Visual Studio Code
+        <li>supporting people from Java and C# land
+    </ul>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+  
+  There are two perspectives how to look at #TypeScript:
+  - TypeScript is a la language that compiles to JavaScript
+  - TypeScript is a tool that enhances JavaScript with an optional static type system
+      
+  I prefer the second perspective.
+  
+  <small>
+  https://twitter.com/jbandi/status/1040518056051654659
+  </small>
+    </textarea>
+  </section>
+    
 <section data-markdown>
   <textarea data-template>
 ### TypeScript for business applications
@@ -240,31 +756,339 @@ Vue Roadmap: https://github.com/vuejs/vue/projects/6#column-4065494
 </textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
 
+http://www.typescriptlang.org/
 
-<section data-markdown class="todo">
-  <textarea data-template>
+https://www.typescriptlang.org/play/index.html
 
-    Jonas Bandi (@jbandi) tweeted at 10:30 AM on Fri, Sep 14, 2018:
-    There are two perspectives how to look at #TypeScript:
-    - TypeScript is a la language that compiles to JavaScript
-    - TypeScript is a tool that enhances JavaScript with an optional static type system
-    
-    I prefer the second perspective.
-    (https://twitter.com/jbandi/status/1040518056051654659?s=03)
-  </textarea>
-</section>
+https://github.com/Microsoft/TypeScript/wiki/What's-new-in-TypeScript
 
-
-           <section data-markdown class="todo">
-        <textarea data-template>
-### React and TypeScript
-
-* https://twitter.com/NaveenS16/status/1023433663873048577
-
-* https://github.com/sw-yx/react-typescript-cheatsheet
 </textarea>
 </section>
+
+<section>
+    <h3>Basics</h3>
+       <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+// variables can have type information
+let foo: string;
+foo = 'yo';
+// Error: Type 'number' is not assignable to type 'string'.
+foo = 10;
+</code></pre>
+       <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+
+// types can be inferred (return type)
+function sayIt(what: string) {
+return `Saying: ${what}`;
+}
+const said: string = sayIt(obj);
+
+</code></pre>
+       <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+class Sayer {
+what: string; // mandatory
+
+constructor(what: string) {
+    this.what = what;
+}
+
+// return type if you want to
+sayIt(): string {
+    return `Saying: ${this.what}`;
+}
+}
+</code></pre>
+  </section>
+
+  <section>
+      <h2>Nullability</h2>
+      <p>One of my main sources of runtime exceptions when programming Java</p>
+      <p><small>Even after many years it is still surprising how many corner cases I miss in complex code</small></p>
+  </section>
+
+  <section class="typescript">
+      <h3>TypeScript</h3>
+      <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+// TypeScript allows to put the type annotation here instead of using inference
+function foo(num: number) {
+if (num > 10) {
+  return 'cool';
+}
+}
+</code></pre>
+      <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+// check required
+const fooed: string|void = foo(9);
+if (fooed) {
+fooed.toString();
+}
+</code></pre>
+      <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+// or tell the compiler we know better (in this case we actually do)
+fooed!.toString();
+</code></pre>
+      <div class="fragment">
+          <p>Types are non-nullable by default in TypeScript</p>
+          <p>All types nullable by default in TypeScript 1.x</p>
+      </div>
+  </section>
+
+  <section data-markdown>
+      <textarea data-template>
+### Generic Type information
+
+* Types can be parameterized by others
+* Most common with collection types
+* Generic Types in TypeScript are 
+<a href="https://twitter.com/ahejlsberg/status/822882400724131841?s=03">always covariant</a> (more special):<br>
+    parametric types are compatible if the type to assign from has a more special type parameter
+* seems most intuitive, allows for obviously wrong code, though (more on that coming up next)
+</textarea>
+  </section>
+
+  <section>
+      <h3>Generic Type information</h3>
+      <p class="fragment">Types can be parameterized by others</p>
+      <p class="fragment">Most common with collection types</p>
+      <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+let cats: Array&lt;Cat> = []; // can only contain cats
+let animals: Array&lt;Animal> = []; // can only contain animals
+</code></pre>
+      <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim data-num-start="3">
+// nope, no cat
+cats.push(10);
+     </code></pre>
+      <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim data-num-start="5">
+// nope, no cat
+cats.push(new Animal('Fido'));
+     </code></pre>
+      <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim data-num-start="7">
+// cool, is a cat
+cats.push(new Cat('Purry'));
+     </code></pre>
+      <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim data-num-start="9">
+// cool, cat is a sub type of animal
+animals.push(new Cat('Purry'));
+     </code></pre>
+  </section>
+
+  <section>
+      <h3>TypeScript</h3>
+         <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+let cats: Array&lt;Cat> = []; // can only contain cats
+let animals: Array&lt;Animal> = []; // can only contain animals
+</code></pre>
+         <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim data-num-start="3">
+// error TS2322: Type 'Animal[]' is not assignable to type 'Cat[]'.
+//  Type 'Animal' is not assignable to type 'Cat'.
+//    Property 'purrFactor' is missing in type 'Animal'.
+cats = animals;
+         </code></pre>
+         <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim data-num-start="7">
+// wow, works, but is no longer safe
+animals = cats;
+         </code></pre>
+         <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim  data-num-start="9">
+// because those are now all cool
+animals.push(new Dog('Brutus'));
+animals.push(new Animal('Twinky'));
+         </code></pre>
+         <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim  data-num-start="12">
+// ouch:
+cats.forEach(cat => console.log(`Cat: ${cat.name}`));
+// Cat: Purry
+// Cat: Brutus
+// Cat: Twinky
+</code></pre>
+          <p class="fragment">TypeScript allows for birds and dogs to be cats here :)</p>
+    </section>
+
+    <section>
+        <h2>The flipside</h2>
+        <p>This code is safe (as we access cats in a readonly fashion)</p>
+        <pre><code class="typescript line-numbers" contenteditable data-trim>
+function logAnimals(animals: Array&lt;Animal>) {
+animals.forEach(animal => console.log(`Animal: ${animal.name}`));
+}
+
+logAnimals(cats);
+</code></pre>
+        <ul  class="fragment">
+            <li>This works in TypeScript (and it should)</li>
+            <li>however, potentially not safe, there is nothing to keep us from writing to cats</li>
+        </ul>
+        <div class="fragment">
+
+        <p>much despised Java generics excel here as they can actually make that code safe (another difference:
+            <a target="_blank" href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)#Comparing_declaration-site_and_use-site_annotations">
+                Use-site variance
+            </a>)
+        </p>
+        <pre><code class="java line-numbers" contenteditable data-trim>
+// Java
+void logAnimals(List&lt;? extends Animal> animals) {
+animals.forEach(animal -> System.out.println("Animal: " + animal.name));
+// illegal:
+animals.add(new Animal("Twinky"));
+}
+</code></pre>
+        </div>
+
+    </section>
+
+    <section>
+        <h3>`any` type</h3>
+        <p class="fragment">can be anything, not specified</p>
+        <p class="fragment">can selectively disable type checking</p>
+        <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+function func(a: any) {
+return a + 5;
+}
+</code></pre>
+        <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+// cool
+let r1: string = func(10);
+
+// cool
+let r2: boolean = func('wat');
+</code></pre>
+
+        <ul>
+            <li class="fragment">explicit any supported, but any never inferred
+        </ul>
+    </section>
+
+    <section data-markdown>
+        <textarea data-template>
+### Is TypeScript like Java/C++/C#?</h2>
+
+_not really_
+
+* optionally typed / any
+* built to match common JavaScript programming patterns
+* semantically compatible with JavaScript
+* type system more expressive
+* type inference
+* control flow based type analysis
+</textarea>
+    </section>
+
+    <section>
+        <h2>Structural vs Nominal Typing</h2>
+        <ul>
+            <li class="fragment">Nominal Typing: types are compatible when their declared types match
+            <li class="fragment">Structural Typing: types are compatible when their structures match
+            <li class="fragment">Java, C#, C++, C all use nominal typing exclusively
+            <li class="fragment">Flow classes are also treated as nominal types
+            <li class="fragment">TypeScript classes are treated as structural types
+            <li class="fragment">Everything else in both Flow and TypeScript uses structural typing
+            <li class="fragment elm">Elm always uses structural typing with exact matches on Records
+        </ul>
+    </section>
+
+    <section>
+        <h3>Structural Typing for Interfaces</h3>
+        <pre><code class="typescript line-numbers" contenteditable data-trim>
+interface NamedObject {
+name: string;
+}
+
+// this is fine as nominal typing only applies to Flow classes
+let namedObject: NamedObject = dog;
+
+// same thing, also fine
+let namedObject: NamedObject = {
+name: "Olli"
+};
+
+// not fine in either, missing name
+let namedObject: NamedObject = {
+firstName: "Olli"
+};
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Structural Typing for classes</h3>
+        <pre><code class="typescript line-numbers" contenteditable data-trim>
+class Person {
+name: string;
+}
+
+class Dog {
+name: string;
+}
+
+let dog: Dog = new Dog();
+
+// yes, correct, as structurally compatible
+let person: Person = dog;
+
+// same thing, also correct
+let person: Person = {
+name: "Olli"
+};
+
+        </code></pre>
+    </section>
+
+
+    <section>
+        <h2>Classes in TypeScript</h2>
+        <p class="fragment">TypeScript has special support for classes</p>
+        <p class="fragment">Similar features can be found in Java/C++/C#</p>
+        <ul class="fragment">
+            <li><em>abstract</em> classes and methods
+            <li>special shortcut constructors (combined definition of fields and initialization)
+            <li>public, private, protected
+            <li>decorators (aka <a  target="_blank" href="https://msdn.microsoft.com/en-us/library/z0w1kczw(v=vs.80).aspx">
+            Attributes in C#
+            </a> and <a target="_blank" href="https://docs.oracle.com/javase/tutorial/java/annotations/">
+Annotations in Java</a>)
+            <li>
+                <a target="_blank"
+                        href="https://blogs.msdn.microsoft.com/typescript/2016/09/22/announcing-typescript-2-0/">
+                    readonly properties
+        </a>
+            <a target="_blank" href="https://msdn.microsoft.com/en-us/library/acdd6hb7.aspx">
+                like in C#
+            </a>
+        </ul>
+    </section>
+
+    <section data-markdown>
+        <textarea data-template>
+### TypeScript Declaration fields
+
+* Integration with raw JavaScript
+* install external type declarations transparently <a href="https://blogs.msdn.microsoft.com/typescript/2016/06/15/the-future-of-declaration-files/">using npm</a>
+                        (e.g.<em>npm install @types/react --save</em>)
+* If there are no existing declaration files: still works, but less powerful
+
+        </ul>
+    </section>
+
+  <section>
+      <h3 style="top: -30px; position: relative">Should you use a type checker?</h3>
+      <ul class="fragment" style="top: -30px; position: relative">
+          <li>don't be fooled: checkers do not make your programs error free
+          <li><a target="_blank" href="http://danluu.com/empirical-pl/">there seems to be little or no impact on productivity</a>
+          <li>initial effort to introduce a checker is low, though
+          <li>but a type system is a complex thing, it comes at a cost
+      </ul>
+      <p class="fragment" style="top: -30px; position: relative">My biased recommendation</p>
+      <ul class="fragment" style="top: -40px; position: relative">
+          <li >your project does not live for long: <em >no</em>
+          <li >your project is really simple: <em >no</em>
+          <li >there is a chance you will need to refactor the thing: <em >yes</em>
+          <li >your system is very important or even crucial for the success of your company: <em >yes</em>
+          <li >people enter or leave your team frequently: <em >yes</em>
+          <li >you have substantial amount of algorithmic code: <em >yes</em>
+      </ul>
+  </section>
+
 
     </div>
 

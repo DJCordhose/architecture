@@ -248,6 +248,34 @@
 </textarea>
       </section>
 
+      <section>
+          <h3>Why not just jQuery?</h3>
+          <ul>
+              <li>jQuery is very good at changing sets of existing elements
+              <li>good if there already are existing elements
+              <li>unobtrusive
+              <li>not so good, if there is nothing to begin with
+              <li>not so good for controlling page/view flow
+          </ul>
+      </section>
+
+      <section>
+          <h3>Why use a standard Framework?</h3>
+          <ul>
+              <li>avoid the risk of accidentally creating your own
+              <li>use something proven and tested
+              <li>community, documentation
+              <li>easily find skill and talent
+          </ul>
+      </section>
+
+      <section>
+          <h2>Global Criterion</h2>
+          <p><em>Simple things should be simple, complex things should be possible.</em>
+          </p>
+          <p><small>Alan Kay<br> (<a target="_blank" href="https://en.wikiquote.org/wiki/Alan_Kay">https://en.wikiquote.org/wiki/Alan_Kay</a>)</small></p>
+      </section>
+
       <section data-markdown>
         <textarea data-template>
 ### Choosing tools
@@ -463,12 +491,317 @@ https://facebook.github.io/create-react-app/docs/adding-typescript_
 
 </textarea>
 </section>
-<section data-markdown class="todo">
+
+<section data-markdown>
   <textarea data-template>
-### Basics of React programming with TypeScript
+### Basics of React programming
 
 </textarea>
 </section>
+
+<section>
+    <h3>React: Applications from Components</h3>
+    <ul>
+        <li class="fragment">Everything is a component, even an Application
+        <li class="fragment">Components wrap Template and Logic
+        <li class="fragment">Can be implemented as a class or a function
+        <li class="fragment">JSX (HTML like) as template language
+    </ul>
+    <pre class="fragment"><code data-trim contenteditable>class HelloMessage extends React.Component {
+render() {
+return &lt;h1 className='title'>Hello, World!&lt;/h1>
+}
+}
+</code></pre>
+</section>
+
+<section>
+    <h3>Hello World React</h3>
+        <a target="_blank" href="code/hello_world/public/index.html">Demo</a>
+</section>
+
+        <section>
+                    <h3>Hello World React</h3>
+<pre><code data-trim contenteditable>class HelloMessage extends React.Component {
+  render() {
+    return (&lt;div>
+            &lt;input ref={input => this.input = input}
+                   onChange={event => this.updateModel(event)}
+                   value={this.state.greeting} />
+            &lt;p>{this.state.greeting}, World&lt;/p>
+            &lt;button
+                onClick={() => this.reset()}>
+                Clear
+            &lt;/button>
+        &lt;/div>);
+  }</code></pre>
+<pre class="fragment"><code contenteditable class="javascript">  constructor(props) {
+    super(props);
+    this.state = {greeting: this.props.greeting};
+  }
+  updateModel(event) {
+    this.setState({greeting: event.target.value});
+  }
+  reset() {
+    this.setState({greeting: ""});
+    this.input.focus();
+  }
+}</code></pre>
+                </section>
+
+                <section>
+                    <h3>Glue code to start application</h3>
+<pre><code data-trim contenteditable>
+// index.html
+&lt;html>
+  &lt;body>
+    <div id="mount"></div>
+  &lt;/body>
+  &lt;script src="dist/main.js">&lt;/script>
+&lt;/html>
+</code></pre>
+<pre class="fragment"><code data-trim contenteditable class="javascript">
+// main.js
+import HelloMessage from './HelloMessage';
+
+const mountNode = document.getElementById('mount');
+ReactDOM.render(&lt;HelloMessage greeting="Hello"/>, mountNode);
+</code></pre>
+                    <a target="_blank" href="code/hello_world/public/index.html">Run</a>
+                </section>
+
+
+     <section>
+        <h2>Webpack and Babel</h2>
+        <img src="images/webpack-und-babel.png" style="border:0;box-shadow:0 0 0 0"/>
+    </section>
+
+            <section>
+                <h3>React: Rendering</h3>
+                <ul class="fragment">
+                    <li>Every React Component needs a <code>render</code>-Method (or needs to be a function):</li>
+                    <li>will be called when first displayed into DOM and when state changes</li>
+                    <li>uses HTML like JSX syntax</li>
+                    <li>JSX can contain pure JavaScript in curly braces (<code>{}</code>)
+                </ul>
+<pre class="fragment"><code class="xml" contenteditable data-trim>
+class GreetingDetail extends React.Component {
+  render() {
+    return (
+      <div>
+        &lt;input ref={input => this.input = input}
+           onChange={event => this.updateModel(event.target.value)}
+           value={this.state.greeting} />
+        <p>{this.state.greeting}, World</p>
+      </div>
+    );
+  }
+  // ...
+}
+</code></pre>
+        </section>
+           <section>
+                <h3>React: Rendering #2</h3>
+                <ul class="fragment">
+                    <li>DOM-Events are wrapped in React-Events
+                    <li>React-Events have very simliar API as DOM-Events
+                    <li>No automatic 2-way binding to models
+                </ul>
+<pre class="fragment"><code class="xml" contenteditable data-trim>
+class GreetingDetail extends React.Component {
+  render() {
+    return (
+      <div>
+        &lt;input ref={input => this.input = input}
+               onChange={event => this.updateModel(event.target.value)}
+               value={this.state.greeting} />
+        <p>{this.state.greeting}, World</p>
+      </div>
+    );
+  }
+  updateModel(greeting) {
+    this.setState({greeting});
+  }
+  // ...
+}
+</code></pre>
+        </section>
+
+        <section>
+            <h3>React: Properties and State</h3>
+            <ul class="fragment">
+                <li><b>Properties</b> are being passed to components from <b>outside</b> and are immutable</li>
+                <li><b>State</b> an <b>internal</b> property of a component and can be changed</li>
+                <li>Both are objects containing key-/value pairs</li>
+                <li>Both can be passed to child components</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Properties of a Component</h3>
+            <ul class="fragment">
+                <li>Properties initially being passed in contructor</li>
+                <li>RO Access using <code>this.props</code></li>
+            </ul>
+            <pre class="fragment"><code class="javascript" contenteditable data-trim>
+class TitleComponent extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+      return &lt;h1>{this.props.title}&lt;/h1>
+    }
+   // ...
+}
+</code></pre>
+<pre class="fragment"><code class="javascript" contenteditable data-trim>
+  &lt;TitleComponent title='Hello World' />
+</code></pre>
+
+        </section>
+
+        <section>
+            <h3>State of a Component</h3>
+            <ul class="fragment">
+                <li>Example: Data from Input Field or loaded from Server</li>
+                <li>Initialization in Constructor <code>this.state={}</code>
+                <li><b>Read</b> state using <code>this.state</code>
+                <li><b>Set</b> state using <code>this.setState()</code>
+                <ul><li>not really a setter</li>
+                    <li>merges old and new state</li>
+                    <li><b>triggers re-rendering of <i>complete</i> component</b></li>
+                </ul>
+            </ul>
+            </section>
+
+            <section>
+                <h3>Example: State of a component</h3>
+<pre><code class="javascript" contenteditable data-trim>
+class GreetingDetail extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { name: 'Klaus' };
+    }
+
+    updateModel(event) {
+        this.setState({name: event.target.value});
+    }
+
+    render() {
+        return &lt;input value={this.state.name}
+            onChange={e => this.updateModel(e)} />
+    }
+   // ...
+}
+</code></pre>
+        </section>
+
+        <section>
+            <h3>React: Refs</h3>
+            <ul class="fragment">
+                <li>When rendering you can get access to the underlying DOM element
+                <li>you get this reference passed into a function
+                <li>typically you store the reference into a class variable
+            </ul>
+<pre class="fragment"><code class="javascript" contenteditable data-trim>
+class HelloMessage extends React.Component {
+    render() {
+        return (
+            <div>
+                &lt;input ref={input => this.input = input} />
+                &lt;button
+                    onClick={() => this.input.focus()}>
+                    Focus
+                &lt;/button>
+            </div>);
+    }
+}
+</code></pre>
+        </section>
+
+            <section>
+                <h3>Lists and Keys</h3>
+                <ul class="fragment">
+                    <li>No special synatx in JSX for lists
+                    <li>Instead use JavaScripts's <code>Array.map</code>
+                    <li>Elements of a List need unique key
+                </ul>
+<pre class="fragment"><code class="javascript" contenteditable data-trim>
+const greetings = [{
+    id: 0,
+    name: 'Olli',
+    greeting: 'Huhu'
+},
+{
+    id: 1,
+    name: 'Oma',
+    greeting: 'Hallo'
+}
+];
+const body = greetings.map(greeting =>
+    &lt;tr key={greeting.id}>
+        &lt;td>{greeting.name}</td>
+        &lt;td>{greeting.greeting}</td>
+    &lt;/tr>);
+</code></pre>
+        </section>
+
+        <section data-markdown>
+            <textarea data-template>
+### Smart and Dumb Components with React
+</textarea>
+</section>
+
+        <section>
+            <h3>Passing of State and Callbacks</h3>
+            <p class="fragment">
+                Both are passed via props
+            </p>
+<pre class="fragment"><code class="javascript" contenteditable data-trim>
+class GreetingController extends React.Component {
+    render() {
+        const {greetings} = this.state;
+        return (
+            <div>
+                &lt;GreetingMaster greetings={greetings}
+                    onAdd={() => this.setState({mode: MODE_DETAIL})}
+            </div>);
+    }
+    // ...
+}
+    </code></pre>
+    </section>
+    <section>
+        <h3>Passing Properties using Object-Spread</h3>
+        <ul class="fragment">
+                <li>Passes <b>all</b> fields of an Object as individual Properties</li>
+        </ul>
+        <pre class="fragment"><code class="javascript" contenteditable data-trim>
+class GreetingController extends React.Component {
+
+    const greeting = { name: 'Klaus', greeting: 'Hello' };
+
+    render() {
+        return &lt;GreetingDetail {...greeting} />
+
+        // same as:
+        // &lt;GreetingDetail name='Klaus' greeting='Hello' />
+    }
+}
+        </code></pre>
+    </section>
+
+    <section data-markdown class="todo">
+        <textarea data-template>
+### React and TypeScript
+
+* https://twitter.com/NaveenS16/status/1023433663873048577
+
+* https://github.com/sw-yx/react-typescript-cheatsheet
+</textarea>
+</section>
+
+
 <section data-markdown>
   <textarea data-template>
 ### Learning More React
