@@ -903,7 +903,7 @@ Vue Roadmap: https://github.com/vuejs/vue/projects/6#column-4065494
 
 </textarea>
 </section>
-
+  
 <section data-markdown>
     <textarea data-template>
 
@@ -1087,12 +1087,12 @@ animals.add(new Animal("Twinky"));
     </section>
 
     <section>
-        <h3>`any` type</h3>
+        <h3>any type</h3>
         <p class="fragment">can be anything, not specified</p>
         <p class="fragment">can selectively disable type checking</p>
         <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
 function func(a: any) {
-return a + 5;
+  return a + 5;
 }
 </code></pre>
         <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
@@ -1106,6 +1106,43 @@ let r2: boolean = func('wat');
         <ul>
             <li class="fragment">explicit any supported, but any never inferred
         </ul>
+    </section>
+
+    <section data-markdown style="font-size: xx-large">
+      <textarea data-template>
+### `unknown` type
+
+* least-capable type in TypeScript
+* useful for APIs that want to signal “this can be any value, so you must perform some type of checking before you use it”
+* anything is assignable to unknown
+* unknown isn't assignable to anything but itself and any
+* no operations are permitted on an unknown
+
+<pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+let u: unknown;
+let a: any;
+</code></pre>
+<pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+a = 10; // cool
+u = 10; // cool
+</code></pre>
+<pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+let s: string;
+s = a; // also cool
+s = u; // not cool: type 'unknown' is not assignable to type 'string'.
+</code></pre>
+<pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+a = u; // cool
+u = a; // cool
+  </code></pre>
+<small>
+https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript#new-unknown-top-type
+<br>
+<a href="https://www.typescriptlang.org/play/index.html#src=%2F%2F%20https%3A%2F%2Fgithub.com%2FMicrosoft%2FTypeScript%2Fwiki%2FWhat%2527s-new-in-TypeScript%23new-unknown-top-type%0D%0A%2F%2F%20*%20counterpart%20of%20any%0D%0A%2F%2F%20*%20anything%20is%20assignable%20to%20unknown%2C%20%0D%0A%2F%2F%20*%20unknown%20isn't%20assignable%20to%20anything%20but%20itself%20and%20any%0D%0A%2F%2F%20*%20no%20operations%20are%20permitted%20on%20an%20unknown%0D%0A%0D%0Alet%20u%3A%20unknown%3B%0D%0Alet%20a%3A%20any%3B%0D%0A%0D%0A%2F%2F%20cool%0D%0Aa%20%3D%2010%3B%0D%0Au%20%3D%2010%3B%0D%0A%0D%0Alet%20s%3A%20string%3B%0D%0As%20%3D%20a%3B%20%2F%2F%20also%20cool%0D%0As%20%3D%20u%3B%20%2F%2F%20not%20cool%0D%0A%0D%0Aa%20%3D%20u%3B%0D%0Au%20%3D%20a%3B%0D%0A%0D%0A%0D%0A%0D%0A">
+Open in Playground
+</a>
+</small>    
+</textarea>
     </section>
 
     <section data-markdown>
