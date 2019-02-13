@@ -1124,6 +1124,62 @@ https://www.webcomponents.org/
 
 </textarea>
 </section>
+
+<section data-markdown>
+<textarea data-template>
+### Web Components Browser Compatibility
+
+<img src='img/web-components-support.jpg'>
+
+<small>
+https://www.webcomponents.org/
+<br>
+https://caniuse.com/#search=Web%20components
+</small>
+</section>
+</textarea>
+
+<section data-markdown>
+    <textarea data-template>
+### Frameworks with Custom elements
+
+all of them at least try
+* Angular, Vue great
+* Preact good
+* React mediocre
+
+https://custom-elements-everywhere.com/      
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Benchmark over Frameworks
+
+<img src='img/framework-performance.jpg' height="500px">
+
+<small>
+https://twitter.com/justinfagnani/status/1092882517709905921
+</small>
+</section>
+</textarea>
+
+
+<section data-markdown>
+    <textarea data-template>
+### Barebone Web Components
+
+1. 101: https://www.telerik.com/blogs/web-components-101-an-introduction-to-web-components
+1. basics: https://twitter.com/JorgeCasar/status/1090922130156457984
+1. life-cycle: https://twitter.com/JorgeCasar/status/1091287089696698368
+1. communication with parent element: https://twitter.com/sergicontre/status/1091407003040337921
+
+<small>
+cheat sheets by @JorgeCasar and @sergicontre
+</small>
+  </textarea>
+  </section>
+
 <section data-markdown>
   <textarea data-template>
 ### Learning more about Web Components
@@ -1165,9 +1221,78 @@ _https://pwa-starter-kit.polymer-project.org/setup using https://github.com/Poly
 1. create a new custom element and load it dynamically only when needed
 1. you can take a simple example like this: https://lit-element.polymer-project.org/
 1. look at `actions/app.ts`, `my-app.ts`, and `my-view1.ts` for reference
+
+<small>
+https://lit-element.polymer-project.org/  
+</small>
   </textarea>
   </section>
+
+  <section data-markdown>
+      <textarea data-template>
+### Step Two: Run Unit Tests
   
+1. uinit tests use https://github.com/Polymer/tools/tree/master/packages/web-component-tester
+1. configure browsers in `wct.conf.json` to just use Chrome (https://github.com/Polymer/tools/tree/master/packages/web-component-tester#configuration)
+1. run unit tests `yarn test:unit`
+1. from the configuration file figure out where the tests are
+1. break one, see the tests fail and fix them back again
+
+  <small>
+https://pwa-starter-kit.polymer-project.org/application-testing
+  </small>
+    </textarea>
+    </section>
+    
+    <section data-markdown class="todo">
+        <textarea data-template>
+### Step Three: Run Integration Tests
+  
+1. integration tests use Puppeteer (https://pptr.dev/) controlling Chrome
+
+  <small>
+https://pwa-starter-kit.polymer-project.org/application-testing
+  </small>
+      </textarea>
+      </section>
+
+    <section data-markdown class="todo">
+        <textarea data-template>
+### Step Four: Try out more of lit-element
+  
+1. bind properties to child elements: https://twitter.com/sergicontre/status/1094678263912374273
+1. where to add browser event handlers: https://twitter.com/sergicontre/status/1095118223157145606
+
+  <small>
+cheat sheets by @sergicontre
+  </small>
+      </textarea>
+      </section>
+
+      <section data-markdown class="todo">
+          <textarea data-template>
+### Step Four: Try out more of lit-element
+
+1. communication with parent component: https://twitter.com/sergicontre/status/1092152559219982336
+1. bind properties to child elements: https://twitter.com/sergicontre/status/1094678263912374273
+1. where to add browser event handlers: https://twitter.com/sergicontre/status/1095118223157145606
+  
+    <small>
+  cheat sheets by @sergicontre
+    </small>
+        </textarea>
+        </section>
+
+        <section data-markdown>
+            <textarea data-template>
+### i18n
+
+https://www.npmjs.com/package/@appnest/lit-translate
+Demo: https://appnest-demo.firebaseapp.com/lit-translate/    
+          </textarea>
+          </section>
+          
+
 <section data-markdown>
   <textarea data-template>
 ### Creating open-wc project skeleton (no TypeScript, yet)
