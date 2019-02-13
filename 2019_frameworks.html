@@ -1146,7 +1146,7 @@ https://lit-element.polymer-project.org/
   <textarea data-template>
 ### Creating PWA project skeleton
 
-_https://pwa-starter-kit.polymer-project.org/setup_
+_https://pwa-starter-kit.polymer-project.org/setup using https://github.com/Polymer/pwa-helpers for router and redux related stuff_
 
 1. `git clone --depth 1 -b template-typescript --single-branch https://github.com/Polymer/pwa-starter-kit polymer-app`
 1. `cd polymer-app`
@@ -1158,6 +1158,16 @@ _https://pwa-starter-kit.polymer-project.org/setup_
 </textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+### Step One: A new view for the router using lit-element
+  
+1. create a new custom element and load it dynamically only when needed
+1. you can take a simple example like this: https://lit-element.polymer-project.org/
+1. look at `actions/app.ts`, `my-app.ts`, and `my-view1.ts` for reference
+  </textarea>
+  </section>
+  
 <section data-markdown>
   <textarea data-template>
 ### Creating open-wc project skeleton (no TypeScript, yet)

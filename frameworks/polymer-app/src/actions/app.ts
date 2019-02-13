@@ -38,7 +38,7 @@ export const navigate: ActionCreator<ThunkResult> = (path: string) => (dispatch)
   dispatch(updateDrawerState(false));
 };
 
-const loadPage: ActionCreator<ThunkResult> = (page: string) => (dispatch) => {
+const loadPage: ActionCreator<ThunkResult> = (page: string) => async (dispatch) => {
   switch(page) {
     case 'view1':
       import('../components/my-view1.js').then((_module) => {
@@ -51,6 +51,16 @@ const loadPage: ActionCreator<ThunkResult> = (page: string) => (dispatch) => {
       break;
     case 'view3':
       import('../components/my-view3.js');
+      break;
+    case 'view4':
+      await import('../components/hello-world');
+
+      setTimeout(() => {
+        // horrible code, breaking isolation on open shadow roots, but only here to prove the point of chaning a property
+        const myApp: any = document.querySelector('my-app')
+        const myElement = myApp.shadowRoot.querySelector('hello-world');
+        myElement.name = 'changed via property';
+      }, 1000);
       break;
     default:
       page = 'view404';
