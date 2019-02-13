@@ -1136,8 +1136,8 @@ https://www.webcomponents.org/
 <br>
 https://caniuse.com/#search=Web%20components
 </small>
-</section>
 </textarea>
+</section>
 
 <section data-markdown>
     <textarea data-template>
@@ -1161,8 +1161,8 @@ https://custom-elements-everywhere.com/
 <small>
 https://twitter.com/justinfagnani/status/1092882517709905921
 </small>
-</section>
 </textarea>
+</section>
 
 
 <section data-markdown>
@@ -1244,11 +1244,15 @@ https://pwa-starter-kit.polymer-project.org/application-testing
     </textarea>
     </section>
     
-    <section data-markdown class="todo">
+    <section data-markdown>
         <textarea data-template>
 ### Step Three: Run Integration Tests
   
 1. integration tests use Puppeteer (https://pptr.dev/) controlling Chrome
+1. run unit tests `yarn test:integration`
+1. why are the tests failing?
+1. fix them and add a test for our new view to the visual and router tests
+1. make the router test fail and fix it again
 
   <small>
 https://pwa-starter-kit.polymer-project.org/application-testing
@@ -1256,20 +1260,7 @@ https://pwa-starter-kit.polymer-project.org/application-testing
       </textarea>
       </section>
 
-    <section data-markdown class="todo">
-        <textarea data-template>
-### Step Four: Try out more of lit-element
-  
-1. bind properties to child elements: https://twitter.com/sergicontre/status/1094678263912374273
-1. where to add browser event handlers: https://twitter.com/sergicontre/status/1095118223157145606
-
-  <small>
-cheat sheets by @sergicontre
-  </small>
-      </textarea>
-      </section>
-
-      <section data-markdown class="todo">
+      <section data-markdown>
           <textarea data-template>
 ### Step Four: Try out more of lit-element
 
@@ -1285,9 +1276,28 @@ cheat sheets by @sergicontre
 
         <section data-markdown>
             <textarea data-template>
-### i18n
+### Step Five: Investigate Redux and Web Components
+
+* locate `counter-element` custom element
+* make sure you understand how it communicates with a parent component in general
+* locate `my-view2` that uses `counter-element` and is our second view in the app
+* make sure you understand how they communicate using redux actions, reducers, and the store
+* locate `my-view3` and make sense of the more complicated use case 
+  
+<small>
+https://pwa-starter-kit.polymer-project.org/redux-and-state-management
+<br>
+https://github.com/Polymer/pwa-helpers#redux-helpers
+</small>
+          </textarea>
+          </section>
+  
+        <section data-markdown>
+            <textarea data-template>
+### i18n for lit-element
 
 https://www.npmjs.com/package/@appnest/lit-translate
+
 Demo: https://appnest-demo.firebaseapp.com/lit-translate/    
           </textarea>
           </section>
