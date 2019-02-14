@@ -22,7 +22,7 @@ export class DetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if(this.element) {
+    if (this.element) {
       this.keys = Object.keys(this.element);
     }
   }

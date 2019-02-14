@@ -13,7 +13,7 @@ import { DetailComponent } from './detail/detail.component';
 import { MasterComponent } from './master.component';
 import { TableWrapperComponent } from './table.wrapper.component';
 
-import {SafePipe} from "./app.component"
+import {SafePipe} from './app.component'
 
 @NgModule({
   declarations: [
