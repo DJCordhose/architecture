@@ -7,8 +7,6 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav.component';
 import { NgrxSandboxModule } from './ngrx-sandbox/ngrx-sandbox.module';
 
-import { EffectsModule } from '@ngrx/effects';
-import { RemoteEffects } from './ngrx-sandbox/remote.effects';
 import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
@@ -21,7 +19,6 @@ import { AppRoutingModule } from './/app-routing.module';
     FormsModule,
     HttpClientModule,
     NgrxSandboxModule,
-    EffectsModule.forRoot([RemoteEffects]),
     AppRoutingModule
   ],
   providers: [],
