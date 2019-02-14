@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Overview Frontend Architecture</title>
+  <title>Frontend Workshop</title>
 
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -89,7 +89,7 @@
                           letter-spacing: -2px;
                           text-transform: none !important;
     }
-
+`
     .reveal em {
       font-weight: bold;
     }
@@ -182,184 +182,34 @@
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
 
-        <!-- <section data-markdown class="todo">
-            <textarea data-template>
-    ### Overview Sketch
-    
-    * Welche Möglichkeiten gibt es noch? Auch Vaadin-Ansatz beleuchten
-    
-    
-    <img src='img/overview-sketch.jpg'>
-    
-            </textarea>
-          </section>
-     -->
-    
-    
       <section>
-        <h2>Overview of current  Frontend Architectures</h2>
+        <h2>Frontend Workshop</h2>
 
         <div>
           <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
           <a href="http://twitter.com/djcordhose">@DJCordhose</a>
         </div>
         <p style="clear: both">
-            <small>Slides:
-              <a href="http://djcordhose.github.io/architecture/2019_arch_overview.html">
-                  http://djcordhose.github.io/architecture/2019_arch_overview.html</a>
-            </small>
-          </p>
+          <small>Slides:
+            <a href="http://djcordhose.github.io/architecture/2019_workshop_fh.html">
+                http://djcordhose.github.io/architecture/2019_workshop_fh.html</a>
+          </small>
+        </p>
       </section>
-
 
       <section data-markdown>
           <textarea data-template>
-### Frontend Architecture?
+### Content
 
-<div class="fragment">
-Let my son quickly come up with one
-<img src='img/chs_generic_architecture.jpg' height="500px">
-<br>
-<small>(c) Anton Schmidt</small>
+1. <a href='2019_arch_overview.html'>2019_arch_overview.html</a>
+1. <a href='2019_spa_architecture.html'>2019_spa_architecture.html</a>
+1. <a href='2019_frameworks.html'>2019_frameworks.html</a>
+1. <a href='2019_spa_scaled.html'>2019_spa_scaled.html</a>
 
-</div>  
-
-              </textarea>
-        </section>
-
-
-      <section data-markdown>
-        <textarea data-template>
-### OH frontend architecture
-
-* frontend architecture: does this even exist?
-* frontend: we just wing it at the end!
-* why architecture for a little bit of CSS?
-<!-- * our full stack developers handle backend and frontend architecture -->
-
-            </textarea>
-      </section>
-
-
-      <section data-markdown>
-        <textarea data-template>
-### Things Grow - Why you might need frontend architecture
-
-<img src='img/js-pupper-project.png' height="500px">
-<small>
-https://twitter.com/_developit/status/1077390391530405888
-</small>
-            </textarea>
-      </section>
-
-      <section data-markdown>
-        <textarea data-template>
-### The Two Computer Sciences
-
-<img src='img/bret-victor-two-cs.jpg' height="500px">
-<small>
-https://twitter.com/worrydream/status/1071191862462038016
-</small>
-            </textarea>
-      </section>
-
-      <section data-markdown>
-        <textarea data-template>
-### UX vs the World
-
-<img src='img/ux-vs-constraints.jpg' height="500px">
-<small>
-https://twitter.com/uxresearch/status/1079148047257395200
-</small>
-            </textarea>
-      </section>
-
-
-            <section>
-            <img src="img/frontend-architecture.png" height="600px">
-
-            <p><small><a href="https://twitter.com/markdalgleish/status/908146609942257664" target="_blank">
-                https://twitter.com/markdalgleish/status/908146609942257664
-            </a></small></p>
-        </section>
-
-
-    <section>
-      <img src="img/frontend-katz-twitter.png" height="600px">
-
-      <p><small><a href="https://twitter.com/wycats" target="_blank">
-          @wycats
-      </a>: <a href="https://twitter.com/wycats/status/930463710941872128" target="_blank">
-          https://twitter.com/wycats/status/930463710941872128
-      </a></small></p>
-  </section>
-
-
-      <section>
-          <h2>Classic Web Applications</h2>
-          <img src="img/webapp_arch01_classic.png" style="max-width: 40%; float: left">
-          <ul style="max-width: 50%; float: right">
-              <li class="fragment"  >Browser sends HTTP Request
-            <li class="fragment"  >Content is <span class="highlight">rendered on the Server</span>
-              <li class="fragment"  >HTML is sent back to the Browser
-            <li class="fragment"  ><span class="highlight">Browser only shows the page</span> to the user
-              <li class="fragment"  >Each interaction repeats this round-trip
-            <li class="fragment">Frequent page load means severe limitation to UX
-                    </ul>
-      </section>
-
-      <section>
-        <h2>jquery / AJAX</h2>
-        <p>Add some adhoc JavaScript snippet when UI needs to be responsive</p>
-        <img src="img/webapp_arch_02_jquery.png" style="max-width: 40%; float: left">
-        <ul style="width: 50%; float: right; font-size: 80%">
-            <li class="fragment">some renedering in the Browser, some on the server
-            <li class="fragment">architecturally a PITA
-            <li class="fragment">starts as a solution nice, quick and easy to implement 
-            <li class="fragment">sooner or later results in unmaintainable code
-        </ul>
+      </textarea>
     </section>
-
-    <section>
-        <h2>SPA: Single Page Application</h2>
-        <p>Move your Application to the Client</p>
-        <img src="img/webapp_arch_03_spa.png" style="max-width: 40%; float: left">
-        <ul style="width: 50%; float: right; font-size: 80%">
-            <li class="fragment">only one (single) HTML page that mainly loads JavaScript and CSS</li>
-            <li class="fragment">Server has Data-API (JSON/REST API)</li>
-            <li class="fragment">Server can still hold Business Logic (or it is on the client only)
-            <li class="fragment">allows for Offline and best UX
-            <li class="fragment">same challenges as all rich frontend applications
-                  </ul>
-    </section>
-
-    <section data-markdown>
-        <textarea data-template>
-### Dividing frontend from backend is an antipattern
-    
-JavaScript has absolutely exploded in the past few years. Nowadays significant chunks of functionality are moving from the backend to the frontend.
-
-<small>
-https://twitter.com/jbandi/status/1081876386674020353
-</small>
-</textarea>
-      </section>
-
-
-
-    <section data-markdown>
-        <textarea data-template>
-### The ultimate goal of software architecture is, well, software
-
-<img src='img/twitter_implementation_is_king.jpg' height="450px">
-
-<small>
-https://twitter.com/DJCordhose/status/1084456405438996480  
-</small>
-</textarea>
-      </section>
-
-
+  
+  
     </div>
 
   </div>

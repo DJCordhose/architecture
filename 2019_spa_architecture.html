@@ -133,8 +133,8 @@
     }
 
     .reveal .highlight {
-      /* #D3337B;*/
-      color: #268bd2;
+      /* ;*/
+      color: #D3337B;
     }
 
     .reveal section img {
@@ -213,15 +213,15 @@
 
         <div>
           <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
-          <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
+          <a href="http://twitter.com/djcordhose">@DJCordhose</a>
         </div>
         <p style="clear: both">
-          <small>Slides:
-            <a href="TODO">
-              TODO</a>
-          </small>
-        </p>
-      </section>
+            <small>Slides:
+              <a href="http://djcordhose.github.io/architecture/2019_spa_architecture.html">
+                  http://djcordhose.github.io/architecture/2019_spa_architecture.html</a>
+            </small>
+          </p>
+        </section>
 
 
     <section>
@@ -501,7 +501,25 @@ export class SubComponent {
 http://localhost:4200/
             </textarea>
           </section>
-    
+
+   <section data-markdown>
+          <textarea data-template>
+### Dan Abramov on Redux            
+
+Redux (the library) itself is very unsophisticated. It's pretty much this:
+
+```
+dispatch(action) {
+  state = reducer(state, action);
+  subscribers.forEach(s => s());
+}```
+
+<small>
+https://twitter.com/dan_abramov/status/1025399231576727555
+</small>
+</textarea>
+</section>
+         
    <section>
 <h3>Reducer</h3>
 <pre><code data-trim contenteditable class="javascript">
@@ -586,8 +604,8 @@ https://twitter.com/jbandi/status/1023954402116358145
 
         <section>
 						<h3>Wrap Up Redux</h3>
-						<p  style="color: #2aa198">A UI pattern for User Interfaces</span>
-            <ul class="fragment" style="font-size:80%">
+						<p><em>A UI pattern for User Interfaces</em></p>
+            <ul>
                 <li>Mainstream solution
                 <li>Independent of framework
                 <li>Easy testing of business logic as logic is implemented only in pure functions ("Reducer")

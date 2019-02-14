@@ -194,25 +194,15 @@
 
         <div>
           <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
-          <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
+          <a href="http://twitter.com/djcordhose">@DJCordhose</a>
         </div>
         <p style="clear: both">
-          <small>Slides:
-            <a href="TODO">
-              TODO</a>
-          </small>
-        </p>
+            <small>Slides:
+              <a href="http://djcordhose.github.io/architecture/2019_frameworks.html">
+                  http://djcordhose.github.io/architecture/2019_frameworks.html</a>
+            </small>
+          </p>
       </section>
-
-      <section data-markdown class="todo">
-          <textarea data-template>
-* Anfangs TODOs aufräumen
-* Intros für Frameworks (ng und react sind schon da)
-  * Angular ist schon da, advanced, weil vorher in spa architecture schon intro
-  * React aus React Intro (mehr basic als ng, ohne Redux etc.)
-  * Web Components mit lit element aus Projekt (TODO)
-  </textarea>
-        </section>
 
       <section data-markdown>
         <textarea data-template>
@@ -228,7 +218,8 @@
               <li>unobtrusive
               <li>not so good, if there is nothing to begin with
               <li>not so good for controlling page/view flow
-          </ul>
+              <li>not so good if you have a desktop like application
+                </ul>
       </section>
 
       <section>
@@ -355,13 +346,7 @@ https://lit-html.polymer-project.org/
   </section>
 
 
-      <section data-markdown>
-        <textarea data-template>
-## React
-</textarea>
-      </section>
-
-<section data-markdown class="todo">
+<!-- <section data-markdown class="todo">
   <textarea data-template>
 
 Dan Abramov (@dan_abramov) tweeted at 10:28 PM on Tue, Jul 24, 2018:
@@ -387,20 +372,6 @@ I think this is one of the biggest misunderstandings about React. It would be gr
         </textarea>
     </section>
 
-  <section data-markdown class="todo">
-          <textarea data-template>
-Dan Abramov (@dan_abramov) tweeted at 5:13 PM on Fri, Aug 03, 2018:
-Here’s another way to phrase it. Redux (the library) itself is very unsophisticated. It's pretty much this:
-
-dispatch(action) {
-  state = reducer(state, action);
-  subscribers.forEach(s => s());
-}
-
-The concepts are great, but wouldn’t it be better if the core was less naïve?
-(https://twitter.com/dan_abramov/status/1025399231576727555?s=03)
-</textarea>
-</section>
 
 <section data-markdown class="todo">
   <textarea data-template>
@@ -412,14 +383,14 @@ This a very comprehensive comparsion of two great tools, #ReactJS Context and #R
 https://auth0.com/blog/react-context-api-managing-state-with-ease/
 </textarea>
 </section>
-
+ -->
       <section data-markdown>
         <textarea data-template>
 ## Part II: Practical Experiments
 </textarea>
       </section>
 
-      <section data-markdown>
+      <section data-markdown style="font-size: xx-large">
         <textarea data-template>
 ### Installating tool set
 
@@ -435,6 +406,7 @@ https://auth0.com/blog/react-context-api-managing-state-with-ease/
 1. web server: `npm install -g http-server`
 </textarea>
 </section>
+
 <section data-markdown>
   <textarea data-template>
 ## Crash Course React
@@ -480,16 +452,16 @@ https://facebook.github.io/create-react-app/docs/adding-typescript_
         <li class="fragment">JSX (HTML like) as template language
     </ul>
     <pre class="fragment"><code data-trim contenteditable>class HelloMessage extends React.Component {
-render() {
-return &lt;h1 className='title'>Hello, World!&lt;/h1>
-}
+  render() {
+    return &lt;h1 className='title'>Hello, World!&lt;/h1>
+  }
 }
 </code></pre>
 </section>
 
 <section>
     <h3>Hello World React</h3>
-        <a target="_blank" href="code/hello_world/public/index.html">Demo</a>
+        <a target="_blank" href="./code/hello-world/public/index.html">Demo</a>
 </section>
 
         <section>
@@ -541,16 +513,14 @@ ReactDOM.render(&lt;HelloMessage greeting="Hello"/>, mountNode);
 </code></pre>
                     <a target="_blank" href="code/hello_world/public/index.html">Run</a>
                 </section>
-
-
      <section>
         <h2>Webpack and Babel</h2>
-        <img src="images/webpack-und-babel.png" style="border:0;box-shadow:0 0 0 0"/>
+        <img src="img/webpack-und-babel.png" style="border:0;box-shadow:0 0 0 0"/>
     </section>
 
             <section>
                 <h3>React: Rendering</h3>
-                <ul class="fragment">
+                <ul>
                     <li>Every React Component needs a <code>render</code>-Method (or needs to be a function):</li>
                     <li>will be called when first displayed into DOM and when state changes</li>
                     <li>uses HTML like JSX syntax</li>
@@ -574,7 +544,7 @@ class GreetingDetail extends React.Component {
         </section>
            <section>
                 <h3>React: Rendering #2</h3>
-                <ul class="fragment">
+                <ul>
                     <li>DOM-Events are wrapped in React-Events
                     <li>React-Events have very simliar API as DOM-Events
                     <li>No automatic 2-way binding to models
@@ -601,7 +571,7 @@ class GreetingDetail extends React.Component {
 
         <section>
             <h3>React: Properties and State</h3>
-            <ul class="fragment">
+            <ul>
                 <li><b>Properties</b> are being passed to components from <b>outside</b> and are immutable</li>
                 <li><b>State</b> an <b>internal</b> property of a component and can be changed</li>
                 <li>Both are objects containing key-/value pairs</li>
@@ -611,7 +581,7 @@ class GreetingDetail extends React.Component {
 
         <section>
             <h3>Properties of a Component</h3>
-            <ul class="fragment">
+            <ul>
                 <li>Properties initially being passed in contructor</li>
                 <li>RO Access using <code>this.props</code></li>
             </ul>
@@ -634,7 +604,7 @@ class TitleComponent extends React.Component {
 
         <section>
             <h3>State of a Component</h3>
-            <ul class="fragment">
+            <ul>
                 <li>Example: Data from Input Field or loaded from Server</li>
                 <li>Initialization in Constructor <code>this.state={}</code>
                 <li><b>Read</b> state using <code>this.state</code>
@@ -668,9 +638,9 @@ class GreetingDetail extends React.Component {
 </code></pre>
         </section>
 
-        <section>
+        <!-- <section>
             <h3>React: Refs</h3>
-            <ul class="fragment">
+            <ul>
                 <li>When rendering you can get access to the underlying DOM element
                 <li>you get this reference passed into a function
                 <li>typically you store the reference into a class variable
@@ -689,11 +659,11 @@ class HelloMessage extends React.Component {
     }
 }
 </code></pre>
-        </section>
+        </section> -->
 
             <section>
                 <h3>Lists and Keys</h3>
-                <ul class="fragment">
+                <ul>
                     <li>No special synatx in JSX for lists
                     <li>Instead use JavaScripts's <code>Array.map</code>
                     <li>Elements of a List need unique key
@@ -720,7 +690,7 @@ const body = greetings.map(greeting =>
 
         <section data-markdown>
             <textarea data-template>
-### Smart and Dumb Components with React
+## Smart and Dumb Components with React
 </textarea>
 </section>
 
@@ -745,7 +715,7 @@ class GreetingController extends React.Component {
     </section>
     <section>
         <h3>Passing Properties using Object-Spread</h3>
-        <ul class="fragment">
+        <ul>
                 <li>Passes <b>all</b> fields of an Object as individual Properties</li>
         </ul>
         <pre class="fragment"><code class="javascript" contenteditable data-trim>
@@ -763,7 +733,7 @@ class GreetingController extends React.Component {
         </code></pre>
     </section>
 
-    <section data-markdown class="todo">
+    <!-- <section data-markdown class="todo">
         <textarea data-template>
 ### React and TypeScript
 
@@ -771,8 +741,7 @@ class GreetingController extends React.Component {
 
 * https://github.com/sw-yx/react-typescript-cheatsheet
 </textarea>
-</section>
-
+</section> -->
 
 <section data-markdown>
   <textarea data-template>
