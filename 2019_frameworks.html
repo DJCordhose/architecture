@@ -1107,6 +1107,8 @@ https://www.webcomponents.org/
 https://www.webcomponents.org/
 <br>
 https://caniuse.com/#search=Web%20components
+<br>
+https://pwa-starter-kit.polymer-project.org/browser-support
 </small>
 </textarea>
 </section>
@@ -1164,7 +1166,7 @@ cheat sheets by @JorgeCasar and @sergicontre
 
 <section data-markdown>
   <textarea data-template>
-## Crash Course Web Components with lit element, PWA Starter Kit and TypeScript
+## Crash Course Web Components with Polymer, lit-element, PWA Starter Kit and TypeScript
 
 https://lit-element.polymer-project.org/
 </textarea>
@@ -1264,8 +1266,29 @@ https://github.com/Polymer/pwa-helpers#redux-helpers
 </small>
           </textarea>
           </section>
+
+          <section data-markdown>
+            <textarea data-template>
+### Build with Service Worker
   
-        <section data-markdown>
+* local `service-worker.js` which is empty and not used in development
+* local `sw-precache-config.js` where the service worker is configured
+* local `push-manifest.json` and configure our additional menu for push
+* make a production build `yarn build`
+* and serve it using `yarn serve`
+* in Chrome Dev Tools in Application tab inspect cached files and simulate offline
+
+<small>
+https://pwa-starter-kit.polymer-project.org/building-and-deploying
+<br>
+https://polymer-library.polymer-project.org/3.0/docs/apps/service-worker
+<br>
+More up to date and independent of Polymer: https://developers.google.com/web/tools/workbox/
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
             <textarea data-template>
 ### i18n for lit-element
 
