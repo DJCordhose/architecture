@@ -518,7 +518,7 @@ ReactDOM.render(&lt;HelloMessage greeting="Hello"/>, mountNode);
         <img src="img/webpack-und-babel.png" style="border:0;box-shadow:0 0 0 0"/>
     </section>
 
-            <section>
+            <section style="font-size: xx-large">
                 <h3>React: Rendering</h3>
                 <ul>
                     <li>Every React Component needs a <code>render</code>-Method (or needs to be a function):</li>
@@ -1181,6 +1181,7 @@ https://lit-element.polymer-project.org/
 1. from the configuration file figure out where the tests are
 1. break one, see the tests fail and fix them back again
 
+
   <small>
 https://pwa-starter-kit.polymer-project.org/application-testing
   </small>
@@ -1197,6 +1198,7 @@ https://pwa-starter-kit.polymer-project.org/application-testing
 1. fix them and add a test for our new view to the visual and router tests
 1. make the router test fail and fix it again
 
+
   <small>
 https://pwa-starter-kit.polymer-project.org/application-testing
   </small>
@@ -1205,11 +1207,21 @@ https://pwa-starter-kit.polymer-project.org/application-testing
 
       <section data-markdown>
           <textarea data-template>
-### Step Four: Try out more of lit-element
+### Step Four: Basic Lit-Element
+
+1. https://lit-element.polymer-project.org/try
+1. https://lit-element.polymer-project.org/guide/lifecycle
+</textarea>
+      </section>
+
+      <section data-markdown>
+          <textarea data-template>
+### Step Five: Try out more advanced lit-element
 
 1. communication with parent component: https://twitter.com/sergicontre/status/1092152559219982336
 1. bind properties to child elements: https://twitter.com/sergicontre/status/1094678263912374273
 1. where to add browser event handlers: https://twitter.com/sergicontre/status/1095118223157145606
+1. how request an element update: https://twitter.com/sergicontre/status/1096477879280562181
   
     <small>
   cheat sheets by @sergicontre
@@ -1219,7 +1231,7 @@ https://pwa-starter-kit.polymer-project.org/application-testing
 
         <section data-markdown>
             <textarea data-template>
-### Step Five: Investigate Redux and Web Components
+### Step Six: Investigate Redux and Web Components
 
 * locate `counter-element` custom element
 * make sure you understand how it communicates with a parent component in general
@@ -1285,6 +1297,20 @@ _https://open-wc.org/guide/_
 </textarea>
 </section>
 
+<section data-markdown>
+    <textarea data-template>
+### Testing with TypeScript
+  
+* https://www.npmjs.com/package/karma-typescript
+  * `yarn add karma karma-typescript --dev`
+* `yarn add @types/chai @types/mocha --dev`
+* yarn add chai --dev
+* https://open-wc.org/testing/#setup
+  * `yarn add @open-wc/testing @open-wc/testing-karma --dev`
+  * use `https://github.com/open-wc/open-wc/blob/master/packages/generator-open-wc/generators/testing-karma/templates/static/karma.conf.js`
+
+</textarea>
+</section>
 
 </div>
 
