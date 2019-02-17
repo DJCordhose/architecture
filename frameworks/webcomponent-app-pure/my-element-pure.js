@@ -33,15 +33,17 @@ class MyElement extends HTMLElement {
         this.log = this.shadowRoot.querySelector("#log");
         this.button = this.shadowRoot.querySelector("#btn");
     }
+
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === "greeting") {
             this.model = newValue;
         }
     }
+
     set model(value) {
         this.log.textContent = value;
         this.input.value = value;
     }
 }
 
-window.customElements.define('my-element', MyElement);
+customElements.define('my-element', MyElement);

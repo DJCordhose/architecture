@@ -197,6 +197,337 @@
           </p>
       </section>
 
+      <section data-markdown>
+        <textarea data-template>
+## Three Scenarios for Web Component to excel
+
+1. coarse-grain components for people to simply include in (static) HTML
+1. fine-grained components for application development
+1. coarse-grain components wrapping application part for composed SPA
+  </textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Scenario I: Components for everyone
+
+_coarse-grain components for people to simply include in (static) HTML_
+
+* e.g. Google Maps Component
+* tolerant to errors
+* interface via attributes
+* well known publisher, people need trust to them
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+### Are Web Components ready, yet?
+
+_Web Components Browser Compatibility_
+
+<img src='img/web-components-support.jpg' height="400px">
+
+<small>
+https://www.webcomponents.org/
+<br>
+https://caniuse.com/#search=Web%20components
+<br>
+https://pwa-starter-kit.polymer-project.org/browser-support
+</small>
+</textarea>
+</section>
+
+<section style="font-size: xx-large">
+<h3>Barebone Web Components</h3>
+
+<pre class="fragment"><code data-trim class="javascript">
+const template = `
+&lt;input id="in">
+&lt;p>&lt;span id="log"></span>, World</p>
+&lt;input id="btn" type="button" value="Clear">`
+</code></pre>
+
+<pre class="fragment"><code data-trim class="javascript">
+class MyElement extends HTMLElement {
+  constructor() {
+      super();
+      this.attachShadow({mode: 'open'});
+      this.shadowRoot.innerHTML = template;
+      this.input = this.shadowRoot.querySelector("#in");
+      this.log = this.shadowRoot.querySelector("#log");
+      this.button = this.shadowRoot.querySelector("#btn");
+  }
+
+  connectedCallback() {
+      this.input.addEventListener("keyup", event => this.model = event.target.value);
+      this.button.addEventListener("click", event => this.model = "");
+  }
+
+  set model(value) {
+    this.log.textContent = value;
+    this.input.value = value;
+  }
+
+}
+customElements.define('my-element', MyElement);
+</code></pre>
+  
+<pre class="fragment"><code data-trim class="javascript">
+# from perspective of user  
+&lt;script src="./my-element-pure.js"></script>
+&lt;my-element></my-element>
+</code></pre>
+
+  <small>
+ <a href='frameworks/webcomponent-app-pure/'>Try it out</a>   
+
+  </small>
+  </section>
+
+<section data-markdown>
+    <textarea data-template>
+### Links: Barebone Web Components
+
+1. 101: https://www.telerik.com/blogs/web-components-101-an-introduction-to-web-components
+1. basics: https://twitter.com/JorgeCasar/status/1090922130156457984
+1. life-cycle: https://twitter.com/JorgeCasar/status/1091287089696698368
+1. communication with parent element: https://twitter.com/sergicontre/status/1091407003040337921
+
+<small>
+cheat sheets by @JorgeCasar and @sergicontre
+</small>
+  </textarea>
+  </section>
+  
+<section data-markdown>
+    <textarea data-template>
+## Scenario II: Anti-Framework
+
+_fine-grained components for application development_
+
+* replacement for more heavy weight frameworks
+* easier to integrate with native browser API
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Developers do not really like Polymer (Web Components)
+
+<img src='img/js-frameworks-2018.png' height="470px">
+<small>
+https://2018.stateofjs.com/front-end-frameworks/conclusion  
+</small>
+    </textarea>
+</section>
+
+<section data-markdown
+    <textarea data-template>
+### Is Development for Web Components procedural and low-level?
+
+<h4 class="fragment">enter lit-element</h4>
+
+<p class="fragment">
+https://lit-element.polymer-project.org/  
+</p>
+    
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+# Ausformulieren hier
+
+      ### Basic Lit-Element
+
+
+
+1. https://lit-element.polymer-project.org/try
+1. https://lit-element.polymer-project.org/guide/lifecycle
+      </textarea>
+</section>
+    
+
+<section data-markdown>
+<textarea data-template>
+### Is lit-element fast enough?
+
+<img src='img/framework-performance.jpg' height="500px">
+
+<small>
+https://twitter.com/justinfagnani/status/1092882517709905921
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Scenario III: Wrappers for large SPAs
+
+_coarse-grain components wrapping application part for composed SPA_
+
+* to integrate work from parts done by different teams
+* merely a thin wrapper over a complete application
+* might require same version of application framework
+* trust not an issue as no alien parts involved
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Web Components mix well
+
+Justin Fagnani (@justinfagnani) tweeted at 8:41 PM on Sat, Feb 16, 2019:
+You can freely intermix Polymer, LitElement and other web component libraries. Incremental is the way to go for large apps.
+(https://twitter.com/justinfagnani/status/1096872147845181440?s=03)
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Frameworks with Custom elements
+
+all of them at least try
+* Angular, Vue great
+* Preact good
+* React mediocre
+
+https://custom-elements-everywhere.com/      
+</textarea>
+</section>
+
+<section>
+  <h3>Example: Technology-Migration</h3>
+  <p>From Angular (Overview) to React (Field and Ticker)</p>
+  <img src="img/screenshot-sport1.jpg" height="450px">
+  <p>
+    <small>
+      <a href="http://www.sport1.de/fussball/bundesliga/live-ticker" target="_blank">
+        http://www.sport1.de/fussball/bundesliga/live-ticker
+      </a>
+    </small>
+  </p>
+</section>
+
+<section>
+  <h3>Encapsulate using Web Components</h3>
+  <p>Custom Elements with JavaScript ES6 Modul</p>
+  <pre class="fragment"><code data-trim class="javascript">
+// Custom Element
+class MyElement extends HTMLElement {
+  connectedCallback() {
+    // render Angular / React component
+  }
+}
+customElements.define('my-element', MyElement);
+</code></pre>
+  <pre class="fragment"><code data-trim class="html">
+&lt;script>
+// JavaScript module import
+import 'my-element';
+&lt;/script>
+
+&lt;div>
+&lt;my-element greeting="Hello">&lt;/my-element>
+&lt;/div>
+</code></pre>
+
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Does this work well?
+
+* does not isolate completely
+  * only DOM and CSS
+* iFrame much better and more configurable isolation
+* all parts bring their own burden of framework
+  * might take long to load
+  * service worker might help after first page impression
+* not all frameworks support more than one version of framework in the same app
+  * react pretty cool about this
+  * Angular not so much, but Angular app can expose many Web Components using angular-elements
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Angular Elements
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+## Discussion
+
+_should you use Web Components?_
+
+</textarea>
+  </section>
+
+  <section data-markdown class="todo">
+      <textarea data-template>
+  ### Do we need a framework, would Web Components do?
+  
+  https://twitter.com/mislav/status/1022058279000842240
+  </textarea>
+  </section>
+
+
+  <section data-markdown>
+      <textarea data-template>
+### Pro Web Components
+
+* use the standard
+* easy integration with native browser API
+* will exist in 20 years from now
+* low or zero memory footprint
+
+  </textarea>
+    </section>
+  
+  <section data-markdown>
+      <textarea data-template>
+### Contra Web Components
+
+* standard gurantees availabilty of technology, but not of community
+* polyfills for older browsers
+* really only usable with lit-element (so: just another framework?)
+
+  </textarea>
+    </section>
+
+      
+<!-- <section data-markdown class="todo">
+    <textarea data-template>
+### Nils  
+
+bei mir zieht ja das "standard" argument nicht, ich finde, wenn irgendwas mindestens "quasi-standard" bzw einigermaßen
+etabliert ist, kommt es für den Einsatz in Frage (gleiche Diskussion jee oder spring mE).
+
+Demnach wäre bei mir nicht nur WebComponents in der Verlosung, sondern eben auch Angular, Vue, React etc pp. Und dann
+würde ich überlegen, wie ich eigentlich Anwendungen bauen will, welche Features sind mir wichtig, wo gefallen mir API,
+Doku, Tooling etc. Das würde ich dann nehmen.
+
+Und ich persönlich finde, dass die WebComponents auf dem falschen "Level" abstrahieren bzw nicht genügend Features
+bieten (state handling etc). Das alles finde ich in react viel viel besser (vermutlich auch in Angular/Vue) und würde
+deswegen WCs nicht verwenden
+Ich finde Custom Elements schön und gut, aber die Art+Weise wie ich die entwickeln müsste, würde mir nicht gefallen
+
+</textarea>
+</section> -->
+
+<section data-markdown class="todo">
+    <textarea data-template>
+# From here just material
+
+</textarea>
+  </section>
+        
+
+
+
       <section data-markdown class="todo">
         <textarea data-template>
 ### VSC plugin
@@ -225,32 +556,6 @@ https://labs.vaadin.com/project-wizard-connect/
     </textarea>
   </section> -->
   
-      <section data-markdown class="todo">
-          <textarea data-template>
-      ### Do we need a framework, would Web Components do?
-      
-      https://twitter.com/mislav/status/1022058279000842240
-      </textarea>
-      </section>
-      
-<section data-markdown class="todo">
-    <textarea data-template>
-### Nils  
-
-bei mir zieht ja das "standard" argument nicht, ich finde, wenn irgendwas mindestens "quasi-standard" bzw einigermaßen
-etabliert ist, kommt es für den Einsatz in Frage (gleiche Diskussion jee oder spring mE).
-
-Demnach wäre bei mir nicht nur WebComponents in der Verlosung, sondern eben auch Angular, Vue, React etc pp. Und dann
-würde ich überlegen, wie ich eigentlich Anwendungen bauen will, welche Features sind mir wichtig, wo gefallen mir API,
-Doku, Tooling etc. Das würde ich dann nehmen.
-
-Und ich persönlich finde, dass die WebComponents auf dem falschen "Level" abstrahieren bzw nicht genügend Features
-bieten (state handling etc). Das alles finde ich in react viel viel besser (vermutlich auch in Angular/Vue) und würde
-deswegen WCs nicht verwenden
-Ich finde Custom Elements schön und gut, aber die Art+Weise wie ich die entwickeln müsste, würde mir nicht gefallen
-
-</textarea>
-</section>
       
 <section data-markdown class="todo">
     <textarea data-template>

@@ -329,7 +329,6 @@ https://twitter.com/nilshartmann/status/1055769094660722688
   <section data-markdown>
       <textarea data-template>
 ### Why WebComponents Polymer LitElement and lit-html
-
   
 * Solves these issues within the JS world using mostly standards
 * Class based
@@ -599,7 +598,6 @@ class TitleComponent extends React.Component {
 <pre class="fragment"><code class="javascript" contenteditable data-trim>
   &lt;TitleComponent title='Hello World' />
 </code></pre>
-
         </section>
 
         <section>
@@ -1054,17 +1052,53 @@ export class AppModule {}
 https://www.webcomponents.org/
 </textarea>
 </section>
-<section data-markdown>
-  <textarea data-template>
-### No installation and no tooling necessary
 
-1. `cd webcomponent-app-pure`
-1. `http-server`
-1. Open http://localhost:8080/
-1. Change the app code in your IDE and and refresh it in the browser
+<section style="font-size: xx-large">
+<h3>Barebone Web Components</h3>
 
-</textarea>
-</section>
+<pre class="fragment"><code data-trim class="javascript">
+const template = `
+&lt;input id="in">
+&lt;p>&lt;span id="log"></span>, World</p>
+&lt;input id="btn" type="button" value="Clear">`
+</code></pre>
+
+<pre class="fragment"><code data-trim class="javascript">
+class MyElement extends HTMLElement {
+  constructor() {
+      super();
+      this.attachShadow({mode: 'open'});
+      this.shadowRoot.innerHTML = template;
+      this.input = this.shadowRoot.querySelector("#in");
+      this.log = this.shadowRoot.querySelector("#log");
+      this.button = this.shadowRoot.querySelector("#btn");
+  }
+
+  connectedCallback() {
+      this.input.addEventListener("keyup", event => this.model = event.target.value);
+      this.button.addEventListener("click", event => this.model = "");
+  }
+
+  set model(value) {
+    this.log.textContent = value;
+    this.input.value = value;
+  }
+
+}
+customElements.define('my-element', MyElement);
+</code></pre>
+  
+<pre class="fragment"><code data-trim class="javascript">
+# using the web component  
+&lt;script src="./my-element-pure.js"></script>
+&lt;my-element></my-element>
+</code></pre>
+
+  <small>
+ <a href='frameworks/webcomponent-app-pure/'>Try it out</a>   
+
+  </small>
+  </section>
 
 <section data-markdown>
 <textarea data-template>
