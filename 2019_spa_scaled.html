@@ -237,28 +237,6 @@ Build: <img src='img/scratch/build time integration.jpg'>
 
 
 
-  <section data-markdown class="todo">
-      <textarea data-template>
-### Mono Repo with yarn workspaces and lerna
-
-* https://lernajs.io/
-  * commands: https://github.com/lerna/lerna
-* https://blog.logrocket.com/setting-up-a-monorepo-with-lerna-for-a-typescript-project-b6a81fe8e4f8
-* https://yarnpkg.com/lang/en/docs/workspaces/
-* https://medium.com/@jsilvax/a-workflow-guide-for-lerna-with-yarn-workspaces-60f97481149d
-* https://github.com/material-components/material-components-web-components
-
-
-Split Demo App from Lib
-* same project: lib / app, 
-* git submodule
-* yarn link: https://yarnpkg.com/lang/en/docs/cli/link/
-  * does not work: import module from dev location
-  * module identified by path, double inits
-
-</textarea>
-    </section>
-
     <section data-markdown class="todo">
       <textarea data-template>
 ### Monoliths are not bad all by themselves
@@ -283,26 +261,6 @@ https://twitter.com/sophiebits/status/1088878468236926976
 </textarea>
     </section>
 
-    <section data-markdown class="todo" style="font-size: xx-large">
-        <textarea data-template>
-### Micro Frontends Teil einbauen für 60 Minuten Version
-
-Eröffnung
-
-Nils: das problem ist finde ich, man hat zwei extreme:
-1. es soll einheitlich aussehen unter allen umständen
-2. es ist komplett wurscht wie's aussieht
-Auf die beiden Positionen kann man sich leicht committen team-übergreifend
-
-aber auf den 2. punkt committed sich natürlich keiner
-weil "ganz egal" ist es eben doch nicht
-
-auf den ersten auch nicht: "unter allen Umständen" kann echt viel heißen
-auch: es wird nie fertig
-
-und dann wirds schwer: wieviel abweichung von "einheitlichkeit" ist noch erlaubt.
-            </textarea>
-      </section>
  -->
 
       <section>
@@ -394,6 +352,26 @@ und dann wirds schwer: wieviel abweichung von "einheitlichkeit" ist noch erlaubt
               </ol>
             </div>
       </section>
+
+      <section data-markdown style="font-size: xx-large">
+          <textarea data-template>
+### Zwei extreme Positionen
+  
+*  (1) es soll einheitlich aussehen unter allen Umständen
+*  (2) es ist komplett egal wie es aussieht
+
+* Auf die beiden Positionen kann man sich leicht Team-übergreifend committen 
+
+* aber auf den 2. punkt committed sich natürlich keiner
+  * weil "ganz egal" ist es eben doch nicht
+
+* auf den ersten auch nicht: "unter allen Umständen" kann echt viel heißen
+  * auch: es wird nie fertig
+
+* und dann wirds schwer: wieviel abweichung von "Einheitlichkeit" ist noch erlaubt.
+              </textarea>
+        </section>
+  
 
       <section>
         <video controls poster="video/good-cheap-fast.jpg" src="video/good-cheap-fast.mp4" type="video/mp4"></video>
@@ -811,6 +789,85 @@ _In der Beantwortung dieser beiden Fragen unterscheiden sich die Lösungsansätz
                 <a href="https://tur-nr.github.io/polymer-redux/" target="_blank">https://tur-nr.github.io/polymer-redux/</a>
         </ul>
       </section>
+
+      <section data-markdown  style="background: url(img/mmm-badge.png) no-repeat right top;">
+          <textarea data-template>
+### Wie managen wir die einzelnen Teile?
+
+_Mono Repositories mit lerna und yarn Workspaces_
+
+* alles in einem Repo
+* aber jedes Paket in einem eigenen Verzeichnis
+* Abhängigkeiten untereinander werden von `lerna` gemanagt
+* jedes Paket hat eigene (externe) Abhängigkeiten, werden aber physisch auf Top-Level abgelegt
+
+<small>
+https://lernajs.io/  
+https://yarnpkg.com/lang/en/docs/workspaces/
+</small>
+            </textarea>
+          </section>
+      
+      <section data-markdown  style="background: url(img/mmm-badge.png) no-repeat right top;">
+          <textarea data-template>
+### Mono-Repo aufsetzen
+
+* `npm install -g lerna`
+* `git init lerna-demo-repo && cd lerna-demo-repo`
+* `lerna init`
+* to `lerna.json` add `"npmClient": "yarn"`
+* to `package.json` add `"workspaces": [
+"packages/*"
+]`
+
+<small>
+https://github.com/lerna/lerna#readme
+</small>
+            </textarea>
+          </section>
+
+      <section data-markdown  style="background: url(img/mmm-badge.png) no-repeat right top;">
+          <textarea data-template>
+### Mono-Repo managen
+
+* add dev tools on top level: `yarn add [tool] --dev -W`
+
+
+<small>
+https://github.com/lerna/lerna#readme
+https://yarnpkg.com/lang/en/docs/workspaces/
+</small>
+            </textarea>
+          </section>
+
+
+  <section data-markdown class="todo">
+      <textarea data-template>
+### Mono Repo with yarn workspaces and lerna
+
+Ref
+* https://lernajs.io/
+  * commands: https://github.com/lerna/lerna
+* https://yarnpkg.com/lang/en/docs/workspaces/
+
+Tut
+* https://blog.logrocket.com/setting-up-a-monorepo-with-lerna-for-a-typescript-project-b6a81fe8e4f8
+* https://medium.com/@jsilvax/a-workflow-guide-for-lerna-with-yarn-workspaces-60f97481149d
+
+Examples
+* https://github.com/material-components/material-components-web-components
+* https://github.com/web-padawan/lit-components
+
+
+Split Demo App from Lib
+* same project: lib / app, 
+* git submodule
+* yarn link: https://yarnpkg.com/lang/en/docs/cli/link/
+  * does not work: import module from dev location
+  * module identified by path, double inits
+
+</textarea>
+    </section>
 
       <section>
         <h3>Ansatz 3</h3>
