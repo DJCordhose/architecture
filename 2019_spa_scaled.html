@@ -815,7 +815,7 @@ https://yarnpkg.com/lang/en/docs/workspaces/
 * `npm install -g lerna`
 * `git init lerna-demo-repo && cd lerna-demo-repo`
 * `lerna init`
-* to `lerna.json` add `"npmClient": "yarn"`
+* to `lerna.json` add `"npmClient": "yarn"` and `"useWorkspaces": true`
 * to `package.json` add `"workspaces": [
 "packages/*"
 ]`
@@ -830,20 +830,35 @@ https://github.com/lerna/lerna#readme
           <textarea data-template>
 ### Mono-Repo managen
 
+* add package: `lerna create [package name]` 
+* add dependency to package (creates symbolic link in top level node_modules`): `lerna add [dependency] --scope=[package to add to]`
+* add dependency to exernal module: `lerna add [external dep] --scope=[package to add to]`
 * add dev tools on top level: `yarn add [tool] --dev -W`
-
 
 <small>
 https://github.com/lerna/lerna#readme
+https://github.com/lerna/lerna/tree/master/commands/add#readme
 https://yarnpkg.com/lang/en/docs/workspaces/
 </small>
             </textarea>
           </section>
 
+          <section data-markdown  style="background: url(img/mmm-badge.png) no-repeat right top;">
+            <textarea data-template>
+### Setup Lib + App
 
-  <section data-markdown class="todo">
+Options
+* same project: lib / app both as packages 
+* git submodule
+* yarn link: https://yarnpkg.com/lang/en/docs/cli/link/
+  * does not work: import module from dev location
+  * module identified by path, double inits
+              </textarea>
+            </section>
+  
+  <section data-markdown>
       <textarea data-template>
-### Mono Repo with yarn workspaces and lerna
+### Links: Mono Repo with yarn workspaces and lerna
 
 Ref
 * https://lernajs.io/
@@ -857,14 +872,6 @@ Tut
 Examples
 * https://github.com/material-components/material-components-web-components
 * https://github.com/web-padawan/lit-components
-
-
-Split Demo App from Lib
-* same project: lib / app, 
-* git submodule
-* yarn link: https://yarnpkg.com/lang/en/docs/cli/link/
-  * does not work: import module from dev location
-  * module identified by path, double inits
 
 </textarea>
     </section>
