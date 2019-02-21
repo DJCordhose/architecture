@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Sandbox</title>
+     <script type="module" src="./my-element-pure.js"></script>
+
+  </head>
+  <body>
+    <my-element greeting="Hiho"></my-element>
+    <script>
+      setTimeout(function() {
+          const greeter = document.querySelector('my-element');
+          greeter.setAttribute('greeting', 'Hi');
+      }, 3000)
+  </script>
+  
+  </body>
+</html>

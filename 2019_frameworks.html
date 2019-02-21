@@ -59,6 +59,14 @@
       color: red !important;
     }
 
+    .wip:before {
+      content: 'WIP';
+    }
+
+    .wip {
+      color: orange !important;
+    }
+
     code span.line-number {
       color: lightcoral;
     }
@@ -1059,7 +1067,7 @@ https://www.webcomponents.org/
 <pre class="fragment"><code data-trim class="javascript">
 const template = `
 &lt;input id="in">
-&lt;p>&lt;span id="log"></span>, World</p>
+&lt;p>&lt;span id="log">&lt;/span>, World</p>
 &lt;input id="btn" type="button" value="Clear">`
 </code></pre>
 
@@ -1091,7 +1099,7 @@ customElements.define('my-element', MyElement);
 <pre class="fragment"><code data-trim class="javascript">
 # using the web component  
 &lt;script src="./my-element-pure.js"></script>
-&lt;my-element></my-element>
+&lt;my-element>&lt;/my-element>
 </code></pre>
 
   <small>
@@ -1190,6 +1198,43 @@ _https://pwa-starter-kit.polymer-project.org/setup using https://github.com/Poly
 
 </textarea>
 </section>
+
+<section>
+<h3>Web Component with lit-element</h3>
+
+<pre class="fragment"><code data-trim class="javascript">
+@customElement('my-element')
+class MyElement extends LitElement {
+    @property() greeting: string = 'Hello';
+
+    render() {
+        return html`
+        &lt;input value="${this.greeting}" 
+          @keyup="${(event: any) => this.greeting = event.target.value}">
+        &lt;p>${this.greeting}, World&lt;/p>
+        &lt;input type="button" value="Clear" @click="${this.handleClick}">`;
+    }
+
+    handleClick() {
+        this.greeting = '';
+    }
+}
+</code></pre>
+  
+<pre class="fragment"><code data-trim class="javascript">
+# using the web component  
+&lt;script src="./my-element-pure.js"></script>
+&lt;my-element>&lt;/my-element>
+</code></pre>
+
+<small>
+Try it out: cd frameworks/webcomponent-app-lit && yarn dev
+<br>
+https://lit-element.polymer-project.org/  
+</small>
+  </section>
+
+
 
 <section data-markdown>
     <textarea data-template>
@@ -1362,6 +1407,7 @@ _https://open-wc.org/guide/_
       // only applies to public version
       $('.preparation').remove();
       $('.todo').remove();
+      $('.wip').remove();
       $('.local').remove();
       $('.presenter').remove();
 
