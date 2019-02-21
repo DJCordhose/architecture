@@ -396,6 +396,53 @@ https://twitter.com/jkohlmann/status/1097195163829583872
 </textarea>
 </section>
 
+<section data-markdown
+    <textarea data-template>
+### lit-element does not need hooks
+
+<img src='img/lit-element-vs-hooks.png'>
+<small>
+https://twitter.com/justinfagnani/status/1098324609084997632 
+</small>
+    
+</textarea>
+</section>
+
+<section>
+<h3>Web Component with lit-element</h3>
+
+<pre class="fragment"><code data-trim class="javascript">
+@customElement('my-element')
+class MyElement extends LitElement {
+    @property() greeting: string = 'Hello';
+
+    render() {
+        return html`
+        &lt;input value="${this.greeting}" 
+          @keyup="${(event: any) => this.greeting = event.target.value}">
+        &lt;p>${this.greeting}, World&lt;/p>
+        &lt;input type="button" value="Clear" @click="${this.handleClick}">`;
+    }
+
+    handleClick() {
+        this.greeting = '';
+    }
+}
+</code></pre>
+  
+<pre class="fragment"><code data-trim class="javascript">
+# using the web component  
+&lt;script src="./my-element-pure.js"></script>
+&lt;my-element>&lt;/my-element>
+</code></pre>
+
+<small>
+Try it out: cd frameworks/webcomponent-app-lit && yarn dev
+<br>
+https://lit-element.polymer-project.org/  
+</small>
+  </section>
+
 
 <section data-markdown class="todo">
     <textarea data-template>
