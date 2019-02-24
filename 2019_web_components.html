@@ -456,7 +456,143 @@ https://lit-element.polymer-project.org/
 1. https://lit-element.polymer-project.org/guide/lifecycle
       </textarea>
 </section>
+
+<section data-markdown>
+  <textarea data-template>
+## Crash Course Web Components with Polymer, lit-element, PWA Starter Kit and TypeScript
+
+https://lit-element.polymer-project.org/
+
+https://pwa-starter-kit.polymer-project.org/setup using https://github.com/Polymer/pwa-helpers for router and redux related stuff
+
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Step One: A new view for the router using lit-element
+  
+1. create a new custom element and load it dynamically only when needed
+1. you can take a simple example like this: https://lit-element.polymer-project.org/
+1. look at `actions/app.ts`, `my-app.ts`, and `my-view1.ts` for reference
+
+<small>
+https://lit-element.polymer-project.org/  
+</small>
+  </textarea>
+  </section>
+
+  <section data-markdown>
+      <textarea data-template>
+### Step Two: Run Unit Tests
+  
+1. uinit tests use https://github.com/Polymer/tools/tree/master/packages/web-component-tester
+1. configure browsers in `wct.conf.json` to just use Chrome (https://github.com/Polymer/tools/tree/master/packages/web-component-tester#configuration)
+1. run unit tests `yarn test:unit`
+1. from the configuration file figure out where the tests are
+1. break one, see the tests fail and fix them back again
+
+
+  <small>
+https://pwa-starter-kit.polymer-project.org/application-testing
+  </small>
+    </textarea>
+    </section>
     
+    <section data-markdown>
+        <textarea data-template>
+### Step Three: Run Integration Tests
+  
+1. integration tests use Puppeteer (https://pptr.dev/) controlling Chrome
+1. run unit tests `yarn test:integration`
+1. why are the tests failing?
+1. fix them and add a test for our new view to the visual and router tests
+1. make the router test fail and fix it again
+
+
+  <small>
+https://pwa-starter-kit.polymer-project.org/application-testing
+  </small>
+      </textarea>
+      </section>
+
+      <section data-markdown>
+          <textarea data-template>
+### Step Four: Basic Lit-Element
+
+1. https://lit-element.polymer-project.org/try
+1. https://lit-element.polymer-project.org/guide/lifecycle
+</textarea>
+      </section>
+
+      <section data-markdown>
+          <textarea data-template>
+### Step Five: Try out more advanced lit-element
+
+1. communication with parent component: https://twitter.com/sergicontre/status/1092152559219982336
+1. bind properties to child elements: https://twitter.com/sergicontre/status/1094678263912374273
+1. where to add browser event handlers: https://twitter.com/sergicontre/status/1095118223157145606
+1. how request an element update: https://twitter.com/sergicontre/status/1096477879280562181
+  
+    <small>
+  cheat sheets by @sergicontre
+    </small>
+        </textarea>
+        </section>
+
+        <section data-markdown>
+            <textarea data-template>
+### Step Six: Investigate Redux and Web Components
+
+* locate `counter-element` custom element
+* make sure you understand how it communicates with a parent component in general
+* locate `my-view2` that uses `counter-element` and is our second view in the app
+* make sure you understand how they communicate using redux actions, reducers, and the store
+* install https://github.com/reduxjs/redux-devtools to help you with that
+* locate `my-view3` and make sense of the more complicated use case
+  
+<small>
+https://pwa-starter-kit.polymer-project.org/redux-and-state-management
+<br>
+https://github.com/Polymer/pwa-helpers#redux-helpers
+</small>
+          </textarea>
+          </section>
+
+          <section data-markdown>
+            <textarea data-template>
+### Build with Service Worker
+
+_service workers allow to pre-cache (dynamic) imports using push at startup_
+
+* local `service-worker.js` which is empty and not used in development
+* local `sw-precache-config.js` where the service worker is configured
+* local `push-manifest.json` and configure our additional menu for push
+* make a production build `yarn build`
+* and serve it using `yarn serve`
+* in Chrome Dev Tools in Application tab inspect cached files and simulate offline
+
+<small>
+https://pwa-starter-kit.polymer-project.org/building-and-deploying
+<br>
+https://polymer-library.polymer-project.org/3.0/docs/apps/service-worker
+<br>
+More up to date and independent of Polymer: https://developers.google.com/web/tools/workbox/
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+            <textarea data-template>
+### i18n for lit-element
+
+https://www.npmjs.com/package/@appnest/lit-translate
+
+Demo: https://appnest-demo.firebaseapp.com/lit-translate/    
+          </textarea>
+          </section>
+          
+
 
 <section data-markdown>
 <textarea data-template>
