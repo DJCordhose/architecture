@@ -1,4 +1,9 @@
 const template = `
+<style>
+p {
+    color: green;
+}
+</style>
 <input id="in">
 <p><span id="log"></span>, World</p>
 <input id="btn" type="button" value="Clear">
@@ -27,6 +32,7 @@ class MyElement extends HTMLElement {
     }
 
     render() {
+        // https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM
         this.attachShadow({mode: 'open'});
         this.shadowRoot.innerHTML = template;
         this.input = this.shadowRoot.querySelector("#in");
