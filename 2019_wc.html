@@ -182,17 +182,6 @@
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
 
-<section data-markdown class="preparation">
-        <textarea data-template>
-### Preparation
-
-1. Start Demo
-   * cd Developement/lerna-wc-ts-monorepo-demo
-   * yarn start
-   * Open in Canary Edge and Firefox: http://localhost:8000/demo/index.html
-    </textarea>
-</section>
-
       <section>
         <h2>Web Components? Dead, aren't they?</h2>
 
@@ -265,6 +254,34 @@ React is dead. Long live Web Components
 https://dan.church/
       </textarea>
       </section> -->
+
+      <section data-markdown>
+          <textarea data-template>
+### lit-element the new (old) React?
+<img src='img/dan-hooks-dont-suck.jpg' height="330px">
+<img src='img/wc-like-react.jpg' height="330px">            
+
+<small>
+https://twitter.com/dan_abramov/status/1096784072943300608
+https://twitter.com/wincent/status/1097112307572899840
+<br>
+https://twitter.com/DJCordhose/status/1102607582567559169
+</small>
+
+    </textarea>
+  </section>
+
+  <section data-markdown>
+    <textarea data-template>
+### lit-element does not need hooks
+
+<img src='img/lit-element-vs-hooks.png' height="550px">
+<small>
+https://twitter.com/justinfagnani/status/1098324609084997632 
+</small>
+    
+</textarea>
+</section>
 
       <section data-markdown>
         <textarea data-template>
@@ -357,6 +374,36 @@ customElements.define('my-element', MyElement);
   </small>
   </section>
 
+  <section data-markdown>
+      <textarea data-template>
+### Development setup
+
+* Browsers can load ES6 modules
+* But only relative paths and only plain js files
+* A server can translate paths when delivering files and resolve proper js files
+
+<small>
+Simply dev server: https://github.com/Polymer/tools/tree/master/packages/polyserve
+Advanced PRPL server: https://github.com/Polymer/prpl-server
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+    <textarea data-template>
+### Links: Barebone Web Components
+
+1. 101: https://www.telerik.com/blogs/web-components-101-an-introduction-to-web-components
+1. basics: https://twitter.com/JorgeCasar/status/1090922130156457984
+1. life-cycle: https://twitter.com/JorgeCasar/status/1091287089696698368
+1. communication with parent element: https://twitter.com/sergicontre/status/1091407003040337921
+
+<small>
+cheat sheets by @JorgeCasar and @sergicontre
+</small>
+  </textarea>
+  </section>
+  
 <section data-markdown>
     <textarea data-template>
 ## Scenario II: Anti-Framework
@@ -427,6 +474,18 @@ https://project-awesome.org/web-padawan/awesome-lit-html
 </textarea>
 </section>
 
+<section data-markdown
+    <textarea data-template>
+### lit-element might be the game changer
+
+<img src='img/lit-element-vs-react.jpg'>
+<small>
+https://twitter.com/jkohlmann/status/1097195163829583872 
+</small>
+    
+</textarea>
+</section>
+
 <section>
 <h3>Web Component with lit-element</h3>
 
@@ -450,69 +509,182 @@ class MyElement extends LitElement {
 </code></pre>
   
 <pre class="fragment"><code data-trim class="javascript">
-// using the web component (like before)  
-&lt;script src="./my-element-pure.js">&lt;/script>
+# using the web component  
+&lt;script src="./my-element-pure.js"></script>
 &lt;my-element>&lt;/my-element>
 </code></pre>
 
 <small>
-<a href='https://lit-element.polymer-project.org/'>https://lit-element.polymer-project.org/</a>  
+Try it out: cd frameworks/webcomponent-app-lit && yarn dev
+<br>
+https://lit-element.polymer-project.org/  
 </small>
   </section>
 
-  <section data-markdown>
-<textarea data-template>
-### lit-element does not need hooks
 
-<img src='img/lit-element-vs-hooks.png' height="550px">
-<small>
-https://twitter.com/justinfagnani/status/1098324609084997632 
-</small>
+<section data-markdown class="todo">
+    <textarea data-template>
+# Ausformulieren hier
+
+      ### Basic Lit-Element
+
+
+
+1. https://lit-element.polymer-project.org/try
+1. https://lit-element.polymer-project.org/guide/lifecycle
+      </textarea>
+</section>
+
+<section data-markdown>
+  <textarea data-template>
+## Crash Course Web Components with Polymer, lit-element, PWA Starter Kit and TypeScript
+
+https://lit-element.polymer-project.org/
+
+https://pwa-starter-kit.polymer-project.org/setup using https://github.com/Polymer/pwa-helpers for router and redux related stuff
 
 </textarea>
 </section>
 
 <section data-markdown>
-  <textarea data-template>
-### lit-element the new (old) React?
-<img src='img/dan-hooks-dont-suck.jpg' height="330px">
-<img src='img/wc-like-react.jpg' height="330px">            
+    <textarea data-template>
+### Step One: A new view for the router using lit-element
+  
+1. create a new custom element and load it dynamically only when needed
+1. you can take a simple example like this: https://lit-element.polymer-project.org/
+1. look at `actions/app.ts`, `my-app.ts`, and `my-view1.ts` for reference
 
 <small>
-https://twitter.com/dan_abramov/status/1096784072943300608
-https://twitter.com/wincent/status/1097112307572899840
-<br>
-https://twitter.com/DJCordhose/status/1102607582567559169
-</small>
-
-</textarea>
-</section>
-
-<section data-markdown>
-  <textarea data-template>
-## Demo
-
-_how can a Web Component project look like?_
-
-* Web Components
-* lit-element
-* TypeScript
-* optional parcel prod build
-* lightweight dev server for ES6 modules (polyserve)
-
-```javascript
-git clone git@github.com:DJCordhose/lerna-wc-ts-monorepo-demo.git
-cd lerna-wc-ts-monorepo-demo
-yarn
-yarn start 
-```
-
-<small>
-http://localhost:8000/demo/index.html
+https://lit-element.polymer-project.org/
 </small>
   </textarea>
+  </section>
+
+  <section data-markdown>
+      <textarea data-template>
+### Step Two: Run Unit Tests
+  
+1. uinit tests use https://github.com/Polymer/tools/tree/master/packages/web-component-tester
+1. configure browsers in `wct.conf.json` to just use Chrome (https://github.com/Polymer/tools/tree/master/packages/web-component-tester#configuration)
+1. run unit tests `yarn test:unit`
+1. from the configuration file figure out where the tests are
+1. break one, see the tests fail and fix them back again
+
+
+  <small>
+https://pwa-starter-kit.polymer-project.org/application-testing
+  </small>
+    </textarea>
+    </section>
+    
+    <section data-markdown>
+        <textarea data-template>
+### Step Three: Run Integration Tests
+  
+1. integration tests use Puppeteer (https://pptr.dev/) controlling Chrome
+1. run unit tests `yarn test:integration`
+1. why are the tests failing?
+1. fix them and add a test for our new view to the visual and router tests
+1. make the router test fail and fix it again
+
+
+  <small>
+https://pwa-starter-kit.polymer-project.org/application-testing
+  </small>
+      </textarea>
+      </section>
+
+      <section data-markdown>
+          <textarea data-template>
+### Step Four: Basic Lit-Element
+
+1. https://lit-element.polymer-project.org/try
+1. https://lit-element.polymer-project.org/guide/lifecycle
+</textarea>
+      </section>
+
+      <section data-markdown>
+          <textarea data-template>
+### Step Five: Try out more advanced lit-element
+
+1. communication with parent component: https://twitter.com/sergicontre/status/1092152559219982336
+1. bind properties to child elements: https://twitter.com/sergicontre/status/1094678263912374273
+1. where to add browser event handlers: https://twitter.com/sergicontre/status/1095118223157145606
+1. how request an element update: https://twitter.com/sergicontre/status/1096477879280562181
+1. communication outside of lit-element: https://twitter.com/sergicontre/status/1100495228727971840
+1. events and bubbling: https://twitter.com/sergicontre/status/1102642828377767936
+  
+    <small>
+  cheat sheets by @sergicontre
+    </small>
+        </textarea>
+        </section>
+
+        <section data-markdown>
+            <textarea data-template>
+### Step Six: Investigate Redux and Web Components
+
+* locate `counter-element` custom element
+* make sure you understand how it communicates with a parent component in general
+* locate `my-view2` that uses `counter-element` and is our second view in the app
+* make sure you understand how they communicate using redux actions, reducers, and the store
+* install https://github.com/reduxjs/redux-devtools to help you with that
+* locate `my-view3` and make sense of the more complicated use case
+  
+<small>
+https://pwa-starter-kit.polymer-project.org/redux-and-state-management
+<br>
+https://github.com/Polymer/pwa-helpers#redux-helpers
+</small>
+          </textarea>
+          </section>
+
+          <section data-markdown>
+            <textarea data-template>
+### Build with Service Worker
+
+_service workers allow to pre-cache (dynamic) imports using push at startup_
+
+* local `service-worker.js` which is empty and not used in development
+* local `sw-precache-config.js` where the service worker is configured
+* local `push-manifest.json` and configure our additional menu for push
+* make a production build `yarn build`
+* and serve it using `yarn serve`
+* in Chrome Dev Tools in Application tab inspect cached files and simulate offline
+
+<small>
+https://pwa-starter-kit.polymer-project.org/building-and-deploying
+<br>
+https://polymer-library.polymer-project.org/3.0/docs/apps/service-worker
+<br>
+More up to date and independent of Polymer: https://developers.google.com/web/tools/workbox/
+</small>
+</textarea>
 </section>
 
+<section data-markdown>
+            <textarea data-template>
+### i18n for lit-element
+
+https://www.npmjs.com/package/@appnest/lit-translate
+
+Demo: https://appnest-demo.firebaseapp.com/lit-translate/    
+          </textarea>
+          </section>
+          
+
+
+<section data-markdown>
+<textarea data-template>
+### Is lit-element fast enough?
+
+<img src='img/framework-performance.jpg' height="500px">
+
+<small>
+https://twitter.com/justinfagnani/status/1092882517709905921
+</small>
+</textarea>
+</section>
 
 <section data-markdown>
     <textarea data-template>
@@ -527,6 +699,16 @@ _coarse-grain components wrapping application part for composed SPA_
 </textarea>
 </section>
 
+<section data-markdown class="todo">
+    <textarea data-template>
+### Web Components mix well
+
+Justin Fagnani (@justinfagnani) tweeted at 8:41 PM on Sat, Feb 16, 2019:
+You can freely intermix Polymer, LitElement and other web component libraries. Incremental is the way to go for large apps.
+(https://twitter.com/justinfagnani/status/1096872147845181440?s=03)
+</textarea>
+</section>
+
 <section data-markdown>
     <textarea data-template>
 ### Frameworks with Custom Elements
@@ -538,6 +720,19 @@ all of them at least try
 
 https://custom-elements-everywhere.com/      
 </textarea>
+</section>
+
+<section>
+  <h3>Example: Technology-Migration</h3>
+  <p>From Angular (Overview) to React (Field and Ticker)</p>
+  <img src="img/screenshot-sport1.jpg" height="450px">
+  <p>
+    <small>
+      <a href="http://www.sport1.de/fussball/bundesliga/live-ticker" target="_blank">
+        http://www.sport1.de/fussball/bundesliga/live-ticker
+      </a>
+    </small>
+  </p>
 </section>
 
 <section>
@@ -583,6 +778,41 @@ import 'my-element';
 
 <section data-markdown>
     <textarea data-template>
+### Angular Elements
+
+_create a custom element from an angular component_
+
+<img src='img/ng-elements-createElement.png'>
+
+<small>
+https://angular.io/guide/elements  
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+  <textarea data-template>
+### Angular Elements cont'd
+
+* allows custom elements to be used by web apps built on other frameworks
+* currently Angular allows only a single version per browser window
+* goal (not reached February 2019): have the custom element contain a minimal, self-contained version of the Angular framework
+* `ngx-build-plus` can at least build many custom elements with shared angular lib
+
+<small>
+https://angular.io/guide/elements
+<br>
+ngconf 2018 on goals: https://www.youtube.com/watch?v=Z1gLFPLVJjY&t=4s
+<br>
+https://github.com/manfredsteyer/ngx-build-plus#advanced-example-externals-and-angular-elements
+</small>
+</textarea>
+</section>
+
+
+
+<section data-markdown>
+    <textarea data-template>
 ## Discussion
 
 _should you use Web Components?_
@@ -614,28 +844,154 @@ _should you use Web Components?_
   </textarea>
     </section>
 
-    <section>
-        <h2>Wrap Up</h2>
-        <p><em>Web Components are and will be a thing</em></p>
-        <ul>
-            <li class="fragment">Web Components have many use cases
-            <li class="fragment">Work with all common frameworks 
-            <li class="fragment">All recent browsers support natively 
-    
-        </ul>
-        <p>
-                <em>Web Components? Dead, aren't they?</em>
-            <br>
-            <br>
-            <small>
-        <a href="http://zeigermann.eu">Oliver Zeigermann</a> / <a href="http://twitter.com/djcordhose">@DJCordhose</a>
-            <br>
-    <a href="http://djcordhose.github.io/architecture/2019_wc_jsunconf.html">
-      http://djcordhose.github.io/architecture/2019_wc_jsunconf.html</a>
-    </small>
-        </p>
+      
+<!-- <section data-markdown class="todo">
+    <textarea data-template>
+### Nils  
+
+bei mir zieht ja das "standard" argument nicht, ich finde, wenn irgendwas mindestens "quasi-standard" bzw einigermaßen
+etabliert ist, kommt es für den Einsatz in Frage (gleiche Diskussion jee oder spring mE).
+
+Demnach wäre bei mir nicht nur WebComponents in der Verlosung, sondern eben auch Angular, Vue, React etc pp. Und dann
+würde ich überlegen, wie ich eigentlich Anwendungen bauen will, welche Features sind mir wichtig, wo gefallen mir API,
+Doku, Tooling etc. Das würde ich dann nehmen.
+
+Und ich persönlich finde, dass die WebComponents auf dem falschen "Level" abstrahieren bzw nicht genügend Features
+bieten (state handling etc). Das alles finde ich in react viel viel besser (vermutlich auch in Angular/Vue) und würde
+deswegen WCs nicht verwenden
+Ich finde Custom Elements schön und gut, aber die Art+Weise wie ich die entwickeln müsste, würde mir nicht gefallen
+
+</textarea>
+</section> -->
+
+<section data-markdown>
+  <textarea data-template>
+## Advanced: Defining an interface for a library
+
+* primitive data as either attributes or properties and keep in sync
+  * missing/wrong attribute (from markup) should fail gracefully (like standard HTML markup)
+* rich data as properties
+  * missing/wrong property (from call) should throw meaningful error
+
+<small>
+https://developers.google.com/web/fundamentals/web-components/best-practices
+</small>
+
+</textarea>
+</section>
+
+
+<section data-markdown class="todo">
+    <textarea data-template>
+# From here just material
+
+</textarea>
+  </section>
+
+      <section data-markdown class="todo">
+        <textarea data-template>
+### VSC plugin
+
+https://twitter.com/RuneMehlsen/status/1095401856493330433
+</textarea>
+      </section>
+            
+      <section data-markdown class="todo">
+          <textarea data-template>
+### Constructible Stylesheets
+
+https://wicg.github.io/construct-stylesheets/
+
+https://twitter.com/justinfagnani/status/1095059419857969152?s=03
+https://twitter.com/justinfagnani/status/1093229305662889985?s=03
+
+      </textarea>
+      </section>
+
+      <!-- <section data-markdown class="todo">
+          <textarea data-template>
+### Vaadin, Java based            
+https://twitter.com/artursignell/status/1094964518852198400?s=03
+https://labs.vaadin.com/project-wizard-connect/      
+    </textarea>
+  </section> -->
+  
+      
+<section data-markdown class="todo">
+    <textarea data-template>
+### Web Components Live
+  https://wiredjs.com/
+  https://roughjs.com/
+</textarea>
+</section>
+
+  <section data-markdown class="todo">
+    <textarea data-template>
+### Web Components Theeming
+  https://meowni.ca/posts/part-theme-explainer/
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### lit-html, lit-element 
+
+* change detection using comments: https://github.com/Polymer/lit-html/issues/748
+
+</textarea>
+  </section>
+
+  <section data-markdown class="todo">
+      <textarea data-template>
+### Web Components 
+
+Daniel: 
+* früher= browser lief vorweg, dann frameworks hinterher
+* heute umgekehrt
+
+Wieso gut?
+* access all browser dom api easily
+
+* Proposals: https://scotch.io/bar-talk/an-overview-of-the-most-exciting-proposals-for-the-web-platform-related-to-web-components/amp
+* Template instantiation: 
+* https://scotch.io/bar-talk/an-overview-of-the-most-exciting-proposals-for-the-web-platform-related-to-web-components/amp#toc-template-instantiation-with-substituted-values
+* https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Template-Instantiation.md
+
+* Constructable Stylesheet Objects
+* https://wicg.github.io/construct-stylesheets/
+* https://github.com/WICG/construct-stylesheets/blob/gh-pages/explainer.md
+
+</textarea>
     </section>
-    
+
+    <section data-markdown class="todo">
+        <textarea data-template>
+### An Overview of the Most Exciting Proposals for the Web Platform Related to Web Components
+
+https://scotch.io/bar-talk/an-overview-of-the-most-exciting-proposals-for-the-web-platform-related-to-web-components/amp
+</textarea>
+      </section>
+
+      <section data-markdown class="todo">
+        <textarea data-template>
+### Shadow DOM might be be trouble - Do we need it at all?
+<img src='img/scratch/Screenshot_20190113-105239.jpg' height="400px">
+
+</textarea>
+      </section>
+
+      <section data-markdown class="todo">
+        <textarea data-template>
+### Style as a concept is global - but Shadom DOM makes everything local
+
+Passing layout properties over many layers using shadow DOM seems unfeasable
+<img src='img/scratch/Screenshot_20190116-125703.jpg' height="400px">
+
+</textarea>
+      </section>
+
+
+
 
     </div>
 
