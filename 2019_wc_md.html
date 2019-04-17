@@ -182,19 +182,24 @@
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
 
-<section data-markdown class="preparation">
-        <textarea data-template>
-### Preparation
+<!--       
+Magdeburger Developer Days
 
-1. Start Demo
-   * cd Developement/lerna-wc-ts-monorepo-demo
-   * yarn start
-   * Open in Canary Edge and Firefox: http://localhost:8000/demo/index.html
-    </textarea>
-</section>
+60 Minuten
+
+Web Components? Die sind doch tot, oder? 
+
+Web Components hatten einen wirklich schlechten Start und sind nun bereits in der zweiten Iteration auf dem Web zu einem
+echten und lebendigen Standard. Selbst da sie nun in allen wichtigen Browsern umgesetzt sind, werden sie immer noch
+belächelt aufgrund ihres vermeintlich schlechten Designs und ihrer Rückschrittlichkeit. Aber zusammen mit LitElement von
+den Machern von Polymer könnte die Sache ganz anders aussehen. Dieser Talk beleuchtet, warum Web Components vielleicht
+doch nicht tot sind und welche Vorteile gegenüber den Frameworks React, Angular und Vue bekommen könnten.
+ -->
 
       <section>
-        <h2>Web Components? Dead, aren't they?</h2>
+        <h2>Web Components? Die sind doch tot, oder?</h2>
+        <h3><a href="https://www.md-devdays.de/Act?id=1000079" target="_blank">
+          Magdeburger Developer Days, 2019</a></h3>
 
         <div>
           <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
@@ -202,19 +207,29 @@
         </div>
         <p style="clear: both">
             <small>Slides:
-              <a href="http://djcordhose.github.io/architecture/2019_wc_jsunconf.html">
-                  http://djcordhose.github.io/architecture/2019_wc_jsunconf.html</a>
+              <a href="http://djcordhose.github.io/architecture/2019_wc_md.html">
+                  http://djcordhose.github.io/architecture/2019_wc_md.html</a>
             </small>
           </p>
       </section>
 
-      <section data-markdown class="local">
-          <textarea data-template>
-### Motivation
+      <section data-markdown class='todo'>
+        <textarea data-template>
+### Lit Element rendering strategies explained
 
-<img src='img/ed-jsunconf.jpg'>
-            </textarea>
-      </section>
+* https://twitter.com/julienrenaux/status/1112640655166189568
+   * https://julienrenaux.fr/2019/04/01/lit-element-rendering-strategies-explained/
+
+* change detection using comments: https://github.com/Polymer/lit-html/issues/748
+
+    </textarea>
+  </section>
+
+  <section data-markdown class='todo'>
+    <textarea data-template>
+https://dev.to/webpadawan/the-journey-of-web-components-wrong-ways-lacking-parts-and-promising-paths-1d5a
+</textarea>
+</section>
 
       <section data-markdown>
         <textarea data-template>
@@ -255,16 +270,6 @@ https://twitter.com/alisonailea/status/1114203815211753472
 </small>
                 </textarea>
       </section>
-
-  <!-- <section data-markdown class="todo">
-        <textarea data-template>
-### React Bashing
-
-React is dead. Long live Web Components
-
-https://dan.church/
-      </textarea>
-      </section> -->
 
       <section data-markdown>
         <textarea data-template>
@@ -449,72 +454,71 @@ class MyElement extends LitElement {
 }
 </code></pre>
   
-<pre class="fragment"><code data-trim class="javascript">
-// using the web component (like before)  
-&lt;script src="./my-element-pure.js">&lt;/script>
-&lt;my-element>&lt;/my-element>
-</code></pre>
-
-<small>
-<a href='https://lit-element.polymer-project.org/'>https://lit-element.polymer-project.org/</a>  
-</small>
-  </section>
-
-  <section data-markdown>
-<textarea data-template>
-### lit-element does not need hooks
-
-<img src='img/lit-element-vs-hooks.png' height="550px">
-<small>
-https://twitter.com/justinfagnani/status/1098324609084997632 
-</small>
-
-</textarea>
-</section>
-
-<section data-markdown>
-  <textarea data-template>
-### lit-element the new (old) React?
-<img src='img/dan-hooks-dont-suck.jpg' height="330px">
-<img src='img/wc-like-react.jpg' height="330px">            
-
-<small>
-https://twitter.com/dan_abramov/status/1096784072943300608
-https://twitter.com/wincent/status/1097112307572899840
-<br>
-https://twitter.com/DJCordhose/status/1102607582567559169
-</small>
-
-</textarea>
-</section>
-
-<section data-markdown>
-  <textarea data-template>
-## Demo
-
-_how can a Web Component project look like?_
-
-* Web Components
-* lit-element
-* TypeScript
-* optional parcel prod build
-* lightweight dev server for ES6 modules (polyserve)
-
-```javascript
-git clone git@github.com:DJCordhose/lerna-wc-ts-monorepo-demo.git
-cd lerna-wc-ts-monorepo-demo
-yarn
-yarn start 
-```
-
-<small>
-http://localhost:8000/demo/index.html
-</small>
-  </textarea>
-</section>
-
-
-<section data-markdown>
+  <pre class="fragment"><code data-trim class="javascript">
+    // using the web component (like before)  
+    &lt;script src="./my-element-pure.js">&lt;/script>
+    &lt;my-element>&lt;/my-element>
+    </code></pre>
+    
+    <small>
+    <a href='https://lit-element.polymer-project.org/'>https://lit-element.polymer-project.org/</a>  
+    </small>
+      </section>
+    
+      <section data-markdown>
+    <textarea data-template>
+    ### lit-element does not need hooks
+    
+    <img src='img/lit-element-vs-hooks.png' height="550px">
+    <small>
+    https://twitter.com/justinfagnani/status/1098324609084997632 
+    </small>
+    
+    </textarea>
+    </section>
+    
+    <section data-markdown>
+      <textarea data-template>
+    ### lit-element the new (old) React?
+    <img src='img/dan-hooks-dont-suck.jpg' height="330px">
+    <img src='img/wc-like-react.jpg' height="330px">            
+    
+    <small>
+    https://twitter.com/dan_abramov/status/1096784072943300608
+    https://twitter.com/wincent/status/1097112307572899840
+    <br>
+    https://twitter.com/DJCordhose/status/1102607582567559169
+    </small>
+    
+    </textarea>
+    </section>
+    
+    <section data-markdown>
+      <textarea data-template>
+    ## Demo
+    
+    _how can a Web Component project look like?_
+    
+    * Web Components
+    * lit-element
+    * TypeScript
+    * optional parcel prod build
+    * lightweight dev server for ES6 modules (polyserve)
+    
+    ```javascript
+    git clone git@github.com:DJCordhose/lerna-wc-ts-monorepo-demo.git
+    cd lerna-wc-ts-monorepo-demo
+    yarn
+    yarn start 
+    ```
+    
+    <small>
+    http://localhost:8000/demo/index.html
+    </small>
+      </textarea>
+    </section>
+    
+    <section data-markdown>
     <textarea data-template>
 ## Scenario III: Wrappers for large SPAs
 
@@ -524,6 +528,16 @@ _coarse-grain components wrapping application part for composed SPA_
 * merely a thin wrapper over a complete application
 * might require same version of application framework
 * trust not an issue as no alien parts involved
+</textarea>
+</section>
+
+<section data-markdown class="todo">
+    <textarea data-template>
+### Web Components mix well
+
+Justin Fagnani (@justinfagnani) tweeted at 8:41 PM on Sat, Feb 16, 2019:
+You can freely intermix Polymer, LitElement and other web component libraries. Incremental is the way to go for large apps.
+(https://twitter.com/justinfagnani/status/1096872147845181440?s=03)
 </textarea>
 </section>
 
@@ -583,6 +597,41 @@ import 'my-element';
 
 <section data-markdown>
     <textarea data-template>
+### Angular Elements
+
+_create a custom element from an angular component_
+
+<img src='img/ng-elements-createElement.png'>
+
+<small>
+https://angular.io/guide/elements  
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+  <textarea data-template>
+### Angular Elements cont'd
+
+* allows custom elements to be used by web apps built on other frameworks
+* currently Angular allows only a single version per browser window
+* goal (not reached February 2019): have the custom element contain a minimal, self-contained version of the Angular framework
+* `ngx-build-plus` can at least build many custom elements with shared angular lib
+
+<small>
+https://angular.io/guide/elements
+<br>
+ngconf 2018 on goals: https://www.youtube.com/watch?v=Z1gLFPLVJjY&t=4s
+<br>
+https://github.com/manfredsteyer/ngx-build-plus#advanced-example-externals-and-angular-elements
+</small>
+</textarea>
+</section>
+
+
+
+<section data-markdown>
+    <textarea data-template>
 ## Discussion
 
 _should you use Web Components?_
@@ -615,7 +664,43 @@ _should you use Web Components?_
   </textarea>
     </section>
 
-    <section>
+      
+<!-- <section data-markdown class="todo">
+    <textarea data-template>
+### Nils  
+
+bei mir zieht ja das "standard" argument nicht, ich finde, wenn irgendwas mindestens "quasi-standard" bzw einigermaßen
+etabliert ist, kommt es für den Einsatz in Frage (gleiche Diskussion jee oder spring mE).
+
+Demnach wäre bei mir nicht nur WebComponents in der Verlosung, sondern eben auch Angular, Vue, React etc pp. Und dann
+würde ich überlegen, wie ich eigentlich Anwendungen bauen will, welche Features sind mir wichtig, wo gefallen mir API,
+Doku, Tooling etc. Das würde ich dann nehmen.
+
+Und ich persönlich finde, dass die WebComponents auf dem falschen "Level" abstrahieren bzw nicht genügend Features
+bieten (state handling etc). Das alles finde ich in react viel viel besser (vermutlich auch in Angular/Vue) und würde
+deswegen WCs nicht verwenden
+Ich finde Custom Elements schön und gut, aber die Art+Weise wie ich die entwickeln müsste, würde mir nicht gefallen
+
+</textarea>
+</section> -->
+
+<section data-markdown>
+  <textarea data-template>
+## Advanced: Defining an interface for a library
+
+* primitive data as either attributes or properties and keep in sync
+  * missing/wrong attribute (from markup) should fail gracefully (like standard HTML markup)
+* rich data as properties
+  * missing/wrong property (from call) should throw meaningful error
+
+<small>
+https://developers.google.com/web/fundamentals/web-components/best-practices
+</small>
+
+</textarea>
+</section>
+
+      <section>
         <h2>Wrap Up</h2>
         <p><em>Web Components are and will be a thing</em></p>
         <ul>
@@ -636,7 +721,7 @@ _should you use Web Components?_
     </small>
         </p>
     </section>
-    
+
 
     </div>
 
