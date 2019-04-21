@@ -9,7 +9,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
   <link rel="stylesheet" href="reveal.js/css/reveal.css">
   <!--<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">-->
@@ -81,13 +82,13 @@
     .reveal h3,
     .reveal h4 {
       letter-spacing: 2px;
-                        font-family: 'Calibri', sans-serif;
-                          /* font-family: 'Times New Roman', Times, serif; */
-                          font-weight: bold;
-                          color: black;
-                          font-style: italic;
-                          letter-spacing: -2px;
-                          text-transform: none !important;
+      font-family: 'Calibri', sans-serif;
+      /* font-family: 'Times New Roman', Times, serif; */
+      font-weight: bold;
+      color: black;
+      font-style: italic;
+      letter-spacing: -2px;
+      text-transform: none !important;
     }
 
     .reveal em {
@@ -158,8 +159,7 @@
 
     .reveal {
       color: black !important;
-    }       
-
+    }
   </style>
 
   <!-- Printing and PDF exports -->
@@ -182,7 +182,7 @@
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
 
-<!-- 
+      <!-- 
   ### JAX Version
   * https://jax.de/microservices/moderne-frontend-architektur-mit-javascript/
   * 60 Minuten
@@ -215,11 +215,11 @@ Dieser Talk geht nicht auf die Details einer Implementierung ein und bleibt auf 
           <a href="https://twitter.com/nilshartmann">@nilshartmann</a>
         </div>
         <p style="clear: both">
-            <small>Slides:
-              <a href="http://djcordhose.github.io/architecture/2019_jax_alt.html">
-                http://djcordhose.github.io/architecture/2019_jax_alt.html</a>
-            </small>
-          </p>
+          <small>Slides:
+            <a href="http://djcordhose.github.io/architecture/2019_jax_alt.html">
+              http://djcordhose.github.io/architecture/2019_jax_alt.html</a>
+          </small>
+        </p>
       </section>
 
       <section data-markdown>
@@ -231,6 +231,30 @@ Dieser Talk geht nicht auf die Details einer Implementierung ein und bleibt auf 
             </textarea>
       </section>
 
+      <section data-markdown>
+        <textarea data-template>
+### Ist das ein Kandidat für eine SPA? 
+
+<img src='img/spa_or_not_spa_01_spon.png' height="600">
+
+            </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+### Ist das ein Kandidat für eine SPA? 
+
+<img src='img/spa_or_not_spa_02_outlook-and-skype.png' height="600">
+
+            </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+### Ist das ein Kandidat für eine SPA? 
+
+<img src='img/spa_or_not_spa_03_github.png' height="600">
+
+            </textarea>
+      </section>
       <section data-markdown>
         <textarea data-template>
 ### Wie sieht das in echt aus?
@@ -258,7 +282,7 @@ Zusammen ankreuzen
             </textarea>
       </section>
 
-      
+
 
       <section data-markdown>
         <textarea data-template>
@@ -346,11 +370,11 @@ Welche Äußere Architektur? Was passt? Wie schneiden?
 
     }
     Reveal.addEventListener('ready', function (event) {
-        // do we want this???
-        $('li').addClass('fragment')
+      // do we want this???
+      $('li').addClass('fragment')
 
-        // make all links open in new tab
-        $('a').attr('target', '_blank')
+      // make all links open in new tab
+      $('a').attr('target', '_blank')
 
       if (window.location.hostname.indexOf('localhost') !== -1) {
         // only applies to presentation version
@@ -365,8 +389,8 @@ Welche Äußere Architektur? Was passt? Wie schneiden?
     // $('section').attr('data-background-image', "backgrounds/light-metal.jpg ");
     // $('section').attr('data-background-image', "backgrounds/pink.jpg ");
     // $('section').attr('data-background-image', "backgrounds/white.jpg ");
-//    $('section').attr('data-background-image', "backgrounds/code.jpg ");
-$('section').attr('data-background-image', "backgrounds/sky.jpg");
+    //    $('section').attr('data-background-image', "backgrounds/code.jpg ");
+    $('section').attr('data-background-image', "backgrounds/sky.jpg");
 
   </script>
 
