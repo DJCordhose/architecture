@@ -569,26 +569,25 @@ foo = 'yo';
 foo = 10;
 </code></pre>
        <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
-
 // types can be inferred (return type)
 function sayIt(what: string) {
-return `Saying: ${what}`;
+  return `Saying: ${what}`;
 }
 const said: string = sayIt(obj);
 
 </code></pre>
        <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
 class Sayer {
-what: string; // mandatory
+  what: string; // mandatory
 
-constructor(what: string) {
-    this.what = what;
-}
+  constructor(what: string) {
+      this.what = what;
+  }
 
-// return type if you want to
-sayIt(): string {
-    return `Saying: ${this.what}`;
-}
+  // return type if you want to
+  sayIt(): string {
+      return `Saying: ${this.what}`;
+  }
 }
 </code></pre>
   </section>

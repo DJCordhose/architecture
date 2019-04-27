@@ -231,6 +231,16 @@ Dieser Talk geht nicht auf die Details einer Implementierung ein und bleibt auf 
             </textarea>
       </section>
 
+      <section data-markdown class="todo">
+        <textarea data-template>
+## Demo          
+### Wie sieht das in echt aus?
+
+SPA mit Netzwerk Dev Tools von 0 zeigen. Mit Template und clone.
+
+            </textarea>
+      </section>
+
       <section data-markdown>
         <textarea data-template>
 ### Ist das ein Kandidat für eine SPA? 
@@ -257,21 +267,11 @@ Dieser Talk geht nicht auf die Details einer Implementierung ein und bleibt auf 
       </section>
       <section data-markdown>
         <textarea data-template>
-### Wie sieht das in echt aus?
-
-SPA mit Netzwerk Dev Tools von 0 zeigen. Mit Template und clone. Dagegen Server Seitig gerenderte Anwendung: Spiegel?
-
-
-            </textarea>
-      </section>
-
-      <section data-markdown>
-        <textarea data-template>
 ### Warum eigentlich nicht klassisch?
 
-Double Submit
+<img src='img/classic/double-submit.jpg' height="500px">
 
-<img src='img/classic/double-submit.jpg'>
+Double Submit
 
             </textarea>
       </section>
@@ -280,9 +280,9 @@ Double Submit
           <textarea data-template>
 ### Warum eigentlich nicht klassisch?
   
-Round Trips für jede Kleinigkeit
+<video controls src="img/classic/roundtrips.mp4" type="video/mp4" height="500px"></video>
 
-<video controls src="img/classic/roundtrips.mp4" type="video/mp4" height="600px"></video>
+Round Trips für jede Kleinigkeit
   
               </textarea>
         </section>
@@ -304,11 +304,26 @@ Zusammen ankreuzen
             </textarea>
       </section>
 
+      <section data-markdown>
+        <textarea data-template>
+<img src='img/spicker/2-architektur-aussen.jpg' height="650">
+
+            </textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Fallbeispiel: XING
+
+Welche Äußere Architektur? Was passt? Wie schneiden?
+            </textarea>
+      </section>
+
 
 
       <section data-markdown>
         <textarea data-template>
-<img src='img/spicker/2-architektur-innen.jpg' height="650">
+<img src='img/spicker/3-architektur-innen.jpg' height="650">
 
             </textarea>
       </section>
@@ -322,9 +337,59 @@ Macht ein Data-Layer hier Sinn?
             </textarea>
       </section>
 
+<section data-markdown>
+  <textarea data-template>
+### TypeScript für Geschäftsanwendungen
+
+_Alle Frameworks arbeiten gut mit TypeScript_
+
+<img src='img/typescript.jpg' height="400px">
+
+<small>
+https://www.typescriptlang.org/
+</small>
+
+</textarea>
+</section>
+  
+<section>
+    <h3>Basics</h3>
+       <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+// variables can have type information
+let foo: string;
+foo = 'yo';
+// Error: Type 'number' is not assignable to type 'string'.
+foo = 10;
+</code></pre>
+       <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+
+// types can be inferred (return type)
+function sayIt(what: string) {
+  return `Saying: ${what}`;
+}
+const said: string = sayIt(obj);
+
+</code></pre>
+       <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+class Sayer {
+  what: string; // mandatory
+
+  constructor(what: string) {
+      this.what = what;
+  }
+
+  // return type if you want to
+  sayIt(): string {
+      return `Saying: ${this.what}`;
+  }
+}
+</code></pre>
+  </section>
+
+
       <section data-markdown>
         <textarea data-template>
-<img src='img/spicker/3-frameworks.jpg' height="650">
+<img src='img/spicker/4-frameworks.jpg' height="650">
 
             </textarea>
       </section>
@@ -334,21 +399,6 @@ Macht ein Data-Layer hier Sinn?
 ### Fallbeispiel: XING
 
 Welches Framework passt auf Anforderungen?
-            </textarea>
-      </section>
-
-      <section data-markdown>
-        <textarea data-template>
-<img src='img/spicker/4-architektur-aussen.jpg' height="650">
-
-            </textarea>
-      </section>
-
-      <section data-markdown>
-        <textarea data-template>
-### Fallbeispiel: XING
-
-Welche Äußere Architektur? Was passt? Wie schneiden?
             </textarea>
       </section>
 
