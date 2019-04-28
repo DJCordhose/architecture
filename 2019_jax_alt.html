@@ -222,6 +222,7 @@ Dieser Talk geht nicht auf die Details einer Implementierung ein und bleibt auf 
         </p>
       </section>
 
+
       <section data-markdown>
         <textarea data-template>
 ### Moderne Frontend-Architektur === SPA
@@ -277,7 +278,7 @@ Double Submit
       </section>
 
       <section data-markdown>
-          <textarea data-template>
+        <textarea data-template>
 ### Warum eigentlich nicht klassisch?
   
 <video controls src="img/classic/roundtrips.mp4" type="video/mp4" height="500px"></video>
@@ -285,8 +286,8 @@ Double Submit
 Round Trips für jede Kleinigkeit
   
               </textarea>
-        </section>
-  
+      </section>
+
       <section data-markdown>
         <textarea data-template>
 <img src='img/spicker/1-requirements.jpg' height="650">
@@ -296,12 +297,31 @@ Round Trips für jede Kleinigkeit
 
       <section data-markdown>
         <textarea data-template>
-### Fallbeispiel: XING
+            Typische Anforderungen
+            (pro Stakeholder-Rolle)
 
-Welche Anforderungen wird es hier geben? Fehlen welche?
+<img src='img/1-requirements.png' height="650">
 
-Zusammen ankreuzen
             </textarea>
+      </section>
+
+      <section data-markdown data-background="img/xing.png"
+        style="background-color:white;margin:0px;border:1px solid darkgray;background-color:lightblue">
+        ### Fallbeispiel: XING
+      </section>
+
+      <section data-background="img/xing.png" style="margin:0px">
+        <img src='img/1-requirements.png' height="650">
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+  ### Fallbeispiel: XING
+  
+  Welche Anforderungen wird es hier geben? Fehlen welche?
+  
+  Zusammen ankreuzen
+              </textarea>
       </section>
 
       <section data-markdown>
@@ -337,8 +357,8 @@ Macht ein Data-Layer hier Sinn?
             </textarea>
       </section>
 
-<section data-markdown>
-  <textarea data-template>
+      <section data-markdown>
+        <textarea data-template>
 ### TypeScript für Geschäftsanwendungen
 
 _Alle Frameworks arbeiten gut mit TypeScript_
@@ -350,18 +370,18 @@ https://www.typescriptlang.org/
 </small>
 
 </textarea>
-</section>
-  
-<section>
-    <h3>Basics</h3>
-       <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+      </section>
+
+      <section>
+        <h3>Basics</h3>
+        <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
 // variables can have type information
 let foo: string;
 foo = 'yo';
 // Error: Type 'number' is not assignable to type 'string'.
 foo = 10;
 </code></pre>
-       <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+        <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
 
 // types can be inferred (return type)
 function sayIt(what: string) {
@@ -370,7 +390,7 @@ function sayIt(what: string) {
 const said: string = sayIt(obj);
 
 </code></pre>
-       <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+        <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
 class Sayer {
   what: string; // mandatory
 
@@ -384,7 +404,7 @@ class Sayer {
   }
 }
 </code></pre>
-  </section>
+      </section>
 
 
       <section data-markdown>
