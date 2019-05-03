@@ -225,12 +225,23 @@ Dieser Talk geht nicht auf die Details einer Implementierung ein und bleibt auf 
 
       <section data-markdown>
         <textarea data-template>
+## Teil I: Motivation / Herleitung / Hintergrund
+
+</textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
 ### Moderne Frontend-Architektur === SPA
 
-TODO: weiter hinten
+A single-page application (SPA) is a web application that interacts 
+with the user by dynamically rewriting the current page rather than loading entire new pages from a server. 
 
-<img src='img/spicker/0-def.jpg' height="600">
+This approach avoids interruption of the user experience between successive pages.
 
+<small>
+https://en.wikipedia.org/wiki/Single-page_application  
+</small>
             </textarea>
       </section>
 
@@ -252,7 +263,7 @@ TODO: weiter hinten
 #### "Alle" reden von SPA... aber:            
   ### Warum eigentlich nicht klassisch?
     
-  <img src='img/classic/double-submit.jpg' height="500px">
+  <img src='img/classic/double-submit.jpg' height="650px">
     
   Double Submit
     
@@ -264,7 +275,7 @@ TODO: weiter hinten
         <textarea data-template>
   ### Warum eigentlich nicht klassisch?
     
-  <video controls src="img/classic/roundtrips.mp4" type="video/mp4" height="500px"></video>
+  <video controls src="img/classic/roundtrips.mp4" type="video/mp4" height="650px"></video>
   
   Round Trips für jede Kleinigkeit
     
@@ -293,18 +304,6 @@ TODO: weiter hinten
                     </textarea>
       </section>
 
-
-
-      <section data-markdown class="todo">
-        <textarea data-template>
-## Demo          
-### Wie sieht das in echt aus?
-#### @olli: was soll das hier???????????????
-
-SPA mit Netzwerk Dev Tools von 0 zeigen. Mit Template und clone.
-
-            </textarea>
-      </section>
 
       <section data-markdown>
         <textarea data-template>
@@ -361,7 +360,14 @@ SPA mit Netzwerk Dev Tools von 0 zeigen. Mit Template und clone.
 
       <section data-markdown>
         <textarea data-template>
-              Äußere Architektur
+## Teil II: Äußere Architektur
+
+</textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+              
   
   <img src='img/aeussere-architektur.png' >
 
@@ -403,17 +409,15 @@ SPA mit Netzwerk Dev Tools von 0 zeigen. Mit Template und clone.
         Welche Äußere Architektur? Was passt? Wie schneiden?
       </section>
 
-
       <section data-markdown>
         <textarea data-template>
-<img src='img/spicker/3-architektur-innen.jpg' height="650">
+## Teil III: Innere Architektur
 
-            </textarea>
+</textarea>
       </section>
 
       <section data-markdown>
         <textarea data-template>
-#### Innere Architektur: Die Komponente
   <img src='img/komponente.png' height="650">
   
               </textarea>
@@ -421,8 +425,9 @@ SPA mit Netzwerk Dev Tools von 0 zeigen. Mit Template und clone.
 
       <section data-markdown>
         <textarea data-template>
-Komposition von Komponenten
-  <img src='img/smart-dumb-components.png' height="600">
+### Komposition von Komponenten
+
+<img src='img/smart-dumb-components.png' height="600">
                 </textarea>
       </section>
 
@@ -436,16 +441,50 @@ Klarer Daten- und Kontroll-Fluss
       </section>
       <section data-markdown>
         <textarea data-template>
-Renderzyklus von Smart-Komponenten
+Reaktiver Renderzyklus
  <img src='img/render-zyklus.png' height="550">
                     </textarea>
       </section>
 
+
+<section>
+    <h3>Smart and Dumb Components</h3>
+      <h2>Limitations</h2>
+      <p style="color: #2aa198">Mainly with growing and long-living applications</p>
+      
+      <ul>
+        <li style="font-size: 80%">"God-like" components: State and logic tend to slowly move up to a few really fat components
+        <li style="font-size: 80%">Distributed, mutatable state makes maintainability and understanding hard
+          <ul>
+            <li>Where does the state belong to?</li>
+            <li>In which state is the application?
+          </ul>
+        </li>
+        <li style="font-size: 80%">Mash up of framework and UI code (hardens switching the framework)
+          <li style="font-size: 80%">Still open questions regarding the architecture
+              <ul>
+                  <li>How to handle asynchronous code?
+                  <li>How to do proper initialization of the application?
+                  <li>How to test the business logic?
+              </ul>
+          </li>
+      </ul>
+  </section>
+
+  <section data-markdown>
+      <textarea data-template>
+### Data Layer – transmit and manage data
+
+<img src='img/js-data-layer-2018.png' height="500px">
+
+https://2018.stateofjs.com/data-layer/conclusion/
+
+      </textarea>
+  </section>
+
       <section data-markdown>
         <textarea data-template>
-###  Data Management Layer
- 
-  Redux/ngrx/vuex/MobX
+### Redux/ngrx/vuex/MobX
  
   <img src='img/data-management.png' height="550">
                       </textarea>
@@ -458,6 +497,14 @@ Renderzyklus von Smart-Komponenten
         Wie würden wir die Anwendungsteile in Smart/Dumb zerteilen?
         Macht ein Data-Layer hier Sinn?
       </section>
+
+      <section data-markdown>
+        <textarea data-template>
+## Teil IV: Umsetzung
+
+</textarea>
+      </section>
+
 
       <section data-markdown>
         <textarea data-template>
@@ -511,16 +558,121 @@ class Sayer {
       <section data-markdown>
         <textarea data-template>
 ### Verhalten wie aus Java gewohnt            
+
+<img src='img/screenshot-typescript.png' height="600">
+
 Probleme werden zur Entwicklungszeit sichtbar
-  <img src='img/screenshot-typescript.png' height="600">
+<br>
+Show References geht verlässlich
+<br>
+Refactoring möglich
+
               </textarea>
       </section>
 
       <section data-markdown>
         <textarea data-template>
-<img src='img/spicker/4-frameworks.jpg' height="650">
+### Frameworks
 
+1. Angular: _rxjs is king_
+1. React: _JavaScript is king_
+1. Vue: _HTML/CSS is king_
+1. Web Components: _no framework is king_
             </textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Annual Survey among JS Developers
+
+_Caution_: no distinction between Angular.js (1) and Angular (2-x)
+<img src='img/js-frameworks-2018.png' height="500px">
+<small>
+https://2018.stateofjs.com/front-end-frameworks/conclusion
+</small>
+
+        </textarea>
+    </section>
+
+    <!-- <section data-markdown>
+      <textarea data-template>
+### Questions on Framework on Stack Overflow
+
+<img src='img/frameworks-stack-overflow.png' height="500px">
+
+<small>
+  https://insights.stackoverflow.com/trends?tags=angular%2Cangularjs%2Creactjs%2Cjquery%2Cvue.js%2Cvuejs2%2Cpolymer
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+  <textarea data-template>
+### Tech likes React, Insurances like Angular
+
+<img src='img/tag_by_industry_graph-1-768x768.png' height="750px">
+
+<small>
+  https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/
+</small>
+</textarea>
+</section>
+ -->
+
+ <section data-markdown>
+  <textarea data-template>
+### React
+
+* nur rendering-lib
+* konservativ weiterentwickelt
+* freie Wahl des Stils, Facebook selbst bevorzugt functional 
+    </textarea>
+  </section>
+
+<section data-markdown>
+  <textarea data-template>
+### Angular
+
+* choose Angular when you want a complete framework
+* and like other (hopefully smarter) people to make the right choices for you 
+* you like classes (while React people like functions)
+    </textarea>
+  </section>
+
+<section data-markdown>
+  <textarea data-template>
+### Vue.js
+
+* took over template syntax and quite some audience from Angular.js 1
+* easy to master
+* templates doable by frontend (HTML/CSS) people
+    </textarea>
+  </section>
+
+<section data-markdown>
+<textarea data-template>
+### Web Components
+
+* Standard Browser-API
+* Komponenten sind technisch isoliert (nicht auf JS Ebene)
+* optional lit-element für reactives Rendering (wie klassisches React)
+
+</textarea>
+</section>
+
+      <section data-markdown class="no-fragment">
+        <textarea data-template>
+### TL'DR
+
+Welches Framework soll ich nehmen?
+
+* Angular: erzwingt Einheitlichkeit über viele Teams
+* React: maximale Flexibilität
+* Web Components: keine Abhängigkeiten          
+* Vue: Frontendler lieben es
+
+_Letzlich ist es Geschmack und persönliche Erfahrung_
+</textarea>
       </section>
 
       <section data-markdown>
@@ -573,6 +725,7 @@ Welches Framework passt auf Anforderungen?
     Reveal.addEventListener('ready', function (event) {
       // do we want this???
       $('li').addClass('fragment')
+      $('.no-fragment li').removeClass('fragment')
 
       // make all links open in new tab
       $('a').attr('target', '_blank')
@@ -604,7 +757,8 @@ Welches Framework passt auf Anforderungen?
       progress: true,
       history: true,
       center: true,
-      width: 1100,
+      width: "100%",
+      height: "100%",
 
       transition: 'slide', // none/fade/slide/convex/concave/zoom
 
