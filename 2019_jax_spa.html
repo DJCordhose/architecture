@@ -205,8 +205,8 @@ Dieser Talk geht nicht auf die Details einer Implementierung ein und bleibt auf 
       <section>
         <h2>Moderne Frontend-Architektur (SPAs) mit JavaScript</h2>
         <h3><a href='https://jax.de/microservices/moderne-frontend-architektur-mit-javascript/'>
-          JAX 2019
-        </a></h3>
+            JAX 2019
+          </a></h3>
 
         <div>
           <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
@@ -351,7 +351,7 @@ https://en.wikipedia.org/wiki/Single-page_application
       </section>
 
       <section data-background="img/xing.png" style="margin:0px">
-        <img src='img/1-requirements.png' height="650">
+        <img src='img/requirements-xing.png' height="650">
       </section>
 
       <!-- <section data-markdown>
@@ -383,8 +383,8 @@ https://twitter.com/_developit/status/1077390391530405888
 
       <section data-markdown>
         <textarea data-template>
-              
-  
+
+
   <img src='img/aeussere-architektur.png' >
 
   Herausforderung: Anwendung zerteilen und wieder integrieren
@@ -395,26 +395,26 @@ https://twitter.com/_developit/status/1077390391530405888
 
       <section data-markdown>
         <textarea data-template>
-      <img src='img/mm.png' >
+      <img src='img/mm.png' height="800px">
                   </textarea>
       </section>
 
       <section data-markdown>
         <textarea data-template>
-        <img src='img/mc.png' >
+        <img src='img/mc.png' height="800px">
                     </textarea>
       </section>
 
 
       <section data-markdown>
         <textarea data-template>
-          <img src='img/links.png' >
+          <img src='img/links.png'height="800px" >
                       </textarea>
       </section>
 
       <section data-markdown>
         <textarea data-template>
-            <img src='img/aa-zusammenfassung.png' >
+            <img src='img/aa-zusammenfassung.png'height="800px" >
                         </textarea>
       </section>
 
@@ -443,52 +443,94 @@ https://twitter.com/_developit/status/1077390391530405888
         <textarea data-template>
 ### Komposition von Komponenten
 
-<img src='img/smart-dumb-components.png' height="600">
+<img src='img/smart-dumb-1.png' height="600">
+                </textarea>
+      </section>
+
+      <section data-markdown data-transition="none">
+        <textarea data-template>
+### Komposition von Komponenten
+
+<img src='img/smart-dumb-2.png' height="600">
+                </textarea>
+      </section>
+
+      <section data-markdown data-transition="none">
+        <textarea data-template>
+### Komposition von Komponenten
+
+<img src='img/smart-dumb-3.png' height="600">
                 </textarea>
       </section>
 
       <section data-markdown>
         <textarea data-template>
-  Kommunikation zwischen beliebigen Anwendungsteilen
-    <img src='img/komponenten-kommunikation.png' height="550">
+### Kommunikation zwischen beliebigen Anwendungsteilen
+
+<img src='img/datenfluss-1.png' height="550">
+
+                  </textarea>
+      </section>
+      <section data-markdown data-markdown data-transition="none">
+        <textarea data-template>
+### Kommunikation zwischen beliebigen Anwendungsteilen
+
+<img src='img/datenfluss-2.png' height="550">
+
+                  </textarea>
+      </section>
+      <section data-markdown data-markdown data-transition="none">
+        <textarea data-template>
+### Kommunikation zwischen beliebigen Anwendungsteilen
+
+<img src='img/datenfluss-3.png' height="550">
+
+                  </textarea>
+      </section>
+      <section data-markdown data-markdown data-transition="none">
+        <textarea data-template>
+### Kommunikation zwischen beliebigen Anwendungsteilen
+
+<img src='img/datenfluss-4.png' height="550">
 
 Klarer Daten- und Kontroll-Fluss    
                   </textarea>
       </section>
       <section data-markdown>
         <textarea data-template>
-Reaktiver Renderzyklus
+
+### Reaktiver Renderzyklus
  <img src='img/render-zyklus.png' height="550">
                     </textarea>
       </section>
 
 
-<section>
-    <h3>Smart und Dumb Components</h3>
-      <h2>Grenzen</h2>
-      <p style="color: #2aa198">Hauptsächlich mit wachsenden und langlebigen Anwendungen</p>
-      
-      <ul>
-        <li>"Gott-Komponenten": Zustand und Logik wandern über die Zeit der Entwicklung in der Hierarchie herauf
-        <li>Verteilter, veränderlicher Zustand macht die Anwendung schwer zu verstehen und zu warten
-          <ul>
-            <li>Wo soll der Zustand gehalten werden?</li>
-            <li>In welchem Zustand ist die Anwendung?
-          </ul>
-        </li>
-        <li>Vermischung von Framework und UI/Business Logik (Kopplung an das Framework)
-          <li>Offene Fragen
-              <ul>
-                  <li>Wie behandelt man asynchronen Code?
-                  <li>Wie initialisiert man die Anwendung?
-                  <li>Wie tests man UI/Business Logik?
-              </ul>
-          </li>
-      </ul>
-  </section>
+      <section>
+        <h3>Smart und Dumb Components</h3>
+        <h2>Grenzen</h2>
+        <p style="color: #2aa198">Hauptsächlich mit wachsenden und langlebigen Anwendungen</p>
 
-  <section data-markdown>
-      <textarea data-template>
+        <ul>
+          <li>"Gott-Komponenten": Zustand und Logik wandern über die Zeit der Entwicklung in der Hierarchie herauf
+          <li>Verteilter, veränderlicher Zustand macht die Anwendung schwer zu verstehen und zu warten
+            <ul>
+              <li>Wo soll der Zustand gehalten werden?</li>
+              <li>In welchem Zustand ist die Anwendung?
+            </ul>
+          </li>
+          <li>Vermischung von Framework und UI/Business Logik (Kopplung an das Framework)
+          <li>Offene Fragen
+            <ul>
+              <li>Wie behandelt man asynchronen Code?
+              <li>Wie initialisiert man die Anwendung?
+              <li>Wie tests man UI/Business Logik?
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
 ### Data Layer – transmit and manage data
 
 <img src='img/js-data-layer-2018.png' height="500px">
@@ -496,7 +538,7 @@ Reaktiver Renderzyklus
 https://2018.stateofjs.com/data-layer/conclusion/
 
       </textarea>
-  </section>
+      </section>
 
       <section data-markdown>
         <textarea data-template>
@@ -608,9 +650,9 @@ https://2018.stateofjs.com/front-end-frameworks/conclusion
 </small>
 
         </textarea>
-    </section>
+      </section>
 
-    <!-- <section data-markdown>
+      <!-- <section data-markdown>
       <textarea data-template>
 ### Questions on Framework on Stack Overflow
 
@@ -635,28 +677,28 @@ https://2018.stateofjs.com/front-end-frameworks/conclusion
 </section>
  -->
 
- <section data-markdown>
-  <textarea data-template>
+      <section data-markdown>
+        <textarea data-template>
 ### React
 
 * nur rendering-lib
 * konservativ weiterentwickelt
 * freie Wahl des Stils, Facebook selbst bevorzugt functional 
     </textarea>
-  </section>
+      </section>
 
-<section data-markdown>
-  <textarea data-template>
+      <section data-markdown>
+        <textarea data-template>
 ### Angular
 
 * komplettes Framework
 * Klassen mit Dekoratoren (Annotations)
 * schlaue Leute haben (hoffentlich) die richtigen Entscheidungen für uns gefällt
     </textarea>
-  </section>
+      </section>
 
-<section data-markdown>
-  <textarea data-template>
+      <section data-markdown>
+        <textarea data-template>
 ### Vue.js
 
 * Ansatz und Template Syntax an Angular.js 1 angelehnt
@@ -664,10 +706,10 @@ https://2018.stateofjs.com/front-end-frameworks/conclusion
 * Templates beherrschbar von Frontend (HTML/CSS) Leuten
 
     </textarea>
-  </section>
+      </section>
 
-<section data-markdown>
-<textarea data-template>
+      <section data-markdown>
+        <textarea data-template>
 ### Web Components
 
 * Standard Browser-API
@@ -675,7 +717,7 @@ https://2018.stateofjs.com/front-end-frameworks/conclusion
 * optional lit-element für reactives Rendering (wie klassisches React)
 
 </textarea>
-</section>
+      </section>
 
       <section data-markdown class="no-fragment">
         <textarea data-template>
