@@ -448,24 +448,24 @@ Reaktiver Renderzyklus
 
 
 <section>
-    <h3>Smart and Dumb Components</h3>
-      <h2>Limitations</h2>
-      <p style="color: #2aa198">Mainly with growing and long-living applications</p>
+    <h3>Smart und Dumb Components</h3>
+      <h2>Grenzen</h2>
+      <p style="color: #2aa198">Hauptsächlich mit wachsenden und langlebigen Anwendungen</p>
       
       <ul>
-        <li style="font-size: 80%">"God-like" components: State and logic tend to slowly move up to a few really fat components
-        <li style="font-size: 80%">Distributed, mutatable state makes maintainability and understanding hard
+        <li>"Gott-Komponenten": Zustand und Logik wandern über die Zeit der Entwicklung in der Hierarchie herauf
+        <li>Verteilter, veränderlicher Zustand macht die Anwendung schwer zu verstehen und zu warten
           <ul>
-            <li>Where does the state belong to?</li>
-            <li>In which state is the application?
+            <li>Wo soll der Zustand gehalten werden?</li>
+            <li>In welchem Zustand ist die Anwendung?
           </ul>
         </li>
-        <li style="font-size: 80%">Mash up of framework and UI code (hardens switching the framework)
-          <li style="font-size: 80%">Still open questions regarding the architecture
+        <li>Vermischung von Framework und UI/Business Logik (Kopplung an das Framework)
+          <li>Offene Fragen
               <ul>
-                  <li>How to handle asynchronous code?
-                  <li>How to do proper initialization of the application?
-                  <li>How to test the business logic?
+                  <li>Wie behandelt man asynchronen Code?
+                  <li>Wie initialisiert man die Anwendung?
+                  <li>Wie tests man UI/Business Logik?
               </ul>
           </li>
       </ul>
@@ -633,9 +633,9 @@ https://2018.stateofjs.com/front-end-frameworks/conclusion
   <textarea data-template>
 ### Angular
 
-* choose Angular when you want a complete framework
-* and like other (hopefully smarter) people to make the right choices for you 
-* you like classes (while React people like functions)
+* komplettes Framework
+* Klassen mit Dekoratoren (Annotations)
+* schlaue Leute haben (hoffentlich) die richtigen Entscheidungen für uns gefällt
     </textarea>
   </section>
 
@@ -643,9 +643,10 @@ https://2018.stateofjs.com/front-end-frameworks/conclusion
   <textarea data-template>
 ### Vue.js
 
-* took over template syntax and quite some audience from Angular.js 1
-* easy to master
-* templates doable by frontend (HTML/CSS) people
+* Ansatz und Template Syntax an Angular.js 1 angelehnt
+* leicht zu erlernen
+* Templates beherrschbar von Frontend (HTML/CSS) Leuten
+
     </textarea>
   </section>
 
