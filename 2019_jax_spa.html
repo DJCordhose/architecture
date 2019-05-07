@@ -160,6 +160,14 @@
     .reveal {
       color: black !important;
     }
+
+    .part {
+      height: 500px;
+    }
+
+    .full {
+      height: 650px;
+    }
   </style>
 
   <!-- Printing and PDF exports -->
@@ -266,7 +274,7 @@ https://en.wikipedia.org/wiki/Single-page_application
 #### "Alle" reden von SPA... aber:            
   ### Warum eigentlich nicht klassisch?
     
-  <img src='img/classic/double-submit.jpg' height="650px">
+<img src='img/classic/double-submit.jpg' class='part'>
     
   Double Submit
     
@@ -278,7 +286,7 @@ https://en.wikipedia.org/wiki/Single-page_application
         <textarea data-template>
   ### Warum eigentlich nicht klassisch?
     
-  <video controls src="img/classic/roundtrips.mp4" type="video/mp4" height="650px"></video>
+  <video controls src="img/classic/roundtrips.mp4" type="video/mp4" class='part'></video>
   
   Round Trips für jede Kleinigkeit
     
@@ -372,7 +380,7 @@ https://en.wikipedia.org/wiki/Single-page_application
         <textarea data-template>
 ### Wenn Anwendungen wachsen, wie strukturiert man sie?  
 
-<img src='img/js-pupper-project.png' height="750px">
+<img src='img/js-pupper-project.png' class='part'>
 
 <small>
 https://twitter.com/_developit/status/1077390391530405888
@@ -395,26 +403,26 @@ https://twitter.com/_developit/status/1077390391530405888
 
       <section data-markdown>
         <textarea data-template>
-      <img src='img/mm.png' height="800px">
+      <img src='img/mm.png' class='full'>
                   </textarea>
       </section>
 
       <section data-markdown>
         <textarea data-template>
-        <img src='img/mc.png' height="800px">
+        <img src='img/mc.png' class='full'>
                     </textarea>
       </section>
 
 
       <section data-markdown>
         <textarea data-template>
-          <img src='img/links.png'height="800px" >
+          <img src='img/links.png' class='full' >
                       </textarea>
       </section>
 
       <section data-markdown>
         <textarea data-template>
-            <img src='img/aa-zusammenfassung.png'height="800px" >
+            <img src='img/aa-zusammenfassung.png 'class='full' >
                         </textarea>
       </section>
 
@@ -533,7 +541,7 @@ Klarer Daten- und Kontroll-Fluss
         <!-- <h3>Smart und Dumb Components</h3>
         <h2>Grenzen</h2> -->
         <h3>Problem 1: Über Komponenten verteilter Zustand</h3>
-        <img src="img/verteilter-zustand.png" style="border:0;box-shadow:0 0 0 0;height:650px" />
+        <img src="img/verteilter-zustand.png" class='part' />
         <p>Wo muss ich nach Fehlern suchen? Wo ist die Logik?</p>
         <p>In welchem Zustand ist meine Anwendung?</p>
       </section>
@@ -542,7 +550,7 @@ Klarer Daten- und Kontroll-Fluss
         <!-- <h3>Smart und Dumb Components</h3>
         <h2>Grenzen</h2> -->
         <h3>Problem 2: Getrennte Komponentenhierarchien</h3>
-        <img src="img/zwei-komponenten-hierarchien.png" style="border:0;box-shadow:0 0 0 0;height:650px" />
+        <img src="img/zwei-komponenten-hierarchien.png" class='part' />
         <p>Geht entweder nicht oder "Gott-Komponente" entsteht</p>
       </section>
 
@@ -551,7 +559,7 @@ Klarer Daten- und Kontroll-Fluss
         <h2>Grenzen</h2> -->
 
         <h3>Problem 3: Gemeinsamer ("globaler") Zustand</h3>
-        <img src="img/gemeinsam-genutzter-state.png" style="border:0;box-shadow:0 0 0 0;height:650px" />
+        <img src="img/gemeinsam-genutzter-state.png" class='part' />
         <p>Wie kommt Zustand von ganz oben nach ganz unten? </p>
       </section>
 
@@ -560,7 +568,7 @@ Klarer Daten- und Kontroll-Fluss
         <h2>Grenzen</h2> -->
 
         <h3>Problem 4: UI und Logik vermischt</h3>
-        <img src="img/ui-und-logic-vermischt.png" style="border:0;box-shadow:0 0 0 0;height:650px" />
+        <img src="img/ui-und-logic-vermischt.png" class='part' />
         <p>Wiederverwendung? Framework-unabhängigkeit? Testbarkeit?</p>
         <p>Wie, wo und wann wird die Anwendung initialisiert?</p>
       </section>
@@ -652,9 +660,9 @@ class Sayer {
 
       <section data-markdown>
         <textarea data-template>
-### Verhalten wie aus Java gewohnt            
+#### Verhalten wie aus Java gewohnt            
 
-<img src='img/screenshot-typescript.png' height="600">
+<img src='img/screenshot-typescript.png' class='part'>
 
 Probleme werden zur Entwicklungszeit sichtbar
 <br>
