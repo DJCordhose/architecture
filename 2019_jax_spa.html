@@ -929,7 +929,10 @@ Welches Framework passt auf Anforderungen?
     // $('.weg').remove();
     // uncomment for jax
     // $('.jax').remove();
-    if (window.location.hostname.indexOf('localhost') !== -1) {
+    const isLocal = window.location.hostname.indexOf('localhost') !== -1 || 
+                    window.location.hostname.indexOf('127.0.0.1') !== -1;
+
+    if (isLocal) {
     } else {
       // only applies to public version
       $('.preparation').remove();
@@ -946,7 +949,7 @@ Welches Framework passt auf Anforderungen?
       // make all links open in new tab
       $('a').attr('target', '_blank')
 
-      if (window.location.hostname.indexOf('localhost') !== -1) {
+      if (isLocal) {
         // only applies to presentation version
         Reveal.configure({ controls: false });
       } else {
