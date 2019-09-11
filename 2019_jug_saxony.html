@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Jug Saxony Day - Moderne Frontend-Architektur mit JavaScript</title>
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <!--<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">-->
+  <!--<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">-->
+  <!--<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">-->
+  <!--<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">-->
+  <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+  <style>
+    /*pre code {*/
+
+    /*display: block;*/
+
+    /*padding: 0.5em;*/
+
+    /*background: #FFFFFF !important;*/
+
+    /*color: #000000 !important;*/
+
+    /*}*/
+
+    .right-img {
+      margin-left: 10px !important;
+      float: right;
+      height: 500px;
+    }
+
+    .weg:before {
+      content: 'Streichen?';
+    }
+
+    .weg {
+      color: red !important;
+    }
+
+    .presenter h1 {
+      color: rgb(255, 0, 234) !important;
+    }
+
+    .todo:before {
+      content: 'TODO: ';
+    }
+
+    .todo {
+      color: red !important;
+    }
+
+    code span.line-number {
+      color: lightcoral;
+    }
+
+    .reveal pre code {
+      max-height: 1000px !important;
+    }
+
+    img {
+      border: 0 !important;
+      box-shadow: 0 0 0 0 !important;
+    }
+
+    .reveal {
+      -ms-touch-action: auto !important;
+      touch-action: auto !important;
+    }
+
+    .reveal h2,
+    .reveal h3,
+    .reveal h4 {
+      letter-spacing: 2px;
+      font-family: 'Calibri', sans-serif;
+      /* font-family: 'Times New Roman', Times, serif; */
+      font-weight: bold;
+      color: black;
+      font-style: italic;
+      letter-spacing: -2px;
+      text-transform: none !important;
+    }
+
+    .reveal em {
+      font-weight: bold;
+    }
+
+    .reveal .step-subtitle h1 {
+      letter-spacing: 1px;
+    }
+
+    .reveal .step-subtitle h2,
+    .reveal .step-subtitle h3 {
+      text-transform: none;
+
+      font-weight: normal;
+      /* font-weight: 400; */
+      /* font-family: 'Amiri', serif; */
+      font-family: 'Lobster', serif;
+      letter-spacing: 1px;
+      color: #2aa198;
+      /* text-decoration: underline; */
+    }
+
+    .reveal .step-subtitle h3 {
+      text-decoration: underline;
+      font-style: normal
+    }
+
+    /* .reveal .step-subtitle h2 {
+      font-style: italic;
+    } */
+
+    .reveal .front-page h1,
+    .reveal .front-page h2 {
+      font-family: "League Gothic";
+      font-style: normal;
+      text-transform: uppercase !important;
+      letter-spacing: 1px;
+    }
+
+    .reveal .front-page h1 {
+      font-size: 2.5em !important;
+    }
+
+    .reveal .highlight {
+      /* #D3337B;*/
+      color: #268bd2;
+    }
+
+    .reveal section img {
+      background: none;
+    }
+
+    .reveal img.with-border {
+      border: 1px solid #586e75 !important;
+      box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .reveal li {
+      margin-bottom: 8px;
+    }
+
+    /* For li's that use FontAwesome icons as bullet-point */
+
+    .reveal ul.fa-ul li {
+      list-style-type: none;
+    }
+
+    .reveal {
+      color: black !important;
+    }
+
+    .part {
+      height: 500px;
+    }
+
+    .full {
+      height: 650px;
+    }
+  </style>
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+
+  <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+      <!-- 
+  ### JUG Saxony Day Version
+  * 60 Minuten
+  
+       -->
+      <section>
+        <h2>Moderne Frontend-Architektur (SPAs) mit JavaScript</h2>
+        <h3><a href='https://jug-saxony-day.org/programm/#!/P57'>
+            JUG Saxony Day 2019
+          </a></h3>
+        <div>
+          <a href="https://nilshartmann.net">Nils Hartmann</a> /
+          <a href="https://twitter.com/nilshartmann">@nilshartmann</a>
+          <a href="mailto:nils@nilshartmann.net">nils@nilshartmann.net</a>
+        </div>
+        <div>
+          <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
+          <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
+          <a href="https://www.embarc.de/ ">embarc GmbH</a>
+        </div>
+
+        <p style="clear: both">
+          <small>Slides:
+            <a href="http://bit.ly/jax-spa">
+              http://bit.ly/jax-spa</a>
+          </small>
+        </p>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Frontend-Architektur?
+
+<div class="fragment">
+Mein Sohn hat da mal was fertig gemacht
+</div>  
+
+<div class="fragment">
+<img src='img/chs_generic_architecture.jpg' height="500px">
+<br>
+<small>(c) Anton Schmidt</small>
+
+</div>  
+
+            </textarea>
+      </section>
+
+      <section>
+        <h2>Wir nehmen Frontend-Architektur nicht für voll</h2>
+        <p>Zitate</p>
+        <ul>
+          <li class="fragment">
+            <em>Frontend-Architektur? Ich dachte sowas gibt es gar nicht</em>
+          </li>
+          <li class="fragment">
+            <em>Das Frontend kloppen wir am Ende einfach irgendwie drauf</em>
+          </li>
+          <li class="fragment">
+            <em>Architektur für ein bisschen CSS-Pixel-Geschubse?</em>
+          </li>
+        </ul>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+## Teil I: Motivation / Herleitung / Hintergrund
+
+</textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Moderne Frontend-Architektur === SPA
+
+A single-page application (SPA) is a web application that interacts 
+with the user by dynamically rewriting the current page rather than loading entire new pages from a server. 
+
+This approach avoids interruption of the user experience between successive pages.
+
+<small>
+https://en.wikipedia.org/wiki/Single-page_application  
+</small>
+            </textarea>
+      </section>
+
+
+      <section data-markdown>
+        <textarea data-template>
+#### "Alle" reden von SPA... aber:            
+  ### Warum eigentlich nicht klassisch?
+
+  <img src='img/webapp_arch01_classic.png' height="500px">
+
+  Ganz einfach ?!
+
+          </textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+#### "Alle" reden von SPA... aber:            
+  ### Warum eigentlich nicht klassisch?
+    
+<img src='img/classic/double-submit.jpg' class='part'>
+    
+  Double Submit
+    
+                </textarea>
+      </section>
+
+
+      <section data-markdown>
+        <textarea data-template>
+  ### Warum eigentlich nicht klassisch?
+    
+  <video controls src="img/classic/roundtrips.mp4" type="video/mp4" class='part'></video>
+  
+  Round Trips für jede Kleinigkeit
+    
+                </textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Warum eigentlich nicht klassisch...
+  #### ...mit "ein bisschen" JavaScript?
+      
+  <img src='img/webapp_arch_02_jquery.png' height="500px">  
+
+😱 
+
+                  </textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+#### Sauberste Lösung:
+  ### Single-Page-Anwendung
+        
+  <img src='img/webapp_arch_03_spa.png'  height="500px">  
+  
+                    </textarea>
+      </section>
+
+
+      <section data-markdown>
+        <textarea data-template>
+### Ist das ein Kandidat für eine SPA? 
+
+<img src='img/spa_or_not_spa_01_spon.png' height="600">
+
+            </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+### Ist das ein Kandidat für eine SPA? 
+
+<img src='img/spa_or_not_spa_02_outlook-and-skype.png' height="600">
+
+            </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+### Ist das ein Kandidat für eine SPA? 
+
+<img src='img/spa_or_not_spa_03_github.png' height="600">
+
+            </textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+            Typische Anforderungen
+            (pro Stakeholder-Rolle)
+
+<img src='img/1-requirements.png' height="650">
+
+            </textarea>
+      </section>
+
+      <section data-markdown data-background="img/xing.png"
+        style="background-color:white;margin:0px;border:1px solid darkgray;background-color:lightblue">
+        ### Fallbeispiel: XING
+
+        Welche Anforderungen wird es hier geben? Fehlen welche?
+      </section>
+
+      <section data-background="img/xing.png" style="margin:0px">
+        <img src='img/requirements-xing.png' height="650">
+      </section>
+
+      <!-- <section data-markdown>
+        <textarea data-template>
+        <img src='img/spicker/2-architektur-aussen.jpg' height="650">
+
+        </textarea>
+      </section> -->
+
+      <section data-markdown>
+        <textarea data-template>
+## Teil II: Äußere Architektur
+
+</textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Wenn Anwendungen wachsen, wie strukturiert man sie?  
+
+<img src='img/js-pupper-project.png' class='part'>
+
+<small>
+https://twitter.com/_developit/status/1077390391530405888
+</small>
+            </textarea>
+      </section>
+
+      <section data-markdown data-transition="none">
+        <textarea data-template>
+
+  <img src='img/zerlegte-anwendung.png' class='part'>
+
+  Idee: Anwendung zerteilen (MicroDingsbums)
+              </textarea>
+      </section>
+
+      <section data-markdown data-transition="none">
+        <textarea data-template>
+
+  <img src='img/zerlegte-anwendung.png'  class='part'>
+
+  Idee: Anwendung zerteilen (MicroDingsbums)
+
+  Herausforderung: Anwendung zerteilen
+  (Welche Größe? Was ist ein sinnvolles "Teil"?)
+  
+              </textarea>
+      </section>
+
+
+
+      <section data-markdown>
+        <textarea data-template>
+
+
+  <img src='img/aeussere-architektur.png' >
+
+  Herausforderung: Anwendung zerteilen <b>und wieder <em>integrieren</em></b>
+  
+              </textarea>
+      </section>
+
+
+      <section data-markdown>
+        <textarea data-template>
+      <img src='img/mm.png' class='full'>
+                  </textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+        <img src='img/mc.png' class='full'>
+                    </textarea>
+      </section>
+
+
+      <section data-markdown>
+        <textarea data-template>
+          <img src='img/links.png' class='full' >
+                      </textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+            <img src='img/aa-zusammenfassung.png 'class='full' >
+                        </textarea>
+      </section>
+
+      <section data-markdown data-background="img/xing.png"
+        style="background-color:white;margin:0px;border:1px solid darkgray;background-color:lightblue">
+        ### Fallbeispiel: XING
+
+        Welche Äußere Architektur? Was passt? Wie schneiden?
+      </section>
+
+
+      <section data-markdown class="local">
+        <textarea data-template>
+# Nils
+            </textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+## Teil III: Innere Architektur
+
+</textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+  <img src='img/komponente.png' height="650">
+  
+              </textarea>
+      </section>
+
+      <section data-markdown data-background="img/xing.png"
+        style="background-color:white;margin:0px;border:1px solid darkgray;background-color:lightblue">
+        ### Fallbeispiel: XING
+
+        Wo sehen wir Komponenten?
+      </section>
+
+      <section data-markdown data-transition="none">
+        <textarea data-template>
+### Komposition von Komponenten
+
+<img src='img/xing-komponenten.png' height="600">
+                </textarea>
+      </section>
+
+      <section data-markdown data-transition="none">
+        <textarea data-template>
+### Komposition von Komponenten
+
+<img src='img/smart-dumb-1.png' height="600">
+                </textarea>
+      </section>
+
+      <section data-markdown data-transition="none">
+        <textarea data-template>
+### Komposition von Komponenten
+
+<img src='img/smart-dumb-2.png' height="600">
+                </textarea>
+      </section>
+
+      <section data-markdown data-transition="none">
+        <textarea data-template>
+### Komposition von Komponenten
+
+<img src='img/smart-dumb-3.png' height="600">
+                </textarea>
+      </section>
+
+      <section data-markdown data-transition="none">
+        <textarea data-template>
+### Kommunikation zwischen beliebigen Anwendungsteilen
+
+<img src='img/datenfluss-1.png' height="550">
+
+                  </textarea>
+      </section>
+      <section data-markdown data-markdown data-transition="none">
+        <textarea data-template>
+### Kommunikation zwischen beliebigen Anwendungsteilen
+
+<img src='img/datenfluss-2.png' height="550">
+
+                  </textarea>
+      </section>
+      <section data-markdown data-markdown data-transition="none">
+        <textarea data-template>
+### Kommunikation zwischen beliebigen Anwendungsteilen
+
+<img src='img/datenfluss-3.png' height="550">
+
+                  </textarea>
+      </section>
+      <section data-markdown data-markdown data-transition="none">
+        <textarea data-template>
+### Kommunikation zwischen beliebigen Anwendungsteilen
+
+<img src='img/datenfluss-4.png' height="550">
+
+Klarer Daten- und Kontroll-Fluss    
+                  </textarea>
+      </section>
+      <section data-markdown>
+        <textarea data-template>
+
+### Reaktiver Renderzyklus
+ <img src='img/render-zyklus.png' height="550">
+                    </textarea>
+      </section>
+
+      <section data-markdown data-background="img/xing.png"
+        style="background-color:white;margin:0px;border:1px solid darkgray;background-color:lightblue">
+        ### Fallbeispiel: XING
+
+        Wo sehen wir Komponenten?
+        Wie würden wir die Anwendungsteile in Smart/Dumb zerteilen?
+      </section>
+
+      <section data-background="img/screenhot-xing-global-state_anzahl-kontakte.png">
+      </section>
+
+      <section data-background="img/screenhot-xing-global-state_profilfoto.png">
+      </section>
+
+      <section data-background="img/screenhot-xing-global-state_anzahl-nachrichten.png">
+      </section>
+
+
+      <section>
+        <h3>Smart und Dumb Components</h3>
+        <h2>Grenzen</h2>
+        <!-- <p style="color: #2aa198">Hauptsächlich mit wachsenden und langlebigen Anwendungen</p>
+
+        <ul>
+          <li>"Gott-Komponenten": Zustand und Logik wandern über die Zeit der Entwicklung in der Hierarchie herauf
+          <li>Verteilter, veränderlicher Zustand macht die Anwendung schwer zu verstehen und zu warten
+            <ul>
+              <li>Wo soll der Zustand gehalten werden?</li>
+              <li>In welchem Zustand ist die Anwendung?
+            </ul>
+          </li>
+          <li>Vermischung von Framework und UI/Business Logik (Kopplung an das Framework)
+          <li>Offene Fragen
+            <ul>
+              <li>Wie behandelt man asynchronen Code?
+              <li>Wie initialisiert man die Anwendung?
+              <li>Wie tests man UI/Business Logik?
+            </ul>
+          </li>
+        </ul> -->
+      </section>
+
+      <section>
+        <!-- <h3>Smart und Dumb Components</h3>
+        <h2>Grenzen</h2> -->
+        <h3>Problem 1: Über Komponenten verteilter Zustand</h3>
+        <img src="img/verteilter-zustand.png" class='part' />
+        <p>Wo muss ich nach Fehlern suchen? Wo ist die Logik?</p>
+        <p>In welchem Zustand ist meine Anwendung?</p>
+      </section>
+
+      <section>
+        <!-- <h3>Smart und Dumb Components</h3>
+        <h2>Grenzen</h2> -->
+        <h3>Problem 2: Getrennte Komponentenhierarchien</h3>
+        <img src="img/zwei-komponenten-hierarchien.png" class='part' />
+        <p>Geht entweder nicht oder "Gott-Komponente" entsteht</p>
+      </section>
+
+      <section>
+        <!-- <h3>Smart und Dumb Components</h3>
+        <h2>Grenzen</h2> -->
+
+        <h3>Problem 3: Gemeinsamer ("globaler") Zustand</h3>
+        <img src="img/gemeinsam-genutzter-state.png" class='part' />
+        <p>Wie kommt Zustand von ganz oben nach ganz unten? </p>
+      </section>
+
+      <section>
+        <!-- <h3>Smart und Dumb Components</h3>
+        <h2>Grenzen</h2> -->
+
+        <h3>Problem 4: UI und Logik vermischt</h3>
+        <img src="img/ui-und-logic-vermischt.png" class='part' />
+        <p>Wiederverwendung? Framework-unabhängigkeit? Testbarkeit?</p>
+        <p>Wie, wo und wann wird die Anwendung initialisiert?</p>
+      </section>
+
+      <section data-markdown class="local">
+        <textarea data-template>
+# Olli
+            </textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Data Layer – transmit and manage data
+
+<img src='img/js-data-layer-2018.png' height="500px">
+
+https://2018.stateofjs.com/data-layer/conclusion/
+
+      </textarea>
+      </section>
+
+      <section data-markdown data-transition="none">
+        <textarea data-template>
+### Redux/ngrx/vuex/MobX
+ 
+  <img src='img/redux-1.png' height="550">
+                      </textarea>
+      </section>
+      <section data-markdown data-transition="none">
+        <textarea data-template>
+### Redux/ngrx/vuex/MobX
+ 
+  <img src='img/redux-2.png' height="550">
+                      </textarea>
+      </section>
+      <section data-markdown data-transition="none">
+        <textarea data-template>
+### Redux/ngrx/vuex/MobX
+ 
+  <img src='img/redux-3.png' height="550">
+                      </textarea>
+      </section>
+      <section data-markdown data-transition="none">
+        <textarea data-template>
+### Redux/ngrx/vuex/MobX
+ 
+  <img src='img/redux-4.png' height="550">
+                      </textarea>
+      </section>
+      <section data-markdown data-transition="none">
+        <textarea data-template>
+### Redux/ngrx/vuex/MobX
+ 
+  <img src='img/redux-5.png' height="550">
+                      </textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+## Teil IV: Umsetzung
+
+</textarea>
+      </section>
+
+
+      <section data-markdown>
+        <textarea data-template>
+### TypeScript für Geschäftsanwendungen
+
+_Alle Frameworks arbeiten gut mit TypeScript_
+
+<img src='img/typescript.jpg' height="400px">
+
+<small>
+https://www.typescriptlang.org/
+</small>
+
+</textarea>
+      </section>
+
+      <section>
+        <h3>Basics</h3>
+        <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+// variables can have type information
+let foo: string;
+foo = 'yo';
+// Error: Type 'number' is not assignable to type 'string'.
+foo = 10;
+</code></pre>
+        <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+
+// types can be inferred (return type)
+function sayIt(what: string) {
+  return `Saying: ${what}`;
+}
+const said: string = sayIt(obj);
+
+</code></pre>
+        <pre class="fragment"><code class="typescript line-numbers" contenteditable data-trim>
+class Sayer {
+  what: string; // mandatory
+
+  constructor(what: string) {
+      this.what = what;
+  }
+
+  // return type if you want to
+  sayIt(): string {
+      return `Saying: ${this.what}`;
+  }
+}
+</code></pre>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+#### Verhalten wie aus Java gewohnt            
+
+<img src='img/screenshot-typescript.png' class='part'>
+
+Probleme werden zur Entwicklungszeit sichtbar
+<br>
+Show References geht verlässlich
+<br>
+Refactoring möglich
+
+              </textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Frameworks
+
+1. Angular: _rxjs is king_
+1. React: _JavaScript is king_
+1. Vue: _HTML/CSS is king_
+1. Web Components: _no framework is king_
+            </textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Annual Survey among JS Developers
+
+_Caution_: no distinction between Angular.js (1) and Angular (2-x)
+
+<img src='img/js-frameworks-2018.png' height="500px">
+
+<small>
+https://2018.stateofjs.com/front-end-frameworks/conclusion
+</small>
+
+        </textarea>
+      </section>
+
+      <!-- <section data-markdown>
+      <textarea data-template>
+### Questions on Framework on Stack Overflow
+
+<img src='img/frameworks-stack-overflow.png' height="500px">
+
+<small>
+  https://insights.stackoverflow.com/trends?tags=angular%2Cangularjs%2Creactjs%2Cjquery%2Cvue.js%2Cvuejs2%2Cpolymer
+</small>
+</textarea>
+</section>
+
+<section data-markdown>
+  <textarea data-template>
+### Tech likes React, Insurances like Angular
+
+<img src='img/tag_by_industry_graph-1-768x768.png' height="750px">
+
+<small>
+  https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/
+</small>
+</textarea>
+</section>
+ -->
+
+      <!-- <section data-markdown>
+        <textarea data-template>
+### React
+
+* nur rendering-lib
+* konservativ weiterentwickelt
+* freie Wahl des Stils, Facebook selbst bevorzugt functional 
+    </textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Angular
+
+* komplettes Framework
+* Klassen mit Dekoratoren (Annotations)
+* schlaue Leute haben (hoffentlich) die richtigen Entscheidungen für uns gefällt
+    </textarea>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+### Vue.js
+
+* Ansatz und Template Syntax an Angular.js 1 angelehnt
+* leicht zu erlernen
+* Templates beherrschbar von Frontend (HTML/CSS) Leuten
+
+    </textarea>
+      </section> -->
+
+      <!-- <section data-markdown>
+        <textarea data-template>
+### Web Components
+
+* Standard Browser-API
+* Komponenten sind technisch isoliert (nicht auf JS Ebene)
+* optional lit-element für reactives Rendering (wie klassisches React)
+
+</textarea>
+      </section> -->
+
+      <section data-markdown class="no-fragment">
+        <textarea data-template>
+### TL'DR
+
+Welches Framework soll ich nehmen?
+
+* Angular: erzwingt Einheitlichkeit über viele Teams
+* React: maximale Flexibilität
+* Web Components: keine Abhängigkeiten          
+* Vue: Frontendler (UI Developer) lieben es
+
+_Alle Optionen taugen grundsätzlich für die meisten Aufgaben. Letzlich ist es Geschmack und persönliche Erfahrung_
+
+### TypeScript ist in jedem Fall eine gute Wahl
+</textarea>
+      </section>
+
+      <!-- <section data-markdown>
+        <textarea data-template>
+### Fallbeispiel: XING
+
+Welches Framework passt auf Anforderungen?
+            </textarea>
+      </section> -->
+
+      <section>
+        <h2>Vielen Dank!</h2>
+        <h3>Es gibt Architektur-Ansätze für große und wartbare SPA Anwendungen</h3>
+        <p>
+          <a href="https://nilshartmann.net">Nils Hartmann</a> /
+          <a href="http://twitter.com/nilshartmann">@nilshartmann</a> /
+          <a href="mailto:nils@nilshartmann.net">nils@nilshartmann.net</a>
+        </p>
+        <p>
+          <a href="http://zeigermann.eu">Oliver Zeigermann</a> /
+          <a href="http://twitter.com/djcordhose">@DJCordhose</a> /
+          <a href="https://www.embarc.de/">embarc GmbH</a>
+        </p>
+        <p>
+          <a href="http://bit.ly/jax-spa">
+            http://bit.ly/jax-spa</a>
+        </p>
+      </section>
+
+    </div>
+
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js "></script>
+  <script src="reveal.js/js/reveal.js "></script>
+  <script src="lib/jquery-2.2.4.js "></script>
+  <script>
+    // $('.weg').remove();
+    // uncomment for jax
+    // $('.jax').remove();
+    const isLocal = window.location.hostname.indexOf('localhost') !== -1 ||
+      window.location.hostname.indexOf('127.0.0.1') !== -1;
+
+    if (isLocal) {
+    } else {
+      // only applies to public version
+      $('.preparation').remove();
+      $('.todo').remove();
+      $('.local').remove();
+      $('.presenter').remove();
+
+    }
+    Reveal.addEventListener('ready', function (event) {
+      // do we want this???
+      $('li').addClass('fragment')
+      $('.no-fragment li').removeClass('fragment')
+
+      // make all links open in new tab
+      $('a').attr('target', '_blank')
+
+      if (isLocal) {
+        // only applies to presentation version
+        Reveal.configure({ controls: false });
+      } else {
+        // only applies to public version
+        $('.fragment').removeClass('fragment');
+      }
+      // applies to all versions
+      $('code').addClass('line-numbers');
+    });
+    // $('section').attr('data-background-image', "backgrounds/light-metal.jpg ");
+    // $('section').attr('data-background-image', "backgrounds/pink.jpg ");
+    // $('section').attr('data-background-image', "backgrounds/white.jpg ");
+    //    $('section').attr('data-background-image', "backgrounds/code.jpg ");
+    $('section').attr('data-background-image', "backgrounds/sky.jpg");
+
+  </script>
+
+  <script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      width: "100%",
+      height: "100%",
+
+      transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+      // Optional reveal.js plugins
+      dependencies: [
+        {
+          src: 'reveal.js/lib/js/classList.js', condition: function () {
+            return !document.body.classList;
+          }
+        },
+        {
+          src: 'reveal.js/plugin/markdown/marked.js', condition: function () {
+            return !!document.querySelector('[data-markdown]');
+          }
+        },
+        {
+          src: 'reveal.js/plugin/markdown/markdown.js', condition: function () {
+            return !!document.querySelector('[data-markdown]');
+          }
+        },
+        {
+          src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+            return !!document.querySelector('pre code');
+          }, callback: function () {
+            hljs.initHighlightingOnLoad();
+          }
+        },
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+        { src: 'reveal.js/plugin/notes/notes.js', async: true },
+        { src: 'lib/js/line-numbers.js' }
+      ]
+    });
+
+  </script>
+
+</body>
+
+</html>
