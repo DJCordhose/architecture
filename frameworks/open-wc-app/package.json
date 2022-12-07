@@ -30,7 +30,7 @@
     "@open-wc/testing-karma-bs": "^0.2.0",
     "eslint-plugin-lit": "^0.5.0",
     "husky": "^1.0.0",
-    "lint-staged": "^8.0.0",
+    "lint-staged": "^13.1.0",
     "owc-dev-server": "^0.1.2",
     "ts-loader": "^5.3.3",
     "typescript": "^3.3.3",
